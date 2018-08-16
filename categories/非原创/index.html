@@ -154,11 +154,11 @@
             ">All</a>
         
 
-            <a href="/categories/原创/" style="-webkit-order:0;order:0" class="tags-list-item waves-effect waves-button waves-light">原创</a>
+            <a href="/categories/非原创/" style="-webkit-order:0;order:0" class="tags-list-item waves-effect waves-button waves-light active">非原创</a>
 
         
 
-            <a href="/categories/非原创/" style="-webkit-order:1;order:1" class="tags-list-item waves-effect waves-button waves-light active">非原创</a>
+            <a href="/categories/原创/" style="-webkit-order:1;order:1" class="tags-list-item waves-effect waves-button waves-light">原创</a>
 
         
     </nav>
@@ -193,7 +193,7 @@
 
   
     <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2018/08/15/integration-with-existing-apps/">ReactNative-集成到现有原生应用</a>
+      <a class="post-title-link" href="/2018/08/15/integration-with-existing-apps/">将ReactNative集成到现有原生应用(Android)</a>
     </h3>
   
 
@@ -323,23 +323,6 @@ var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
 
 
 
-
-<script>
-(function() {
-    var OriginTitile = document.title, titleTime;
-    document.addEventListener('visibilitychange', function() {
-        if (document.hidden) {
-            document.title = '去哪里了！';
-            clearTimeout(titleTime);
-        } else {
-            document.title = '(つェ⊂)咦!又好了!';
-            titleTime = setTimeout(function() {
-                document.title = OriginTitile;
-            },2000);
-        }
-    });
-})();
-</script>
 
 
 
