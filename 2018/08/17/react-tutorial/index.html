@@ -25,13 +25,13 @@
 <meta name="keywords" content="react,翻译,自学">
 <meta property="og:type" content="article">
 <meta property="og:title" content="尝试翻译React英文文档">
-<meta property="og:url" content="https://meandni.com/2018/08/17/68/index.html">
+<meta property="og:url" content="https://meandni.com/2018/08/17/react-tutorial/index.html">
 <meta property="og:site_name" content="Joker&#39;s Blog">
 <meta property="og:description" content="虽然发现React是有中文网的，但是奈何一直打不开中文文档，即使我已经开了VPN，自己现在又习惯性的想看更专业的官方文档，国内的一些教程实在看不下去了，所以想着自己尝试翻译他的文档，帮助一些和我一样有强迫症患者的朋友。  官网就是官网，教程真的是牛逼，react教程分为两种，实践教程（practical tutorial）和概念教程（guide to main concepts），都很好，我这里就">
 <meta property="og:locale" content="Chinese">
 <meta property="og:image" content="https://meandni.com/images/tictac-empty-1566a4f8490d6b4b1ed36cd2c11fe4b6-a9336.png">
 <meta property="og:image" content="https://meandni.com/images/tictac-numbers-685df774da6da48f451356f33f4be8b2-be875.png">
-<meta property="og:updated_time" content="2018-08-18T08:39:17.000Z">
+<meta property="og:updated_time" content="2018-08-19T00:43:41.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="尝试翻译React英文文档">
 <meta name="twitter:description" content="虽然发现React是有中文网的，但是奈何一直打不开中文文档，即使我已经开了VPN，自己现在又习惯性的想看更专业的官方文档，国内的一些教程实在看不下去了，所以想着自己尝试翻译他的文档，帮助一些和我一样有强迫症患者的朋友。  官网就是官网，教程真的是牛逼，react教程分为两种，实践教程（practical tutorial）和概念教程（guide to main concepts），都很好，我这里就">
@@ -196,7 +196,7 @@
 <hr>
 <p>官网就是官网，教程真的是牛逼，react教程分为两种，实践教程（practical tutorial）和概念教程（guide to main concepts），都很好，我这里就先翻译实践教程吧！</p>
 <hr>
-<h2 id="实践教程-practical-tutorial"><a href="#实践教程-practical-tutorial" class="headerlink" title="实践教程(practical tutorial)"></a>实践教程(practical tutorial)</h2><h3 id="在开始实践教程之前-Before-We-Start-the-Tutorial"><a href="#在开始实践教程之前-Before-We-Start-the-Tutorial" class="headerlink" title="在开始实践教程之前(Before We Start the Tutorial)"></a>在开始实践教程之前(Before We Start the Tutorial)</h3><p>在这个教程中，我们将做一个小游戏，<strong>你千万别被吓到，你怎么这么快就能做一个游戏了，我要说的是，你并不是在做一个很厉害的游戏，我们也只是给你一个这样的机会</strong>，在这个方法的教程中,你讲回学习到用react构建基础的应用并且熟练地掌握它，它也将让你充分理解React。</p>
+<h2 id="实践教程-practical-tutorial"><a href="#实践教程-practical-tutorial" class="headerlink" title="实践教程(practical tutorial)"></a>实践教程(practical tutorial)</h2><h3 id="在开始实践教程之前-Before-We-Start-the-Tutorial"><a href="#在开始实践教程之前-Before-We-Start-the-Tutorial" class="headerlink" title="在开始实践教程之前(Before We Start the Tutorial)"></a>在开始实践教程之前(Before We Start the Tutorial)</h3><p>在这个教程中，我们将做一个小游戏，<strong>你千万别被吓到，你怎么这么快就能做一个游戏了，我要说的是，你并不是在做一个很厉害的游戏，我们也只是给你一个这样的机会</strong>，在这个方法的教程中,你将会学习到用react构建基础的应用并且熟练地掌握它，它也将让你充分理解React。</p>
 <blockquote>
 <p><strong>建议</strong><br>这个教程被设计为那些想要通过亲自动手边做边学的人，如果你更喜欢去一步一步学习概念，你可以去另一套教程里，一会发现这两套教程可以互补的学习，大家可以取他们各自的长处！</p>
 </blockquote>
@@ -205,7 +205,7 @@
 <li>教程构建 将给你一个如何开始这个教程的指导</li>
 <li>概述 将教你一些React的基础内容：components, props和state</li>
 <li>小游戏项目 将教你一些在React开发过程中最通用的一些技能</li>
-<li>复习 将让你对React有更深的理解，体会到React强大之处</li>
+<li>历史回流 将让你对React有更深的理解，体会到React强大之处</li>
 </ul>
 <p>你没必要立刻掌握以上所有的部分，你可以尝试先去学你能学会的部分，没必要纠结是否自己基础是否太薄弱。</p>
 <p>有时跟着教程拷贝代码是好事，但我们还是建议你去一步一步的去手写，那将帮助你更好的记忆和更深的理解！</p>
@@ -394,7 +394,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">render() &#123;</span><br><span class="line">    const winner = calculateWinner(this.state.squares);</span><br><span class="line">    let status;</span><br><span class="line">    if (winner) &#123;</span><br><span class="line">      status = &apos;Winner: &apos; + winner;</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">      status = &apos;Next player: &apos; + (this.state.xIsNext ? &apos;X&apos; : &apos;O&apos;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    return (</span><br><span class="line">      // the rest has not changed</span><br></pre></td></tr></table></figure>
 <p>我们现在可以修改Board的<code>handleClick</code>函数，如果有玩家赢了游戏，去提前return去不响应点击事件。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">handleClick(i) &#123;</span><br><span class="line">    const squares = this.state.squares.slice();</span><br><span class="line">    if (calculateWinner(squares) || squares[i]) &#123;</span><br><span class="line">      return;</span><br><span class="line">    &#125;</span><br><span class="line">    squares[i] = this.state.xIsNext ? &apos;X&apos; : &apos;O&apos;;</span><br><span class="line">    this.setState(&#123;</span><br><span class="line">      squares: squares,</span><br><span class="line">      xIsNext: !this.state.xIsNext,</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
-<p><a href="[看此部分完整代码](https://codepen.io/gaearon/pen/LyyXgK?editors=0010">看此部分完整代码</a></p>
+<p>[看此部分完整代码]<a href="https://codepen.io/gaearon/pen/LyyXgK?editors=0010" target="_blank" rel="noopener">看此部分完整代码</a></p>
 <p>祝贺你！你现在已经差不多完成了这个游戏了，并且你也已经学习到了react的基础知识，到这里，你可能已经是一个真正的赢家了！！！</p>
 
         </div>
@@ -404,7 +404,7 @@
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2018-08-18T08:39:17.000Z" itemprop="dateUpdated">2018-08-18 16:39:17</time>
+    Last updated: <time datetime="2018-08-19T00:43:41.000Z" itemprop="dateUpdated">2018-08-19 08:43:41</time>
 </span><br>
 
 
@@ -438,7 +438,7 @@
 <div class="page-share" id="pageShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://meandni.com/2018/08/17/68/&title=《尝试翻译React英文文档》 — Joker's Blog&pic=https://meandni.com/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://meandni.com/2018/08/17/react-tutorial/&title=《尝试翻译React英文文档》 — Joker's Blog&pic=https://meandni.com/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -448,22 +448,22 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://meandni.com/2018/08/17/68/&title=《尝试翻译React英文文档》 — Joker's Blog&source=个人分享博客" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://meandni.com/2018/08/17/react-tutorial/&title=《尝试翻译React英文文档》 — Joker's Blog&source=个人分享博客" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://meandni.com/2018/08/17/68/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://meandni.com/2018/08/17/react-tutorial/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《尝试翻译React英文文档》 — Joker's Blog&url=https://meandni.com/2018/08/17/68/&via=https://meandni.com" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《尝试翻译React英文文档》 — Joker's Blog&url=https://meandni.com/2018/08/17/react-tutorial/&via=https://meandni.com" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://meandni.com/2018/08/17/68/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://meandni.com/2018/08/17/react-tutorial/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -483,7 +483,14 @@
     </div>
 
     
-<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2018/08/25/js-example/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">读《Javascript经典实例》</h4>
+      </a>
+    </div>
   
 
   
@@ -578,7 +585,7 @@
 <div class="global-share" id="globalShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://meandni.com/2018/08/17/68/&title=《尝试翻译React英文文档》 — Joker's Blog&pic=https://meandni.com/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://meandni.com/2018/08/17/react-tutorial/&title=《尝试翻译React英文文档》 — Joker's Blog&pic=https://meandni.com/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -588,22 +595,22 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://meandni.com/2018/08/17/68/&title=《尝试翻译React英文文档》 — Joker's Blog&source=个人分享博客" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://meandni.com/2018/08/17/react-tutorial/&title=《尝试翻译React英文文档》 — Joker's Blog&source=个人分享博客" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://meandni.com/2018/08/17/68/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://meandni.com/2018/08/17/react-tutorial/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《尝试翻译React英文文档》 — Joker's Blog&url=https://meandni.com/2018/08/17/68/&via=https://meandni.com" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《尝试翻译React英文文档》 — Joker's Blog&url=https://meandni.com/2018/08/17/react-tutorial/&via=https://meandni.com" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://meandni.com/2018/08/17/68/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://meandni.com/2018/08/17/react-tutorial/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -614,7 +621,7 @@
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAACuCAAAAACKZ2kyAAABwklEQVR42u3aQY6DMAwFUO5/aUaabdXwHZOAqpdVBZS8sLBiO8cRj/N/HMVxfozP68eKgYuL2+aewzHmfl7/Rhm/MzHg4uLu544p42BUXWrnc+Di4r6NWw064yu4uLi/wR2nKx0KLi7uO7nJNuUiLSluaJbnari4uA1utWC64vfC+i4uLm6RexbHXKk0eT6aHRcXdws3KV4kTdNqKpUXZI/qi3BxcdvcPC2ZOzZRXdLFR8HFxd3IzUPJ3EbntllwcXFfwO2UO3P6bYEMFxf3Jm7+aPUAVpIg5cWXi7wNFxd3ATcpZXYmy9szheCFi4u7hduZPt8A9Y9/4eLirubeFaSqidPcgnFxcZ/iltsbxdbsXLsFFxf3KW61+ZEEu8mA9e1fuLi4W7jVRmm1kFE4HZZvnnBxcRdzkwCUP1NFjMMiLi7us9zq5qNzPCtPt3BxcZ/l5mNdRyNaBi4u7hZuNaDkuLn2SX4XFxd3NbczfacsUj3+hYuLu59bDV75hqlTQIlaKbi4uI9yq0WTfGGFQi0uLu4ruZ0iy5gbNWVxcXE3cjsT5E2U/BPcUBbBxcVtcOcKpnmClLdVOse5cHFxb+L+AfM8BhySL2ybAAAAAElFTkSuQmCC" alt="微信分享二维码">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACOElEQVR42u3awW6DQAxF0fz/T1Opq0gFcp8NUfHcWaE0CTksXsf2vF54bb/r7/X7K+/r6FNHnz1/z2VLhgwZj2Vsp+voBkd/JT/3/NGQb96hypAhYwEGCdnzG5A4Pr8jCffD12XIkCEjvE5DNgXLkCFDBt+u8YqSx6sMGTJkdIrYWpHJg5hsQC+oxWXIkPFARmcwcPf1l+YbMmTI+MeMLVyd0SOJy620ZMiQMZuRtvjvaP2nIRvscGXIkDGCcR6mtUMY5HvSpt6HBypDhowFGCSV05ZZelyDM3auZciQsQCDBGJaxPL2fS30ZciQsQ6DF5lBTdyIYF4Ao6JXhgwZIxhpYUkCt7YF5Ecudl6RIUPGaEY6AOBjgNqjSSNehgwZKzA6rf+r9qH8cRTPjMiQIWMEoxaIfKtXGzDwpp4MGTJmM3io1b46De7iYQsZMmSMZqQtM37MohagxUCXIUPGMgze3qqVu7xJl95XhgwZqzHS2/CitBPoH9p8MmTIGM2otdLIaLM/GOgPJ2TIkDGDsYGVHgIjA8jaoQ0ZMmTISH905zAZadjxRyxDhozZDH6zdHcZlJrh+xFGhgwZgxhbuHj7vhajtX8DMmTImM24LxDJQDRtuqUjBBkyZExidELwqk1hLdDRXEKGDBmDGDwEyXig1shr1eIyZMiQ0W7cp4c24m2oDBkyZIBRQXqEorP1vDhwZciQ8RAG3+r1m2tpGw6BZciQMZqRbsJIadppxqUjVRkyZIxm/ABlbvUbVUfTaAAAAABJRU5ErkJggg==" alt="微信分享二维码">
 </div>
 
 

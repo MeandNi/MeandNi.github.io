@@ -30,7 +30,7 @@
 <meta property="og:description" content="如果你正准备从头开始制作一个新的应用，那么 React Native 会是个非常好的选择。但如果你只想给现有的原生应用中添加一两个视图或是业务流程，React Native 也同样不在话下。只需简单几步，你就可以给原有应用加上新的基于 React Native 的特性、画面和视图等。 具体的步骤根据你所开发的目标平台不同而不同。 核心概念把 React Native 组件集成到 Android 应">
 <meta property="og:locale" content="Chinese">
 <meta property="og:image" content="https://meandni.com/images/EmbeddedAppAndroid.png">
-<meta property="og:updated_time" content="2018-08-17T10:09:00.000Z">
+<meta property="og:updated_time" content="2018-08-19T02:19:04.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="将ReactNative集成到现有原生应用(Android)">
 <meta name="twitter:description" content="如果你正准备从头开始制作一个新的应用，那么 React Native 会是个非常好的选择。但如果你只想给现有的原生应用中添加一两个视图或是业务流程，React Native 也同样不在话下。只需简单几步，你就可以给原有应用加上新的基于 React Native 的特性、画面和视图等。 具体的步骤根据你所开发的目标平台不同而不同。 核心概念把 React Native 组件集成到 Android 应">
@@ -210,12 +210,14 @@
 </blockquote>
 <p>接下来我们使用 yarn 或 npm（两者都是 node 的包管理器）来安装 React 和 React Native 模块。请打开一个终端/命令提示行，进入到项目目录中（即包含有 package.json 文件的目录），然后运行下列命令来安装：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ yarn add react-native</span><br></pre></td></tr></table></figure>
+<p>或<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install --save react-native</span><br></pre></td></tr></table></figure></p>
 <p>这样默认会安装最新版本的 React Native，同时会打印出类似下面的警告信息（你可能需要滚动屏幕才能注意到）：</p>
 <blockquote>
 <p>warning “<a href="mailto:react-native@0.52.2" target="_blank" rel="noopener">react-native@0.52.2</a>“ has unmet peer dependency “<a href="mailto:react@16.2.0" target="_blank" rel="noopener">react@16.2.0</a>“.</p>
 </blockquote>
 <p>这是正常现象，意味着我们还需要安装指定版本的 React：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ yarn add react@16.2.0</span><br></pre></td></tr></table></figure>
+<p>或<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install --save react</span><br></pre></td></tr></table></figure></p>
 <p>注意必须严格匹配警告信息中所列出的版本，高了或者低了都不可以。</p>
 <blockquote>
 <p>如果你使用多个第三方依赖，可能这些第三方各自要求的 react 版本有所冲突，此时应优先满足<code>react-native</code>所需要的<code>react</code>版本。其他第三方能用则用，不能用则只能考虑选择其他库。</p>
@@ -290,7 +292,6 @@
 <h2 id="我遇到的问题"><a href="#我遇到的问题" class="headerlink" title="我遇到的问题"></a>我遇到的问题</h2><p>就是一进入ReactNative的Activity就闪退到前面的页面，后查看log发现<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java.lang.UnsatisfiedLinkError: couldn&apos;t find DSO to load: libreactnativejni</span><br></pre></td></tr></table></figure></p>
 <h3 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h3><p>在两处添加配置：<br>app#build.gradle</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">defaultConfig &#123;</span><br><span class="line"> //...</span><br><span class="line"> ndk &#123;</span><br><span class="line">     abiFilters &quot;armeabi-v7a&quot;, &quot;x86&quot;</span><br><span class="line">   &#125;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
-
         </div>
 
         <blockquote class="post-copyright">
@@ -298,7 +299,7 @@
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2018-08-17T10:09:00.000Z" itemprop="dateUpdated">2018-08-17 18:09:00</time>
+    Last updated: <time datetime="2018-08-19T02:19:04.000Z" itemprop="dateUpdated">2018-08-19 10:19:04</time>
 </span><br>
 
 
@@ -380,7 +381,7 @@
 <nav class="post-nav flex-row flex-justify-between">
   
     <div class="waves-block waves-effect prev">
-      <a href="/2018/08/17/68/" id="post-prev" class="post-nav-link">
+      <a href="/2018/08/17/react-tutorial/" id="post-prev" class="post-nav-link">
         <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
         <h4 class="title">尝试翻译React英文文档</h4>
       </a>
