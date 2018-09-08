@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://meandni.com/"/>
-  <updated>2018-08-25T02:34:34.000Z</updated>
+  <updated>2018-09-08T04:29:07.000Z</updated>
   <id>https://meandni.com/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Weex使用小记</title>
+    <link href="https://meandni.com/2018/09/08/3a79/"/>
+    <id>https://meandni.com/2018/09/08/3a79/</id>
+    <published>2018-09-08T03:25:47.000Z</published>
+    <updated>2018-09-08T04:29:07.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>还记得刚接触ReactNative时有多激动，此前还没想过能有这么强大的框架，后来对看多了混合开发的资料发现这真的已经成了不许要学会的一个技能，于是招收学习起了React，效果不尽人意，可能是先接触了Vue，已经习惯了它的开放方式，对React总是用不习惯，有些知识点甚至不能掌握更别提做出格完整的项目了，于是就我而言React是没有Vue好用的，之前也在网上找过Vue有没有类似Native的框架，了解了NativeScript发现国内用的人比较少，文档都是全英文（虽并无大碍）但坑太多我自己安装起来也比较吃力，于是有放弃了对VueNative的探索，继续学习RN～～～还算入门了，但就是不习惯啊，偶然想到另一门技术Weex，之前看到过但并不知道它是基于Vue的跨平台框架于是没去学习，了解后发现它原来是阿里开发的，它原来是基于Vue的，虽然用的人还不多，但他原来有那么全的中文文档～～～卧槽。。。。</p><p>用所有的东西都是有坑的，但我坚信对我而言国内人开发的东西会极大的亲近我们，于是开始了搭建环境、学习的旅程。</p><h2 id="环境搭建"><a href="#环境搭建" class="headerlink" title="环境搭建"></a>环境搭建</h2><p>相比NativeScript，Weex简直是水到渠成，web端一下子就能运行起来，而且代码是那么的熟悉，Vue在心中已有一席之地，想想以后的混合开发会是如此的畅快！</p><ol><li>安装脚手架</li></ol><p><code>npm install weex-toolkit -g</code></p><ol start="2"><li>创建项目</li></ol><p><code>weex create awesome-app</code></p><ol start="3"><li>运行项目</li></ol><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cd awesome-app</span><br><span class="line">npm install</span><br><span class="line">npm start</span><br></pre></td></tr></table></figure><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="http://weex.apache.org/guide/images/toolkit-preview.png" alt="Weex" title="">                </div>                <div class="image-caption">Weex</div>            </figure><h2 id="android端运行"><a href="#android端运行" class="headerlink" title="android端运行"></a>android端运行</h2><ul><li>添加特定平台的项目</li></ul><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">weex platform add ios</span><br><span class="line">weex platform add android</span><br></pre></td></tr></table></figure><p>官网都说了：</p><blockquote><p>由于网络环境的不同，安装过程可能需要一些时间，请耐心等待。如果安装失败，请确保自己的网络环境畅通。</p></blockquote><p>所以昨晚在这一步发生的错误应该就是网络的原因，今天早上网络流畅点就好了</p><ul><li>在本地机器上打开 Android 和 iOS 项目</li></ul><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">weex run ios</span><br><span class="line">weex run android</span><br><span class="line">weex run web</span><br></pre></td></tr></table></figure><p>下面是运行中遇到的一些问题：</p><h3 id="studio3-0对其的不兼容"><a href="#studio3-0对其的不兼容" class="headerlink" title="studio3.0对其的不兼容"></a>studio3.0对其的不兼容</h3><p>坑都在这里了，我想这些坑原因应该都来自于Android Studio 3.0新版特性</p><h4 id="无法下载到版本所对应的gradle"><a href="#无法下载到版本所对应的gradle" class="headerlink" title="无法下载到版本所对应的gradle"></a>无法下载到版本所对应的gradle</h4><blockquote><p>Error: Error: Command failed: ./gradlew  assembleDebug<br>Exception in thread “main” javax.net.ssl.SSLException: Connection has been shutdown: javax.net.ssl.SSLException: SSL peer shut down incorrectly</p></blockquote><p>原因：<br>由于网络被墙，无法下载到版本所对应的gradle。</p><p>解决：<br>将<code>app/platforms/android/gradle/wrapper</code>下的<code>distributionUrl</code>改为本地对应的版本号</p><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="/images/QQ20180908-121118.png" alt="distributionUrl" title="">                </div>                <div class="image-caption">distributionUrl</div>            </figure><h4 id="Gradle自定义apk名称报错"><a href="#Gradle自定义apk名称报错" class="headerlink" title="Gradle自定义apk名称报错"></a>Gradle自定义apk名称报错</h4><blockquote><p>Cannot set the value of read-only property ‘outputFile’ for ApkVariantOutputImpl_Decorated{apkData=Main{type=MAIN, fullName=debug, filters=[]}} of type com.android.build.gradle.internal.api.ApkVariantOutputImpl.</p></blockquote><p>AS 3.0之前自定义apk名称：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">applicationVariants.all &#123; variant -&gt;</span><br><span class="line">    variant.outputs.each &#123; output -&gt;</span><br><span class="line">    def fileName = &quot;$&#123;variant.versionName&#125;_release.apk&quot;</span><br><span class="line">    def outFile = output.outputFile</span><br><span class="line">    if (outFile != null &amp;&amp; outFile.name.endsWith(&apos;.apk&apos;)) &#123;</span><br><span class="line">        output.outputFile =newFile(outFile.parent, fileName)</span><br><span class="line">    &#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>修改为：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">applicationVariants.all &#123; variant -&gt;</span><br><span class="line">    variant.outputs.all &#123; output -&gt;  // each 改为 all</span><br><span class="line">    def fileName = &quot;$&#123;variant.versionName&#125;_release.apk&quot;</span><br><span class="line">    def outFile = output.outputFile</span><br><span class="line">    if (outFile != null &amp;&amp; outFile.name.endsWith(&apos;.apk&apos;)) &#123;</span><br><span class="line">        outputFileName = fileName  //  output.outputFile 改为 outputFileName </span><br><span class="line">    &#125;    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p><p>把<code>each</code>修改为<code>all</code>，然后通过<code>outputFileName</code>修改生成apk的名称。此外，AS 3.0后打包完，除了apk包文件，还会多一个 <code>output.json</code> 参数文件。</p><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="/images/QQ20180908-122053.png" alt="/awesome-app/platforms/android/app" title="">                </div>                <div class="image-caption">/awesome-app/platforms/android/app</div>            </figure><h2 id="学习！"><a href="#学习！" class="headerlink" title="学习！"></a>学习！</h2><p>下面就开始各种使用它了！</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;还记得刚接触ReactNative时有多激动，此前还没想过能有这么强大的框架，后来对看多了混合开发的资料发现这真的已经成了不许要学会的一个技能，于是招收学习起了React，效果不尽人意，可能是先接触了Vue，已经习惯了它的开放方式，对React总是用不习惯，有些知识点甚至不
+      
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>读《Javascript经典实例》</title>
