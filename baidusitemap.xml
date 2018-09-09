@@ -1,0 +1,317 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+
+    
+  <url>
+    <loc>https://meandni.com/2018/09/09/0/</loc>
+    <lastmod>2018-09-09T12:23:15.000Z</lastmod>
+    <data>
+        <display>
+        <title>Hello</title>
+        <pubTime>2018-09-09T12:23:07.000Z</pubTime>
+        
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://meandni.com/2018/09/08/3a79/</loc>
+    <lastmod>2018-09-08T04:54:15.000Z</lastmod>
+    <data>
+        <display>
+        <title>Weex使用小记</title>
+        <pubTime>2018-09-08T03:25:47.000Z</pubTime>
+        
+        <tag>混合开发</tag>
+         
+         
+           
+             
+              <breadCrumb title="原创" url="https://meandni.com/categories/%E5%8E%9F%E5%88%9B/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://meandni.com/2018/02/26/82e4/</loc>
+    <lastmod>2018-09-02T06:16:54.000Z</lastmod>
+    <data>
+        <display>
+        <title>大二寒假、总结！</title>
+        <pubTime>2018-02-26T12:05:17.000Z</pubTime>
+        
+        <tag>寒假</tag>
+         
+        <tag>总结</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://meandni.com/2018/08/14/3eeb/</loc>
+    <lastmod>2018-09-02T06:16:39.000Z</lastmod>
+    <data>
+        <display>
+        <title>Hello World</title>
+        <pubTime>2018-08-14T03:27:16.000Z</pubTime>
+        
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://meandni.com/2018/04/16/2c96/</loc>
+    <lastmod>2018-09-02T06:12:45.000Z</lastmod>
+    <data>
+        <display>
+        <title>java中的Json数据格式的使用——Gson</title>
+        <pubTime>2018-04-16T07:07:32.000Z</pubTime>
+        
+        <tag>android</tag>
+         
+        <tag>java</tag>
+         
+        <tag>gson</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://meandni.com/2018/03/25/d89c/</loc>
+    <lastmod>2018-09-02T06:10:20.000Z</lastmod>
+    <data>
+        <display>
+        <title>我做第一个Android项目的过程！</title>
+        <pubTime>2018-03-25T06:06:02.000Z</pubTime>
+        
+        <tag>android</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://meandni.com/2018/04/15/1a8e/</loc>
+    <lastmod>2018-09-02T06:06:59.000Z</lastmod>
+    <data>
+        <display>
+        <title>每天的新东西（Android篇）</title>
+        <pubTime>2018-04-15T07:00:57.000Z</pubTime>
+        
+        <tag>android</tag>
+         
+        <tag>java</tag>
+         
+         
+           
+             
+              <breadCrumb title="原创" url="https://meandni.com/categories/%E5%8E%9F%E5%88%9B/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://meandni.com/2018/03/02/3079/</loc>
+    <lastmod>2018-09-02T06:05:31.000Z</lastmod>
+    <data>
+        <display>
+        <title>JQuery定时自动消失提示框/弹出框(转)</title>
+        <pubTime>2018-03-02T05:43:08.000Z</pubTime>
+        
+        <tag>javascripe</tag>
+         
+        <tag>JQuery</tag>
+         
+        <tag>Web</tag>
+         
+         
+           
+             
+              <breadCrumb title="非原创" url="https://meandni.com/categories/%E9%9D%9E%E5%8E%9F%E5%88%9B/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://meandni.com/2018/02/27/dfa1/</loc>
+    <lastmod>2018-09-02T06:02:25.000Z</lastmod>
+    <data>
+        <display>
+        <title>自学Php+jquery框架+bootstrap框架搭建博客！</title>
+        <pubTime>2018-02-27T15:45:48.000Z</pubTime>
+        
+        <tag>自学</tag>
+         
+        <tag>jqurey</tag>
+         
+        <tag>php</tag>
+         
+        <tag>昼夜颠倒</tag>
+         
+         
+           
+             
+              <breadCrumb title="原创" url="https://meandni.com/categories/%E5%8E%9F%E5%88%9B/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://meandni.com/2018/04/16/2fd8/</loc>
+    <lastmod>2018-09-02T06:00:37.000Z</lastmod>
+    <data>
+        <display>
+        <title>简单验证Adapter每次显示部分数据的原理</title>
+        <pubTime>2018-04-16T14:24:40.000Z</pubTime>
+        
+        <tag>android</tag>
+         
+         
+           
+             
+              <breadCrumb title="原创" url="https://meandni.com/categories/%E5%8E%9F%E5%88%9B/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://meandni.com/2018/03/01/d010/</loc>
+    <lastmod>2018-09-02T05:41:26.000Z</lastmod>
+    <data>
+        <display>
+        <title>Android Studio 使用方法总结（不定期更新）</title>
+        <pubTime>2018-03-01T06:32:04.000Z</pubTime>
+        
+        <tag>Android Studio</tag>
+         
+        <tag>Android</tag>
+         
+        <tag>软件使用</tag>
+         
+         
+           
+             
+              <breadCrumb title="原创" url="https://meandni.com/categories/%E5%8E%9F%E5%88%9B/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://meandni.com/2018/08/25/js-example/</loc>
+    <lastmod>2018-08-25T02:34:34.000Z</lastmod>
+    <data>
+        <display>
+        <title>读《Javascript经典实例》</title>
+        <pubTime>2018-08-25T02:33:45.000Z</pubTime>
+        
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://meandni.com/2018/08/15/integration-with-existing-apps/</loc>
+    <lastmod>2018-08-19T02:19:04.000Z</lastmod>
+    <data>
+        <display>
+        <title>将ReactNative集成到现有原生应用(Android)</title>
+        <pubTime>2018-08-15T11:59:00.000Z</pubTime>
+        
+        <tag>混合开发</tag>
+         
+        <tag>android</tag>
+         
+        <tag>reactnative</tag>
+         
+         
+           
+             
+              <breadCrumb title="非原创" url="https://meandni.com/categories/%E9%9D%9E%E5%8E%9F%E5%88%9B/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://meandni.com/2018/08/17/react-tutorial/</loc>
+    <lastmod>2018-08-19T00:43:41.000Z</lastmod>
+    <data>
+        <display>
+        <title>尝试翻译React英文文档</title>
+        <pubTime>2018-08-17T12:58:00.000Z</pubTime>
+        
+        <tag>react</tag>
+         
+        <tag>翻译</tag>
+         
+        <tag>自学</tag>
+         
+         
+           
+             
+              <breadCrumb title="原创" url="https://meandni.com/categories/%E5%8E%9F%E5%88%9B/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+    
+  <url>
+    <loc>https://meandni.com/2018/08/14/b62/</loc>
+    <lastmod>2018-08-16T05:21:20.000Z</lastmod>
+    <data>
+        <display>
+        <title>看《第一行代码》(Androud)</title>
+        <pubTime>2018-08-14T14:21:00.000Z</pubTime>
+        
+        <tag>android</tag>
+         
+        <tag>读书</tag>
+         
+         
+           
+             
+              <breadCrumb title="原创" url="https://meandni.com/categories/%E5%8E%9F%E5%88%9B/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+    
+    
+</urlset>
