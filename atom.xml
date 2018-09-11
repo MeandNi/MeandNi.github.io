@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://meandni.com/"/>
-  <updated>2018-09-09T12:23:15.000Z</updated>
+  <updated>2018-09-11T12:02:44.000Z</updated>
   <id>https://meandni.com/</id>
   
   <author>
@@ -17,16 +17,29 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>Hello</title>
-    <link href="https://meandni.com/2018/09/09/0/"/>
-    <id>https://meandni.com/2018/09/09/0/</id>
-    <published>2018-09-09T12:23:07.000Z</published>
-    <updated>2018-09-09T12:23:15.000Z</updated>
+    <title>记录一下：开始学IOS了</title>
+    <link href="https://meandni.com/2018/09/11/85de/"/>
+    <id>https://meandni.com/2018/09/11/85de/</id>
+    <published>2018-09-11T11:55:19.000Z</published>
+    <updated>2018-09-11T12:02:44.000Z</updated>
+    
+    <content type="html"><![CDATA[<center><br>    <img src="/images/IOS.jpg" width="400px" alt="读《IOS移动开发从入门到精通》"><br>    读《IOS移动开发从入门到精通》<br></center><!-- <figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="/images/IOS.jpg" alt="读《IOS移动开发从入门到精通》" title="">                </div>                <div class="image-caption">读《IOS移动开发从入门到精通》</div>            </figure><p> –&gt;</p>-->]]></content>
     
     <summary type="html">
     
+      
+      
+        &lt;center&gt;&lt;br&gt;    &lt;img src=&quot;/images/IOS.jpg&quot; width=&quot;400px&quot; alt=&quot;读《IOS移动开发从入门到精通》&quot;&gt;&lt;br&gt;    读《IOS移动开发从入门到精通》&lt;br&gt;&lt;/center&gt;
+
+&lt;!-- &lt;figure class=&quot;i
+      
+    
     </summary>
     
+      <category term="原创" scheme="https://meandni.com/categories/%E5%8E%9F%E5%88%9B/"/>
+    
+    
+      <category term="ios - 读书 - 学习" scheme="https://meandni.com/tags/ios-%E8%AF%BB%E4%B9%A6-%E5%AD%A6%E4%B9%A0/"/>
     
   </entry>
   
