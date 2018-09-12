@@ -2,9 +2,44 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://meandni.com/2018/08/15/integration-with-existing-apps/</loc>
+    
+    <lastmod>2018-09-12T03:35:27.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://meandni.com/2018/02/26/82e4/</loc>
+    
+    <lastmod>2018-09-12T03:31:17.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://meandni.com/2018/08/25/js-example/</loc>
+    
+    <lastmod>2018-09-12T03:15:23.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://meandni.com/2018/09/12/1011/</loc>
+    
+    <lastmod>2018-09-12T03:15:17.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://meandni.com/2018/08/17/react-tutorial/</loc>
+    
+    <lastmod>2018-09-12T02:16:59.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://meandni.com/2018/09/11/85de/</loc>
     
-    <lastmod>2018-09-11T12:02:44.000Z</lastmod>
+    <lastmod>2018-09-12T01:57:59.000Z</lastmod>
     
   </url>
   
@@ -12,13 +47,6 @@
     <loc>https://meandni.com/2018/09/08/3a79/</loc>
     
     <lastmod>2018-09-08T04:54:15.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://meandni.com/2018/02/26/82e4/</loc>
-    
-    <lastmod>2018-09-02T06:16:54.000Z</lastmod>
     
   </url>
   
@@ -75,27 +103,6 @@
     <loc>https://meandni.com/2018/03/01/d010/</loc>
     
     <lastmod>2018-09-02T05:41:26.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://meandni.com/2018/08/25/js-example/</loc>
-    
-    <lastmod>2018-08-25T02:34:34.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://meandni.com/2018/08/15/integration-with-existing-apps/</loc>
-    
-    <lastmod>2018-08-19T02:19:04.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://meandni.com/2018/08/17/react-tutorial/</loc>
-    
-    <lastmod>2018-08-19T00:43:41.000Z</lastmod>
     
   </url>
   
