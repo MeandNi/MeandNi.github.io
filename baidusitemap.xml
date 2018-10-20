@@ -5,7 +5,7 @@
     
   <url>
     <loc>https://meandni.com/2018/10/20/3586/</loc>
-    <lastmod>2018-10-20T05:23:30.441Z</lastmod>
+    <lastmod>2018-10-20T05:23:45.379Z</lastmod>
     <data>
         <display>
         <title>参加AI应用创新大赛</title>
@@ -48,15 +48,24 @@
 
     
   <url>
-    <loc>https://meandni.com/2018/10/05/0/</loc>
-    <lastmod>2018-10-05T15:40:15.174Z</lastmod>
+    <loc>https://meandni.com/2018/09/11/85de/</loc>
+    <lastmod>2018-10-20T05:18:08.733Z</lastmod>
     <data>
         <display>
-        <title>2018.10.5有感！</title>
-        <pubTime>2018-10-05T14:33:37.782Z</pubTime>
+        <title>记录一下：开始学IOS了</title>
+        <pubTime>2018-09-11T11:55:19.000Z</pubTime>
         
+        <tag>读书</tag>
+         
+        <tag>ios</tag>
+         
+        <tag>学习</tag>
+         
          
            
+             
+              <breadCrumb title="原创" url="https://meandni.com/categories/%E5%8E%9F%E5%88%9B/"/>
+          
         </display>
     </data>
     </url>
@@ -127,9 +136,9 @@
         <title>将ReactNative集成到现有原生应用(Android)</title>
         <pubTime>2018-08-15T11:59:00.000Z</pubTime>
         
-        <tag>android</tag>
-         
         <tag>混合开发</tag>
+         
+        <tag>android</tag>
          
         <tag>reactnative</tag>
          
@@ -175,30 +184,6 @@
         <tag>翻译</tag>
          
         <tag>自学</tag>
-         
-         
-           
-             
-              <breadCrumb title="原创" url="https://meandni.com/categories/%E5%8E%9F%E5%88%9B/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://meandni.com/2018/09/11/85de/</loc>
-    <lastmod>2018-09-12T01:57:59.000Z</lastmod>
-    <data>
-        <display>
-        <title>记录一下：开始学IOS了</title>
-        <pubTime>2018-09-11T11:55:19.000Z</pubTime>
-        
-        <tag>读书</tag>
-         
-        <tag>ios</tag>
-         
-        <tag>学习</tag>
          
          
            
