@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>理解 IntelliJ IDEA 的项目配置和Web部署 | Joker&#39;s Blog | 个人分享博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="软件,IntelliJ IDEA,javaweb">
+    <meta name="description" content="#1、项目配置的理解 IDEA 中最重要的各种设置项，就是这个 Project Structre 了，关乎你的项目运行，缺胳膊少腿都不行。最近学校正好也是用之前自己比较熟悉的IDEA而不是Eclipse，为了更深入理解和使用，就找来各种资料再研究一下，这里整理后来个输出。">
+<meta name="keywords" content="软件,IntelliJ IDEA,javaweb">
+<meta property="og:type" content="article">
+<meta property="og:title" content="理解 IntelliJ IDEA 的项目配置和Web部署">
+<meta property="og:url" content="https://meandni.com/2018/10/10/a03f/index.html">
+<meta property="og:site_name" content="Joker&#39;s Blog">
+<meta property="og:description" content="#1、项目配置的理解 IDEA 中最重要的各种设置项，就是这个 Project Structre 了，关乎你的项目运行，缺胳膊少腿都不行。最近学校正好也是用之前自己比较熟悉的IDEA而不是Eclipse，为了更深入理解和使用，就找来各种资料再研究一下，这里整理后来个输出。">
+<meta property="og:locale" content="Chinese">
+<meta property="og:image" content="https://meandni.com/images/idea1.png">
+<meta property="og:image" content="https://meandni.com/images/idea2.png">
+<meta property="og:image" content="https://meandni.com/images/idea3.png">
+<meta property="og:image" content="https://meandni.com/images/idea4.png">
+<meta property="og:image" content="https://meandni.com/images/idea5.png">
+<meta property="og:image" content="https://meandni.com/images/idea6.png">
+<meta property="og:image" content="https://meandni.com/images/idea7.png">
+<meta property="og:image" content="https://meandni.com/images/idea8.png">
+<meta property="og:image" content="https://meandni.com/images/idea9.png">
+<meta property="og:image" content="https://meandni.com/images/idea10.png">
+<meta property="og:updated_time" content="2018-10-20T05:02:05.937Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="理解 IntelliJ IDEA 的项目配置和Web部署">
+<meta name="twitter:description" content="#1、项目配置的理解 IDEA 中最重要的各种设置项，就是这个 Project Structre 了，关乎你的项目运行，缺胳膊少腿都不行。最近学校正好也是用之前自己比较熟悉的IDEA而不是Eclipse，为了更深入理解和使用，就找来各种资料再研究一下，这里整理后来个输出。">
+<meta name="twitter:image" content="https://meandni.com/images/idea1.png">
+    
+        <link rel="alternate" type="application/atom+xml" title="Joker&#39;s Blog" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Joker</h5>
+          <a href="mailto:yangjiakay@gmail.com" title="yangjiakay@gmail.com" class="mail">yangjiakay@gmail.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/MeandNi" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about"  >
+                <i class="icon icon-lg icon-link"></i>
+                AboutMe
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">理解 IntelliJ IDEA 的项目配置和Web部署</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">理解 IntelliJ IDEA 的项目配置和Web部署</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-10-10T04:37:00.230Z" itemprop="datePublished" class="page-time">
+  2018-10-10
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/非原创/">非原创</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#1-1-Project"><span class="post-toc-number">1.</span> <span class="post-toc-text">1.1 Project</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#1-2-Modules"><span class="post-toc-number">2.</span> <span class="post-toc-text">1.2 Modules</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-2-1-增删子项目"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">1.2.1 增删子项目</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-2-2-子项目配置"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">1.2.2 子项目配置</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-2-3-增删框架（Web部署-1）"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">1.2.3 增删框架（Web部署-1）</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#1-3-Libraries"><span class="post-toc-number">3.</span> <span class="post-toc-text">1.3 Libraries</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#1-4-Facets"><span class="post-toc-number">4.</span> <span class="post-toc-text">1.4 Facets</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#1-5-Artifacts（Web部署-2）"><span class="post-toc-number">5.</span> <span class="post-toc-text">1.5 Artifacts（Web部署-2）</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#2、参考链接"><span class="post-toc-number"></span> <span class="post-toc-text">2、参考链接</span></a>
+        </nav>
+    </aside>
+
+
+<article id="post-理解 IntelliJ IDEA 的项目配置和Web部署"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">理解 IntelliJ IDEA 的项目配置和Web部署</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-10-10 12:37:00" datetime="2018-10-10T04:37:00.230Z"  itemprop="datePublished">2018-10-10</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/非原创/">非原创</a></li></ul>
+
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>#1、项目配置的理解</p>
+<p>IDEA 中最重要的各种设置项，就是这个 Project Structre 了，关乎你的项目运行，缺胳膊少腿都不行。最近学校正好也是用之前自己比较熟悉的IDEA而不是Eclipse，为了更深入理解和使用，就找来各种资料再研究一下，这里整理后来个输出。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/images/idea1.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<h2 id="1-1-Project"><a href="#1-1-Project" class="headerlink" title="1.1 Project"></a>1.1 Project</h2><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/images/idea2.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<ol>
+<li><strong>Project name</strong>：定义项目的名称；</li>
+<li><strong>Project SDK</strong>：设置该项目使用的JDK，也可以在此处新添加其他版本的JDK；</li>
+<li><strong>Project language level</strong>：这个和JDK的类似，区别在于，假如你设置了JDK1.8，却只用到1.6的特性，那么这里可以设置语言等级为1.6，这个是限定项目编译检查时最低要求的JDK特性；</li>
+<li><strong>Project compiler output</strong>：项目中的默认编译输出总目录，如图黄色部分，实际上每个模块可以自己设置特殊的输出目录（Modules - (project) - Paths - Use module compile output path），所以这个设置有点鸡肋。</li>
+</ol>
+<h2 id="1-2-Modules"><a href="#1-2-Modules" class="headerlink" title="1.2 Modules"></a>1.2 Modules</h2><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/images/idea3.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<h3 id="1-2-1-增删子项目"><a href="#1-2-1-增删子项目" class="headerlink" title="1.2.1 增删子项目"></a>1.2.1 增删子项目</h3><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/images/idea4.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>一个项目中可以有多个子项目，每个子项目相当于一个模块。一般我们项目只是单独的一个，IntelliJ IDEA 默认也是单子项目的形式，所以只需要配置一个模块。</p>
+<p>（此处的两个项目引入仅作示例参考）</p>
+<h3 id="1-2-2-子项目配置"><a href="#1-2-2-子项目配置" class="headerlink" title="1.2.2 子项目配置"></a>1.2.2 子项目配置</h3><p>每个子项目都对应了Sources、Paths、Dependencies 三大配置选项：</p>
+<ul>
+<li><strong>Sources</strong>：显示项目的目录资源，那些是项目部署的时候需要的目录，不同颜色代表不同的类型；</li>
+<li><strong>Paths</strong>：可以指定项目的编译输出目录，即项目类和测试类的编译输出地址（替换掉了Project的默认输出地址）</li>
+<li><strong>Dependencies</strong>：项目的依赖</li>
+</ul>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/images/idea5.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/images/idea6.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/images/idea7.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<h3 id="1-2-3-增删框架（Web部署-1）"><a href="#1-2-3-增删框架（Web部署-1）" class="headerlink" title="1.2.3 增删框架（Web部署-1）"></a>1.2.3 增删框架（Web部署-1）</h3><p>每个子项目之下都可以定义它所使用的框架，这里重点说明一下Web部分的设置。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/images/idea8.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<h2 id="1-3-Libraries"><a href="#1-3-Libraries" class="headerlink" title="1.3 Libraries"></a>1.3 Libraries</h2><p>这里可以显示所添加的jar包，同时也可以添加jar包，并且可以把多个jar放在一个组里面，类似于jar包整理。</p>
+<p>这里默认将每个jar包做为了一个单独的组（未测试，待定）。</p>
+<h2 id="1-4-Facets"><a href="#1-4-Facets" class="headerlink" title="1.4 Facets"></a>1.4 Facets</h2><p>官方的解释是：</p>
+<p>When you select a framework (a facet) in the element selector pane, the settings for the framework are shown in the right-hand part of the dialog.</p>
+<p>（当你在左边选择面板点击某个技术框架，右边将会显示这个框架的一些设置）</p>
+<p>说实话，并没有感觉到有什么作用。</p>
+<h2 id="1-5-Artifacts（Web部署-2）"><a href="#1-5-Artifacts（Web部署-2）" class="headerlink" title="1.5 Artifacts（Web部署-2）"></a>1.5 Artifacts（Web部署-2）</h2><p>项目的打包部署设置，这个是项目配置里面比较关键的地方，重点说一下。</p>
+<p>先理解下它的含义，来看看官方定义的artifacts：</p>
+<p>An artifact is an assembly of your project assets that you put together to test, deploy or distribute your software solution or its part. Examples are a collection of compiled Java classes or a Java application packaged in a Java archive, a Web application as a directory structure or a Web application archive, etc.</p>
+<p>即编译后的Java类，Web资源等的整合，用以测试、部署等工作。再白话一点，就是说某个module要如何打包，例如war exploded、war、jar、ear等等这种打包形式。某个module有了 Artifacts 就可以部署到应用服务器中了。</p>
+<p><em>（</em></p>
+<p><strong>*jar</strong>：Java ARchive，通常用于聚合大量的Java类文件、相关的元数据和资源（文本、图片等）文件到一个文件，以便分发Java平台应用软件或库；*</p>
+<p><strong>*war</strong>：Web application ARchive，一种JAR文件，其中包含用来分发的JSP、Java Servlet、Java类、XML文件、标签库、静态网页（HTML和相关文件），以及构成Web应用程序的其他资源；*</p>
+<p><strong>*exploded</strong>：在这里你可以理解为展开，不压缩的意思。也就是war、jar等产出物没压缩前的目录结构。建议在开发的时候使用这种模式，便于修改了文件的效果立刻显现出来。*</p>
+<p><em>）</em></p>
+<p>默认情况下，IDEA的 Modules 和 Artifacts 的 output目录已经设置好了，不需要更改，打成war包的时候会自动在 WEB-INF目录下生成classes，然后把编译后的文件放进去。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/images/idea9.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>你可能对这里的输出目录不太理解，之前不是配置过了文件编译的输出目录了吗？为什么这里还有一个整合这些资源的目录呢？它又做了哪些事呢？ </p>
+<p>==其实，实际上，当你点击运行tomcat时，默认就开始做以下事情：==</p>
+<ul>
+<li>编译，IDEA在保存/自动保存后不会做编译，不像Eclipse的保存即编译，因此在运行server前会做一次编译。编译后class文件存放在指定的项目编译输出目录下（见1.2.2）；</li>
+<li>根据artifact中的设定对目录结构进行创建；</li>
+<li>拷贝web资源的根目录下的所有文件到artifact的目录下（见1.2.3）；</li>
+<li>拷贝编译输出目录下的classes目录到artifact下的WEB-INF下（见1.2.2）；</li>
+<li>拷贝lib目录下所需的jar包到artifact下的WEB_INF下；</li>
+<li>运行server，运行成功后，如有需要，会自动打开浏览器访问指定url。</li>
+</ul>
+<p>在这里还要注意的是，配置完成的artifact，需要在tomcat中进行添加：</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/images/idea10.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<h1 id="2、参考链接"><a href="#2、参考链接" class="headerlink" title="2、参考链接"></a>2、参考链接</h1><ul>
+<li><a href="http://whudoc.qiniudn.com/2016/IntelliJ-IDEA-Tutorial/project-composition-introduce.html" target="_blank" rel="noopener">IntelliJ IDEA 项目相关的几个重要概念介绍</a></li>
+<li><a href="https://www.jetbrains.com/help/idea/2016.3/dependencies-tab.html?search=project%20structure" target="_blank" rel="noopener">Dependencies Tab</a></li>
+<li><a href="https://www.jetbrains.com/help/idea/2016.3/facet-page.html?search=project%20structure" target="_blank" rel="noopener">Facet Page</a></li>
+<li><a href="https://www.jetbrains.com/help/idea/2016.3/working-with-artifacts.html#artifact_def" target="_blank" rel="noopener">Working with Artifacts</a></li>
+<li><a href="http://www.cnblogs.com/52php/p/5677661.html" target="_blank" rel="noopener">Intellij IDEA 14.x 中的Facets和Artifacts的区别</a></li>
+<li><a href="http://white-crucifix.iteye.com/blog/2070830" target="_blank" rel="noopener">IntelliJ使用指南—— 深入理解IntelliJ的Web部署逻辑</a></li>
+<li><a href="https://my.oschina.net/lujianing/blog/186737" target="_blank" rel="noopener">IntelliJ IDEA WEB项目的部署配置</a></li>
+</ul>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2018-10-20T05:02:05.937Z" itemprop="dateUpdated">2018-10-20 13:02:05</time>
+</span><br>
+
+
+        
+    </div>
+    
+    <footer>
+        <a href="https://meandni.com">
+            <img src="/img/avatar.jpg" alt="Joker">
+            Joker
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IntelliJ-IDEA/">IntelliJ IDEA</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javaweb/">javaweb</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/软件/">软件</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://meandni.com/2018/10/10/a03f/&title=《理解 IntelliJ IDEA 的项目配置和Web部署》 — Joker's Blog&pic=https://meandni.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://meandni.com/2018/10/10/a03f/&title=《理解 IntelliJ IDEA 的项目配置和Web部署》 — Joker's Blog&source=分享生活、技术、学习心得" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://meandni.com/2018/10/10/a03f/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《理解 IntelliJ IDEA 的项目配置和Web部署》 — Joker's Blog&url=https://meandni.com/2018/10/10/a03f/&via=https://meandni.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://meandni.com/2018/10/10/a03f/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2018/10/05/0/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">2018.10.5有感！</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        感谢打赏~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat.png" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/wechat.png" data-alipay="/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Joker &copy; 2018</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://meandni.com/2018/10/10/a03f/&title=《理解 IntelliJ IDEA 的项目配置和Web部署》 — Joker's Blog&pic=https://meandni.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://meandni.com/2018/10/10/a03f/&title=《理解 IntelliJ IDEA 的项目配置和Web部署》 — Joker's Blog&source=分享生活、技术、学习心得" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://meandni.com/2018/10/10/a03f/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《理解 IntelliJ IDEA 的项目配置和Web部署》 — Joker's Blog&url=https://meandni.com/2018/10/10/a03f/&via=https://meandni.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://meandni.com/2018/10/10/a03f/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAACuCAAAAACKZ2kyAAAB0ElEQVR42u3aQY7DIBBEUd//0h5pViNF4F80dDzSZ2UlDn7OogXVXBce9+8Yff7328/r0T2jOTcMuXLllrn3dIwQc+4nJX2x4SvJlSu3kTsvXnsL1ny2B5tcuXJfxl0rTGROuXLl/l8uL0xkkyNXrtz3c8nmh8QZZKFD5t+wV5MrV26BmwamJ64P5rty5coNuXc40rbKfLESP12uXLkt3PlEKYgHImkge/GJ5MqVW+auxaBruPTboITJlSv3ALcSdqR3knmGn8iVK/cF3PSo1t7GalzI5MqVu4lb39isBaC8cYL6P3Llyj3AXQs6+daIt2dQY1WuXLmHuXxpwqMNctiCx6Zy5cr9Fjd9TBqbkiKFohO5cuU2cuulh1zzJdRwNrly5TZy+VbkxOvxCFWuXLk93DhBKdzPQ9WHP0KuXLmHubx9knJ504W0cuXKldvPrRzFSBswvBErV67c73L54C2TNBhFryFXrtwWblpQeFFLww5+yEOuXLk93LXH843T2jzD+eXKldvIrZyDShdGG/JduXLlvobLt0/pr0gRlCtX7pu5/EBGGqCgF5YrV24jN2h2houVtMxti0XkypVb4KaBKVmsPGxgcHGUK1duO/cHCg4GHDPK9z0AAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
