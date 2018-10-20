@@ -21,13 +21,13 @@
     
     
     <meta name="keywords" content="软件,IntelliJ IDEA,javaweb">
-    <meta name="description" content="#1、项目配置的理解 IDEA 中最重要的各种设置项，就是这个 Project Structre 了，关乎你的项目运行，缺胳膊少腿都不行。最近学校正好也是用之前自己比较熟悉的IDEA而不是Eclipse，为了更深入理解和使用，就找来各种资料再研究一下，这里整理后来个输出。">
+    <meta name="description" content="1、项目配置的理解IDEA 中最重要的各种设置项，就是这个 Project Structre 了，关乎你的项目运行，缺胳膊少腿都不行。最近学校正好也是用之前自己比较熟悉的IDEA而不是Eclipse，为了更深入理解和使用，就找来各种资料再研究一下，这里整理后来个输出。">
 <meta name="keywords" content="软件,IntelliJ IDEA,javaweb">
 <meta property="og:type" content="article">
 <meta property="og:title" content="理解 IntelliJ IDEA 的项目配置和Web部署">
 <meta property="og:url" content="https://meandni.com/2018/10/10/a03f/index.html">
 <meta property="og:site_name" content="Joker&#39;s Blog">
-<meta property="og:description" content="#1、项目配置的理解 IDEA 中最重要的各种设置项，就是这个 Project Structre 了，关乎你的项目运行，缺胳膊少腿都不行。最近学校正好也是用之前自己比较熟悉的IDEA而不是Eclipse，为了更深入理解和使用，就找来各种资料再研究一下，这里整理后来个输出。">
+<meta property="og:description" content="1、项目配置的理解IDEA 中最重要的各种设置项，就是这个 Project Structre 了，关乎你的项目运行，缺胳膊少腿都不行。最近学校正好也是用之前自己比较熟悉的IDEA而不是Eclipse，为了更深入理解和使用，就找来各种资料再研究一下，这里整理后来个输出。">
 <meta property="og:locale" content="Chinese">
 <meta property="og:image" content="https://meandni.com/images/idea1.png">
 <meta property="og:image" content="https://meandni.com/images/idea2.png">
@@ -39,10 +39,10 @@
 <meta property="og:image" content="https://meandni.com/images/idea8.png">
 <meta property="og:image" content="https://meandni.com/images/idea9.png">
 <meta property="og:image" content="https://meandni.com/images/idea10.png">
-<meta property="og:updated_time" content="2018-10-20T05:02:05.937Z">
+<meta property="og:updated_time" content="2018-10-20T05:23:02.632Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="理解 IntelliJ IDEA 的项目配置和Web部署">
-<meta name="twitter:description" content="#1、项目配置的理解 IDEA 中最重要的各种设置项，就是这个 Project Structre 了，关乎你的项目运行，缺胳膊少腿都不行。最近学校正好也是用之前自己比较熟悉的IDEA而不是Eclipse，为了更深入理解和使用，就找来各种资料再研究一下，这里整理后来个输出。">
+<meta name="twitter:description" content="1、项目配置的理解IDEA 中最重要的各种设置项，就是这个 Project Structre 了，关乎你的项目运行，缺胳膊少腿都不行。最近学校正好也是用之前自己比较熟悉的IDEA而不是Eclipse，为了更深入理解和使用，就找来各种资料再研究一下，这里整理后来个输出。">
 <meta name="twitter:image" content="https://meandni.com/images/idea1.png">
     
         <link rel="alternate" type="application/atom+xml" title="Joker&#39;s Blog" href="/atom.xml">
@@ -178,7 +178,7 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#1-1-Project"><span class="post-toc-number">1.</span> <span class="post-toc-text">1.1 Project</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#1-2-Modules"><span class="post-toc-number">2.</span> <span class="post-toc-text">1.2 Modules</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-2-1-增删子项目"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">1.2.1 增删子项目</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-2-2-子项目配置"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">1.2.2 子项目配置</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-2-3-增删框架（Web部署-1）"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">1.2.3 增删框架（Web部署-1）</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#1-3-Libraries"><span class="post-toc-number">3.</span> <span class="post-toc-text">1.3 Libraries</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#1-4-Facets"><span class="post-toc-number">4.</span> <span class="post-toc-text">1.4 Facets</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#1-5-Artifacts（Web部署-2）"><span class="post-toc-number">5.</span> <span class="post-toc-text">1.5 Artifacts（Web部署-2）</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#2、参考链接"><span class="post-toc-number"></span> <span class="post-toc-text">2、参考链接</span></a>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#1、项目配置的理解"><span class="post-toc-number">1.</span> <span class="post-toc-text">1、项目配置的理解</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#1-1-Project"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">1.1 Project</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#1-2-Modules"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">1.2 Modules</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-2-1-增删子项目"><span class="post-toc-number">1.2.1.</span> <span class="post-toc-text">1.2.1 增删子项目</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-2-2-子项目配置"><span class="post-toc-number">1.2.2.</span> <span class="post-toc-text">1.2.2 子项目配置</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-2-3-增删框架（Web部署-1）"><span class="post-toc-number">1.2.3.</span> <span class="post-toc-text">1.2.3 增删框架（Web部署-1）</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#1-3-Libraries"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">1.3 Libraries</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#1-4-Facets"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">1.4 Facets</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#1-5-Artifacts（Web部署-2）"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">1.5 Artifacts（Web部署-2）</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#2、参考链接"><span class="post-toc-number">2.</span> <span class="post-toc-text">2、参考链接</span></a></li></ol>
         </nav>
     </aside>
 
@@ -200,8 +200,7 @@
 
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
-            <p>#1、项目配置的理解</p>
-<p>IDEA 中最重要的各种设置项，就是这个 Project Structre 了，关乎你的项目运行，缺胳膊少腿都不行。最近学校正好也是用之前自己比较熟悉的IDEA而不是Eclipse，为了更深入理解和使用，就找来各种资料再研究一下，这里整理后来个输出。</p>
+            <h1 id="1、项目配置的理解"><a href="#1、项目配置的理解" class="headerlink" title="1、项目配置的理解"></a>1、项目配置的理解</h1><p>IDEA 中最重要的各种设置项，就是这个 Project Structre 了，关乎你的项目运行，缺胳膊少腿都不行。最近学校正好也是用之前自己比较熟悉的IDEA而不是Eclipse，为了更深入理解和使用，就找来各种资料再研究一下，这里整理后来个输出。</p>
 <figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
@@ -331,7 +330,7 @@
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2018-10-20T05:02:05.937Z" itemprop="dateUpdated">2018-10-20 13:02:05</time>
+    Last updated: <time datetime="2018-10-20T05:23:02.632Z" itemprop="dateUpdated">2018-10-20 13:23:02</time>
 </span><br>
 
 
@@ -410,7 +409,14 @@
     </div>
 
     
-<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2018/10/20/3586/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">参加AI应用创新大赛</h4>
+      </a>
+    </div>
   
 
   
