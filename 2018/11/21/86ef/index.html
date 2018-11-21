@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>Android 框架组件(Android Architecture Components)使用指南 | Joker&#39;s Blog | 个人分享博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="">
+    <meta name="description" content="面对越来越复杂的 App 需求，Google 官方发布了Android 框架组件库（Android Architecture Components ）。为开发者更好的开发 App 提供了非常好的样本。">
+<meta name="keywords" content="模块化,架构">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android 框架组件(Android Architecture Components)使用指南">
+<meta property="og:url" content="https://meandni.com/2018/11/21/86ef/index.html">
+<meta property="og:site_name" content="Joker&#39;s Blog">
+<meta property="og:description" content="面对越来越复杂的 App 需求，Google 官方发布了Android 框架组件库（Android Architecture Components ）。为开发者更好的开发 App 提供了非常好的样本。">
+<meta property="og:locale" content="Chinese">
+<meta property="og:image" content="https://github.com/hylinux1024/hylinux1024.github.io/blob/master/images/final-architecture.png">
+<meta property="og:updated_time" content="2018-11-21T06:21:37.976Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Android 框架组件(Android Architecture Components)使用指南">
+<meta name="twitter:description" content="面对越来越复杂的 App 需求，Google 官方发布了Android 框架组件库（Android Architecture Components ）。为开发者更好的开发 App 提供了非常好的样本。">
+<meta name="twitter:image" content="https://github.com/hylinux1024/hylinux1024.github.io/blob/master/images/final-architecture.png">
+    
+        <link rel="alternate" type="application/atom+xml" title="Joker&#39;s Blog" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Joker</h5>
+          <a href="mailto:yangjiakay@gmail.com" title="yangjiakay@gmail.com" class="mail">yangjiakay@gmail.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/MeandNi" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about"  >
+                <i class="icon icon-lg icon-link"></i>
+                AboutMe
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">Android 框架组件(Android Architecture Components)使用指南</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="検索">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">Android 框架组件(Android Architecture Components)使用指南</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-11-21T06:17:01.833Z" itemprop="datePublished" class="page-time">
+  2018-11-21
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/非原创/">非原创</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#0x00-通用的框架准则"><span class="post-toc-number">1.</span> <span class="post-toc-text">0x00 通用的框架准则</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#0x01-App-框架组件"><span class="post-toc-number">2.</span> <span class="post-toc-text">0x01 App 框架组件</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#0x02-建立UI"><span class="post-toc-number">3.</span> <span class="post-toc-text">0x02 建立UI</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#0x03-获取数据"><span class="post-toc-number">4.</span> <span class="post-toc-text">0x03 获取数据</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#0x04-组件间的依赖管理"><span class="post-toc-number">5.</span> <span class="post-toc-text">0x04 组件间的依赖管理</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#0x05-连接-ViewModel-和-Repository"><span class="post-toc-number">6.</span> <span class="post-toc-text">0x05 连接 ViewModel 和 Repository</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#0x06-缓存数据"><span class="post-toc-number">7.</span> <span class="post-toc-text">0x06 缓存数据</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#0x07-持久化数据-（Room-组件）"><span class="post-toc-number">8.</span> <span class="post-toc-text">0x07 持久化数据 （Room 组件）</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#0x08-框架结构图"><span class="post-toc-number">9.</span> <span class="post-toc-text">0x08 框架结构图</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#0x09-参考文档"><span class="post-toc-number">10.</span> <span class="post-toc-text">0x09 参考文档</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-Android 框架组件(Android Architecture Components)使用指南"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">Android 框架组件(Android Architecture Components)使用指南</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-11-21 14:17:01" datetime="2018-11-21T06:17:01.833Z"  itemprop="datePublished">2018-11-21</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/非原创/">非原创</a></li></ul>
+
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>面对越来越复杂的 App 需求，Google 官方发布了Android 框架组件库（Android Architecture Components ）。为开发者更好的开发 App 提供了非常好的样本。这个框架里的组件是配合 Android 组件生命周期的，所以它能够很好的规避组件生命周期管理的问题。今天我们就来看看这个库的使用。</p>
+<h4 id="0x00-通用的框架准则"><a href="#0x00-通用的框架准则" class="headerlink" title="0x00 通用的框架准则"></a>0x00 通用的框架准则</h4><p>官方建议在架构 App 的时候遵循以下两个准则：</p>
+<ol>
+<li><p><strong>关注分离</strong></p>
+<p>其中早期开发 App 最常见的做法是在 Activity 或者 Fragment 中写了大量的逻辑代码，导致 Activity 或 Fragment 中的代码很臃肿，十分不易维护。现在很多 App 开发者都注意到了这个问题，所以前两年 MVP 结构就非常有市场，目前普及率也很高。</p>
+</li>
+<li><p><strong>模型驱动UI</strong></p>
+<p>模型持久化的好处就是：即使系统回收了 App 的资源用户也不会丢失数据，而且在网络不稳定的情况下 App 依然可以正常地运行。从而保证了 App 的用户体验。</p>
+</li>
+</ol>
+<h4 id="0x01-App-框架组件"><a href="#0x01-App-框架组件" class="headerlink" title="0x01 App 框架组件"></a>0x01 App 框架组件</h4><p>框架提供了以下几个核心组件，我们将通过一个实例来说明这几个组件的使用。</p>
+<ul>
+<li>ViewModel</li>
+<li>LiveData</li>
+<li>Room</li>
+</ul>
+<p>假设要实现一个用户信息展示页面。这个用户信息是通过REST API 从后台获取的。</p>
+<h4 id="0x02-建立UI"><a href="#0x02-建立UI" class="headerlink" title="0x02 建立UI"></a>0x02 建立UI</h4><p>我们使用 fragment (UserProfileFragment.java) 来实现用户信息的展示页面。为了驱动 UI，我们的数据模型需要持有以下两个数据元素</p>
+<ul>
+<li><strong>用户ID</strong>: 用户的唯一标识。可以通过 fragment 的 arguments 参数进行传递这个信息。这样做的好处就是如果系统销毁了应用，这个参数会被保存并且下次重新启动时可以恢复之前的数据。</li>
+<li><strong>用户对象数据</strong>：POJO 持有用户数据。</li>
+</ul>
+<p>我们要创建 <strong>ViewModel</strong> 对象用于保存以上数据。</p>
+<p>那什么是 ViewModel 呢？</p>
+<blockquote>
+<p>A <strong>ViewModel</strong> provides the data for a specific UI component, such as a fragment or activity, and handles the communication with the business part of data handling, such as calling other components to load the data or forwarding user modifications. The ViewModel does not know about the View and is not affected by configuration changes such as recreating an activity due to rotation.</p>
+</blockquote>
+<p>ViewModel 是一个框架组件。它为 UI 组件 (fragment或activity) 提供数据，并且可以调用其它组件加载数据或者转发用户指令。ViewModel 不会关心 UI 长什么样，也不会受到 UI 组件配置改变的影响，例如不会受旋转屏幕后 activity 重新启动的影响。因此它是一个与 UI 组件无关的。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UserProfileViewModel</span> <span class="keyword">extends</span> <span class="title">ViewModel</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String userId;</span><br><span class="line">    <span class="keyword">private</span> User user;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">(String userId)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.userId = userId;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> User <span class="title">getUser</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> user;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UserProfileFragment</span> <span class="keyword">extends</span> <span class="title">LifecycleFragment</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String UID_KEY = <span class="string">"uid"</span>;</span><br><span class="line">    <span class="keyword">private</span> UserProfileViewModel viewModel;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onActivityCreated</span><span class="params">(@Nullable Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onActivityCreated(savedInstanceState);</span><br><span class="line">        String userId = getArguments().getString(UID_KEY);</span><br><span class="line">        viewModel = ViewModelProviders.of(<span class="keyword">this</span>).get(UserProfileViewModel.class);</span><br><span class="line">        viewModel.init(userId);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> View <span class="title">onCreateView</span><span class="params">(LayoutInflater inflater,</span></span></span><br><span class="line"><span class="function"><span class="params">                @Nullable ViewGroup container, @Nullable Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> inflater.inflate(R.layout.user_profile, container, <span class="keyword">false</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>需要的是：由于框架组件目前还处于预览版本，这里<code>UserProfileFragment</code> 是继承于 <code>LifecycleFragment</code> 而不是 <code>Fragment</code>。待正式发布版本之后 Android Support 包中的 <code>Fragment</code> 就会默认实现 <code>LifecycleOwner</code> 接口。而 <code>LifecycleFragment</code> 也是实现了 <code>LifecycleOwner</code> 接口的。即正式版本发布时 Support 包中的 UI 组件类就是支持框架组件的。</p>
+<p>现在已经有了 UI 组件和 ViewModel，那么我们如何将它们进行连接呢？这时候就需要用到 LiveData 组件了。</p>
+<blockquote>
+<p><strong>LiveData</strong> is an observable data holder. It lets the components in your app observe <a href="https://developer.android.com/reference/android/arch/lifecycle/LiveData.html" target="_blank" rel="noopener"><code>LiveData</code></a> objects for changes without creating explicit and rigid dependency paths between them. LiveData also respects the lifecycle state of your app components (activities, fragments, services) and does the right thing to prevent object leaking so that your app does not consume more memory.</p>
+</blockquote>
+<p>LiveData 的使用有点像 RxJava。因此完全可以使用 RxJava 来替代 LiveData 组件。</p>
+<p>现在我们修改一下 <code>UserProfileViewModel</code> 类</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UserProfileViewModel</span> <span class="keyword">extends</span> <span class="title">ViewModel</span> </span>&#123;</span><br><span class="line">    ...</span><br><span class="line">    <span class="keyword">private</span> LiveData&lt;User&gt; user;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> LiveData&lt;User&gt; <span class="title">getUser</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> user;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>将 <code>User user</code> 替换成  <code>LiveData&lt;User&gt; user</code></p>
+<p>然后再修改 <code>UserProfileFragment</code> 类中</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onActivityCreated</span><span class="params">(@Nullable Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">super</span>.onActivityCreated(savedInstanceState);</span><br><span class="line">    viewModel.getUser().observe(<span class="keyword">this</span>, user -&gt; &#123;</span><br><span class="line">      <span class="comment">// update UI</span></span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>当用户数据发生改变时，就会通知 UI 进行更新。ViewModel 与 UI 组件的交互就是这么简单。</p>
+<p>但细心的朋友可能发现了：fragment 在 <code>onActivityCreated</code> 方法中添加了相应的监听，但是没有在其它对应的生命周期中移除监听。有经验的朋友就会觉得这是不是有可能会发生引用泄露问题呢？其实不然，LiveData 组件内部已经为开发者做了这些事情。即 LiveData 会再正确的生命周期进行回调。</p>
+<h4 id="0x03-获取数据"><a href="#0x03-获取数据" class="headerlink" title="0x03 获取数据"></a>0x03 获取数据</h4><p>现在已经成功的把 ViewModel 与 UI 组件（fragment）进行了通信。那么 ViewModel 又是如何获取数据的呢？</p>
+<p>假设我们的数据是通过REST API 从后天获取的。我们使用 <a href="http://square.github.io/retrofit/" target="_blank" rel="noopener">Retrofit</a> 库实现网络请求。</p>
+<p>以下是请求网络接口 <code>Webservice</code> </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Webservice</span> </span>&#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@GET</span> declares an HTTP GET request</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@Path</span>("user") annotation on the userId parameter marks it as a</span></span><br><span class="line"><span class="comment">     * replacement for the &#123;user&#125; placeholder in the <span class="doctag">@GET</span> path</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@GET</span>(<span class="string">"/users/&#123;user&#125;"</span>)</span><br><span class="line">    <span class="function">Call&lt;User&gt; <span class="title">getUser</span><span class="params">(@Path(<span class="string">"user"</span>)</span> String userId)</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>ViewModel 可以引用 <code>Webservice</code> 接口，但是这样做违背了我们在上文提到的<strong>关注分离</strong>准则。因为我们推荐使用 <code>Repository</code> 模型对 <code>Webservice</code> 进行封装。</p>
+<blockquote>
+<p><strong>Repository</strong> modules are responsible for handling data operations. They provide a clean API to the rest of the app. They know where to get the data from and what API calls to make when data is updated. You can consider them as mediators between different data sources (persistent model, web service, cache, etc.).</p>
+</blockquote>
+<p>关于 Repository 模式可以参考我的上一篇《App 组件化/模块化之路——Repository模式》</p>
+<p>以下是使用 Repository 封装 <code>WebService</code> </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UserRepository</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> Webservice webservice;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> LiveData&lt;User&gt; <span class="title">getUser</span><span class="params">(<span class="keyword">int</span> userId)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// This is not an optimal implementation, we'll fix it below</span></span><br><span class="line">        <span class="keyword">final</span> MutableLiveData&lt;User&gt; data = <span class="keyword">new</span> MutableLiveData&lt;&gt;();</span><br><span class="line">        webservice.getUser(userId).enqueue(<span class="keyword">new</span> Callback&lt;User&gt;() &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onResponse</span><span class="params">(Call&lt;User&gt; call, Response&lt;User&gt; response)</span> </span>&#123;</span><br><span class="line">                <span class="comment">// error case is left out for brevity</span></span><br><span class="line">                data.setValue(response.body());</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">        <span class="keyword">return</span> data;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>使用 Respository 模式抽象数据源接口，也可以很方便地替换其它数据。这样 ViewModel 也不用知道数据源到底是来自哪里。</p>
+<h4 id="0x04-组件间的依赖管理"><a href="#0x04-组件间的依赖管理" class="headerlink" title="0x04 组件间的依赖管理"></a>0x04 组件间的依赖管理</h4><p>从上文我们知道 <code>UserRepository</code> 类需要有一个 <code>WebService</code> 实例才能工作。我们可以直接创建它，但这么做我们就必须知道它的依赖，而且会由很多重复的创建对象的代码。这时候我们可以使用依赖注入。本例中我们将使用 Dagger 2 来管理依赖。</p>
+<h4 id="0x05-连接-ViewModel-和-Repository"><a href="#0x05-连接-ViewModel-和-Repository" class="headerlink" title="0x05 连接 ViewModel 和 Repository"></a>0x05 连接 ViewModel 和 Repository</h4><p>修改 <code>UserProfileViewModel</code> 类，引用 Repository 并且通过 Dagger 2 对 Repository 的依赖进行管理。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UserProfileViewModel</span> <span class="keyword">extends</span> <span class="title">ViewModel</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> LiveData&lt;User&gt; user;</span><br><span class="line">    <span class="keyword">private</span> UserRepository userRepo;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Inject</span> <span class="comment">// UserRepository parameter is provided by Dagger 2</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">UserProfileViewModel</span><span class="params">(UserRepository userRepo)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.userRepo = userRepo;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">(String userId)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">this</span>.user != <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="comment">// ViewModel is created per Fragment so</span></span><br><span class="line">            <span class="comment">// we know the userId won't change</span></span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        user = userRepo.getUser(userId);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> LiveData&lt;User&gt; <span class="title">getUser</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.user;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="0x06-缓存数据"><a href="#0x06-缓存数据" class="headerlink" title="0x06 缓存数据"></a>0x06 缓存数据</h4><p>前面我们实现的 Repository 是只有一个网络数据源的。这样做每次进入用户信息页面都需要去查询网络，用户需要等待，体验不好。因此在 Repository 中加一个缓存数据。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Singleton</span>  <span class="comment">// informs Dagger that this class should be constructed once</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UserRepository</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> Webservice webservice;</span><br><span class="line">    <span class="comment">// simple in memory cache, details omitted for brevity</span></span><br><span class="line">    <span class="keyword">private</span> UserCache userCache;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> LiveData&lt;User&gt; <span class="title">getUser</span><span class="params">(String userId)</span> </span>&#123;</span><br><span class="line">        LiveData&lt;User&gt; cached = userCache.get(userId);</span><br><span class="line">        <span class="keyword">if</span> (cached != <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> cached;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">final</span> MutableLiveData&lt;User&gt; data = <span class="keyword">new</span> MutableLiveData&lt;&gt;();</span><br><span class="line">        userCache.put(userId, data);</span><br><span class="line">        <span class="comment">// this is still suboptimal but better than before.</span></span><br><span class="line">        <span class="comment">// a complete implementation must also handle the error cases.</span></span><br><span class="line">        webservice.getUser(userId).enqueue(<span class="keyword">new</span> Callback&lt;User&gt;() &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onResponse</span><span class="params">(Call&lt;User&gt; call, Response&lt;User&gt; response)</span> </span>&#123;</span><br><span class="line">                data.setValue(response.body());</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">        <span class="keyword">return</span> data;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="0x07-持久化数据-（Room-组件）"><a href="#0x07-持久化数据-（Room-组件）" class="headerlink" title="0x07 持久化数据 （Room 组件）"></a>0x07 持久化数据 （Room 组件）</h4><p>Android 框架提供了 Room 组件，为 App 数据持久化提供了解决方案。</p>
+<blockquote>
+<p><strong>Room</strong> is an object mapping library that provides local data persistence with minimal boilerplate code. At compile time, it validates each query against the schema, so that broken SQL queries result in compile time errors instead of runtime failures. Room abstracts away some of the underlying implementation details of working with raw SQL tables and queries. It also allows observing changes to the database data (including collections and join queries), exposing such changes via <em>LiveData</em> objects. In addition, it explicitly defines thread constraints that address common issues such as accessing storage on the main thread.</p>
+</blockquote>
+<p>Room 组件提供了数据库操作，配合 LiveData 使用可以监听数据库的变化，进而更新 UI 组件。</p>
+<p>要使用 Room 组件，需要以下步骤：</p>
+<ul>
+<li>使用注解 <code>@Entity</code> 定义实体</li>
+<li>创建 <code>RoomDatabase</code> 子类</li>
+<li>创建数据访问接口（DAO）</li>
+<li>在 <code>RoomDatabase</code> 中引用 DAO</li>
+</ul>
+<ol>
+<li><strong>用注解 <code>@Entity</code> 定义实体类</strong></li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Entity</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">User</span> </span>&#123;</span><br><span class="line">  <span class="meta">@PrimaryKey</span></span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">int</span> id;</span><br><span class="line">  <span class="keyword">private</span> String name;</span><br><span class="line">  <span class="keyword">private</span> String lastName;</span><br><span class="line">  <span class="comment">// getters and setters for fields</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li><strong>创建 <code>RoomDatabase</code>子类</strong></li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Database</span>(entities = &#123;User.class&#125;, version = <span class="number">1</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">MyDatabase</span> <span class="keyword">extends</span> <span class="title">RoomDatabase</span> </span>&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>需要注意的是 <code>MyDatabase</code> 是抽象类，Room 组件为我们提供具体的实现。</p>
+<ol start="3">
+<li><p><strong>创建 DAO</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Dao</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">UserDao</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Insert</span>(onConflict = REPLACE)</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">save</span><span class="params">(User user)</span></span>;</span><br><span class="line">    <span class="meta">@Query</span>(<span class="string">"SELECT * FROM user WHERE id = :userId"</span>)</span><br><span class="line">    <span class="function">LiveData&lt;User&gt; <span class="title">load</span><span class="params">(String userId)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>在 <code>RoomDatabase</code> 中引用 DAO</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Database</span>(entities = &#123;User.class&#125;, version = <span class="number">1</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">MyDatabase</span> <span class="keyword">extends</span> <span class="title">RoomDatabase</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> UserDao <span class="title">userDao</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>现在有了 Room 组件，那么我们可以修改 <code>UserRepository</code> 类</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Singleton</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UserRepository</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> Webservice webservice;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> UserDao userDao;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> Executor executor;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Inject</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">UserRepository</span><span class="params">(Webservice webservice, UserDao userDao, Executor executor)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.webservice = webservice;</span><br><span class="line">        <span class="keyword">this</span>.userDao = userDao;</span><br><span class="line">        <span class="keyword">this</span>.executor = executor;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> LiveData&lt;User&gt; <span class="title">getUser</span><span class="params">(String userId)</span> </span>&#123;</span><br><span class="line">        refreshUser(userId);</span><br><span class="line">        <span class="comment">// return a LiveData directly from the database.</span></span><br><span class="line">        <span class="keyword">return</span> userDao.load(userId);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">refreshUser</span><span class="params">(<span class="keyword">final</span> String userId)</span> </span>&#123;</span><br><span class="line">        executor.execute(() -&gt; &#123;</span><br><span class="line">            <span class="comment">// running in a background thread</span></span><br><span class="line">            <span class="comment">// check if user was fetched recently</span></span><br><span class="line">            <span class="keyword">boolean</span> userExists = userDao.hasUser(FRESH_TIMEOUT);</span><br><span class="line">            <span class="keyword">if</span> (!userExists) &#123;</span><br><span class="line">                <span class="comment">// refresh the data</span></span><br><span class="line">                Response response = webservice.getUser(userId).execute();</span><br><span class="line">                <span class="comment">// TODO check for error etc.</span></span><br><span class="line">                <span class="comment">// Update the database.The LiveData will automatically refresh so</span></span><br><span class="line">                <span class="comment">// we don't need to do anything else here besides updating the database</span></span><br><span class="line">                userDao.save(response.body());</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>目前为止我们的代码就基本完成了。UI 组件通过 ViewModel 访问数据，而 ViewModel 通过 LiveData 监听数据的变化，并且使用 Repository 模式封装数据源。这些数据源可以是网络数据，缓存以及持久化数据。</p>
+<h4 id="0x08-框架结构图"><a href="#0x08-框架结构图" class="headerlink" title="0x08 框架结构图"></a>0x08 框架结构图</h4><p>[<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://github.com/hylinux1024/hylinux1024.github.io/blob/master/images/final-architecture.png" alt="final architecture](https://github.com/hylinux1024/hylinux1024.github.io/raw/master/images/final-architecture.png)" title="">
+                </div>
+                <div class="image-caption">final architecture](https://github.com/hylinux1024/hylinux1024.github.io/raw/master/images/final-architecture.png)</div>
+            </figure></p>
+<h4 id="0x09-参考文档"><a href="#0x09-参考文档" class="headerlink" title="0x09 参考文档"></a>0x09 参考文档</h4><p><a href="https://developer.android.com/topic/libraries/architecture/guide.html#recommended_app_architecture" target="_blank" rel="noopener">https://developer.android.com/topic/libraries/architecture/guide.html#recommended_app_architecture</a></p>
+<p><a href="https://github.com/googlesamples/android-architecture-components" target="_blank" rel="noopener">https://github.com/googlesamples/android-architecture-components</a></p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最終更新：<time datetime="2018-11-21T06:21:37.976Z" itemprop="dateUpdated">2018-11-21 14:21:37</time>
+</span><br>
+
+
+        
+    </div>
+    
+    <footer>
+        <a href="https://meandni.com">
+            <img src="/img/avatar.jpg" alt="Joker">
+            Joker
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://meandni.com/2018/11/21/86ef/&title=《Android 框架组件(Android Architecture Components)使用指南》 — Joker's Blog&pic=https://meandni.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://meandni.com/2018/11/21/86ef/&title=《Android 框架组件(Android Architecture Components)使用指南》 — Joker's Blog&source=分享生活、技术、学习心得" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://meandni.com/2018/11/21/86ef/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Android 框架组件(Android Architecture Components)使用指南》 — Joker's Blog&url=https://meandni.com/2018/11/21/86ef/&via=https://meandni.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://meandni.com/2018/11/21/86ef/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2018/11/21/0/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">[no title]</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2018/11/07/Binary_Tree__Divide_Conquer/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">算法：Binary_Tree__Divide_Conquer</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        感谢打赏~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat.png" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/wechat.png" data-alipay="/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>このブログの内容物は<a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.ja">クリエイティブ・コモンズ 表示 - 非営利 - 継承 4.0 国際ライセンスの下に提供されています</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Joker &copy; 2018</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://meandni.com/2018/11/21/86ef/&title=《Android 框架组件(Android Architecture Components)使用指南》 — Joker's Blog&pic=https://meandni.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://meandni.com/2018/11/21/86ef/&title=《Android 框架组件(Android Architecture Components)使用指南》 — Joker's Blog&source=分享生活、技术、学习心得" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://meandni.com/2018/11/21/86ef/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Android 框架组件(Android Architecture Components)使用指南》 — Joker's Blog&url=https://meandni.com/2018/11/21/86ef/&via=https://meandni.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://meandni.com/2018/11/21/86ef/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAACuCAAAAACKZ2kyAAAByUlEQVR42u3aQW7DMAwEwPz/0ynQaxplSVqKC4xOgQ3H4wshrvh4xOv5u15/r+8+X9br9ceOhYuLO+Y+l2uNWP/b+vr6w96+BRcX9yA3KV5VaI/+wYaLi3szbs5aQ5NtEy4u7n/hrtuVpGDlDRUuLu4duEnz0yth1SuX9Wq4uLgD7iQwver3oXwXFxd3fCoxL2r5Bih6Oy4u7hFucmiaNzN5IJJHLYUeCxcXdwO3V7aqH5zfLfdquLi4F3HzkYvJ0FW1YL29gouL+yXuJMjoDXiNChkuLu4GbvXIs/pUDspHuHBxcc9zJ81P9WgkeUvhWAUXF/dS7jwwrQ5bTMa/cHFx78CtBiW9IlWITnBxcTdz89cnL+5tgPIPwMXFPcnNG56rilR15AIXF/cktzdKlQSd5XGrvB3CxcXdzM0LWT6iMYlCPkQquLi4B7nJYzvCjvy4BRcX9zw3X70N0MZzYFxc3A3cyahEdThjMtRV/hhcXNwxt9fk9Fqgaiz7xz/j4uIe5PbCi/nGqJnv4uLi3obbG8lKmq5C5IqLi3tLbrId6W1uoqMaXFzcg9zCYef4qWS7c0EsgouLO+BWA9NeFFLdJOHi4n6J+wPKnSULCvkJlQAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
