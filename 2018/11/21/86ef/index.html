@@ -29,12 +29,12 @@
 <meta property="og:site_name" content="Joker&#39;s Blog">
 <meta property="og:description" content="面对越来越复杂的 App 需求，Google 官方发布了Android 框架组件库（Android Architecture Components ）。为开发者更好的开发 App 提供了非常好的样本。">
 <meta property="og:locale" content="Chinese">
-<meta property="og:image" content="https://github.com/hylinux1024/hylinux1024.github.io/blob/master/images/final-architecture.png">
-<meta property="og:updated_time" content="2018-11-21T06:22:06.978Z">
+<meta property="og:image" content="https://meandni.com/2018/11/21/86ef/assets/final-architecture.png">
+<meta property="og:updated_time" content="2018-11-21T07:27:26.370Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android 框架组件(Android Architecture Components)使用指南">
 <meta name="twitter:description" content="面对越来越复杂的 App 需求，Google 官方发布了Android 框架组件库（Android Architecture Components ）。为开发者更好的开发 App 提供了非常好的样本。">
-<meta name="twitter:image" content="https://github.com/hylinux1024/hylinux1024.github.io/blob/master/images/final-architecture.png">
+<meta name="twitter:image" content="https://meandni.com/2018/11/21/86ef/assets/final-architecture.png">
     
         <link rel="alternate" type="application/atom+xml" title="Joker&#39;s Blog" href="/atom.xml">
     
@@ -283,13 +283,13 @@
 <p>现在有了 Room 组件，那么我们可以修改 <code>UserRepository</code> 类</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Singleton</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UserRepository</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> Webservice webservice;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> UserDao userDao;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> Executor executor;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Inject</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">UserRepository</span><span class="params">(Webservice webservice, UserDao userDao, Executor executor)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.webservice = webservice;</span><br><span class="line">        <span class="keyword">this</span>.userDao = userDao;</span><br><span class="line">        <span class="keyword">this</span>.executor = executor;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> LiveData&lt;User&gt; <span class="title">getUser</span><span class="params">(String userId)</span> </span>&#123;</span><br><span class="line">        refreshUser(userId);</span><br><span class="line">        <span class="comment">// return a LiveData directly from the database.</span></span><br><span class="line">        <span class="keyword">return</span> userDao.load(userId);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">refreshUser</span><span class="params">(<span class="keyword">final</span> String userId)</span> </span>&#123;</span><br><span class="line">        executor.execute(() -&gt; &#123;</span><br><span class="line">            <span class="comment">// running in a background thread</span></span><br><span class="line">            <span class="comment">// check if user was fetched recently</span></span><br><span class="line">            <span class="keyword">boolean</span> userExists = userDao.hasUser(FRESH_TIMEOUT);</span><br><span class="line">            <span class="keyword">if</span> (!userExists) &#123;</span><br><span class="line">                <span class="comment">// refresh the data</span></span><br><span class="line">                Response response = webservice.getUser(userId).execute();</span><br><span class="line">                <span class="comment">// TODO check for error etc.</span></span><br><span class="line">                <span class="comment">// Update the database.The LiveData will automatically refresh so</span></span><br><span class="line">                <span class="comment">// we don't need to do anything else here besides updating the database</span></span><br><span class="line">                userDao.save(response.body());</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>目前为止我们的代码就基本完成了。UI 组件通过 ViewModel 访问数据，而 ViewModel 通过 LiveData 监听数据的变化，并且使用 Repository 模式封装数据源。这些数据源可以是网络数据，缓存以及持久化数据。</p>
-<h4 id="0x08-框架结构图"><a href="#0x08-框架结构图" class="headerlink" title="0x08 框架结构图"></a>0x08 框架结构图</h4><p>[<figure class="image-bubble">
+<h4 id="0x08-框架结构图"><a href="#0x08-框架结构图" class="headerlink" title="0x08 框架结构图"></a>0x08 框架结构图</h4><figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
-                    <img src="https://github.com/hylinux1024/hylinux1024.github.io/blob/master/images/final-architecture.png" alt="final architecture](https://github.com/hylinux1024/hylinux1024.github.io/raw/master/images/final-architecture.png)" title="">
+                    <img src="assets/final-architecture.png" alt="final-architecture" title="">
                 </div>
-                <div class="image-caption">final architecture](https://github.com/hylinux1024/hylinux1024.github.io/raw/master/images/final-architecture.png)</div>
-            </figure></p>
+                <div class="image-caption">final-architecture</div>
+            </figure>
 <h4 id="0x09-参考文档"><a href="#0x09-参考文档" class="headerlink" title="0x09 参考文档"></a>0x09 参考文档</h4><p><a href="https://developer.android.com/topic/libraries/architecture/guide.html#recommended_app_architecture" target="_blank" rel="noopener">https://developer.android.com/topic/libraries/architecture/guide.html#recommended_app_architecture</a></p>
 <p><a href="https://github.com/googlesamples/android-architecture-components" target="_blank" rel="noopener">https://github.com/googlesamples/android-architecture-components</a></p>
 
@@ -300,7 +300,7 @@
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2018-11-21T06:22:06.978Z" itemprop="dateUpdated">2018-11-21 14:22:06</time>
+    Last updated: <time datetime="2018-11-21T07:27:26.370Z" itemprop="dateUpdated">2018-11-21 15:27:26</time>
 </span><br>
 
 
@@ -377,7 +377,14 @@
     </div>
 
     
-<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2018/12/04/2105/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">实战中学习Flutter1：简易聊天AppUI</h4>
+      </a>
+    </div>
   
 
   
