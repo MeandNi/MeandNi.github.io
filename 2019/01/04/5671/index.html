@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>经验：Flutter项目IOS真机部署及问题 | Joker&#39;s Blog | 个人分享博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="总结,flutter,问题">
+    <meta name="description" content="用flutter开发ios应用在真机调试时出现的问题以及处理方式 无法连接iphone手机flutter找不到真机，已经安装Xcode，Xcode里面可以打开真机运行，但Android Studio环境和Vscode环境下，不能找到连接的iPhone真机，其实很简单，终端运行一下: 1flutter doctor 即可，控制台提示如下：">
+<meta name="keywords" content="总结,flutter,问题">
+<meta property="og:type" content="article">
+<meta property="og:title" content="经验：Flutter项目IOS真机部署及问题">
+<meta property="og:url" content="https://meandni.com/2019/01/04/5671/index.html">
+<meta property="og:site_name" content="Joker&#39;s Blog">
+<meta property="og:description" content="用flutter开发ios应用在真机调试时出现的问题以及处理方式 无法连接iphone手机flutter找不到真机，已经安装Xcode，Xcode里面可以打开真机运行，但Android Studio环境和Vscode环境下，不能找到连接的iPhone真机，其实很简单，终端运行一下: 1flutter doctor 即可，控制台提示如下：">
+<meta property="og:locale" content="Chinese">
+<meta property="og:image" content="http://pan.94ht.com/image-20190104201612194.png">
+<meta property="og:image" content="http://pan.94ht.com/QQ20190104-203008.png">
+<meta property="og:updated_time" content="2019-01-04T12:36:48.273Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="经验：Flutter项目IOS真机部署及问题">
+<meta name="twitter:description" content="用flutter开发ios应用在真机调试时出现的问题以及处理方式 无法连接iphone手机flutter找不到真机，已经安装Xcode，Xcode里面可以打开真机运行，但Android Studio环境和Vscode环境下，不能找到连接的iPhone真机，其实很简单，终端运行一下: 1flutter doctor 即可，控制台提示如下：">
+<meta name="twitter:image" content="http://pan.94ht.com/image-20190104201612194.png">
+    
+        <link rel="alternate" type="application/atom+xml" title="Joker&#39;s Blog" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Joker</h5>
+          <a href="mailto:yangjiakay@gmail.com" title="yangjiakay@gmail.com" class="mail">yangjiakay@gmail.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/MeandNi" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about"  >
+                <i class="icon icon-lg icon-link"></i>
+                AboutMe
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">经验：Flutter项目IOS真机部署及问题</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">经验：Flutter项目IOS真机部署及问题</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-01-04T12:12:57.000Z" itemprop="datePublished" class="page-time">
+  2019-01-04
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/整理/">整理</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#无法连接iphone手机"><span class="post-toc-number">1.</span> <span class="post-toc-text">无法连接iphone手机</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Signing-for-“xxx”-requires-a-development-team-Select-a-development-team"><span class="post-toc-number">2.</span> <span class="post-toc-text">Signing for “xxx” requires a development team. Select a development team</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#不受信任的开发者"><span class="post-toc-number">3.</span> <span class="post-toc-text">不受信任的开发者</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-2019-01-04-flutter-ios-problems"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">经验：Flutter项目IOS真机部署及问题</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-01-04 20:12:57" datetime="2019-01-04T12:12:57.000Z"  itemprop="datePublished">2019-01-04</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/整理/">整理</a></li></ul>
+
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>用flutter开发ios应用在真机调试时出现的问题以及处理方式</p>
+<h2 id="无法连接iphone手机"><a href="#无法连接iphone手机" class="headerlink" title="无法连接iphone手机"></a>无法连接iphone手机</h2><p>flutter找不到真机，已经安装Xcode，Xcode里面可以打开真机运行，但Android Studio环境和Vscode环境下，不能找到连接的iPhone真机，其实很简单，终端运行一下:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flutter doctor</span><br></pre></td></tr></table></figure>
+<p>即可，控制台提示如下：</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://pan.94ht.com/image-20190104201612194.png" alt="image-20190104201612194" title="">
+                </div>
+                <div class="image-caption">image-20190104201612194</div>
+            </figure>
+<p>按照提示终端执行 截图绿色部分的命令即可。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">brew install --HEAD usbmuxd</span><br><span class="line">brew link usbmuxd</span><br><span class="line">brew install --HEAD libimobiledevice</span><br><span class="line">brew install ideviceinstaller</span><br></pre></td></tr></table></figure>
+<h2 id="Signing-for-“xxx”-requires-a-development-team-Select-a-development-team"><a href="#Signing-for-“xxx”-requires-a-development-team-Select-a-development-team" class="headerlink" title="Signing for “xxx” requires a development team. Select a development team"></a>Signing for “xxx” requires a development team. Select a development team</h2><p>首次用vscode连上真机以后，点击调试，会出现如下问题：</p>
+<blockquote>
+<p>No Provisioning Profile was found for your project’s Bundle Identifier or your<br>device. You can create a new Provisioning Profile for your project in Xcode for<br>your team by:<br>  1- Open the Flutter project’s Xcode target with<br>       open ios/Runner.xcworkspace<br>  2- Select the ‘Runner’ project in the navigator then the ‘Runner’ target<br>     in the project settings<br>  3- In the ‘General’ tab, make sure a ‘Development Team’ is selected.<br>     You may need to:</p>
+<pre><code>- Log in with your Apple ID in Xcode first
+- Ensure you have a valid unique Bundle ID
+- Register your device with your Apple Developer Account
+- Let Xcode automatically provision a profile for your app
+</code></pre><p>  4- Build or run your project again<br>It’s also possible that a previously installed app with the same Bundle<br>Identifier was signed with a different certificate.<br>For more information, please visit:<br>  <a href="https://flutter.io/setup/#deploy-to-ios-devices" target="_blank" rel="noopener">https://flutter.io/setup/#deploy-to-ios-devices</a><br>Or run on an iOS simulator without code signing<br>════════════════════════════════════════════════════════════════════════════════<br>2018-10-27 12:09:29.004 ios-deploy[91734:221562][ !! ] Error 0xe8008015: A valid provisioning profile for this executable was not found. AMDeviceSecureInstallApplication(0, device, url, options, install_callback, 0)<br>Could not install build/ios/iphoneos/Runner.app on b53d6902af4ac5d5166a3125b9013886739c92d2.<br>Try launching Xcode and selecting “Product &gt; Run” to fix the problem:<br>  open ios/Runner.xcworkspace<br>Error launching application on xxx的 iPhone.<br>Exited (sigterm)</p>
+</blockquote>
+<p>用xcode打开 flutter项目<code>/ios/Runner.xcworkspace</code> 这个文件，好，我们手动打开，点击编译，此时会编译不通过～</p>
+<p>出现这个问题的原因是你的xcode project 中的team没有选择，选择方法如下。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://pan.94ht.com/QQ20190104-203008.png" alt="img" title="">
+                </div>
+                <div class="image-caption">img</div>
+            </figure>
+<p>官方链接：<a href="https://flutter.io/docs/get-started/install/macos" target="_blank" rel="noopener">https://flutter.io/docs/get-started/install/macos</a></p>
+<h2 id="不受信任的开发者"><a href="#不受信任的开发者" class="headerlink" title="不受信任的开发者"></a>不受信任的开发者</h2><p>解决方式：打开手机上的”设置-&gt;通用-&gt;设备管理-&gt;开发者应用”，进入以后，点击”信任 <a href="mailto:xxxxx@xxx.com" target="_blank" rel="noopener">xxxxx@xxx.com</a>“</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2019-01-04T12:36:48.273Z" itemprop="dateUpdated">2019-01-04 20:36:48</time>
+</span><br>
+
+
+        
+    </div>
+    
+    <footer>
+        <a href="https://meandni.com">
+            <img src="/img/avatar.jpg" alt="Joker">
+            Joker
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/flutter/">flutter</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/总结/">总结</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/问题/">问题</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://meandni.com/2019/01/04/5671/&title=《经验：Flutter项目IOS真机部署及问题》 — Joker's Blog&pic=https://meandni.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://meandni.com/2019/01/04/5671/&title=《经验：Flutter项目IOS真机部署及问题》 — Joker's Blog&source=分享生活、技术、学习心得" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://meandni.com/2019/01/04/5671/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《经验：Flutter项目IOS真机部署及问题》 — Joker's Blog&url=https://meandni.com/2019/01/04/5671/&via=https://meandni.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://meandni.com/2019/01/04/5671/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2018/12/25/644b/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">Android进阶之路</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        感谢打赏~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat.png" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/wechat.png" data-alipay="/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Joker &copy; 2018 - 2019</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://meandni.com/2019/01/04/5671/&title=《经验：Flutter项目IOS真机部署及问题》 — Joker's Blog&pic=https://meandni.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://meandni.com/2019/01/04/5671/&title=《经验：Flutter项目IOS真机部署及问题》 — Joker's Blog&source=分享生活、技术、学习心得" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://meandni.com/2019/01/04/5671/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《经验：Flutter项目IOS真机部署及问题》 — Joker's Blog&url=https://meandni.com/2019/01/04/5671/&via=https://meandni.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://meandni.com/2019/01/04/5671/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAACuCAAAAACKZ2kyAAABwUlEQVR42u3awa6DMAwEwP7/T/OkXvsEuwkJHCanirYw4WA5tj+feB3fdX7l9/rxs36vf1YsXFzcae5xuhJEQhm75z9bwsXF3cjNQ1ISW2boFzZcXNyXce+CtvfHxcV9MzdJUM4D1tjrwMXFfYrbHmny0Jbf7eazGi4u7gS3LZiu+LywvouLi1tyj3IlzZU8DNVPx8XF3cIda6Am20hSorEUChcXdw+3ZeWUotgRbBgXF3cPt22j5gGo/X0UWHFxcbdwZ5KP83JnTq/jLi4u7hbu/PGjbXu0xZeL/g8uLu4CbjtUkY9QtP+Nto2Li7uYOzZUkdxh5liFi4v7LHdm8OLekYub2yq4uLgT3HXvYCyQXbwIXFzch7hjA1j1g4cSLFxc3D3cZNgiT4DGkqT6OISLi7uYmzRH6/GI6VIpLi7uG7jtEEabBs0UQ3FxcZ/i5is/zCQbq5MqXFzcLdyZ3mW7jbuaNLi4uHu4bfAaTFCG0qaL2VJcXNzF3LHglW/45vouLi7ua7htqzUZAG2HRHFxcd/PzdOa/Ph0sWFcXNyN3LzZ2R6N2jB3W1kEFxd3gtsWTJNvk/ZqUi7BxcXdzv0D24hXrlETai4AAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
