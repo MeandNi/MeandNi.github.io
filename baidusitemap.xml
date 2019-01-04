@@ -4,15 +4,162 @@
 
     
   <url>
-    <loc>https://meandni.com/2019/01/03/33d5/</loc>
-    <lastmod>2019-01-03T14:27:46.633Z</lastmod>
+    <loc>https://meandni.com/2018/03/02/3079/</loc>
+    <lastmod>2019-01-03T15:20:02.193Z</lastmod>
     <data>
         <display>
-        <title>实战中学习MVP1：Google官方MVP-Todo实例</title>
-        <pubTime>2019-01-03T14:01:00.000Z</pubTime>
+        <title>JQuery定时自动消失提示框/弹出框(转)</title>
+        <pubTime>2018-03-02T05:43:08.000Z</pubTime>
         
+        <tag>javascript</tag>
+         
+        <tag>JQuery</tag>
+         
+        <tag>Web</tag>
+         
          
            
+             
+              <breadCrumb title="非原创" url="https://meandni.com/categories/%E9%9D%9E%E5%8E%9F%E5%88%9B/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://meandni.com/2018/12/25/644b/</loc>
+    <lastmod>2019-01-03T15:17:49.533Z</lastmod>
+    <data>
+        <display>
+        <title>Android进阶之路</title>
+        <pubTime>2018-12-25T07:15:58.000Z</pubTime>
+        
+        <tag>Android</tag>
+         
+        <tag>读书</tag>
+         
+         
+           
+             
+              <breadCrumb title="原创" url="https://meandni.com/categories/%E5%8E%9F%E5%88%9B/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://meandni.com/2018/09/07/f1a1/</loc>
+    <lastmod>2019-01-03T15:17:22.098Z</lastmod>
+    <data>
+        <display>
+        <title>《The Modern Javascript Tutorial》：javascript递归函数的分析</title>
+        <pubTime>2018-09-07T03:25:47.000Z</pubTime>
+        
+        <tag>javascript</tag>
+         
+        <tag>读书</tag>
+         
+         
+           
+             
+              <breadCrumb title="非原创" url="https://meandni.com/categories/%E9%9D%9E%E5%8E%9F%E5%88%9B/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://meandni.com/2018/09/08/f1a1/</loc>
+    <lastmod>2019-01-03T15:17:09.574Z</lastmod>
+    <data>
+        <display>
+        <title>《The Modern Javascript Tutorial》：javascript中的"this"</title>
+        <pubTime>2018-09-08T03:25:47.000Z</pubTime>
+        
+        <tag>javascript</tag>
+         
+        <tag>读书</tag>
+         
+         
+           
+             
+              <breadCrumb title="非原创" url="https://meandni.com/categories/%E9%9D%9E%E5%8E%9F%E5%88%9B/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://meandni.com/2018/11/11/3b09/</loc>
+    <lastmod>2019-01-03T15:16:53.659Z</lastmod>
+    <data>
+        <display>
+        <title>跟着Google学习架构2：todo‑mvp代码分析</title>
+        <pubTime>2018-11-11T14:01:00.000Z</pubTime>
+        
+        <tag>Android</tag>
+         
+        <tag>架构</tag>
+         
+        <tag>模块化</tag>
+         
+         
+           
+             
+              <breadCrumb title="整理" url="https://meandni.com/categories/%E6%95%B4%E7%90%86/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://meandni.com/2018/11/10/33d5/</loc>
+    <lastmod>2019-01-03T15:16:46.591Z</lastmod>
+    <data>
+        <display>
+        <title>跟着Google学习架构1：todo‑mvp和todo‑mvp‑clean</title>
+        <pubTime>2018-11-10T14:01:00.000Z</pubTime>
+        
+        <tag>Android</tag>
+         
+        <tag>架构</tag>
+         
+        <tag>模块化</tag>
+         
+         
+           
+             
+              <breadCrumb title="整理" url="https://meandni.com/categories/%E6%95%B4%E7%90%86/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://meandni.com/2018/08/15/integration-with-existing-apps/</loc>
+    <lastmod>2019-01-03T14:35:04.988Z</lastmod>
+    <data>
+        <display>
+        <title>跨平台方案：将ReactNative集成到现有原生应用(Android)</title>
+        <pubTime>2018-08-15T11:59:00.000Z</pubTime>
+        
+        <tag>android</tag>
+         
+        <tag>混合开发</tag>
+         
+        <tag>reactnative</tag>
+         
+         
+           
+             
+              <breadCrumb title="非原创" url="https://meandni.com/categories/%E9%9D%9E%E5%8E%9F%E5%88%9B/"/>
+          
         </display>
     </data>
     </url>
@@ -20,10 +167,10 @@
     
   <url>
     <loc>https://meandni.com/2018/08/22/3a79/</loc>
-    <lastmod>2019-01-03T13:55:31.287Z</lastmod>
+    <lastmod>2019-01-03T14:34:55.709Z</lastmod>
     <data>
         <display>
-        <title>Weex使用小记</title>
+        <title>跨平台方案：Weex使用小记</title>
         <pubTime>2018-08-22T03:25:47.000Z</pubTime>
         
         <tag>混合开发</tag>
@@ -39,50 +186,6 @@
 
     
   <url>
-    <loc>https://meandni.com/2018/09/07/f1a1/</loc>
-    <lastmod>2019-01-03T13:54:27.075Z</lastmod>
-    <data>
-        <display>
-        <title>Javascript递归函数的分析</title>
-        <pubTime>2018-09-07T03:25:47.000Z</pubTime>
-        
-        <tag>Android</tag>
-         
-        <tag>读书</tag>
-         
-         
-           
-             
-              <breadCrumb title="翻译" url="https://meandni.com/categories/%E7%BF%BB%E8%AF%91/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://meandni.com/2018/09/08/f1a1/</loc>
-    <lastmod>2019-01-03T13:53:48.652Z</lastmod>
-    <data>
-        <display>
-        <title>Javascript中的"this"</title>
-        <pubTime>2018-09-08T03:25:47.000Z</pubTime>
-        
-        <tag>Android</tag>
-         
-        <tag>读书</tag>
-         
-         
-           
-             
-              <breadCrumb title="翻译" url="https://meandni.com/categories/%E7%BF%BB%E8%AF%91/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>https://meandni.com/2018/11/21/86ef/</loc>
     <lastmod>2019-01-03T13:51:48.033Z</lastmod>
     <data>
@@ -90,30 +193,6 @@
         <title>Android 框架组件(Android Architecture Components)使用指南</title>
         <pubTime>2018-11-21T06:17:01.833Z</pubTime>
         
-         
-           
-             
-              <breadCrumb title="非原创" url="https://meandni.com/categories/%E9%9D%9E%E5%8E%9F%E5%88%9B/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://meandni.com/2018/03/02/3079/</loc>
-    <lastmod>2019-01-03T13:48:14.019Z</lastmod>
-    <data>
-        <display>
-        <title>JQuery定时自动消失提示框/弹出框(转)</title>
-        <pubTime>2018-03-02T05:43:08.000Z</pubTime>
-        
-        <tag>javascripe</tag>
-         
-        <tag>JQuery</tag>
-         
-        <tag>Web</tag>
-         
          
            
              
@@ -140,28 +219,6 @@
          
          
            
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://meandni.com/2018/12/25/644b/</loc>
-    <lastmod>2019-01-03T13:47:04.128Z</lastmod>
-    <data>
-        <display>
-        <title>Android进阶之路</title>
-        <pubTime>2018-12-25T07:15:58.000Z</pubTime>
-        
-        <tag>Android</tag>
-         
-        <tag>读书</tag>
-         
-         
-           
-             
-              <breadCrumb title="原创" url="https://meandni.com/categories/%E5%8E%9F%E5%88%9B/"/>
-          
         </display>
     </data>
     </url>
@@ -242,9 +299,9 @@
         <title>推荐一下Typora：极致简洁的markdown编辑器</title>
         <pubTime>2018-09-12T02:32:42.000Z</pubTime>
         
-        <tag>markdown</tag>
-         
         <tag>软件</tag>
+         
+        <tag>markdown</tag>
          
          
            
@@ -313,30 +370,6 @@
         <tag>IntelliJ IDEA</tag>
          
         <tag>javaweb</tag>
-         
-         
-           
-             
-              <breadCrumb title="非原创" url="https://meandni.com/categories/%E9%9D%9E%E5%8E%9F%E5%88%9B/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://meandni.com/2018/08/15/integration-with-existing-apps/</loc>
-    <lastmod>2019-01-03T13:42:46.886Z</lastmod>
-    <data>
-        <display>
-        <title>将ReactNative集成到现有原生应用(Android)</title>
-        <pubTime>2018-08-15T11:59:00.000Z</pubTime>
-        
-        <tag>android</tag>
-         
-        <tag>混合开发</tag>
-         
-        <tag>reactnative</tag>
          
          
            

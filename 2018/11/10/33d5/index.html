@@ -14,18 +14,18 @@
     
     
     
-    <title>实战中学习MVP1：Google官方MVP-Todo实例 | Joker&#39;s Blog | 个人分享博客</title>
+    <title>跟着Google学习架构1：todo‑mvp和todo‑mvp‑clean | Joker&#39;s Blog | 个人分享博客</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
     <meta name="theme-color" content="#3F51B5">
     
     
-    <meta name="keywords" content="">
+    <meta name="keywords" content="Android,架构,模块化">
     <meta name="description" content="前提这里一定要说明一下，对于MVP,MVC,MVVM,Clean Architecture 等都只是设计思想，并不是代码框架，具体的框架需要来使用上述的设计思想来实现。就比如下面的MVP实现中，View是Activity,Fragment，Presenter是单独的类来处理逻辑，REPOSITORY可以看做是Model。 android-architecture-todoapp-mvpgoogle">
-<meta name="keywords" content="android,web,java,javascript,vue,react,技术分享,学习心得,学习笔记,程序员人生">
+<meta name="keywords" content="Android,架构,模块化">
 <meta property="og:type" content="article">
-<meta property="og:title" content="实战中学习MVP1：Google官方MVP-Todo实例">
-<meta property="og:url" content="https://meandni.com/2019/01/03/33d5/index.html">
+<meta property="og:title" content="跟着Google学习架构1：todo‑mvp和todo‑mvp‑clean">
+<meta property="og:url" content="https://meandni.com/2018/11/10/33d5/index.html">
 <meta property="og:site_name" content="Joker&#39;s Blog">
 <meta property="og:description" content="前提这里一定要说明一下，对于MVP,MVC,MVVM,Clean Architecture 等都只是设计思想，并不是代码框架，具体的框架需要来使用上述的设计思想来实现。就比如下面的MVP实现中，View是Activity,Fragment，Presenter是单独的类来处理逻辑，REPOSITORY可以看做是Model。 android-architecture-todoapp-mvpgoogle">
 <meta property="og:locale" content="Chinese">
@@ -34,9 +34,9 @@
 <meta property="og:image" content="http://pan.94ht.com/CleanCode.png">
 <meta property="og:image" content="http://pan.94ht.com/CleanCodeMvp.png">
 <meta property="og:image" content="http://pan.94ht.com/CleanCodeDomain.png">
-<meta property="og:updated_time" content="2019-01-03T14:27:46.633Z">
+<meta property="og:updated_time" content="2019-01-03T15:16:46.591Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="实战中学习MVP1：Google官方MVP-Todo实例">
+<meta name="twitter:title" content="跟着Google学习架构1：todo‑mvp和todo‑mvp‑clean">
 <meta name="twitter:description" content="前提这里一定要说明一下，对于MVP,MVC,MVVM,Clean Architecture 等都只是设计思想，并不是代码框架，具体的框架需要来使用上述的设计思想来实现。就比如下面的MVP实现中，View是Activity,Fragment，Presenter是单独的类来处理逻辑，REPOSITORY可以看做是Model。 android-architecture-todoapp-mvpgoogle">
 <meta name="twitter:image" content="http://pan.94ht.com/mvp.png">
     
@@ -126,7 +126,7 @@
         <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
           <i class="icon icon-lg icon-navicon"></i>
         </a>
-        <div class="flex-col header-title ellipsis">实战中学习MVP1：Google官方MVP-Todo实例</div>
+        <div class="flex-col header-title ellipsis">跟着Google学习架构1：todo‑mvp和todo‑mvp‑clean</div>
         
         <div class="search-wrap" id="search-wrap">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
@@ -148,13 +148,15 @@
 <header class="content-header post-header">
 
     <div class="container fade-scale">
-        <h1 class="title">实战中学习MVP1：Google官方MVP-Todo实例</h1>
+        <h1 class="title">跟着Google学习架构1：todo‑mvp和todo‑mvp‑clean</h1>
         <h5 class="subtitle">
             
-                <time datetime="2019-01-03T14:01:00.000Z" itemprop="datePublished" class="page-time">
-  2019-01-03
+                <time datetime="2018-11-10T14:01:00.000Z" itemprop="datePublished" class="page-time">
+  2018-11-10
 </time>
 
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/整理/">整理</a></li></ul>
 
             
         </h5>
@@ -176,15 +178,17 @@
     </aside>
 
 
-<article id="post-2019-01-03-google-mvp-todo"
+<article id="post-2019-01-03-google-mvp-todo-and-clean"
   class="post-article article-type-post fade" itemprop="blogPost">
 
     <div class="post-card">
-        <h1 class="post-card-title">实战中学习MVP1：Google官方MVP-Todo实例</h1>
+        <h1 class="post-card-title">跟着Google学习架构1：todo‑mvp和todo‑mvp‑clean</h1>
         <div class="post-meta">
-            <time class="post-time" title="2019-01-03 22:01:00" datetime="2019-01-03T14:01:00.000Z"  itemprop="datePublished">2019-01-03</time>
+            <time class="post-time" title="2018-11-10 22:01:00" datetime="2018-11-10T14:01:00.000Z"  itemprop="datePublished">2018-11-10</time>
 
             
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/整理/">整理</a></li></ul>
+
 
 
             
@@ -202,7 +206,7 @@
                 <div class="image-caption">ss</div>
             </figure>
 <p>图中的REPOSITORY 也就是数据层，相当于Model。</p>
-<p>源码来自：<br><a href="https://github.com/googlesamples/android-architecture" target="_blank" rel="noopener">https://github.com/googlesamples/android-architecture</a></p>
+<p>谷歌仓库：<br><a href="https://github.com/googlesamples/android-architecture" target="_blank" rel="noopener">https://github.com/googlesamples/android-architecture</a></p>
 <h1 id="android-architecture-todoapp-mvp-clean"><a href="#android-architecture-todoapp-mvp-clean" class="headerlink" title="android-architecture-todoapp-mvp-clean"></a>android-architecture-todoapp-mvp-clean</h1><p><strong>下面的内容来自<a href="http://www.jianshu.com/p/c6a1a5c9a49b" target="_blank" rel="noopener">简书</a></strong></p>
 <p>首先看一个Clean Architecture构想图：<br><figure class="image-bubble">
                 <div class="img-lightbox">
@@ -260,6 +264,7 @@
 <p>通过上面的理解，可以看出俩MVP中的M是一个相当泛类的指代，它并不是指具体的一个类，比如在基本MVP中它指数据层；而在MVP-Clean中指UseCase层的各种useCase。</p>
 <h1 id="与MVP很相近的MVC模式"><a href="#与MVP很相近的MVC模式" class="headerlink" title="与MVP很相近的MVC模式"></a>与MVP很相近的MVC模式</h1><p>参见知乎上的一个链接：<br><a href="https://www.zhihu.com/question/22886622" target="_blank" rel="noopener">https://www.zhihu.com/question/22886622</a></p>
 <p>回答中讲解的非常好，看了后发现我之前理解的Model和Controller完全是错误的！</p>
+<p>参考文章：<br><a href="https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html" target="_blank" rel="noopener">https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html</a></p>
 
         </div>
 
@@ -268,7 +273,7 @@
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2019-01-03T14:27:46.633Z" itemprop="dateUpdated">2019-01-03 22:27:46</time>
+    Last updated: <time datetime="2019-01-03T15:16:46.591Z" itemprop="dateUpdated">2019-01-03 23:16:46</time>
 </span><br>
 
 
@@ -292,6 +297,8 @@
 
         <div class="post-footer">
             
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/架构/">架构</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/模块化/">模块化</a></li></ul>
+
 
             
 <div class="page-share-wrap">
@@ -300,7 +307,7 @@
 <div class="page-share" id="pageShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://meandni.com/2019/01/03/33d5/&title=《实战中学习MVP1：Google官方MVP-Todo实例》 — Joker's Blog&pic=https://meandni.com/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://meandni.com/2018/11/10/33d5/&title=《跟着Google学习架构1：todo‑mvp和todo‑mvp‑clean》 — Joker's Blog&pic=https://meandni.com/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -310,22 +317,22 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://meandni.com/2019/01/03/33d5/&title=《实战中学习MVP1：Google官方MVP-Todo实例》 — Joker's Blog&source=分享生活、技术、学习心得" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://meandni.com/2018/11/10/33d5/&title=《跟着Google学习架构1：todo‑mvp和todo‑mvp‑clean》 — Joker's Blog&source=分享生活、技术、学习心得" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://meandni.com/2019/01/03/33d5/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://meandni.com/2018/11/10/33d5/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《实战中学习MVP1：Google官方MVP-Todo实例》 — Joker's Blog&url=https://meandni.com/2019/01/03/33d5/&via=https://meandni.com" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《跟着Google学习架构1：todo‑mvp和todo‑mvp‑clean》 — Joker's Blog&url=https://meandni.com/2018/11/10/33d5/&via=https://meandni.com" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://meandni.com/2019/01/03/33d5/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://meandni.com/2018/11/10/33d5/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -345,14 +352,21 @@
     </div>
 
     
-<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2018/11/11/3b09/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">跟着Google学习架构2：todo‑mvp代码分析</h4>
+      </a>
+    </div>
   
 
   
     <div class="waves-block waves-effect next">
-      <a href="/2018/12/25/644b/" id="post-next" class="post-nav-link">
+      <a href="/2018/10/10/a03f/" id="post-next" class="post-nav-link">
         <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
-        <h4 class="title">Android进阶之路</h4>
+        <h4 class="title">理解 IntelliJ IDEA 的项目配置和Web部署</h4>
       </a>
     </div>
   
@@ -440,7 +454,7 @@
 <div class="global-share" id="globalShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://meandni.com/2019/01/03/33d5/&title=《实战中学习MVP1：Google官方MVP-Todo实例》 — Joker's Blog&pic=https://meandni.com/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://meandni.com/2018/11/10/33d5/&title=《跟着Google学习架构1：todo‑mvp和todo‑mvp‑clean》 — Joker's Blog&pic=https://meandni.com/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -450,22 +464,22 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://meandni.com/2019/01/03/33d5/&title=《实战中学习MVP1：Google官方MVP-Todo实例》 — Joker's Blog&source=分享生活、技术、学习心得" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://meandni.com/2018/11/10/33d5/&title=《跟着Google学习架构1：todo‑mvp和todo‑mvp‑clean》 — Joker's Blog&source=分享生活、技术、学习心得" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://meandni.com/2019/01/03/33d5/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://meandni.com/2018/11/10/33d5/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《实战中学习MVP1：Google官方MVP-Todo实例》 — Joker's Blog&url=https://meandni.com/2019/01/03/33d5/&via=https://meandni.com" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《跟着Google学习架构1：todo‑mvp和todo‑mvp‑clean》 — Joker's Blog&url=https://meandni.com/2018/11/10/33d5/&via=https://meandni.com" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://meandni.com/2019/01/03/33d5/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://meandni.com/2018/11/10/33d5/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -476,7 +490,7 @@
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAACuCAAAAACKZ2kyAAABxUlEQVR42u3awYrDIBQF0P7/T3dgVoWZmPt8als4rkIIeszioVcfj7g9f9vr8+ub5Mu8hwUNFxe3zX0O21/EeMj8/Xhil1PCxcU9yK0WrxxUpd/YcHFxP4zbX8QkfeLi4n4Xd1yS8uUOLi7ut3CTzU9envLeNu7VcHFxG9y5wHTt8/Z8FxcXd9GpRL8MLR4dFxf3CHccfY4HyOnJKHmEiouLe4bbX9wkE0t+R7LRwsXF3c3tH4smEercYe0/b3Bxcd/ErS4+5qLSfCF1U8hwcXE3cOe6qB6yVgORm3FxcXGPcOcuXlS3NPkoC/ZnuLi4DW5emKoLl/xwpfBrcHFxj3Bz4tovq+jLHRsuLu4GbicGTeLUzrEKLi7ue7l5eDq3acmncdMDLi7uEW4nBMmjkOp1qxsPLi7uZu7c9Yh8YtWtzo0HFxf3IDeh5MFH9SJXUtRwcXHPc/PWKUkLzoFxcXGPcOeuSuRxSTkSbWyZcHFx13KT4jVXgDr9XPaPi4t7kNu6wTG1xFmQ7+Li4n4At7r0SWKXciCLi4v7kdx8aZIckJQPcnBxcQ9yqwNUudVsZkEsgouL2+B2AtNqjFItlLi4uMe5P6qP3USrMorCAAAAAElFTkSuQmCC" alt="微信分享二维码">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAACuCAAAAACKZ2kyAAABxUlEQVR42u3aO3LDMAwFQN//0k6rRsoDQDLKzLLyyA61TIHBh59PvL6XdX2SfL772+uTxQsXF3fM/T6uKvdu//wAd7/BxcU9z01eUwVV/x3PO+Pi4r6Zm7zyLgxVQyEuLu7/4uZVSR7scHFx38atpiB3T5LgdahWw8XFHXDzLuW+z1v6u7i4uC3ut7jyQUse8gpvx8XFPcLNA8ozvXqw3ntxcXHPcPcVIdXQFh0eFxf3CDdvd/ZC0mT42uzl4OLiHuHm6GojddRAwcXF3cbtJS55QlMdx/5yVFxc3CPcZAiabJcPUBcUP7i4uJu51Y1WHWlxwxQXF3cpN/k6x00ar83Ah4uLu42bpyn5wSahcFT84OLiLuJWk4w8MPXGtNU0CBcXdwe3ummvgJn8/rY5gouLu5mbJy556tNLX5rFDy4u7jbupLApZ0+9fXBxcTdzJ5cme+3RahGFi4t7nttrjuTXLJJw+Ry8mofBxcUdcycD1PyaRVImFYofXFzcI9y80Vm9clEtkAoNU1xc3Ndwq23W6ji22TXBxcX9U26PMqm9FsRdXFzcFrfa8siHK/k10CiM4uLiHuEumNMWN90d+HBxcQfcHwR/w0KE68bAAAAAAElFTkSuQmCC" alt="微信分享二维码">
 </div>
 
 

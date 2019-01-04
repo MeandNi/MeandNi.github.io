@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>跟着Google学习架构2：todo‑mvp代码分析 | Joker&#39;s Blog | 个人分享博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="Android,架构,模块化">
+    <meta name="description" content="一、MVP简介                                                                                             img               Model: 数据层，负责与网络层和数据库层的逻辑交互。 View: UI层，显示数据, 并向Presenter报告用户行为。 Presenter: 从Model拿">
+<meta name="keywords" content="Android,架构,模块化">
+<meta property="og:type" content="article">
+<meta property="og:title" content="跟着Google学习架构2：todo‑mvp代码分析">
+<meta property="og:url" content="https://meandni.com/2018/11/11/3b09/index.html">
+<meta property="og:site_name" content="Joker&#39;s Blog">
+<meta property="og:description" content="一、MVP简介                                                                                             img               Model: 数据层，负责与网络层和数据库层的逻辑交互。 View: UI层，显示数据, 并向Presenter报告用户行为。 Presenter: 从Model拿">
+<meta property="og:locale" content="Chinese">
+<meta property="og:image" content="https:////upload-images.jianshu.io/upload_images/3985563-25731fb5c707f5d3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/416/format/webp">
+<meta property="og:image" content="https:////upload-images.jianshu.io/upload_images/3985563-bf64641065361b3a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/950/format/webp">
+<meta property="og:image" content="https:////upload-images.jianshu.io/upload_images/3985563-4634a04a1a55cd1e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/584/format/webp">
+<meta property="og:updated_time" content="2019-01-03T15:16:53.659Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="跟着Google学习架构2：todo‑mvp代码分析">
+<meta name="twitter:description" content="一、MVP简介                                                                                             img               Model: 数据层，负责与网络层和数据库层的逻辑交互。 View: UI层，显示数据, 并向Presenter报告用户行为。 Presenter: 从Model拿">
+<meta name="twitter:image" content="https:////upload-images.jianshu.io/upload_images/3985563-25731fb5c707f5d3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/416/format/webp">
+    
+        <link rel="alternate" type="application/atom+xml" title="Joker&#39;s Blog" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Joker</h5>
+          <a href="mailto:yangjiakay@gmail.com" title="yangjiakay@gmail.com" class="mail">yangjiakay@gmail.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/MeandNi" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about"  >
+                <i class="icon icon-lg icon-link"></i>
+                AboutMe
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">跟着Google学习架构2：todo‑mvp代码分析</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">跟着Google学习架构2：todo‑mvp代码分析</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-11-11T14:01:00.000Z" itemprop="datePublished" class="page-time">
+  2018-11-11
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/整理/">整理</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#一、MVP简介"><span class="post-toc-number">1.</span> <span class="post-toc-text">一、MVP简介</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#二、MVP优势"><span class="post-toc-number">2.</span> <span class="post-toc-text">二、MVP优势</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#三、todo-mvp结构解析"><span class="post-toc-number">3.</span> <span class="post-toc-text">三、todo-mvp结构解析</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-项目结构"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">1.项目结构</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-具体解析"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">2.具体解析</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#四、总结"><span class="post-toc-number">4.</span> <span class="post-toc-text">四、总结</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-2019-01-03-google-mvp-todo"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">跟着Google学习架构2：todo‑mvp代码分析</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-11-11 22:01:00" datetime="2018-11-11T14:01:00.000Z"  itemprop="datePublished">2018-11-11</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/整理/">整理</a></li></ul>
+
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h2 id="一、MVP简介"><a href="#一、MVP简介" class="headerlink" title="一、MVP简介"></a>一、MVP简介</h2><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https:////upload-images.jianshu.io/upload_images/3985563-25731fb5c707f5d3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/416/format/webp" alt="img" title="">
+                </div>
+                <div class="image-caption">img</div>
+            </figure>
+<ul>
+<li>Model: 数据层，负责与网络层和数据库层的逻辑交互。</li>
+<li>View: UI层，显示数据, 并向Presenter报告用户行为。</li>
+<li>Presenter: 从Model拿数据，应用到UI层，管理UI的状态，响应用户的行为。</li>
+</ul>
+<h2 id="二、MVP优势"><a href="#二、MVP优势" class="headerlink" title="二、MVP优势"></a>二、MVP优势</h2><p>在学习todo-mvp之前，先了解一下MVP的优势。</p>
+<ul>
+<li>分离了视图逻辑和业务逻辑，降低了耦合。</li>
+<li>Activity只处理生命周期的任务，代码变得更加简洁。</li>
+<li>视图逻辑和业务逻辑分别抽象到了View和Presenter的接口中，提高代码的阅读性。</li>
+<li>Presenter被抽象成接口，可以有多种具体的实现，所以方便进行单元测试。</li>
+<li>把业务逻辑抽到Presenter中去，避免后台线程引用着Activity导致Activity的资源无法被系统回收从而引起内存泄露和OOM。</li>
+</ul>
+<h2 id="三、todo-mvp结构解析"><a href="#三、todo-mvp结构解析" class="headerlink" title="三、todo-mvp结构解析"></a>三、todo-mvp结构解析</h2><h3 id="1-项目结构"><a href="#1-项目结构" class="headerlink" title="1.项目结构"></a>1.项目结构</h3><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https:////upload-images.jianshu.io/upload_images/3985563-bf64641065361b3a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/950/format/webp" alt="img" title="">
+                </div>
+                <div class="image-caption">img</div>
+            </figure>
+<p>从上图可以看出，todo-mvp是按照功能模块划分的。</p>
+<p>其中tasks, taskdetail, addedittask, statistics是四个业务模块。</p>
+<p>data是数据模块，其中具体的类<code>TasksRepository</code>担任Model层，负责远程和本地数据的获取。</p>
+<p><code>BasePresenter</code>和<code>BaseView</code>是presenter 和 view 的基类，在具体模块承担实际功能。最后，util是工具类集合。</p>
+<h3 id="2-具体解析"><a href="#2-具体解析" class="headerlink" title="2.具体解析"></a>2.具体解析</h3><p>在todoapp中，MVP的具体结构如下图所示：</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https:////upload-images.jianshu.io/upload_images/3985563-4634a04a1a55cd1e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/584/format/webp" alt="img" title="">
+                </div>
+                <div class="image-caption">img</div>
+            </figure>
+<p>下面以tasks模块具体阐述上述图片中的实际作用关系。</p>
+<p><strong>基类</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">public interface BasePresenter &#123;</span><br><span class="line"></span><br><span class="line">    void start();</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>其中<code>start()</code>方法的作用是presenter开始获取数据并调用view中方法改变界面显示，其调用时机是在Fragment类的<code>onResume</code>方法中。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">public interface BaseView&lt;T&gt; &#123;</span><br><span class="line"></span><br><span class="line">    void setPresenter(T presenter);</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>其中<code>setPresenter()</code>方法作用是在将presenter实例传入view中，其<strong>调用时机是presenter实现类的构造函数中</strong>。</p>
+<p><strong>契约类</strong></p>
+<p>与之前使用的MVP实现不同，官方的实现中加入了契约类来统一管理view与presenter的所有的接口，这种方式使得view与presenter中有哪些功能，一目了然，维护起来也方便，同时使得view与presenter一一对应，并有效地减少类的数目。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line">public interface TasksContract &#123;</span><br><span class="line"></span><br><span class="line">    interface View extends BaseView&lt;Presenter&gt; &#123;</span><br><span class="line"></span><br><span class="line">        void setLoadingIndicator(boolean active);</span><br><span class="line"></span><br><span class="line">        void showTasks(List&lt;Task&gt; tasks);</span><br><span class="line"></span><br><span class="line">        void showAddTask();</span><br><span class="line"></span><br><span class="line">        void showTaskDetailsUi(String taskId);</span><br><span class="line"></span><br><span class="line">        void showTaskMarkedComplete();</span><br><span class="line"></span><br><span class="line">        void showTaskMarkedActive();</span><br><span class="line"></span><br><span class="line">        void showCompletedTasksCleared();</span><br><span class="line"></span><br><span class="line">        void showLoadingTasksError();</span><br><span class="line"></span><br><span class="line">        void showNoTasks();</span><br><span class="line"></span><br><span class="line">        void showActiveFilterLabel();</span><br><span class="line"></span><br><span class="line">        void showCompletedFilterLabel();</span><br><span class="line"></span><br><span class="line">        void showAllFilterLabel();</span><br><span class="line"></span><br><span class="line">        void showNoActiveTasks();</span><br><span class="line"></span><br><span class="line">        void showNoCompletedTasks();</span><br><span class="line"></span><br><span class="line">        void showSuccessfullySavedMessage();</span><br><span class="line"></span><br><span class="line">        boolean isActive();</span><br><span class="line"></span><br><span class="line">        void showFilteringPopUpMenu();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    interface Presenter extends BasePresenter &#123;</span><br><span class="line"></span><br><span class="line">        void result(int requestCode, int resultCode);</span><br><span class="line"></span><br><span class="line">        void loadTasks(boolean forceUpdate);</span><br><span class="line"></span><br><span class="line">        void addNewTask();</span><br><span class="line"></span><br><span class="line">        void openTaskDetails(@NonNull Task requestedTask);</span><br><span class="line"></span><br><span class="line">        void completeTask(@NonNull Task completedTask);</span><br><span class="line"></span><br><span class="line">        void activateTask(@NonNull Task activeTask);</span><br><span class="line"></span><br><span class="line">        void clearCompletedTasks();</span><br><span class="line"></span><br><span class="line">        void setFiltering(TasksFilterType requestType);</span><br><span class="line"></span><br><span class="line">        TasksFilterType getFiltering();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>TasksActivity</strong></p>
+<p>Activity 在项目中是一个全局的控制者，负责创建 view 以及 presenter 实例，并将二者联系起来。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"> TasksFragment tasksFragment =</span><br><span class="line">         (TasksFragment) getSupportFragmentManager().findFragmentById(R.id.contentFrame);</span><br><span class="line"> if (tasksFragment == null) &#123;</span><br><span class="line">     // 创建 fragment</span><br><span class="line">     tasksFragment = TasksFragment.newInstance();</span><br><span class="line">     ActivityUtils.addFragmentToActivity(</span><br><span class="line">             getSupportFragmentManager(), tasksFragment, R.id.contentFrame);</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line"> // 创建 presenter，TasksPresenter是TasksContract.Presenter 的实现类</span><br><span class="line">// 传入两个参数 </span><br><span class="line">//1.TasksRepository实例，负责数据层  </span><br><span class="line">//2.tasksFragment，是TasksContract.View的实现类，即view实例</span><br><span class="line"> mTasksPresenter = new TasksPresenter(</span><br><span class="line">         Injection.provideTasksRepository(getApplicationContext()), tasksFragment);</span><br></pre></td></tr></table></figure>
+<p>其中，通过实例化<code>TasksPresenter</code>时，传入<code>tasksFragment</code>，使得在<code>TasksPresenter</code>中拥有view实例。同时，在实例化时初始化构造函数，调用了<code>setPresenter()</code>方法，使得view实例中拥有了presenter实例对象，使得两者联系起来。</p>
+<p><code>TasksPresenter</code>构造函数如下所示：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">public TasksPresenter(@NonNull TasksRepository tasksRepository, @NonNull TasksContract.View tasksView) &#123;</span><br><span class="line">    mTasksRepository = checkNotNull(tasksRepository, &quot;tasksRepository cannot be null&quot;);</span><br><span class="line">    mTasksView = checkNotNull(tasksView, &quot;tasksView cannot be null!&quot;);</span><br><span class="line"></span><br><span class="line">    mTasksView.setPresenter(this);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>TasksFragment</strong></p>
+<p>将Fragment作为view层的实现类，使得Activity作为一个全局控制类来创建对象，而Fragment作为view，两者各司其职。同时，Fragment比较灵活，能够方便的处理界面适配的问题。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">public class TasksFragment extends Fragment implements TasksContract.View &#123;</span><br><span class="line">    ...........</span><br><span class="line">    public static TasksFragment newInstance() &#123;</span><br><span class="line">        return new TasksFragment();</span><br><span class="line">    &#125;</span><br><span class="line">    ...........</span><br><span class="line">    @Override</span><br><span class="line">    public void onResume() &#123;</span><br><span class="line">        super.onResume();</span><br><span class="line">        mPresenter.start();</span><br><span class="line">    &#125;</span><br><span class="line">    ...........</span><br><span class="line">    @Override</span><br><span class="line">    public void setPresenter(@NonNull TasksContract.Presenter presenter) &#123;</span><br><span class="line">        mPresenter = checkNotNull(presenter);</span><br><span class="line">    &#125;</span><br><span class="line">    ...........</span><br><span class="line">    @Override</span><br><span class="line">    public boolean isActive() &#123;</span><br><span class="line">        return isAdded();</span><br><span class="line">    &#125;</span><br><span class="line">    ...........</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>对于 view 的实现TasksFragment，只挑一部分重要的方法来看。</p>
+<ul>
+<li><code>newInstance ()</code>方法，实例化TasksFragment对象。</li>
+<li><code>setPresenter()</code>方法继承于父类，通过该方法，view 获得了 presenter 得实例，从而可以调用 presenter 代码来处理业务逻辑。</li>
+<li>在<code>onResume()</code>中，调用了 presenter 得<code>start()</code>方法，获取数据并操作view界面的显示。</li>
+<li><code>isActive()</code>方法，通过<code>isAdded()</code>判断对应Activity是否销毁。在Fragment在执行异步耗时操作后，如果调用Activity实例，应当先使用<code>isActive()</code>方法加以判断。</li>
+</ul>
+<h2 id="四、总结"><a href="#四、总结" class="headerlink" title="四、总结"></a>四、总结</h2><p>通过对todo-mvp分析，再次了解学习了MVP。从google提供的例子中可以看出，MVP的实现较为简单，model、view和presenter各个职责明确，便于扩展维护。contract契约类的出现，使得model和presenter结构更加清晰明了。Activity和Fragment的配合，使得Activity职能更为简化，同时View的实现更加灵活。</p>
+<p>参考文章：<br><a href="https://www.jianshu.com/p/e219ebd1572a" target="_blank" rel="noopener">https://www.jianshu.com/p/e219ebd1572a</a></p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2019-01-03T15:16:53.659Z" itemprop="dateUpdated">2019-01-03 23:16:53</time>
+</span><br>
+
+
+        
+    </div>
+    
+    <footer>
+        <a href="https://meandni.com">
+            <img src="/img/avatar.jpg" alt="Joker">
+            Joker
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/架构/">架构</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/模块化/">模块化</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://meandni.com/2018/11/11/3b09/&title=《跟着Google学习架构2：todo‑mvp代码分析》 — Joker's Blog&pic=https://meandni.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://meandni.com/2018/11/11/3b09/&title=《跟着Google学习架构2：todo‑mvp代码分析》 — Joker's Blog&source=分享生活、技术、学习心得" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://meandni.com/2018/11/11/3b09/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《跟着Google学习架构2：todo‑mvp代码分析》 — Joker's Blog&url=https://meandni.com/2018/11/11/3b09/&via=https://meandni.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://meandni.com/2018/11/11/3b09/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2018/11/21/86ef/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">Android 框架组件(Android Architecture Components)使用指南</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2018/11/10/33d5/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">跟着Google学习架构1：todo‑mvp和todo‑mvp‑clean</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        感谢打赏~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat.png" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/wechat.png" data-alipay="/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Joker &copy; 2018 - 2019</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://meandni.com/2018/11/11/3b09/&title=《跟着Google学习架构2：todo‑mvp代码分析》 — Joker's Blog&pic=https://meandni.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://meandni.com/2018/11/11/3b09/&title=《跟着Google学习架构2：todo‑mvp代码分析》 — Joker's Blog&source=分享生活、技术、学习心得" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://meandni.com/2018/11/11/3b09/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《跟着Google学习架构2：todo‑mvp代码分析》 — Joker's Blog&url=https://meandni.com/2018/11/11/3b09/&via=https://meandni.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://meandni.com/2018/11/11/3b09/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAACuCAAAAACKZ2kyAAABw0lEQVR42u3ay27CMBAFUP7/p6nUVauWcG+cTIJ0vEIGkuPNaB5+POL1/F6vdrY//1x/9x9nLFxc3GXuc3PliG1K+8yXR8LFxR3kbgev/EhJwNqmv7Hh4uLejLuexCTPxMXF/SxuspOkO7i4uJ/CzdOX/BjH/gsXF3eS2zZMz/h8Yn8XFxe35D7LlQe1NgGK3o6LizvCTQaoyf6+xkdbSuHi4s5w20fkB8gbIkkmg4uLex9uMhbdl+jkAe7XDi4u7gi3ha4URe345E0YxcXFPY17VILSjj3ywck/XRxcXNxBbt7oTFKZvMjZGWtxcXFP4yaBJimB8jKpvf6Fi4s7z20vS+Wg9qJV1DrBxcW9iJuPS9sWSTtWwcXFvQM3H58clRK1z8fFxZ3hrrQnojtf5S+jcggXF/dkbp6CtMVMm75EhRYuLu4gt21c1sPRhd4tLi7uVdx8tS2SpNVSHAMXF3eE2waUfZc2ipboQsmEi4t7LLcNXkmrtG2YJkkSLi7uPHf9hleb4hzQ38XFxb0Bd/vF+8JfHSJxcXE/itsmTElTFRcX91ru+gv2fVtf2sDFxR3htg3TJBFJCqd8xIuLizvI/QLcALR7OcETyQAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
