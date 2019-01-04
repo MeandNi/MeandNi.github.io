@@ -4,8 +4,30 @@
 
     
   <url>
+    <loc>https://meandni.com/2019/01/05/2105/</loc>
+    <lastmod>2019-01-04T12:45:35.427Z</lastmod>
+    <data>
+        <display>
+        <title>实战中学习Flutter1：简易聊天AppUI</title>
+        <pubTime>2019-01-05T12:12:57.000Z</pubTime>
+        
+        <tag>自学</tag>
+         
+        <tag>flutter</tag>
+         
+         
+           
+             
+              <breadCrumb title="原创" url="https://meandni.com/categories/%E5%8E%9F%E5%88%9B/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>https://meandni.com/2019/01/04/5671/</loc>
-    <lastmod>2019-01-04T12:36:48.273Z</lastmod>
+    <lastmod>2019-01-04T12:42:21.401Z</lastmod>
     <data>
         <display>
         <title>经验：Flutter项目IOS真机部署及问题</title>
@@ -331,28 +353,6 @@
            
              
               <breadCrumb title="非原创" url="https://meandni.com/categories/%E9%9D%9E%E5%8E%9F%E5%88%9B/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://meandni.com/2018/12/04/2105/</loc>
-    <lastmod>2019-01-03T13:43:57.849Z</lastmod>
-    <data>
-        <display>
-        <title>实战中学习Flutter1：简易聊天AppUI</title>
-        <pubTime>2018-12-04T13:57:54.403Z</pubTime>
-        
-        <tag>自学</tag>
-         
-        <tag>flutter</tag>
-         
-         
-           
-             
-              <breadCrumb title="原创" url="https://meandni.com/categories/%E5%8E%9F%E5%88%9B/"/>
           
         </display>
     </data>
