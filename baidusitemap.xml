@@ -4,12 +4,50 @@
 
     
   <url>
-    <loc>https://meandni.com/2019/01/05/2105/</loc>
-    <lastmod>2019-01-04T12:45:35.427Z</lastmod>
+    <loc>https://meandni.com/2019/01/05/winter_vacation/</loc>
+    <lastmod>2019-01-10T03:22:09.189Z</lastmod>
+    <data>
+        <display>
+        <title>2019年寒假计划</title>
+        <pubTime>2019-01-05T09:30:52.000Z</pubTime>
+        
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://meandni.com/2019/01/10/jvm_note1/</loc>
+    <lastmod>2019-01-10T03:20:30.652Z</lastmod>
+    <data>
+        <display>
+        <title>《深入理解java虚拟机》笔记1——Java内存区域与Java对象</title>
+        <pubTime>2019-01-10T03:02:02.000Z</pubTime>
+        
+        <tag>读书</tag>
+         
+        <tag>jvm</tag>
+         
+         
+           
+             
+              <breadCrumb title="整理" url="https://meandni.com/categories/%E6%95%B4%E7%90%86/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+    
+  <url>
+    <loc>https://meandni.com/2019/01/04/2105/</loc>
+    <lastmod>2019-01-05T09:33:58.687Z</lastmod>
     <data>
         <display>
         <title>实战中学习Flutter1：简易聊天AppUI</title>
-        <pubTime>2019-01-05T12:12:57.000Z</pubTime>
+        <pubTime>2019-01-04T14:12:57.000Z</pubTime>
         
         <tag>自学</tag>
          
@@ -526,7 +564,6 @@
     </data>
     </url>
 
-    
     
     
     

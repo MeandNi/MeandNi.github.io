@@ -2,9 +2,30 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://meandni.com/2019/01/05/2105/</loc>
+    <loc>https://meandni.com/2019/01/05/winter_vacation/</loc>
     
-    <lastmod>2019-01-04T12:45:35.427Z</lastmod>
+    <lastmod>2019-01-10T03:22:09.189Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://meandni.com/2019/01/10/jvm_note1/</loc>
+    
+    <lastmod>2019-01-10T03:20:30.652Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://meandni.com/about/index.html</loc>
+    
+    <lastmod>2019-01-05T10:10:59.309Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://meandni.com/2019/01/04/2105/</loc>
+    
+    <lastmod>2019-01-05T09:33:58.687Z</lastmod>
     
   </url>
   
@@ -173,13 +194,6 @@
     <loc>https://meandni.com/images/Tutorial_%20Intro%20to%20React%20%E2%80%93%20React.html</loc>
     
     <lastmod>2018-08-18T04:00:15.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://meandni.com/about/index.html</loc>
-    
-    <lastmod>2018-08-14T06:26:37.000Z</lastmod>
     
   </url>
   
