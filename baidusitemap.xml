@@ -4,6 +4,50 @@
 
     
   <url>
+    <loc>https://meandni.com/2019/01/11/jvm_note3/</loc>
+    <lastmod>2019-01-11T04:29:56.749Z</lastmod>
+    <data>
+        <display>
+        <title>《深入理解Java虚拟机》笔记3——7种垃圾收集器</title>
+        <pubTime>2019-01-11T03:50:40.000Z</pubTime>
+        
+        <tag>读书</tag>
+         
+        <tag>jvm</tag>
+         
+         
+           
+             
+              <breadCrumb title="整理" url="https://meandni.com/categories/%E6%95%B4%E7%90%86/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://meandni.com/2019/01/11/jvm_note2/</loc>
+    <lastmod>2019-01-11T04:29:35.966Z</lastmod>
+    <data>
+        <display>
+        <title>《深入理解java虚拟机》笔记2——GC算法与内存分配策略</title>
+        <pubTime>2019-01-11T03:16:01.000Z</pubTime>
+        
+        <tag>读书</tag>
+         
+        <tag>jvm</tag>
+         
+         
+           
+             
+              <breadCrumb title="整理" url="https://meandni.com/categories/%E6%95%B4%E7%90%86/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>https://meandni.com/2019/01/05/winter_vacation/</loc>
     <lastmod>2019-01-10T03:22:09.189Z</lastmod>
     <data>

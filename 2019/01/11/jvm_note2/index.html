@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>《深入理解java虚拟机》笔记2——GC算法与内存分配策略 | Joker&#39;s Blog | 个人分享博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="读书,jvm">
+    <meta name="description" content="说起垃圾收集（Garbage Collection, GC），想必大家都不陌生，它是JVM实现里非常重要的一环，JVM成熟的内存动态分配与回收技术使Java（当然还有其他运行在JVM上的语言，如Scala等）程序员在提升开发效率上获得了惊人的便利。理解GC，对于理解JVM和Java语言有着非常重要的作用。并且当我们需要排查各种内存溢出、内存泄漏问题时，当垃圾收集称为系统达到更高并发量的瓶颈时，只有">
+<meta name="keywords" content="读书,jvm">
+<meta property="og:type" content="article">
+<meta property="og:title" content="《深入理解java虚拟机》笔记2——GC算法与内存分配策略">
+<meta property="og:url" content="https://meandni.com/2019/01/11/jvm_note2/index.html">
+<meta property="og:site_name" content="Joker&#39;s Blog">
+<meta property="og:description" content="说起垃圾收集（Garbage Collection, GC），想必大家都不陌生，它是JVM实现里非常重要的一环，JVM成熟的内存动态分配与回收技术使Java（当然还有其他运行在JVM上的语言，如Scala等）程序员在提升开发效率上获得了惊人的便利。理解GC，对于理解JVM和Java语言有着非常重要的作用。并且当我们需要排查各种内存溢出、内存泄漏问题时，当垃圾收集称为系统达到更高并发量的瓶颈时，只有">
+<meta property="og:locale" content="Chinese">
+<meta property="og:image" content="https://pic.yupoo.com/crowhawk/5d0246eb/0635cbe8.png)">
+<meta property="og:image" content="https://pic.yupoo.com/crowhawk/5a3494ae/efc6204a.png">
+<meta property="og:image" content="https://pic.yupoo.com/crowhawk/62b8a3a8/f1cada8a.png">
+<meta property="og:image" content="https://pic.yupoo.com/crowhawk/d046244a/d3d3277f.png">
+<meta property="og:updated_time" content="2019-01-11T04:29:35.966Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="《深入理解java虚拟机》笔记2——GC算法与内存分配策略">
+<meta name="twitter:description" content="说起垃圾收集（Garbage Collection, GC），想必大家都不陌生，它是JVM实现里非常重要的一环，JVM成熟的内存动态分配与回收技术使Java（当然还有其他运行在JVM上的语言，如Scala等）程序员在提升开发效率上获得了惊人的便利。理解GC，对于理解JVM和Java语言有着非常重要的作用。并且当我们需要排查各种内存溢出、内存泄漏问题时，当垃圾收集称为系统达到更高并发量的瓶颈时，只有">
+<meta name="twitter:image" content="https://pic.yupoo.com/crowhawk/5d0246eb/0635cbe8.png)">
+    
+        <link rel="alternate" type="application/atom+xml" title="Joker&#39;s Blog" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Joker</h5>
+          <a href="mailto:yangjiakay@gmail.com" title="yangjiakay@gmail.com" class="mail">yangjiakay@gmail.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/MeandNi" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about"  >
+                <i class="icon icon-lg icon-link"></i>
+                AboutMe
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">《深入理解java虚拟机》笔记2——GC算法与内存分配策略</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="検索">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">《深入理解java虚拟机》笔记2——GC算法与内存分配策略</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-01-11T03:16:01.000Z" itemprop="datePublished" class="page-time">
+  2019-01-11
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/整理/">整理</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#对象已死吗？"><span class="post-toc-number">1.</span> <span class="post-toc-text">对象已死吗？</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#引用计数算法"><span class="post-toc-number">1.0.0.1.</span> <span class="post-toc-text">引用计数算法</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#可达性分析算法"><span class="post-toc-number">1.0.0.2.</span> <span class="post-toc-text">可达性分析算法</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#再谈引用"><span class="post-toc-number">1.0.0.3.</span> <span class="post-toc-text">再谈引用</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#强引用"><span class="post-toc-number">1.0.0.3.1.</span> <span class="post-toc-text">强引用</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#软引用"><span class="post-toc-number">1.0.0.3.2.</span> <span class="post-toc-text">软引用</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#弱引用"><span class="post-toc-number">1.0.0.3.3.</span> <span class="post-toc-text">弱引用</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#虚引用"><span class="post-toc-number">1.0.0.3.4.</span> <span class="post-toc-text">虚引用</span></a></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#两次标记与-finalize-方法"><span class="post-toc-number">1.0.0.4.</span> <span class="post-toc-text">两次标记与 finalize()方法</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#回收方法区"><span class="post-toc-number">1.0.0.5.</span> <span class="post-toc-text">回收方法区</span></a></li></ol></li></ol></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#垃圾收集算法"><span class="post-toc-number">2.</span> <span class="post-toc-text">垃圾收集算法</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#标记－清除（Mark-Sweep）算法"><span class="post-toc-number">2.0.0.1.</span> <span class="post-toc-text">标记－清除（Mark-Sweep）算法</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#复制（Copying）算法"><span class="post-toc-number">2.0.0.2.</span> <span class="post-toc-text">复制（Copying）算法</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#标记－整理（Mark-Compact）算法"><span class="post-toc-number">2.0.0.2.1.</span> <span class="post-toc-text">标记－整理（Mark-Compact）算法</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#分代收集（Generational-Collection）算法"><span class="post-toc-number">2.0.0.2.2.</span> <span class="post-toc-text">分代收集（Generational Collection）算法</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#HotSpot的算法实现"><span class="post-toc-number">3.</span> <span class="post-toc-text">HotSpot的算法实现</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#枚举根节点"><span class="post-toc-number">3.0.0.1.</span> <span class="post-toc-text">枚举根节点</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#安全点（Safepoint）——进行GC时程序停顿的位置"><span class="post-toc-number">3.0.0.2.</span> <span class="post-toc-text">安全点（Safepoint）——进行GC时程序停顿的位置</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#安全区域（Safe-Region）"><span class="post-toc-number">3.0.0.3.</span> <span class="post-toc-text">安全区域（Safe Region）</span></a></li></ol></li></ol></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#内存分配策略"><span class="post-toc-number">4.</span> <span class="post-toc-text">内存分配策略</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#对象优先在Eden区分配"><span class="post-toc-number">4.0.0.1.</span> <span class="post-toc-text">对象优先在Eden区分配</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#大对象直接进入老年代"><span class="post-toc-number">4.0.0.2.</span> <span class="post-toc-text">大对象直接进入老年代</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#长期存活的对象将进入老年代"><span class="post-toc-number">4.0.0.3.</span> <span class="post-toc-text">长期存活的对象将进入老年代</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#动态对象年龄判定"><span class="post-toc-number">4.0.0.4.</span> <span class="post-toc-text">动态对象年龄判定</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#空间分配担保"><span class="post-toc-number">4.0.0.5.</span> <span class="post-toc-text">空间分配担保</span></a></li></ol></li></ol></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Full-GC的触发条件"><span class="post-toc-number">5.</span> <span class="post-toc-text">Full GC的触发条件</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#调用System-gc"><span class="post-toc-number">5.0.0.1.</span> <span class="post-toc-text">调用System.gc()</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#老年代空间不足"><span class="post-toc-number">5.0.0.2.</span> <span class="post-toc-text">老年代空间不足</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#空间分配担保失败"><span class="post-toc-number">5.0.0.3.</span> <span class="post-toc-text">空间分配担保失败</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#JDK-1-7及以前的永久代空间不足"><span class="post-toc-number">5.0.0.4.</span> <span class="post-toc-text">JDK 1.7及以前的永久代空间不足</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Concurrent-Mode-Failure"><span class="post-toc-number">5.0.0.5.</span> <span class="post-toc-text">Concurrent Mode Failure</span></a></li></ol></li></ol></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#小结"><span class="post-toc-number">6.</span> <span class="post-toc-text">小结</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#参考资料"><span class="post-toc-number">7.</span> <span class="post-toc-text">参考资料</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-2019-01-11-jvm-note2"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">《深入理解java虚拟机》笔记2——GC算法与内存分配策略</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-01-11 11:16:01" datetime="2019-01-11T03:16:01.000Z"  itemprop="datePublished">2019-01-11</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/整理/">整理</a></li></ul>
+
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>说起<strong>垃圾收集（Garbage Collection, GC）</strong>，想必大家都不陌生，它是JVM实现里非常重要的一环，JVM成熟的内存动态分配与回收技术使Java（当然还有其他运行在JVM上的语言，如Scala等）程序员在提升开发效率上获得了惊人的便利。理解GC，对于理解JVM和Java语言有着非常重要的作用。并且当我们需要排查各种内存溢出、内存泄漏问题时，当垃圾收集称为系统达到更高并发量的瓶颈时，只有深入理解GC和内存分配，才能对这些“自动化”的技术实施必要的监控和调节。</p>
+<p>在Java的运行时数据区中，程序计数器、虚拟机栈、本地方法栈三个区域都是线程私有的，随线程而生，随线程而灭，在方法结束或线程结束时，内存自然就跟着回收了，不需要过多考虑回收的问题。而<strong>Java堆</strong>和<strong>方法区</strong>则不一样，一个接口中的多个实现类需要的内存可能不一样，一个方法中的多个分支需要的内存也可能不一样，我们只有在程序处于运行期间才能知道会创建哪些对象，这部分内存的分配和回收都是动态的，垃圾回收器关注的是这部分内存，后续讨论的“内存”分配回收也是指这一块，尤其需要注意。</p>
+<p>GC主要回答了以下三个问题：</p>
+<ul>
+<li>哪些内存需要回收？</li>
+<li>什么时候回收？</li>
+<li>如何回收？</li>
+</ul>
+<p>这三个问题的具体解决方案，也就是本文接下来要讲解的内容。</p>
+<h1 id="对象已死吗？"><a href="#对象已死吗？" class="headerlink" title="对象已死吗？"></a>对象已死吗？</h1><p>在堆里存放着Java世界中几乎所有的对象实例，垃圾收集器在对堆进行回收前，首要的就是确定这些对象中哪些还“存活”着，哪些已经“死去”（即不可能再被任何途径使用的对象）。</p>
+<h4 id="引用计数算法"><a href="#引用计数算法" class="headerlink" title="引用计数算法"></a>引用计数算法</h4><p>引用计数算法是在JVM中被摒弃的一种对象存活判定算法，不过它也有一些知名的应用场景（如Python、FlashPlayer），因此在这里也简单介绍一下。</p>
+<p>用引用计数器判断对象是否存活的过程是这样的：<strong>给对象中添加一个引用计数器，每当有一个地方引用它时，计数器加1；当引用失效时，计数器减1；任何时刻计数器为0的对象就是不可能再被使用的。</strong></p>
+<p>引用计数算法的实现简单，判定效率也很高，大部分情况下是一个不错的算法。它没有被JVM采用的原因是<strong>它很难解决对象之间循环引用的问题</strong>。例如以下例子：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * testGC()方法执行后，objA和objB会不会被GC呢？ </span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ReferenceCountingGC</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> Object instance = <span class="keyword">null</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> _1MB = <span class="number">1024</span> * <span class="number">1024</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 这个成员属性的唯一意义就是占点内存，以便在能在GC日志中看清楚是否有回收过</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">byte</span>[] bigSize = <span class="keyword">new</span> <span class="keyword">byte</span>[<span class="number">2</span> * _1MB];</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">testGC</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        ReferenceCountingGC objA = <span class="keyword">new</span> ReferenceCountingGC();</span><br><span class="line">        ReferenceCountingGC objB = <span class="keyword">new</span> ReferenceCountingGC();</span><br><span class="line">        objA.instance = objB;</span><br><span class="line">        objB.instance = objA;</span><br><span class="line"></span><br><span class="line">        objA = <span class="keyword">null</span>;</span><br><span class="line">        objB = <span class="keyword">null</span>;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 假设在这行发生GC，objA和objB是否能被回收？</span></span><br><span class="line">        System.gc();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在上面这段代码中，对象objA 和对象objB都有字段instance，赋值令<code>objA.instance = objB;</code>、<code>objB.instance = objA;</code>，除此之外，这两个对象再无引用。如果JVM采用引用计数算法来管理内存，<strong>这两个对象不可能再被访问，但是他们互相引用着对方，导致它们引用计数不为0，所以引用计数器无法通知GC收集器回收它们</strong>。</p>
+<p>而事实上执行这段代码，objA和objB是可以被回收的，下面一节将介绍JVM实际使用的存活判定算法。</p>
+<h4 id="可达性分析算法"><a href="#可达性分析算法" class="headerlink" title="可达性分析算法"></a>可达性分析算法</h4><p>在主流商用程序语言的实现中，都是通过<strong>可达性分析（tracing GC）</strong>来判定对象是否存活的。此算法的基本思路是：通过一系列的称为<strong>“GC Roots”</strong>的对象作为起点，从这些节点向下搜索，搜索所走过的路径称为<strong>引用链（Reference Chain）</strong>，当一个对象到GC Roots没有任何引用链相连（用图论的话来说，就是GC Roots 到这个对象不可达）时，则证明此对象时不可用的。用下图来加以说明：</p>
+<center><img src="https://pic.yupoo.com/crowhawk/5d0246eb/0635cbe8.png)"></center>
+
+<p>上图中，对象object 5、object 6、object 7虽然互有关联，但是它们到GC Roots是不可达的，所以它们将会被判定为是可回收的对象。</p>
+<p>可以看到，GC Roots在对象图之外，是特别定义的<strong>“起点”</strong>，不可能被对象图内的对象所引用。</p>
+<p>准确地说，<strong>GC Roots其实不是一组对象，而通常是一组特别管理的指向引用类型对象的指针</strong>，这些指针是tracing GC的trace的起点。它们不是对象图里的对象，对象也不可能引用到这些“外部”的指针，这也是tracing GC算法不会出现循环引用问题的基本保证。因此也容易得出，<strong>只有引用类型的变量才被认为是Roots，值类型的变量永远不被认为是Roots</strong>。只有深刻理解引用类型和值类型的内存分配和管理的不同，才能知道为什么root只能是引用类型。</p>
+<p>在Java中，可作为GC Roots的对象包括以下几种：</p>
+<ul>
+<li><strong>虚拟机栈（栈帧中的局部变量表，Local Variable Table）</strong>中引用的对象。</li>
+<li><strong>方法区中<em>类静态属性</em></strong>引用的对象。</li>
+<li><strong>方法区中<em>常量</em></strong>引用的对象。</li>
+<li><strong>本地方法栈中JNI（即一般说的Native方法）</strong>引用的对象。</li>
+</ul>
+<p>看到这里你可能要问，选择这些对象的依据是什么呢？</p>
+<p>可以概括得出，可作为GC Roots的节点主要在<strong>全局性的引用</strong>与<strong>执行上下文</strong>中。要明确的是，tracing gc必须<strong>以当前存活的对象集为Roots</strong>，因此必须选取确定存活的引用类型对象。GC管理的区域是Java堆，<strong>虚拟机栈</strong>、<strong>方法区</strong>和<strong>本地方法栈</strong>不被GC所管理，因此选用这些区域内引用的对象作为GC Roots，是<strong>不会被GC所回收</strong>的。其中虚拟机栈和本地方法栈都是线程私有的内存区域，只要线程没有终止，就能确保它们中引用的对象的存活。而方法区中类静态属性引用的对象是显然存活的。常量引用的对象在当前可能存活，因此，也可能是GC roots的一部分。</p>
+<h4 id="再谈引用"><a href="#再谈引用" class="headerlink" title="再谈引用"></a>再谈引用</h4><p>无论是通过引用计数算法判断对象的引用数量，还是通过可达性分析算法判断对象是否可达，判定对象是否可被回收都与引用有关。在JDK1.2之前，Java中的应用定义跟很传统，如若reference类型的数据引用了一块内存地址，则这块内存代表一个引用，这样一个对象仅有被引用或没有被引用两种状态，对于一些“<strong>食之无味，弃之可惜</strong>”的无法描述。</p>
+<p>JDK1.2之后，Java 提供了四种强度不同的引用类型。</p>
+<h5 id="强引用"><a href="#强引用" class="headerlink" title="强引用"></a>强引用</h5><p>被强引用关联的对象不会被回收。</p>
+<p>使用 new 一个新对象的方式来创建强引用。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Object obj = <span class="keyword">new</span> Object();</span><br></pre></td></tr></table></figure>
+<h5 id="软引用"><a href="#软引用" class="headerlink" title="软引用"></a>软引用</h5><p>被软引用关联的对象只有在内存不够的情况下才会被回收。</p>
+<p>使用 SoftReference 类来创建软引用。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Object obj = <span class="keyword">new</span> Object();</span><br><span class="line">SoftReference&lt;Object&gt; sf = <span class="keyword">new</span> SoftReference&lt;Object&gt;(obj);</span><br><span class="line">obj = <span class="keyword">null</span>;  <span class="comment">// 使对象只被软引用关联</span></span><br></pre></td></tr></table></figure>
+<h5 id="弱引用"><a href="#弱引用" class="headerlink" title="弱引用"></a>弱引用</h5><p>被弱引用关联的对象一定会被回收，也就是说它只能存活到下一次垃圾回收发生之前。</p>
+<p>使用 WeakReference 类来实现弱引用。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Object obj = <span class="keyword">new</span> Object();</span><br><span class="line">WeakReference&lt;Object&gt; wf = <span class="keyword">new</span> WeakReference&lt;Object&gt;(obj);</span><br><span class="line">obj = <span class="keyword">null</span>;</span><br></pre></td></tr></table></figure>
+<h5 id="虚引用"><a href="#虚引用" class="headerlink" title="虚引用"></a>虚引用</h5><p>又称为幽灵引用或者幻影引用。一个对象是否有虚引用的存在，完全不会对其生存时间构成影响，也无法通过虚引用取得一个对象。</p>
+<p>为一个对象设置虚引用关联的唯一目的就是能在这个对象被回收时收到一个系统通知。</p>
+<p>使用 PhantomReference 来实现虚引用。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Object obj = <span class="keyword">new</span> Object();</span><br><span class="line">PhantomReference&lt;Object&gt; pf = <span class="keyword">new</span> PhantomReference&lt;Object&gt;(obj);</span><br><span class="line">obj = <span class="keyword">null</span>;</span><br></pre></td></tr></table></figure>
+<h4 id="两次标记与-finalize-方法"><a href="#两次标记与-finalize-方法" class="headerlink" title="两次标记与 finalize()方法"></a>两次标记与 finalize()方法</h4><p>即使在可达性分析算法中不可达的对象，也不是一定会死亡的，它们暂时都处于<strong>“缓刑”</strong>阶段，要真正宣告一个对象“死亡”，至少要经历两次标记过程：</p>
+<p>如果对象在进行可达性分析后发现没有与 GC Roots相连接的引用链，那它将会被<strong>第一次标记</strong>并且进行一次筛选，筛选的条件是<strong>此对象是否有必要执行<code>finaliza()</code>方法</strong>。当对象没有覆盖<code>finaliza()</code>方法，或者<code>finaliza()</code>方法已经被虚拟机调用过，虚拟机将这两种情况都视为“没有必要执行”。</p>
+<p>如果这个对象被判定为有必要执行<code>finaliza()</code>方法，那么此对象将会放置在一个叫做 F-Queue 的队列中，并在稍后由一个虚拟机自动建立的、低优先级的Finalizer线程去执行它。这里所谓的“执行”是指虚拟机会触发此方法，但并不承诺会等待它运行结束，原因是：如果一个对象在<code>finaliza()</code>方法中执行缓慢，或者发生了死循环（更极端的情况），将很可能导致F-Queue 队列中的其它对象永久处于等待，甚至导致整个内存回收系统崩溃。</p>
+<p><code>finaliza()</code>方法是对象逃脱死亡命运的最后一次机会，稍后GC将对F-Queue 队列中的对象进行<strong>第二次小规模的标记</strong>。如果对象想在<code>finaliza()</code>方法中成功拯救自己，<strong>只要重新与引用链上的任何一个对象建立关联即可，例如把自己（this关键字）赋值给某个类变量或者对象的成员变量，这样在第二次标记时它将被移出“即将回收”的集合</strong>；如果对象这时候还没有逃脱，基本上它就真的被回收了。</p>
+<p>值得注意的是，如果代码中有两段一模一样的代码段，执行结果却是一次逃脱成功，一次失败。这是因为任何一个对象的<code>finalize()</code>方法都只会被系统调用一次，如果对象面临下一次回收，它的<code>finalize()</code>方法不会再被执行，因此第二次逃脱行动失败。</p>
+<p>需要说明的是，使用<code>finalize()</code>方法来“拯救”对象是不值得提倡的，因为它不是C/C++中的析构函数，而是Java刚诞生时为了使C/C++程序员更容易接受它所做的一个妥协。<strong>它的运行代价高昂，不确定性大，无法保证各个对象的调用顺序。</strong><code>finalize()</code>能做的工作，使用<code>try-finally</code>或者其它方法都更适合、及时，所以笔者建议大家可以忘掉此方法存在。</p>
+<h4 id="回收方法区"><a href="#回收方法区" class="headerlink" title="回收方法区"></a>回收方法区</h4><p>很多人认为方法区没有垃圾回收，Java虚拟机规范中确实说过不要求，而且在方法区中进行垃圾收集的“性价比”较低：在堆中，尤其是新生代，常规应用进行一次垃圾收集可以回收70%~95%的空间，而方法区的效率远低于此。在JDK 1.8中，JVM摒弃了永久代，用元空间来作为方法区的实现，下面介绍的将是元空间的垃圾回收。</p>
+<p>元空间的内存管理由<strong>元空间虚拟机</strong>来完成。先前，对于类的元数据我们需要不同的垃圾回收器进行处理，现在只需要执行元空间虚拟机的C++代码即可完成。<strong>在元空间中，类和其元数据的生命周期</strong>和<strong>其对应的类加载器</strong>是相同的。话句话说，<strong>只要类加载器存活，其加载的类的元数据也是存活的</strong>，因而不会被回收掉。</p>
+<p>我们从行文到现在提到的元空间稍微有点不严谨。准确的来说，<strong>每一个<em>类加载器的存储区域</em>都称作一个元空间，所有的元空间合在一起就是我们一直说的元空间。</strong>当一个类加载器被垃圾回收器标记为不再存活，其对应的元空间会被回收。在元空间的回收过程中没有重定位和压缩等操作。但是元空间内的元数据会进行扫描来确定Java引用。</p>
+<h1 id="垃圾收集算法"><a href="#垃圾收集算法" class="headerlink" title="垃圾收集算法"></a>垃圾收集算法</h1><p>本节将介绍几种垃圾收集算法的思想及其发展过程，具体的实现将在稍后介绍。</p>
+<h4 id="标记－清除（Mark-Sweep）算法"><a href="#标记－清除（Mark-Sweep）算法" class="headerlink" title="标记－清除（Mark-Sweep）算法"></a>标记－清除（Mark-Sweep）算法</h4><p><strong>标记－清除（Mark-Sweep）</strong>算法是最基础的垃圾收集算法，后续的收集算法都是基于它的思路并对其不足进行改进而得到的。顾名思义，算法分成“标记”、“清除”两个阶段：首先标记出所有需要回收的对象，在标记完成后统一回收所有被标记的对象，标记过程在前一节讲述对象标记判定时已经讲过了。</p>
+<p>标记－清除算法的不足主要有以下两点：</p>
+<ul>
+<li><strong>空间问题</strong>，标记清除之后会产生大量不连续的<strong>内存碎片</strong>，空间碎片太多可能会导致以后在程序运行过程中需要分配较大对象时，无法找到足够的连续内存而不得不触发另一次垃圾收集动作。</li>
+<li><strong>效率问题</strong>，因为内存碎片的存在，操作会变得更加费时，因为查找下一个可用空闲块已不再是一个简单操作。</li>
+</ul>
+<p>标记－清除算法的执行过程如下图所示：</p>
+<center><img src="https://pic.yupoo.com/crowhawk/5a3494ae/efc6204a.png"></center>
+
+<h4 id="复制（Copying）算法"><a href="#复制（Copying）算法" class="headerlink" title="复制（Copying）算法"></a>复制（Copying）算法</h4><p>为了解决标记-清除算法的效率问题，一种称为<strong>“复制”（Copying）</strong>的收集算法出现了，思想为：它<strong>将可用内存按容量分成大小相等的两块</strong>，每次只使用其中的一块。<strong>当这一块内存用完，就将还存活着的对象复制到另一块上面</strong>，然后再把已使用过的内存空间一次清理掉。</p>
+<p>这样做使得<strong>每次都是对整个半区进行内存回收</strong>，内存分配时也就<strong>不用考虑内存碎片</strong>等复杂情况，只要<strong>移动堆顶指针，按顺序分配内存</strong>即可，实现简单，运行高效。只是这种算法的代价是<strong>将内存缩小为原来的一半</strong>，代价可能过高了。复制算法的执行过程如下图所示：</p>
+<center><img src="https://pic.yupoo.com/crowhawk/62b8a3a8/f1cada8a.png"></center>
+
+<big><strong>Minor GC与复制算法</strong></big>
+
+<p><strong>现在的商业虚拟机都使用复制算法来回收新生代。</strong>新生代的GC又叫<strong>“Minor GC”</strong>，IBM公司的专门研究表明：新生代中的对象98%是<strong>“朝生夕死”</strong>的，所以Minor GC非常频繁，一般回收速度也比较快，同时<strong>“朝生夕死”</strong>的特性也使得Minor GC使用复制算法时不需要按照1:1的比例来划分新生代内存空间。</p>
+<big><strong>Minor GC过程</strong></big>
+
+<p>事实上，新生代将内存分为<strong>一块较大的Eden空间</strong>和<strong>两块较小的Survivor空间（From Survivor和To Survivor）</strong>，<strong>每次Minor GC都使用Eden和From Survivor</strong>，当回收时，<strong>将Eden和From Survivor中还存活着的对象都一次性地复制到另外一块To Survivor空间上</strong>，最后清理掉Eden和刚使用的Survivor空间。<strong>一次Minor GC结束的时候</strong>，<strong>Eden</strong>空间和<strong>From Survivor</strong>空间都是空的，而<strong>To Survivor</strong>空间里面存储着存活的对象。<strong>在下次MinorGC的时候</strong>，两个Survivor空间交换他们的标签，现在是空的<strong>“From” Survivor</strong>标记成为<strong>“To”</strong>，<strong>“To” Survivor</strong>标记为<strong>“From”</strong>。因此，在MinorGC结束的时候，Eden空间是空的，两个Survivor空间中的一个是空的，而另一个存储着存活的对象。</p>
+<p>HotSpot虚拟机默认的<strong>Eden : Survivor</strong>的比例是<strong>8 : 1</strong>，由于一共有两块Survivor，所以<strong>每次新生代中可用内存空间为整个新生代容量的90%（80%＋10%）</strong>，只有10%的容量会被“浪费”。</p>
+<big><strong>分配担保</strong></big>
+
+<p>上文说的98%的对象可回收只是一般场景下的数据，我们没有办法保证每次回收都只有不多于10%的对象存活，<strong>当Survivor空间不够用时</strong>，需要依赖<strong>老年代内存</strong>进行<strong>分配担保（Handle Promotion）</strong>。如果另外一块Survivor上没有足够空间存放上一次新生代收集下来的存活对象，这些对象将直接通过分配担保机制进入老年代。</p>
+<h5 id="标记－整理（Mark-Compact）算法"><a href="#标记－整理（Mark-Compact）算法" class="headerlink" title="标记－整理（Mark-Compact）算法"></a>标记－整理（Mark-Compact）算法</h5><p>复制算法在对象存活率较高时要进行较多的复制操作，效率将会变低。更关键的是：如果不想浪费50%的空间，就需要有额外的空间进行分配担保，以应对被使用的内存中所有对象都100%存活的极端情况，所以在<strong>老年代一般不能直接选用复制算法</strong>。</p>
+<p>根据老年代的特点，<strong>标记－整理（Mark-Compact）</strong>算法被提出来，主要思想为：此算法的标记过程与<strong>标记－清除</strong>算法一样，但后续步骤不是直接对可回收对象进行清理，而是<strong>让所有存活的对象都向一端移动，然后直接清理掉边界以外的内存。</strong>具体示意图如下所示：</p>
+<center><img src="https://pic.yupoo.com/crowhawk/d046244a/d3d3277f.png"></center>
+
+<h5 id="分代收集（Generational-Collection）算法"><a href="#分代收集（Generational-Collection）算法" class="headerlink" title="分代收集（Generational Collection）算法"></a>分代收集（Generational Collection）算法</h5><p>当前商业虚拟机的垃圾收集都采用<strong>分代收集（Generational Collection）算法</strong>，此算法相较于前几种没有什么新的特征，主要思想为：根据对象存活周期的不同将内存划分为几块，一般是把Java堆分为新生代和老年代，这样就可以根据各个年代的特点采用最适合的收集算法：</p>
+<ul>
+<li><strong>新生代</strong><br>在新生代中，每次垃圾收集时都发现有大批对象死去，只有少量存活，那就选用<strong>复制算法</strong>，只需要付出少量存活对象的复制成本就可以完成收集。</li>
+<li><strong>老年代</strong><br>在老年代中，因为对象存活率高、没有额外空间对它进行分配担保，就必须使用<strong>“标记-清除”</strong>或<strong>“标记-整理”</strong>算法来进行回收。</li>
+</ul>
+<h1 id="HotSpot的算法实现"><a href="#HotSpot的算法实现" class="headerlink" title="HotSpot的算法实现"></a>HotSpot的算法实现</h1><p>前面两大节主要从理论上介绍了对象存活判定算法和垃圾收集算法，而在HotSpot虚拟机上实现这些算法时，必须对算法的执行效率有严格的考量，才能保证虚拟机高效运行。</p>
+<h4 id="枚举根节点"><a href="#枚举根节点" class="headerlink" title="枚举根节点"></a>枚举根节点</h4><p>从可达性分析中<strong>从GC Roots节点找引用链</strong>这个操作为例，可作为GC Roots的节点主要在<strong>全局性的引用</strong>（例如常量或类静态属性）与<strong>执行上下文</strong>（例如栈帧中的局部变量表）中，现在很多应用仅仅方法区就有数百兆，如果要逐个检查这里面的引用，那么必然会消耗很多时间。</p>
+<big><strong>GC停顿（”Stop The World”）</strong></big>
+
+<p>另外，可达性分析工作必须在一个<strong>能确保一致性的快照</strong>中进行——这里<strong>“一致性”</strong>的意思是指<strong>在整个分析期间整个执行系统看起来就像被冻结在某个时间点上</strong>，不可以出现分析过程中对象引用关系还在不断变化的情况，这是保证分析结果准确性的基础。这点是导致GC进行时必须<strong>停顿所有Java执行线程</strong>（Sun将这件事情称为<strong>“Stop The World”</strong>）的其中一个重要原因，即使是在号称（几乎）不会发生停顿的CMS收集器中，枚举根节点时也是必须要停顿的。</p>
+<big><strong>准确式GC与OopMap</strong></big>
+
+<p>由于目前的主流Java虚拟机使用的都是<strong>准确式GC（即使用准确式内存管理，虚拟机可用知道内存中某个位置的数据具体是什么类型）</strong>，所以当执行系统停顿下来后，并不需要一个不漏地检查完所有执行上下文和全局的引用位置，虚拟机应当是有办法直接得知哪些地方存放着对象引用。在HotSpot的实现中，是使用一组称为<strong>OopMap</strong>的数据结构来达到这个目的的，在类加载完成的时候，HotSpot就把<strong>对象内什么偏移量上是什么类型的数据</strong>计算出来，在JIT编译过程中，也会在特定的位置记录下<strong>栈和寄存器中哪些位置是引用</strong>。这样，GC在扫描时就可以直接得知这些信息了。</p>
+<h4 id="安全点（Safepoint）——进行GC时程序停顿的位置"><a href="#安全点（Safepoint）——进行GC时程序停顿的位置" class="headerlink" title="安全点（Safepoint）——进行GC时程序停顿的位置"></a>安全点（Safepoint）——进行GC时程序停顿的位置</h4><p>在OopMap的协助下，HotSpot可以快速且准确地完成GC Roots枚举，但一个很现实的问题随之而来：可能导致引用关系变化，或者说OopMap内容变化的指令非常多，<strong>如果为每一条指令都生成对应的OopMap，那将会需要大量的额外空间，这样GC的空间成本将会变得很高。</strong></p>
+<p>为此，HotSpot选择不为每条指令都生成OopMap，而是只在“特定的位置”记录这些信息，这些位置便被称为<strong>安全点（Safepoint）</strong>。也就是说，<strong>程序执行时并非在所有地方都能停顿下来开始GC，只有在到达安全点时才能暂停</strong>。Safepoint的选定既不能太少以致于让GC等待时间太长，也不能过于频繁以致于过分增大运行时的负荷。所以，安全点的选定基本上是以程序<strong>“是否具有让程序长时间执行的特征”</strong>为标准进行选定的——因为每条指令执行的时间都非常短暂，程序不太可能因为指令流长度太长这个原因而过长时间运行，“长时间执行”的最明显特征就是<strong>指令序列复用</strong>，例如<strong>方法调用</strong>、<strong>循环跳转</strong>、<strong>异常跳转</strong>等，所以具有这些功能的指令才会产生Safepoint。</p>
+<p>对于Sefepoint，另一个需要考虑的问题是如何<strong>在GC发生时让所有线程（这里不包括执行JNI调用的线程）都“跑”到最近的安全点上再停顿下来</strong>。这里有两种方案可供选择：</p>
+<ul>
+<li><strong>抢先式中断（Preemptive Suspension）</strong><br>抢先式中断不需要线程的执行代码主动去配合，<strong>在GC发生时，首先把所有线程全部中断，如果发现有线程中断的地方不在安全点上，就恢复线程，让它“跑”到安全点上。</strong>现在几乎没有虚拟机实现采用抢先式中断来暂停线程从而响应GC事件。</li>
+<li><strong>主动式中断（Voluntary Suspension）</strong>：<br>主动式中断的思想是当GC需要中断线程的时候，不直接对线程操作，仅仅简单地<strong>设置一个标志</strong>，各个线程执行时主动去轮询这个标志，发现中断标志为真时就自己中断挂起。<strong>轮询标志的地方和安全点是重合的</strong>，另外<strong>再加上创建对象需要分配内存的地方</strong>。</li>
+</ul>
+<h4 id="安全区域（Safe-Region）"><a href="#安全区域（Safe-Region）" class="headerlink" title="安全区域（Safe Region）"></a>安全区域（Safe Region）</h4><p><strong>Safepoint</strong>机制保证了<strong>程序执行时</strong>，在不太长的时间内就会遇到可进入GC的Safepoint。但是，<strong>程序“不执行”的时候（如线程处于Sleep状态或Blocked状态）</strong>，这时线程无法响应JVM的中断请求，“走到”安全的地方去中断挂起，这时候就需要<strong>安全区域（Safe Region）</strong>来解决。</p>
+<p>安全区域是指<strong>在一段代码片段之中，引用关系不会发生变化。在这个区域中的任意地方开始GC都是安全的。</strong>我们也可以把Safe Region看做是被扩展了的Safepoint。</p>
+<p>在线程执行到Safe Region中的代码时，首先<strong>标识自己已经进入了Safe Region</strong>，那样，当在这段时间里JVM要发起GC时，就不用管标识自己为Safe Region状态的线程了。<strong>在线程要离开Safe Region时，它要检查系统是否已经完成了根节点枚举（或者是整个GC过程）</strong>，如果完成了，那线程就继续执行，否则它就必须等待直到收到可以安全离开Safe Region的信号为止。</p>
+<h1 id="内存分配策略"><a href="#内存分配策略" class="headerlink" title="内存分配策略"></a>内存分配策略</h1><p>Java的自动内存管理最终可以归结为自动化地解决了两个问题：</p>
+<ul>
+<li><strong>给对象分配内存</strong></li>
+<li><strong>回收分配给对象的内存</strong></li>
+</ul>
+<p>对象的内存分配通常是在堆上分配（除此以外还有可能经过JIT编译后被拆散为标量类型并间接地栈上分配），对象主要分配在新生代的Eden区上，如果启动了本地线程分配缓冲，将按线程优先在TLAB上分配。少数情况下也可能会直接分配在老年代中，分配的规则并不是固定的，实际取决于垃圾收集器的具体组合以及虚拟机中与内存相关的参数的设置。至于内存回收策略，在上文已经描述得很详尽了。</p>
+<p>下面以使用Serial/Serial Old收集器（将在下一篇文章中讲解）为例，介绍内存分配的策略。</p>
+<h4 id="对象优先在Eden区分配"><a href="#对象优先在Eden区分配" class="headerlink" title="对象优先在Eden区分配"></a>对象优先在Eden区分配</h4><p>大多数情况下，对象在新生代的Eden区中分配。<strong>当Eden区没有足够空间进行分配时，虚拟机将发起一次Minor GC。</strong></p>
+<h4 id="大对象直接进入老年代"><a href="#大对象直接进入老年代" class="headerlink" title="大对象直接进入老年代"></a>大对象直接进入老年代</h4><p>所谓的大对象是指，需要大量连续内存空间的Java对象，最典型的大对象就是很长的字符串以及数组。大对象对虚拟机的内存分配来说是一个坏消息（尤其是遇到朝生夕灭的“短命大对象”，写程序时应避免），<strong>经常出现大对象容易导致内存还有不少空间时就提前触发GC以获取足够的连续空间来安置它们</strong>。</p>
+<p>虚拟机提供了一个<strong>-XX:PretenureSizeThreshold</strong>参数，令大于这个设置值的对象直接在老年代分配。这样做的目的是<strong>避免在Eden区及两个Survivor区之间发生大量的内存复制</strong>（新生代采用复制算法回收内存）。</p>
+<h4 id="长期存活的对象将进入老年代"><a href="#长期存活的对象将进入老年代" class="headerlink" title="长期存活的对象将进入老年代"></a>长期存活的对象将进入老年代</h4><p>既然虚拟机采用了分代收集的思想来管理内存，那么内存回收时就必须能识别哪些对象应放在新生代，哪些对象应放在老年代中。为了做到这点，虚拟机给每个对象定义了一个<strong>对象年龄（Age）计数器</strong>。<strong>如果对象在Eden出生并经过第一次Minor GC后仍然存活，并且能被Survivor容纳的话，将被移动到Survivor空间中，并且对象年龄设为1。对象在Survivor区中每“熬过”一次Minor GC，年龄就增加1岁，当它的年龄增加到一定程度（默认为15岁），就将会被晋升到老年代中。</strong>对象晋升老年代的年龄阈值，可以通过参数<strong>-XX:MaxTenuringThreshold</strong>设置。</p>
+<h4 id="动态对象年龄判定"><a href="#动态对象年龄判定" class="headerlink" title="动态对象年龄判定"></a>动态对象年龄判定</h4><p>为了能更好地适应不同程序的内存状况，虚拟机并不是永远地要求对象的年龄必须达到了<strong>MaxTenuringThreshold</strong>才能晋升老年代，<strong>如果在Survivor空间中相同年龄所有对象大小的总和大于Survivor空间的一半，年龄大于或等于该年龄的对象就可以直接进入老年代</strong>，无须等到<strong>MaxTenuringThreshold</strong>中要求的年龄。</p>
+<h4 id="空间分配担保"><a href="#空间分配担保" class="headerlink" title="空间分配担保"></a>空间分配担保</h4><p><strong>在发生Minor GC之前</strong>，虚拟机会先检查老年代最大可用的连续空间是否大于新生代所有对象总空间，如果这个条件成立，那么Minor GC可以确保是安全的。如果不成立，则虚拟机会查看<strong>HandlePromotionFailure</strong>设置值是否允许担保失败。如果允许，那么会继续检查老年代最大可用的连续空间是否大于历次晋升到老年代对象的平均大小，如果大于，将尝试着进行一次Minor GC，尽管这次Minor GC是有风险的；如果小于，或者<strong>HandlePromotionFailure</strong>设置不允许冒险，那这时也要改为进行一次<strong>Full GC</strong>。</p>
+<p>前面提到过，新生代使用复制收集算法，但为了内存利用率，只使用其中一个Survivor空间来作为轮换备份，因此<strong>当出现大量对象在Minor GC后仍然存活的情况（最极端的情况就是内存回收后新生代中所有对象都存活），就需要老年代进行分配担保，把Survivor无法容纳的对象直接进入老年代。</strong>与生活中的贷款担保类似，老年代要进行这样的担保，前提是老年代本身还有容纳这些对象的剩余空间，一共有多少对象会活下来在实际完成内存回收之前是无法明确知道的，所以只好取之前每一次回收晋升到老年代对象容量的平均大小值作为经验值，与老年代的剩余空间进行比较，决定是否进行Full GC来让老年代腾出更多空间。</p>
+<p>取平均值进行比较其实仍然是一种动态概率的手段，也就是说，如果某次Minor GC存活后的对象突增，远远高于平均值的话，依然会导致<strong>担保失败（Handle Promotion Failure）</strong>。如果出现了<strong>HandlePromotionFailure</strong>失败，那就只好在失败后重新发起一次Full GC。虽然担保失败时绕的圈子是最大的，但大部分情况下都还是会将<strong>HandlePromotionFailure</strong>开关打开，避免Full GC过于频繁。</p>
+<h1 id="Full-GC的触发条件"><a href="#Full-GC的触发条件" class="headerlink" title="Full GC的触发条件"></a>Full GC的触发条件</h1><p>对于Minor GC，其触发条件非常简单，当Eden区空间满时，就将触发一次Minor GC。而Full GC则相对复杂，因此本节我们主要介绍Full GC的触发条件。</p>
+<h4 id="调用System-gc"><a href="#调用System-gc" class="headerlink" title="调用System.gc()"></a>调用System.gc()</h4><p>此方法的调用是建议JVM进行Full GC,虽然只是建议而非一定,但很多情况下它会触发 Full GC,从而增加Full GC的频率,也即增加了间歇性停顿的次数。因此强烈建议能不使用此方法就不要使用，让虚拟机自己去管理它的内存，可通过<strong>-XX:+ DisableExplicitGC</strong>来禁止RMI调用System.gc()。</p>
+<h4 id="老年代空间不足"><a href="#老年代空间不足" class="headerlink" title="老年代空间不足"></a>老年代空间不足</h4><p>老年代空间不足的常见场景为前文所讲的<strong>大对象直接进入老年代</strong>、<strong>长期存活的对象进入老年代</strong>等，当执行Full GC后空间仍然不足，则抛出如下错误：<br><code>Java.lang.OutOfMemoryError: Java heap space</code><br>为避免以上两种状况引起的Full GC，调优时应尽量做到让对象在Minor GC阶段被回收、让对象在新生代多存活一段时间及不要创建过大的对象及数组。</p>
+<h4 id="空间分配担保失败"><a href="#空间分配担保失败" class="headerlink" title="空间分配担保失败"></a>空间分配担保失败</h4><p>前文介绍过，使用复制算法的Minor GC需要老年代的内存空间作担保，如果出现了<strong>HandlePromotionFailure</strong>担保失败，则会触发Full GC。</p>
+<h4 id="JDK-1-7及以前的永久代空间不足"><a href="#JDK-1-7及以前的永久代空间不足" class="headerlink" title="JDK 1.7及以前的永久代空间不足"></a>JDK 1.7及以前的永久代空间不足</h4><p>在JDK 1.7及以前，HotSpot虚拟机中的方法区是用永久代实现的，永久代中存放的为一些class的信息、常量、静态变量等数据，当系统中要加载的类、反射的类和调用的方法较多时，Permanet Generation可能会被占满，在未配置为采用CMS GC的情况下也会执行Full GC。如果经过Full GC仍然回收不了，那么JVM会抛出如下错误信息：<br><code>java.lang.OutOfMemoryError: PermGen space</code><br>为避免PermGen占满造成Full GC现象，可采用的方法为增大PermGen空间或转为使用CMS GC。</p>
+<p>在JDK 1.8中用元空间替换了永久代作为方法区的实现，元空间是本地内存，因此减少了一种Full GC触发的可能性。</p>
+<h4 id="Concurrent-Mode-Failure"><a href="#Concurrent-Mode-Failure" class="headerlink" title="Concurrent Mode Failure"></a>Concurrent Mode Failure</h4><p>执行CMS GC的过程中同时有对象要放入老年代，而此时老年代空间不足（有时候“空间不足”是CMS GC时当前的浮动垃圾过多导致暂时性的空间不足触发Full GC），便会报<code>Concurrent Mode Failure</code>错误，并触发Full GC。</p>
+<h1 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h1><p>本文简要地介绍了HotSpot虚拟机如何去发起内存回收的问题，也解答了文章开头提出的三个问题中的前两个——“哪些内存需要回收”和“何时回收”，同时对于第三个问题——“如何回收”，在原理层面作出了解答。在下一篇文章中，笔者将通过介绍几种具体的垃圾收集器，来更深入地回答第三个问题。</p>
+<h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><ul>
+<li><a href="https://book.douban.com/subject/24722612/" target="_blank" rel="noopener">《深入理解Java虚拟机——JVM高级特性与最佳实践》－周志明</a></li>
+<li><a href="https://github.com/CyC2018/CS-Notes/blob/master/docs/notes/Java%20%E8%99%9A%E6%8B%9F%E6%9C%BA.md" target="_blank" rel="noopener">CS-Note——Java：java虚拟机</a></li>
+<li><a href="https://www.ibm.com/developerworks/cn/java/j-lo-JVMGarbageCollection/index.html" target="_blank" rel="noopener">JVM 垃圾回收器工作原理及使用实例介绍</a></li>
+</ul>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最終更新：<time datetime="2019-01-11T04:29:35.966Z" itemprop="dateUpdated">2019-01-11 12:29:35</time>
+</span><br>
+
+
+        
+    </div>
+    
+    <footer>
+        <a href="https://meandni.com">
+            <img src="/img/avatar.jpg" alt="Joker">
+            Joker
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/jvm/">jvm</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/读书/">读书</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://meandni.com/2019/01/11/jvm_note2/&title=《《深入理解java虚拟机》笔记2——GC算法与内存分配策略》 — Joker's Blog&pic=https://meandni.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://meandni.com/2019/01/11/jvm_note2/&title=《《深入理解java虚拟机》笔记2——GC算法与内存分配策略》 — Joker's Blog&source=分享生活、技术、学习心得" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://meandni.com/2019/01/11/jvm_note2/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《《深入理解java虚拟机》笔记2——GC算法与内存分配策略》 — Joker's Blog&url=https://meandni.com/2019/01/11/jvm_note2/&via=https://meandni.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://meandni.com/2019/01/11/jvm_note2/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2019/01/11/jvm_note3/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">《深入理解Java虚拟机》笔记3——7种垃圾收集器</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2019/01/10/jvm_note1/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">《深入理解java虚拟机》笔记1——Java内存区域与Java对象</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        感谢打赏~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat.png" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/wechat.png" data-alipay="/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>このブログの内容物は<a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.ja">クリエイティブ・コモンズ 表示 - 非営利 - 継承 4.0 国際ライセンスの下に提供されています</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Joker &copy; 2018 - 2019</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://meandni.com/2019/01/11/jvm_note2/&title=《《深入理解java虚拟机》笔记2——GC算法与内存分配策略》 — Joker's Blog&pic=https://meandni.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://meandni.com/2019/01/11/jvm_note2/&title=《《深入理解java虚拟机》笔记2——GC算法与内存分配策略》 — Joker's Blog&source=分享生活、技术、学习心得" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://meandni.com/2019/01/11/jvm_note2/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《《深入理解java虚拟机》笔记2——GC算法与内存分配策略》 — Joker's Blog&url=https://meandni.com/2019/01/11/jvm_note2/&via=https://meandni.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://meandni.com/2019/01/11/jvm_note2/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAACuCAAAAACKZ2kyAAAByUlEQVR42u3aS27DMAwFwNz/0um2QGHlkbTkFBitAiORJl4Q/Oj1itf7z/r9/Oqb+ZObFy4u7pj7Xq7kgPXzq33Wzy9PxMXFPchdIxLQ1ffz1xG9CFxc3K/kVv9GdU9cXNz/yO0dn5RDuLi438btpSC9v32oVsPFxR1w8y7lvs9b+ru4uLgt7ru4qr/K26bRbri4uEe41fRlXdLcVVB9OBcXF3czt9f6TEJSr0xaF0i4uLhnuOstqoOQHDGpZXBxcXdz81ZmHtTy9KjcQMHFxX2I2+tVVhOU3m64uLhnuL2BaC/ATV5NYcKDi4s75lZbITl9khJFcRcXF3cbd93+6LVBJwVSFPhwcXGPcKtBJ7lsMblhFRU/uLi4R7jVgWgvPaqeWIDi4uLeyu0lNPmYpBfmPhQ/uLi4R7jVw+YXtvLnuLi4T3Hzy1V5GVPOp5Jgh4uLu5lbvjTZSmt6Q1xcXNynuNXgMglY+Wh21DDFxcW9iZsHr16jpHq588PrwMXFPcjNRxq9KxS9hmlztoOLi/sQNwk9SRrUrNhwcXG/jDsvcqq11yjFwcXFHXDzJml1ONorqApDVlxc3A3cSXi6K9hVWyq4uLjbuD+m4ewLBhPFsQAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
