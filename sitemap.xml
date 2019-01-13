@@ -2,16 +2,44 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://meandni.com/2019/01/11/jvm_note3/</loc>
+    <loc>https://meandni.com/2019/01/12/flutter-practice2/</loc>
     
-    <lastmod>2019-01-11T04:29:56.749Z</lastmod>
+    <lastmod>2019-01-13T11:02:11.117Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://meandni.com/2019/01/04/flutter-practice1/</loc>
+    
+    <lastmod>2019-01-13T10:51:13.683Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://meandni.com/2018/03/01/d010/</loc>
+    
+    <lastmod>2019-01-12T04:04:18.275Z</lastmod>
     
   </url>
   
   <url>
     <loc>https://meandni.com/2019/01/11/jvm_note2/</loc>
     
-    <lastmod>2019-01-11T04:29:35.966Z</lastmod>
+    <lastmod>2019-01-11T04:34:28.268Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://meandni.com/2019/01/11/jvm_note3/</loc>
+    
+    <lastmod>2019-01-11T04:32:37.847Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://meandni.com/2019/01/10/jvm_note1/</loc>
+    
+    <lastmod>2019-01-11T04:32:18.840Z</lastmod>
     
   </url>
   
@@ -23,23 +51,9 @@
   </url>
   
   <url>
-    <loc>https://meandni.com/2019/01/10/jvm_note1/</loc>
-    
-    <lastmod>2019-01-10T03:20:30.652Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://meandni.com/about/index.html</loc>
     
     <lastmod>2019-01-05T10:10:59.309Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://meandni.com/2019/01/04/2105/</loc>
-    
-    <lastmod>2019-01-05T09:33:58.687Z</lastmod>
     
   </url>
   
@@ -117,13 +131,6 @@
     <loc>https://meandni.com/2018/04/16/2c96/</loc>
     
     <lastmod>2019-01-03T13:47:29.653Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://meandni.com/2018/03/01/d010/</loc>
-    
-    <lastmod>2019-01-03T13:46:29.065Z</lastmod>
     
   </url>
   

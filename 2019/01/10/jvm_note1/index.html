@@ -21,13 +21,13 @@
     
     
     <meta name="keywords" content="读书,jvm">
-    <meta name="description" content="2019大三的寒假计划——利用在公司每天早起的时间读书，第一本是周志明老师的《深入理解Java虚拟机——JVM高级特性与最佳实践》，通过对原文的拜读与自己理解加上网络上的资料文章整理出的读书笔记。  运行时数据区域JVM载执行Java程序的过程中会把它所管理的内存划分为若干个不同的数据区域。这些区域都有各自的用途，以及创建和销毁的时间，有的区域随着虚拟机进程的启动而存在，有些区域则是依赖用户线程">
+    <meta name="description" content="2019大三的寒假计划——利用在公司每天早起的时间读书，第一本是周志明老师的《深入理解Java虚拟机——JVM高级特性与最佳实践》，这一系列是通过对原文的拜读与自己理解加上网络上的资料文章整理出的读书笔记。  运行时数据区域JVM载执行Java程序的过程中会把它所管理的内存划分为若干个不同的数据区域。这些区域都有各自的用途，以及创建和销毁的时间，有的区域随着虚拟机进程的启动而存在，有些区域则是依">
 <meta name="keywords" content="读书,jvm">
 <meta property="og:type" content="article">
 <meta property="og:title" content="《深入理解java虚拟机》笔记1——Java内存区域与Java对象">
 <meta property="og:url" content="https://meandni.com/2019/01/10/jvm_note1/index.html">
 <meta property="og:site_name" content="Joker&#39;s Blog">
-<meta property="og:description" content="2019大三的寒假计划——利用在公司每天早起的时间读书，第一本是周志明老师的《深入理解Java虚拟机——JVM高级特性与最佳实践》，通过对原文的拜读与自己理解加上网络上的资料文章整理出的读书笔记。  运行时数据区域JVM载执行Java程序的过程中会把它所管理的内存划分为若干个不同的数据区域。这些区域都有各自的用途，以及创建和销毁的时间，有的区域随着虚拟机进程的启动而存在，有些区域则是依赖用户线程">
+<meta property="og:description" content="2019大三的寒假计划——利用在公司每天早起的时间读书，第一本是周志明老师的《深入理解Java虚拟机——JVM高级特性与最佳实践》，这一系列是通过对原文的拜读与自己理解加上网络上的资料文章整理出的读书笔记。  运行时数据区域JVM载执行Java程序的过程中会把它所管理的内存划分为若干个不同的数据区域。这些区域都有各自的用途，以及创建和销毁的时间，有的区域随着虚拟机进程的启动而存在，有些区域则是依">
 <meta property="og:locale" content="Chinese">
 <meta property="og:image" content="https://pic.yupoo.com/crowhawk/3d24df02/776c8d55.png">
 <meta property="og:image" content="https://pic.yupoo.com/crowhawk/5cf46998/fe5079d3.png">
@@ -35,10 +35,10 @@
 <meta property="og:image" content="https://pic.yupoo.com/crowhawk/4f006175/8be38542.png">
 <meta property="og:image" content="https://pic.yupoo.com/crowhawk/af3c02ef/bfd967c5.png">
 <meta property="og:image" content="https://pic.yupoo.com/crowhawk/5c1acdb8/f5086a4d.png">
-<meta property="og:updated_time" content="2019-01-10T03:20:30.652Z">
+<meta property="og:updated_time" content="2019-01-11T04:32:18.840Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="《深入理解java虚拟机》笔记1——Java内存区域与Java对象">
-<meta name="twitter:description" content="2019大三的寒假计划——利用在公司每天早起的时间读书，第一本是周志明老师的《深入理解Java虚拟机——JVM高级特性与最佳实践》，通过对原文的拜读与自己理解加上网络上的资料文章整理出的读书笔记。  运行时数据区域JVM载执行Java程序的过程中会把它所管理的内存划分为若干个不同的数据区域。这些区域都有各自的用途，以及创建和销毁的时间，有的区域随着虚拟机进程的启动而存在，有些区域则是依赖用户线程">
+<meta name="twitter:description" content="2019大三的寒假计划——利用在公司每天早起的时间读书，第一本是周志明老师的《深入理解Java虚拟机——JVM高级特性与最佳实践》，这一系列是通过对原文的拜读与自己理解加上网络上的资料文章整理出的读书笔记。  运行时数据区域JVM载执行Java程序的过程中会把它所管理的内存划分为若干个不同的数据区域。这些区域都有各自的用途，以及创建和销毁的时间，有的区域随着虚拟机进程的启动而存在，有些区域则是依">
 <meta name="twitter:image" content="https://pic.yupoo.com/crowhawk/3d24df02/776c8d55.png">
     
         <link rel="alternate" type="application/atom+xml" title="Joker&#39;s Blog" href="/atom.xml">
@@ -133,7 +133,7 @@
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
                 <i class="icon icon-lg icon-chevron-left"></i>
             </a>
-            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="検索">
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
                 <i class="icon icon-lg icon-search"></i>
             </a>
@@ -197,7 +197,7 @@
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
             <blockquote>
-<p>2019大三的寒假计划——利用在公司每天早起的时间读书，第一本是周志明老师的《深入理解Java虚拟机——JVM高级特性与最佳实践》，通过对原文的拜读与自己理解加上网络上的资料文章整理出的读书笔记。</p>
+<p><a href="https://meandni.com/2019/01/05/winter_vacation/">2019大三的寒假计划</a>——利用在公司每天早起的时间读书，第一本是周志明老师的《深入理解Java虚拟机——JVM高级特性与最佳实践》，这一系列是通过对原文的拜读与自己理解加上网络上的资料文章整理出的读书笔记。</p>
 </blockquote>
 <h1 id="运行时数据区域"><a href="#运行时数据区域" class="headerlink" title="运行时数据区域"></a>运行时数据区域</h1><p>JVM载执行Java程序的过程中会把它所管理的内存划分为若干个不同的数据区域。这些区域都有各自的用途，以及创建和销毁的时间，有的区域随着虚拟机进程的启动而存在，有些区域则是依赖用户线程的启动和结束而建立和销毁。具体如下图所示：（其中程序计数器、Java虚拟机栈、本地方法栈为线程私有；Java堆、方法区位线程共享的内存区域。）</p>
 <figure class="image-bubble">
@@ -359,7 +359,7 @@
     <div class="content">
         
 <span class="post-time">
-    最終更新：<time datetime="2019-01-10T03:20:30.652Z" itemprop="dateUpdated">2019-01-10 11:20:30</time>
+    Last updated: <time datetime="2019-01-11T04:32:18.840Z" itemprop="dateUpdated">2019-01-11 12:32:18</time>
 </span><br>
 
 
@@ -518,7 +518,7 @@
             
                 <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
             
-            <span>このブログの内容物は<a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.ja">クリエイティブ・コモンズ 表示 - 非営利 - 継承 4.0 国際ライセンスの下に提供されています</a></span>
+            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
         </p>
     </div>
     <div class="bottom">

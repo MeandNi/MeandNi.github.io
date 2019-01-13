@@ -21,23 +21,23 @@
     
     
     <meta name="keywords" content="读书,jvm">
-    <meta name="description" content="说起垃圾收集（Garbage Collection, GC），想必大家都不陌生，它是JVM实现里非常重要的一环，JVM成熟的内存动态分配与回收技术使Java（当然还有其他运行在JVM上的语言，如Scala等）程序员在提升开发效率上获得了惊人的便利。理解GC，对于理解JVM和Java语言有着非常重要的作用。并且当我们需要排查各种内存溢出、内存泄漏问题时，当垃圾收集称为系统达到更高并发量的瓶颈时，只有">
+    <meta name="description" content="2019大三的寒假计划——利用在公司每天早起的时间读书，第一本是周志明老师的《深入理解Java虚拟机——JVM高级特性与最佳实践》，这一系列是通过对原文的拜读与自己理解加上网络上的资料文章整理出的读书笔记。  说起垃圾收集（Garbage Collection, GC），想必大家都不陌生，它是JVM实现里非常重要的一环，JVM成熟的内存动态分配与回收技术使Java（当然还有其他运行在JVM上的语">
 <meta name="keywords" content="读书,jvm">
 <meta property="og:type" content="article">
 <meta property="og:title" content="《深入理解java虚拟机》笔记2——GC算法与内存分配策略">
 <meta property="og:url" content="https://meandni.com/2019/01/11/jvm_note2/index.html">
 <meta property="og:site_name" content="Joker&#39;s Blog">
-<meta property="og:description" content="说起垃圾收集（Garbage Collection, GC），想必大家都不陌生，它是JVM实现里非常重要的一环，JVM成熟的内存动态分配与回收技术使Java（当然还有其他运行在JVM上的语言，如Scala等）程序员在提升开发效率上获得了惊人的便利。理解GC，对于理解JVM和Java语言有着非常重要的作用。并且当我们需要排查各种内存溢出、内存泄漏问题时，当垃圾收集称为系统达到更高并发量的瓶颈时，只有">
+<meta property="og:description" content="2019大三的寒假计划——利用在公司每天早起的时间读书，第一本是周志明老师的《深入理解Java虚拟机——JVM高级特性与最佳实践》，这一系列是通过对原文的拜读与自己理解加上网络上的资料文章整理出的读书笔记。  说起垃圾收集（Garbage Collection, GC），想必大家都不陌生，它是JVM实现里非常重要的一环，JVM成熟的内存动态分配与回收技术使Java（当然还有其他运行在JVM上的语">
 <meta property="og:locale" content="Chinese">
-<meta property="og:image" content="https://pic.yupoo.com/crowhawk/5d0246eb/0635cbe8.png)">
+<meta property="og:image" content="https://pic.yupoo.com/crowhawk/5d0246eb/0635cbe8.png">
 <meta property="og:image" content="https://pic.yupoo.com/crowhawk/5a3494ae/efc6204a.png">
 <meta property="og:image" content="https://pic.yupoo.com/crowhawk/62b8a3a8/f1cada8a.png">
 <meta property="og:image" content="https://pic.yupoo.com/crowhawk/d046244a/d3d3277f.png">
-<meta property="og:updated_time" content="2019-01-11T04:29:35.966Z">
+<meta property="og:updated_time" content="2019-01-11T04:34:28.268Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="《深入理解java虚拟机》笔记2——GC算法与内存分配策略">
-<meta name="twitter:description" content="说起垃圾收集（Garbage Collection, GC），想必大家都不陌生，它是JVM实现里非常重要的一环，JVM成熟的内存动态分配与回收技术使Java（当然还有其他运行在JVM上的语言，如Scala等）程序员在提升开发效率上获得了惊人的便利。理解GC，对于理解JVM和Java语言有着非常重要的作用。并且当我们需要排查各种内存溢出、内存泄漏问题时，当垃圾收集称为系统达到更高并发量的瓶颈时，只有">
-<meta name="twitter:image" content="https://pic.yupoo.com/crowhawk/5d0246eb/0635cbe8.png)">
+<meta name="twitter:description" content="2019大三的寒假计划——利用在公司每天早起的时间读书，第一本是周志明老师的《深入理解Java虚拟机——JVM高级特性与最佳实践》，这一系列是通过对原文的拜读与自己理解加上网络上的资料文章整理出的读书笔记。  说起垃圾收集（Garbage Collection, GC），想必大家都不陌生，它是JVM实现里非常重要的一环，JVM成熟的内存动态分配与回收技术使Java（当然还有其他运行在JVM上的语">
+<meta name="twitter:image" content="https://pic.yupoo.com/crowhawk/5d0246eb/0635cbe8.png">
     
         <link rel="alternate" type="application/atom+xml" title="Joker&#39;s Blog" href="/atom.xml">
     
@@ -131,7 +131,7 @@
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
                 <i class="icon icon-lg icon-chevron-left"></i>
             </a>
-            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="検索">
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
                 <i class="icon icon-lg icon-search"></i>
             </a>
@@ -194,7 +194,10 @@
 
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
-            <p>说起<strong>垃圾收集（Garbage Collection, GC）</strong>，想必大家都不陌生，它是JVM实现里非常重要的一环，JVM成熟的内存动态分配与回收技术使Java（当然还有其他运行在JVM上的语言，如Scala等）程序员在提升开发效率上获得了惊人的便利。理解GC，对于理解JVM和Java语言有着非常重要的作用。并且当我们需要排查各种内存溢出、内存泄漏问题时，当垃圾收集称为系统达到更高并发量的瓶颈时，只有深入理解GC和内存分配，才能对这些“自动化”的技术实施必要的监控和调节。</p>
+            <blockquote>
+<p><a href="https://meandni.com/2019/01/05/winter_vacation/">2019大三的寒假计划</a>——利用在公司每天早起的时间读书，第一本是周志明老师的《深入理解Java虚拟机——JVM高级特性与最佳实践》，这一系列是通过对原文的拜读与自己理解加上网络上的资料文章整理出的读书笔记。</p>
+</blockquote>
+<p>说起<strong>垃圾收集（Garbage Collection, GC）</strong>，想必大家都不陌生，它是JVM实现里非常重要的一环，JVM成熟的内存动态分配与回收技术使Java（当然还有其他运行在JVM上的语言，如Scala等）程序员在提升开发效率上获得了惊人的便利。理解GC，对于理解JVM和Java语言有着非常重要的作用。并且当我们需要排查各种内存溢出、内存泄漏问题时，当垃圾收集称为系统达到更高并发量的瓶颈时，只有深入理解GC和内存分配，才能对这些“自动化”的技术实施必要的监控和调节。</p>
 <p>在Java的运行时数据区中，程序计数器、虚拟机栈、本地方法栈三个区域都是线程私有的，随线程而生，随线程而灭，在方法结束或线程结束时，内存自然就跟着回收了，不需要过多考虑回收的问题。而<strong>Java堆</strong>和<strong>方法区</strong>则不一样，一个接口中的多个实现类需要的内存可能不一样，一个方法中的多个分支需要的内存也可能不一样，我们只有在程序处于运行期间才能知道会创建哪些对象，这部分内存的分配和回收都是动态的，垃圾回收器关注的是这部分内存，后续讨论的“内存”分配回收也是指这一块，尤其需要注意。</p>
 <p>GC主要回答了以下三个问题：</p>
 <ul>
@@ -211,7 +214,7 @@
 <p>在上面这段代码中，对象objA 和对象objB都有字段instance，赋值令<code>objA.instance = objB;</code>、<code>objB.instance = objA;</code>，除此之外，这两个对象再无引用。如果JVM采用引用计数算法来管理内存，<strong>这两个对象不可能再被访问，但是他们互相引用着对方，导致它们引用计数不为0，所以引用计数器无法通知GC收集器回收它们</strong>。</p>
 <p>而事实上执行这段代码，objA和objB是可以被回收的，下面一节将介绍JVM实际使用的存活判定算法。</p>
 <h4 id="可达性分析算法"><a href="#可达性分析算法" class="headerlink" title="可达性分析算法"></a>可达性分析算法</h4><p>在主流商用程序语言的实现中，都是通过<strong>可达性分析（tracing GC）</strong>来判定对象是否存活的。此算法的基本思路是：通过一系列的称为<strong>“GC Roots”</strong>的对象作为起点，从这些节点向下搜索，搜索所走过的路径称为<strong>引用链（Reference Chain）</strong>，当一个对象到GC Roots没有任何引用链相连（用图论的话来说，就是GC Roots 到这个对象不可达）时，则证明此对象时不可用的。用下图来加以说明：</p>
-<center><img src="https://pic.yupoo.com/crowhawk/5d0246eb/0635cbe8.png)"></center>
+<center><img src="https://pic.yupoo.com/crowhawk/5d0246eb/0635cbe8.png"></center>
 
 <p>上图中，对象object 5、object 6、object 7虽然互有关联，但是它们到GC Roots是不可达的，所以它们将会被判定为是可回收的对象。</p>
 <p>可以看到，GC Roots在对象图之外，是特别定义的<strong>“起点”</strong>，不可能被对象图内的对象所引用。</p>
@@ -336,7 +339,7 @@
     <div class="content">
         
 <span class="post-time">
-    最終更新：<time datetime="2019-01-11T04:29:35.966Z" itemprop="dateUpdated">2019-01-11 12:29:35</time>
+    Last updated: <time datetime="2019-01-11T04:34:28.268Z" itemprop="dateUpdated">2019-01-11 12:34:28</time>
 </span><br>
 
 
@@ -495,7 +498,7 @@
             
                 <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
             
-            <span>このブログの内容物は<a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.ja">クリエイティブ・コモンズ 表示 - 非営利 - 継承 4.0 国際ライセンスの下に提供されています</a></span>
+            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
         </p>
     </div>
     <div class="bottom">

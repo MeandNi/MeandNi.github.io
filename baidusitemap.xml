@@ -4,8 +4,91 @@
 
     
   <url>
+    <loc>https://meandni.com/2019/01/12/flutter-practice2/</loc>
+    <lastmod>2019-01-13T11:02:11.117Z</lastmod>
+    <data>
+        <display>
+        <title>实战中学习Flutter2：打造一款通用的APPUI结构，从此走上人生巅峰！</title>
+        <pubTime>2019-01-12T13:43:40.000Z</pubTime>
+        
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://meandni.com/2019/01/04/flutter-practice1/</loc>
+    <lastmod>2019-01-13T10:51:13.683Z</lastmod>
+    <data>
+        <display>
+        <title>实战中学习Flutter1：简易聊天AppUI</title>
+        <pubTime>2019-01-04T14:12:57.000Z</pubTime>
+        
+        <tag>自学</tag>
+         
+        <tag>flutter</tag>
+         
+         
+           
+             
+              <breadCrumb title="原创" url="https://meandni.com/categories/%E5%8E%9F%E5%88%9B/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://meandni.com/2018/03/01/d010/</loc>
+    <lastmod>2019-01-12T04:04:18.275Z</lastmod>
+    <data>
+        <display>
+        <title>Android Studio 使用方法总结（不定期更新）</title>
+        <pubTime>2018-03-01T06:32:04.000Z</pubTime>
+        
+        <tag>Android Studio</tag>
+         
+        <tag>Android</tag>
+         
+        <tag>软件使用</tag>
+         
+         
+           
+             
+              <breadCrumb title="原创" url="https://meandni.com/categories/%E5%8E%9F%E5%88%9B/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://meandni.com/2019/01/11/jvm_note2/</loc>
+    <lastmod>2019-01-11T04:34:28.268Z</lastmod>
+    <data>
+        <display>
+        <title>《深入理解java虚拟机》笔记2——GC算法与内存分配策略</title>
+        <pubTime>2019-01-11T03:16:01.000Z</pubTime>
+        
+        <tag>读书</tag>
+         
+        <tag>jvm</tag>
+         
+         
+           
+             
+              <breadCrumb title="整理" url="https://meandni.com/categories/%E6%95%B4%E7%90%86/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>https://meandni.com/2019/01/11/jvm_note3/</loc>
-    <lastmod>2019-01-11T04:29:56.749Z</lastmod>
+    <lastmod>2019-01-11T04:32:37.847Z</lastmod>
     <data>
         <display>
         <title>《深入理解Java虚拟机》笔记3——7种垃圾收集器</title>
@@ -26,12 +109,12 @@
 
     
   <url>
-    <loc>https://meandni.com/2019/01/11/jvm_note2/</loc>
-    <lastmod>2019-01-11T04:29:35.966Z</lastmod>
+    <loc>https://meandni.com/2019/01/10/jvm_note1/</loc>
+    <lastmod>2019-01-11T04:32:18.840Z</lastmod>
     <data>
         <display>
-        <title>《深入理解java虚拟机》笔记2——GC算法与内存分配策略</title>
-        <pubTime>2019-01-11T03:16:01.000Z</pubTime>
+        <title>《深入理解java虚拟机》笔记1——Java内存区域与Java对象</title>
+        <pubTime>2019-01-10T03:02:02.000Z</pubTime>
         
         <tag>读书</tag>
          
@@ -62,50 +145,6 @@
     </url>
 
     
-  <url>
-    <loc>https://meandni.com/2019/01/10/jvm_note1/</loc>
-    <lastmod>2019-01-10T03:20:30.652Z</lastmod>
-    <data>
-        <display>
-        <title>《深入理解java虚拟机》笔记1——Java内存区域与Java对象</title>
-        <pubTime>2019-01-10T03:02:02.000Z</pubTime>
-        
-        <tag>读书</tag>
-         
-        <tag>jvm</tag>
-         
-         
-           
-             
-              <breadCrumb title="整理" url="https://meandni.com/categories/%E6%95%B4%E7%90%86/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-    
-  <url>
-    <loc>https://meandni.com/2019/01/04/2105/</loc>
-    <lastmod>2019-01-05T09:33:58.687Z</lastmod>
-    <data>
-        <display>
-        <title>实战中学习Flutter1：简易聊天AppUI</title>
-        <pubTime>2019-01-04T14:12:57.000Z</pubTime>
-        
-        <tag>自学</tag>
-         
-        <tag>flutter</tag>
-         
-         
-           
-             
-              <breadCrumb title="原创" url="https://meandni.com/categories/%E5%8E%9F%E5%88%9B/"/>
-          
-        </display>
-    </data>
-    </url>
-
     
   <url>
     <loc>https://meandni.com/2019/01/04/5671/</loc>
@@ -347,30 +386,6 @@
          
          
            
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://meandni.com/2018/03/01/d010/</loc>
-    <lastmod>2019-01-03T13:46:29.065Z</lastmod>
-    <data>
-        <display>
-        <title>Android Studio 使用方法总结（不定期更新）</title>
-        <pubTime>2018-03-01T06:32:04.000Z</pubTime>
-        
-        <tag>Android Studio</tag>
-         
-        <tag>Android</tag>
-         
-        <tag>软件使用</tag>
-         
-         
-           
-             
-              <breadCrumb title="原创" url="https://meandni.com/categories/%E5%8E%9F%E5%88%9B/"/>
-          
         </display>
     </data>
     </url>

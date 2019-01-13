@@ -21,21 +21,21 @@
     
     
     <meta name="keywords" content="Android Studio,Android,软件使用">
-    <meta name="description" content="代码格式化Windows: Ctrl + Alt +L (Ctrl +Shift+F 无效) (亲测,和qq热键冲突,我的解决方式是把qq除捕获屏幕外的热键全部设置为无) Mac: option+command+L 自动将字符串加入String.xml">
+    <meta name="description" content="代码格式化Windows: Ctrl + Alt +L (Ctrl +Shift+F 无效) (亲测,和qq热键冲突,我的解决方式是把qq除捕获屏幕外的热键全部设置为无)Mac:：option+command+L 自动将字符串加入String.xml">
 <meta name="keywords" content="Android Studio,Android,软件使用">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Android Studio 使用方法总结（不定期更新）">
 <meta property="og:url" content="https://meandni.com/2018/03/01/d010/index.html">
 <meta property="og:site_name" content="Joker&#39;s Blog">
-<meta property="og:description" content="代码格式化Windows: Ctrl + Alt +L (Ctrl +Shift+F 无效) (亲测,和qq热键冲突,我的解决方式是把qq除捕获屏幕外的热键全部设置为无) Mac: option+command+L 自动将字符串加入String.xml">
+<meta property="og:description" content="代码格式化Windows: Ctrl + Alt +L (Ctrl +Shift+F 无效) (亲测,和qq热键冲突,我的解决方式是把qq除捕获屏幕外的热键全部设置为无)Mac:：option+command+L 自动将字符串加入String.xml">
 <meta property="og:locale" content="Chinese">
 <meta property="og:image" content="https://meandni.com/images/QQ20180301-142656-300x84.png">
 <meta property="og:image" content="https://meandni.com/images/QQ20180301-162211.png">
 <meta property="og:image" content="https://meandni.com/images/QQ20180301-180715.png">
-<meta property="og:updated_time" content="2019-01-03T13:46:29.065Z">
+<meta property="og:updated_time" content="2019-01-12T04:04:18.275Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android Studio 使用方法总结（不定期更新）">
-<meta name="twitter:description" content="代码格式化Windows: Ctrl + Alt +L (Ctrl +Shift+F 无效) (亲测,和qq热键冲突,我的解决方式是把qq除捕获屏幕外的热键全部设置为无) Mac: option+command+L 自动将字符串加入String.xml">
+<meta name="twitter:description" content="代码格式化Windows: Ctrl + Alt +L (Ctrl +Shift+F 无效) (亲测,和qq热键冲突,我的解决方式是把qq除捕获屏幕外的热键全部设置为无)Mac:：option+command+L 自动将字符串加入String.xml">
 <meta name="twitter:image" content="https://meandni.com/images/QQ20180301-142656-300x84.png">
     
         <link rel="alternate" type="application/atom+xml" title="Joker&#39;s Blog" href="/atom.xml">
@@ -130,7 +130,7 @@
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
                 <i class="icon icon-lg icon-chevron-left"></i>
             </a>
-            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="検索">
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
                 <i class="icon icon-lg icon-search"></i>
             </a>
@@ -171,7 +171,7 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#代码格式化"><span class="post-toc-number">1.</span> <span class="post-toc-text">代码格式化</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#自动将字符串加入String-xml"><span class="post-toc-number">2.</span> <span class="post-toc-text">自动将字符串加入String.xml</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#提取临时变量"><span class="post-toc-number">3.</span> <span class="post-toc-text">提取临时变量</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#变量重构，即转换为常量"><span class="post-toc-number">4.</span> <span class="post-toc-text">变量重构，即转换为常量</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#进入指定文件、父类"><span class="post-toc-number">5.</span> <span class="post-toc-text">进入指定文件、父类</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#捕获异常及其他句型"><span class="post-toc-number">6.</span> <span class="post-toc-text">捕获异常及其他句型</span></a></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#代码格式化"><span class="post-toc-number">1.</span> <span class="post-toc-text">代码格式化</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#自动将字符串加入String-xml"><span class="post-toc-number">2.</span> <span class="post-toc-text">自动将字符串加入String.xml</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#提取临时变量"><span class="post-toc-number">3.</span> <span class="post-toc-text">提取临时变量</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#变量重构，即转换为常量"><span class="post-toc-number">4.</span> <span class="post-toc-text">变量重构，即转换为常量</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#进入指定文件、父类"><span class="post-toc-number">5.</span> <span class="post-toc-text">进入指定文件、父类</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#捕获异常及其他句型"><span class="post-toc-number">6.</span> <span class="post-toc-text">捕获异常及其他句型</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#显示类方法列表"><span class="post-toc-number">7.</span> <span class="post-toc-text">显示类方法列表</span></a></li></ol>
         </nav>
     </aside>
 
@@ -193,30 +193,36 @@
 
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
-            <h3 id="代码格式化"><a href="#代码格式化" class="headerlink" title="代码格式化"></a>代码格式化</h3><p><strong>Windows:</strong> Ctrl + Alt +L (Ctrl +Shift+F 无效) (亲测,和qq热键冲突,我的解决方式是把qq除捕获屏幕外的热键全部设置为无) <strong>Mac:</strong> option+command+L</p>
-<h3 id="自动将字符串加入String-xml"><a href="#自动将字符串加入String-xml" class="headerlink" title="自动将字符串加入String.xml"></a>自动将字符串加入String.xml</h3><p><figure class="image-bubble">
+            <h3 id="代码格式化"><a href="#代码格式化" class="headerlink" title="代码格式化"></a>代码格式化</h3><p><strong>Windows:</strong> Ctrl + Alt +L (Ctrl +Shift+F 无效) (亲测,和qq热键冲突,我的解决方式是把qq除捕获屏幕外的热键全部设置为无)<br><strong>Mac:</strong>：option+command+L</p>
+<h3 id="自动将字符串加入String-xml"><a href="#自动将字符串加入String-xml" class="headerlink" title="自动将字符串加入String.xml"></a>自动将字符串加入String.xml</h3><figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
                     <img src="/images/QQ20180301-142656-300x84.png" alt="" title="">
                 </div>
                 <div class="image-caption"></div>
-            </figure> <strong>Windows:</strong>Alt+Enter <strong>Mac:</strong>option+Enter</p>
-<h3 id="提取临时变量"><a href="#提取临时变量" class="headerlink" title="提取临时变量"></a>提取临时变量</h3><p><figure class="image-bubble">
+            </figure> 
+<p><strong>Windows:*：Alt+Enter 
+</strong>Mac**：option+Enter</p>
+<h3 id="提取临时变量"><a href="#提取临时变量" class="headerlink" title="提取临时变量"></a>提取临时变量</h3><figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
                     <img src="/images/QQ20180301-162211.png" alt="" title="">
                 </div>
                 <div class="image-caption"></div>
-            </figure> 快捷键： <strong>Mac：</strong>option+command+V 非快捷键： 右击 -&gt; refator -&gt; Extract -&gt; variable</p>
-<h3 id="变量重构，即转换为常量"><a href="#变量重构，即转换为常量" class="headerlink" title="变量重构，即转换为常量"></a>变量重构，即转换为常量</h3><p>快捷键： <strong>Mac：</strong>COM+OPT+C</p>
-<h3 id="进入指定文件、父类"><a href="#进入指定文件、父类" class="headerlink" title="进入指定文件、父类"></a>进入指定文件、父类</h3><p><figure class="image-bubble">
+            </figure> 
+<p>快捷键： <strong>Mac：</strong>option+command+V 非快捷键： 右击 -&gt; refator -&gt; Extract -&gt; variable</p>
+<h3 id="变量重构，即转换为常量"><a href="#变量重构，即转换为常量" class="headerlink" title="变量重构，即转换为常量"></a>变量重构，即转换为常量</h3><p>快捷键： <strong>Mac</strong>：<code>COM</code> + <code>OPT</code> +<code>C</code></p>
+<h3 id="进入指定文件、父类"><a href="#进入指定文件、父类" class="headerlink" title="进入指定文件、父类"></a>进入指定文件、父类</h3><figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
                     <img src="/images/QQ20180301-180715.png" alt="" title="">
                 </div>
                 <div class="image-caption"></div>
-            </figure> Mac：按住COM 鼠标点击相应文件！ </p>
-<h3 id="捕获异常及其他句型"><a href="#捕获异常及其他句型" class="headerlink" title="捕获异常及其他句型"></a>捕获异常及其他句型</h3><p>Mac：opt+command+T</p>
+            </figure> 
+<p><strong>Mac</strong>：按住COM 鼠标点击相应文件！ </p>
+<h3 id="捕获异常及其他句型"><a href="#捕获异常及其他句型" class="headerlink" title="捕获异常及其他句型"></a>捕获异常及其他句型</h3><p><strong>Mac</strong>：<code>opt</code>+<code>command</code>+<code>T</code></p>
+<h3 id="显示类方法列表"><a href="#显示类方法列表" class="headerlink" title="显示类方法列表"></a>显示类方法列表</h3><p><strong>Mac</strong>: <code>command</code> +<code>fn</code> + <code>F12</code> (在mac中的F12键要同时按fn才起作用)</p>
+<p><strong>Win</strong>: <code>Ctrl</code> + <code>F12</code></p>
 
         </div>
 
@@ -225,7 +231,7 @@
     <div class="content">
         
 <span class="post-time">
-    最終更新：<time datetime="2019-01-03T13:46:29.065Z" itemprop="dateUpdated">2019-01-03 21:46:29</time>
+    Last updated: <time datetime="2019-01-12T04:04:18.275Z" itemprop="dateUpdated">2019-01-12 12:04:18</time>
 </span><br>
 
 
@@ -384,7 +390,7 @@
             
                 <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
             
-            <span>このブログの内容物は<a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.ja">クリエイティブ・コモンズ 表示 - 非営利 - 継承 4.0 国際ライセンスの下に提供されています</a></span>
+            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
         </p>
     </div>
     <div class="bottom">

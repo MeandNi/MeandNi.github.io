@@ -14,25 +14,27 @@
     
     
     
-    <title>我做第一个Android项目的过程！ | Joker&#39;s Blog | 个人分享博客</title>
+    <title>实战中学习Flutter2：打造一款通用的APPUI结构，从此走上人生巅峰！ | Joker&#39;s Blog | 个人分享博客</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
     <meta name="theme-color" content="#3F51B5">
     
     
-    <meta name="keywords" content="android">
-    <meta name="description" content="分享生活、技术、学习心得">
-<meta name="keywords" content="android">
+    <meta name="keywords" content="">
+    <meta name="description" content="打造一款通用的AppUI结构，包括登录、注册、首页及各中共用部分，最后能够构成一款完整的APP，目前还在完善，希望大家一起加入。 引用我在AndroidEfficientBaseUtils说过的话，相当于给你一个完完整整地漂亮的盒子，你只需把自己需要的东西放进去就好。而且这是跨平台的呀。">
+<meta name="keywords" content="android,web,java,javascript,vue,react,技术分享,学习心得,学习笔记,程序员人生">
 <meta property="og:type" content="article">
-<meta property="og:title" content="我做第一个Android项目的过程！">
-<meta property="og:url" content="https://meandni.com/2018/03/25/d89c/index.html">
+<meta property="og:title" content="实战中学习Flutter2：打造一款通用的APPUI结构，从此走上人生巅峰！">
+<meta property="og:url" content="https://meandni.com/2019/01/12/flutter-practice2/index.html">
 <meta property="og:site_name" content="Joker&#39;s Blog">
-<meta property="og:description" content="分享生活、技术、学习心得">
+<meta property="og:description" content="打造一款通用的AppUI结构，包括登录、注册、首页及各中共用部分，最后能够构成一款完整的APP，目前还在完善，希望大家一起加入。 引用我在AndroidEfficientBaseUtils说过的话，相当于给你一个完完整整地漂亮的盒子，你只需把自己需要的东西放进去就好。而且这是跨平台的呀。">
 <meta property="og:locale" content="Chinese">
-<meta property="og:updated_time" content="2019-01-03T13:45:18.016Z">
+<meta property="og:image" content="https://github.com/MeandNi/flutter_commonApp/raw/master/show/appshow.jpg">
+<meta property="og:updated_time" content="2019-01-13T11:02:11.117Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="我做第一个Android项目的过程！">
-<meta name="twitter:description" content="分享生活、技术、学习心得">
+<meta name="twitter:title" content="实战中学习Flutter2：打造一款通用的APPUI结构，从此走上人生巅峰！">
+<meta name="twitter:description" content="打造一款通用的AppUI结构，包括登录、注册、首页及各中共用部分，最后能够构成一款完整的APP，目前还在完善，希望大家一起加入。 引用我在AndroidEfficientBaseUtils说过的话，相当于给你一个完完整整地漂亮的盒子，你只需把自己需要的东西放进去就好。而且这是跨平台的呀。">
+<meta name="twitter:image" content="https://github.com/MeandNi/flutter_commonApp/raw/master/show/appshow.jpg">
     
         <link rel="alternate" type="application/atom+xml" title="Joker&#39;s Blog" href="/atom.xml">
     
@@ -120,7 +122,7 @@
         <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
           <i class="icon icon-lg icon-navicon"></i>
         </a>
-        <div class="flex-col header-title ellipsis">我做第一个Android项目的过程！</div>
+        <div class="flex-col header-title ellipsis">实战中学习Flutter2：打造一款通用的APPUI结构，从此走上人生巅峰！</div>
         
         <div class="search-wrap" id="search-wrap">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
@@ -142,11 +144,11 @@
 <header class="content-header post-header">
 
     <div class="container fade-scale">
-        <h1 class="title">我做第一个Android项目的过程！</h1>
+        <h1 class="title">实战中学习Flutter2：打造一款通用的APPUI结构，从此走上人生巅峰！</h1>
         <h5 class="subtitle">
             
-                <time datetime="2018-03-25T06:06:02.000Z" itemprop="datePublished" class="page-time">
-  2018-03-25
+                <time datetime="2019-01-12T13:43:40.000Z" itemprop="datePublished" class="page-time">
+  2019-01-12
 </time>
 
 
@@ -162,14 +164,21 @@
 
 <div class="container body-wrap">
     
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#结构清单"><span class="post-toc-number">1.</span> <span class="post-toc-text">结构清单</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#作者"><span class="post-toc-number">2.</span> <span class="post-toc-text">作者</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#完整代码"><span class="post-toc-number">3.</span> <span class="post-toc-text">完整代码</span></a></li></ol>
+        </nav>
+    </aside>
 
-<article id="post-2018-03-25-first-android"
+
+<article id="post-2019-01-12-flutter-practice"
   class="post-article article-type-post fade" itemprop="blogPost">
 
     <div class="post-card">
-        <h1 class="post-card-title">我做第一个Android项目的过程！</h1>
+        <h1 class="post-card-title">实战中学习Flutter2：打造一款通用的APPUI结构，从此走上人生巅峰！</h1>
         <div class="post-meta">
-            <time class="post-time" title="2018-03-25 14:06:02" datetime="2018-03-25T06:06:02.000Z"  itemprop="datePublished">2018-03-25</time>
+            <time class="post-time" title="2019-01-12 21:43:40" datetime="2019-01-12T13:43:40.000Z"  itemprop="datePublished">2019-01-12</time>
 
             
 
@@ -178,7 +187,32 @@
 
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
-            
+            <p>打造一款通用的AppUI结构，包括登录、注册、首页及各中共用部分，最后能够构成一款完整的APP，目前还在完善，希望大家一起加入。</p>
+<p>引用我在<a href="https://github.com/MeandNi/AndroidEfficientBaseUtils" target="_blank" rel="noopener">AndroidEfficientBaseUtils</a>说过的话，相当于给你一个完完整整地漂亮的盒子，你只需把自己需要的东西放进去就好。而且这是跨平台的呀。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://github.com/MeandNi/flutter_commonApp/raw/master/show/appshow.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<h2 id="结构清单"><a href="#结构清单" class="headerlink" title="结构清单"></a>结构清单</h2><ul>
+<li style="list-style: none"><input type="checkbox" checked> Welcome - 首页</li>
+<li style="list-style: none"><input type="checkbox" checked> Login - 登录</li>
+<li style="list-style: none"><input type="checkbox"> Register - 注册</li>
+<li style="list-style: none"><input type="checkbox" checked> Home - 首页</li>
+<li style="list-style: none"><input type="checkbox"> Personal information - 个人信息</li>
+<li style="list-style: none"><input type="checkbox"> ….</li>
+</ul>
+<h2 id="作者"><a href="#作者" class="headerlink" title="作者"></a>作者</h2><ul>
+<li>Yangjiakang, <a href="https://github.com/MeandNi/flutter_commonApp" target="_blank" rel="noopener"><strong>MeandNi</strong></a></li>
+<li><p>….</p>
+</li>
+<li><p>相信这一套结构可以适用于大部分App（当然自己要根据需求修改。），这里追求的是通用而不是花哨的效果。</p>
+</li>
+</ul>
+<h2 id="完整代码"><a href="#完整代码" class="headerlink" title="完整代码"></a>完整代码</h2><p><a href="https://github.com/MeandNi/flutter_commonApp" target="_blank" rel="noopener">代码</a></p>
+
         </div>
 
         <blockquote class="post-copyright">
@@ -186,7 +220,7 @@
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2019-01-03T13:45:18.016Z" itemprop="dateUpdated">2019-01-03 21:45:18</time>
+    Last updated: <time datetime="2019-01-13T11:02:11.117Z" itemprop="dateUpdated">2019-01-13 19:02:11</time>
 </span><br>
 
 
@@ -210,8 +244,6 @@
 
         <div class="post-footer">
             
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android/">android</a></li></ul>
-
 
             
 <div class="page-share-wrap">
@@ -220,7 +252,7 @@
 <div class="page-share" id="pageShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://meandni.com/2018/03/25/d89c/&title=《我做第一个Android项目的过程！》 — Joker's Blog&pic=https://meandni.com/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://meandni.com/2019/01/12/flutter-practice2/&title=《实战中学习Flutter2：打造一款通用的APPUI结构，从此走上人生巅峰！》 — Joker's Blog&pic=https://meandni.com/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -230,22 +262,22 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://meandni.com/2018/03/25/d89c/&title=《我做第一个Android项目的过程！》 — Joker's Blog&source=分享生活、技术、学习心得" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://meandni.com/2019/01/12/flutter-practice2/&title=《实战中学习Flutter2：打造一款通用的APPUI结构，从此走上人生巅峰！》 — Joker's Blog&source=分享生活、技术、学习心得" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://meandni.com/2018/03/25/d89c/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://meandni.com/2019/01/12/flutter-practice2/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《我做第一个Android项目的过程！》 — Joker's Blog&url=https://meandni.com/2018/03/25/d89c/&via=https://meandni.com" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《实战中学习Flutter2：打造一款通用的APPUI结构，从此走上人生巅峰！》 — Joker's Blog&url=https://meandni.com/2019/01/12/flutter-practice2/&via=https://meandni.com" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://meandni.com/2018/03/25/d89c/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://meandni.com/2019/01/12/flutter-practice2/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -265,21 +297,14 @@
     </div>
 
     
-<nav class="post-nav flex-row flex-justify-between">
-  
-    <div class="waves-block waves-effect prev">
-      <a href="/2018/04/15/1a8e/" id="post-prev" class="post-nav-link">
-        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
-        <h4 class="title">每天的新东西（Android篇）</h4>
-      </a>
-    </div>
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
   
 
   
     <div class="waves-block waves-effect next">
-      <a href="/2018/03/02/3079/" id="post-next" class="post-nav-link">
+      <a href="/2019/01/11/jvm_note3/" id="post-next" class="post-nav-link">
         <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
-        <h4 class="title">JQuery定时自动消失提示框/弹出框(转)</h4>
+        <h4 class="title">《深入理解Java虚拟机》笔记3——7种垃圾收集器</h4>
       </a>
     </div>
   
@@ -367,7 +392,7 @@
 <div class="global-share" id="globalShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://meandni.com/2018/03/25/d89c/&title=《我做第一个Android项目的过程！》 — Joker's Blog&pic=https://meandni.com/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://meandni.com/2019/01/12/flutter-practice2/&title=《实战中学习Flutter2：打造一款通用的APPUI结构，从此走上人生巅峰！》 — Joker's Blog&pic=https://meandni.com/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -377,22 +402,22 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://meandni.com/2018/03/25/d89c/&title=《我做第一个Android项目的过程！》 — Joker's Blog&source=分享生活、技术、学习心得" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://meandni.com/2019/01/12/flutter-practice2/&title=《实战中学习Flutter2：打造一款通用的APPUI结构，从此走上人生巅峰！》 — Joker's Blog&source=分享生活、技术、学习心得" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://meandni.com/2018/03/25/d89c/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://meandni.com/2019/01/12/flutter-practice2/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《我做第一个Android项目的过程！》 — Joker's Blog&url=https://meandni.com/2018/03/25/d89c/&via=https://meandni.com" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《实战中学习Flutter2：打造一款通用的APPUI结构，从此走上人生巅峰！》 — Joker's Blog&url=https://meandni.com/2019/01/12/flutter-practice2/&via=https://meandni.com" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://meandni.com/2018/03/25/d89c/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://meandni.com/2019/01/12/flutter-practice2/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -403,7 +428,7 @@
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAACuCAAAAACKZ2kyAAABwklEQVR42u3aQW7DMAwEwPz/0+6lhwKtHa5oKkYxOgWJLU98WEikXq/yOH6M6+9/fz675vdstw1cXNw297gc/Qen85xdg4uLu59beUwaXunruDbg4uI+n7sWcJU5cXFx/wf3OrDSKMTFxX0ON12CVEokH96r4eLiNrj1KuXc55H6Li4u7hL3CEclnq4Da+253zPg4uJu4dYDJW23VBZG6XNxcXH3cNMWaavQGf56+l5xcXGHuRNN1nqC3rzEwcXFHeOuFTfT8min4IKLi7uT21m4pNGWFl9wcXF3cvtl0HTJcsNeDRcXdzu3EkzpXZ0m65sgw8XFHeamDZK1o1r1LdAfd+Hi4m7k1imVYKq3ZxY3P7i4uMPcdCFSL5dUKJUW7GmTFRcXdyO3Du0f3ahzT4MMFxd3mLvWKK1sb4LlS2VOXFzcjdz0qEQ97F7heHMXLi7uMPcIR+fAVqeMgouLu5Obhkv9sEU/BOtbLFxc3Alu/yhVpcyatmfizQ8uLu4AN21ppAujwYIpLi7uw7jpAqiyAVusmuDi4j6AW2+l9PdeNwQZLi7uErdeJO0cwkj/GC4u7qe4aZS0JlqKRVxc3I3cL6II4jHUzyErAAAAAElFTkSuQmCC" alt="微信分享二维码">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACNUlEQVR42u3aW07sMBAFQPa/aZD4hfGc4w5XN07lawQZJ2Wkxv34+Iivz+/r1ef1T9Z3/vztz+9edmFgYNyW8bm81i+3XiFZf/JdDAyMpzHyIJsE1jV1/ZT1c1/+HAMDAyM4tO2F1PXREAMDA2PCmH9OklgMDAyMNoldHxPzIlobcC/OxTEwMG7ImDcG/u7zP+1vYGBg/JeMScm+LahdFWR/+RYGBsbRjHbooU1l81dMnvImKGNgYBzKmL9o2/jMN2vz74CBgXEcI09c8zJZG3bbIbMag4GBcXPG/PH5PrU7WgRrDAyMBzDyJTYf8wdDYxgYGE9mtKWxeQ+xbTYUuTgGBsahjJa0VxqbBOuoMYCBgXEcY1IUyye12pZA0s58MzOCgYFxEGNvRvSqwllemHsZdjEwMI5m7AXWdiAjf6182OJlKouBgXEcIz8I7g1PJFuzl/RiYGA8jdE2HedJ7F45703AxcDAOJqRHxPz0Dm5v+ZhYGA8htEG3KIQVg6c5TAMDIwnMNqF8iXaYJpv3GQ7MDAw7sjIS/N7jYGEtJfu/tKJxcDAOJQxT0fza37Ii+7HwMA4jjF/lXkgjkZU18dTDAyMoxl7Ba/2zmQ4Yz5+gYGBcTYjD7L5+FcSpttmw5sNxcDAeABjr3HYhtE2Vc7LcxgYGBjtUGnenrzsbIuBgYFRvlBeOGsbnxfMd2BgYNyWkSexe2vubVOxMgYGxtGMNii3zc48cOf/Bi7ob2BgYNyD8QXh1VvR4aAR3AAAAABJRU5ErkJggg==" alt="微信分享二维码">
 </div>
 
 

@@ -125,7 +125,7 @@
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
                 <i class="icon icon-lg icon-chevron-left"></i>
             </a>
-            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="検索">
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
                 <i class="icon icon-lg icon-search"></i>
             </a>
@@ -159,6 +159,50 @@
     <ul class="post-list">
     
         <li class="post-list-item fade">
+            <article id="post-2019-01-12-flutter-practice"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2019-01-12 21:43:40" datetime="2019-01-12T13:43:40.000Z"  itemprop="datePublished">2019-01-12</time>
+
+        
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2019/01/12/flutter-practice2/">实战中学习Flutter2：打造一款通用的APPUI结构，从此走上人生巅峰！</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        打造一款通用的AppUI结构，包括登录、注册、首页及各中共用部分，最后能够构成一款完整的APP，目前还在完善，希望大家一起加入。
+引用我在AndroidEfficientBaseUtils说过的话，相当于给你一个完完整整地漂亮的盒子，你只需把自己需要的东西放进去就好。而且这是跨平台的呀。
+
+                
+                    
+             ...
+    
+
+        <a href="/2019/01/12/flutter-practice2/" class="post-more waves-effect waves-button">
+            Continue reading...
+        </a>
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
             <article id="post-2019-01-11-jvm-note3"
   class="article-card article-type-post" itemprop="blogPost">
 
@@ -187,11 +231,14 @@
     <div class="post-content" id="post-content" itemprop="postContent">
 
     
-        如果说收集算法是内存回收的方法论，那么垃圾收集器就是内存回收的具体实现。Java虚拟机规范中对垃圾收集器应该如何实现并没有任何规定，因此不同的厂商、版本的虚拟机所提供的垃圾收集器都可能会有很大差别，并且一般都会提供参数供用户根据自己的应用特点和要求组合出各个年代所使用的收集器。接下来讨论的收集器基于JDK1.7 Update 14 之后的HotSpot虚拟机（在此版本中正式提供了商用的G1收...
+        
+2019大三的寒假计划——利用在公司每天早起的时间读书，第一本是周志明老师的《深入理解Java虚拟机——JVM高级特性与最佳实践》，这一系列是通过对原文的拜读与自己理解加上网络上的资料文章整理出的读书笔记。
+
+如果说收集算法是内存回收的方法论，那么垃圾收集器就是内存回收的具体实现。**Java虚拟机规范中对垃圾收集器应该如何实现并没有任何规定，因此不同的厂商、版本的虚拟机所提供的垃圾收集器...
     
 
         <a href="/2019/01/11/jvm_note3/" class="post-more waves-effect waves-button">
-            続きを読む…
+            Continue reading...
         </a>
     </div>
     
@@ -234,11 +281,14 @@
     <div class="post-content" id="post-content" itemprop="postContent">
 
     
-        说起垃圾收集（Garbage Collection, GC），想必大家都不陌生，它是JVM实现里非常重要的一环，JVM成熟的内存动态分配与回收技术使Java（当然还有其他运行在JVM上的语言，如Scala等）程序员在提升开发效率上获得了惊人的便利。理解GC，对于理解JVM和Java语言有着非常重要的作用。并且当我们需要排查各种内存溢出、内存泄漏问题时，当垃圾收集称为系统达到更高并发量的瓶颈时...
+        
+2019大三的寒假计划——利用在公司每天早起的时间读书，第一本是周志明老师的《深入理解Java虚拟机——JVM高级特性与最佳实践》，这一系列是通过对原文的拜读与自己理解加上网络上的资料文章整理出的读书笔记。
+
+说起垃圾收集（Garbage Collection, GC），想必大家都不陌生，它是JVM实现里非常重要的一环，JVM成熟的内存动态分配与回收技术使Java（当然还有其他运行在JVM...
     
 
         <a href="/2019/01/11/jvm_note2/" class="post-more waves-effect waves-button">
-            続きを読む…
+            Continue reading...
         </a>
     </div>
     
@@ -282,13 +332,13 @@
 
     
         
-2019大三的寒假计划——利用在公司每天早起的时间读书，第一本是周志明老师的《深入理解Java虚拟机——JVM高级特性与最佳实践》，通过对原文的拜读与自己理解加上网络上的资料文章整理出的读书笔记。
+2019大三的寒假计划——利用在公司每天早起的时间读书，第一本是周志明老师的《深入理解Java虚拟机——JVM高级特性与最佳实践》，这一系列是通过对原文的拜读与自己理解加上网络上的资料文章整理出的读书笔记。
 
-运行时数据区域JVM载执行Java程序的过程中会把它所管理的内存划分为若干个不同的数据区域。这些区域都有各自的用途，以及创建和销毁的时间，有的区域随着虚拟机进程的启动而存在，有些区域则是依赖用...
+运行时数据区域JVM载执行Java程序的过程中会把它所管理的内存划分为若干个不同的数据区域。这些区域都有各自的用途，以及创建和销毁的时间，有的区域随着虚拟机进程的启动而存在，有些区域...
     
 
         <a href="/2019/01/10/jvm_note1/" class="post-more waves-effect waves-button">
-            続きを読む…
+            Continue reading...
         </a>
     </div>
     
@@ -344,7 +394,7 @@
     
 
         <a href="/2019/01/05/winter_vacation/" class="post-more waves-effect waves-button">
-            続きを読む…
+            Continue reading...
         </a>
     </div>
     
@@ -371,7 +421,7 @@
 
   
     <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2019/01/04/2105/">实战中学习Flutter1：简易聊天AppUI</a>
+      <a class="post-title-link" href="/2019/01/04/flutter-practice1/">实战中学习Flutter1：简易聊天AppUI</a>
     </h3>
   
 
@@ -381,18 +431,19 @@
     <div class="post-content" id="post-content" itemprop="postContent">
 
     
-        作为新手写实战教程是为了也是为了学习，课程内容的实战项目主要来自我看的英文视频教程
-希望尽一点点薄力让大家有兴趣学习这门新技术。
+        希望尽一点点薄力让大家有兴趣学习这门新技术。
 这里暂不介绍环境配置等操作，不了解的朋友请先移步官网：https://flutter.io/
 开发环境：VS Code
 本套课程适合直接上手，无需各种基础，dart基础也不需要～～
 项目展示废话不多说了，看下这次我们需要开发的UI界面吧：
 
-           ...
+                
+                    
+               ...
     
 
-        <a href="/2019/01/04/2105/" class="post-more waves-effect waves-button">
-            続きを読む…
+        <a href="/2019/01/04/flutter-practice1/" class="post-more waves-effect waves-button">
+            Continue reading...
         </a>
     </div>
     
@@ -445,7 +496,7 @@
     
 
         <a href="/2019/01/04/5671/" class="post-more waves-effect waves-button">
-            続きを読む…
+            Continue reading...
         </a>
     </div>
     
@@ -495,7 +546,7 @@
     
 
         <a href="/2018/12/25/644b/" class="post-more waves-effect waves-button">
-            続きを読む…
+            Continue reading...
         </a>
     </div>
     
@@ -543,7 +594,7 @@
     
 
         <a href="/2018/11/21/86ef/" class="post-more waves-effect waves-button">
-            続きを読む…
+            Continue reading...
         </a>
     </div>
     
@@ -594,55 +645,7 @@ Presenter: 从Mod...
     
 
         <a href="/2018/11/11/3b09/" class="post-more waves-effect waves-button">
-            続きを読む…
-        </a>
-    </div>
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/架构/">架构</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/模块化/">模块化</a></li></ul>
-
-    </div>
-    
-</article>
-
-        </li>
-    
-        <li class="post-list-item fade">
-            <article id="post-2019-01-03-google-mvp-todo-and-clean"
-  class="article-card article-type-post" itemprop="blogPost">
-
-    <div class="post-meta">
-        <time class="post-time" title="2018-11-10 22:01:00" datetime="2018-11-10T14:01:00.000Z"  itemprop="datePublished">2018-11-10</time>
-
-        
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/整理/">整理</a></li></ul>
-
-
-
-    </div>
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2018/11/10/33d5/">跟着Google学习架构1：todo‑mvp和todo‑mvp‑clean</a>
-    </h3>
-  
-
-
-
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        前提这里一定要说明一下，对于MVP,MVC,MVVM,Clean Architecture 等都只是设计思想，并不是代码框架，具体的框架需要来使用上述的设计思想来实现。就比如下面的MVP实现中，View是Activity,Fragment，Presenter是单独的类来处理逻辑，REPOSITORY可以看做是Model。
-android-architecture-todoapp-mvpgoo...
-    
-
-        <a href="/2018/11/10/33d5/" class="post-more waves-effect waves-button">
-            続きを読む…
+            Continue reading...
         </a>
     </div>
     
@@ -676,7 +679,7 @@ android-architecture-todoapp-mvpgoo...
             
                 <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
             
-            <span>このブログの内容物は<a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.ja">クリエイティブ・コモンズ 表示 - 非営利 - 継承 4.0 国際ライセンスの下に提供されています</a></span>
+            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
         </p>
     </div>
     <div class="bottom">
