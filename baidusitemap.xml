@@ -1,629 +1,97 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-
-
-    
   <url>
-    <loc>https://meandni.com/2019/01/12/flutter-practice2/</loc>
-    <lastmod>2019-01-13T11:02:11.117Z</lastmod>
-    <data>
-        <display>
-        <title>实战中学习Flutter2：打造一款通用的APPUI结构，从此走上人生巅峰！</title>
-        <pubTime>2019-01-12T13:43:40.000Z</pubTime>
-        
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://meandni.com/2019/01/04/flutter-practice1/</loc>
-    <lastmod>2019-01-13T10:51:13.683Z</lastmod>
-    <data>
-        <display>
-        <title>实战中学习Flutter1：简易聊天AppUI</title>
-        <pubTime>2019-01-04T14:12:57.000Z</pubTime>
-        
-        <tag>自学</tag>
-         
-        <tag>flutter</tag>
-         
-         
-           
-             
-              <breadCrumb title="原创" url="https://meandni.com/categories/%E5%8E%9F%E5%88%9B/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://meandni.com/2018/03/01/d010/</loc>
-    <lastmod>2019-01-12T04:04:18.275Z</lastmod>
-    <data>
-        <display>
-        <title>Android Studio 使用方法总结（不定期更新）</title>
-        <pubTime>2018-03-01T06:32:04.000Z</pubTime>
-        
-        <tag>Android Studio</tag>
-         
-        <tag>Android</tag>
-         
-        <tag>软件使用</tag>
-         
-         
-           
-             
-              <breadCrumb title="原创" url="https://meandni.com/categories/%E5%8E%9F%E5%88%9B/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://meandni.com/2019/01/11/jvm_note2/</loc>
-    <lastmod>2019-01-11T04:34:28.268Z</lastmod>
-    <data>
-        <display>
-        <title>《深入理解java虚拟机》笔记2——GC算法与内存分配策略</title>
-        <pubTime>2019-01-11T03:16:01.000Z</pubTime>
-        
-        <tag>读书</tag>
-         
-        <tag>jvm</tag>
-         
-         
-           
-             
-              <breadCrumb title="整理" url="https://meandni.com/categories/%E6%95%B4%E7%90%86/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
+    <loc>https://meandni.com/2019/01/15/jvm_note5/</loc>
+    <lastmod>2019-01-15</lastmod>
+  </url>  <url>
+    <loc>https://meandni.com/2019/01/14/jvm_note4/</loc>
+    <lastmod>2019-01-15</lastmod>
+  </url>  <url>
     <loc>https://meandni.com/2019/01/11/jvm_note3/</loc>
-    <lastmod>2019-01-11T04:32:37.847Z</lastmod>
-    <data>
-        <display>
-        <title>《深入理解Java虚拟机》笔记3——7种垃圾收集器</title>
-        <pubTime>2019-01-11T03:50:40.000Z</pubTime>
-        
-        <tag>读书</tag>
-         
-        <tag>jvm</tag>
-         
-         
-           
-             
-              <breadCrumb title="整理" url="https://meandni.com/categories/%E6%95%B4%E7%90%86/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
+    <lastmod>2019-01-14</lastmod>
+  </url>  <url>
+    <loc>https://meandni.com/2019/01/12/flutter-practice2/</loc>
+    <lastmod>2019-01-13</lastmod>
+  </url>  <url>
+    <loc>https://meandni.com/2019/01/04/flutter-practice1/</loc>
+    <lastmod>2019-01-13</lastmod>
+  </url>  <url>
+    <loc>https://meandni.com/2018/03/01/d010/</loc>
+    <lastmod>2019-01-12</lastmod>
+  </url>  <url>
+    <loc>https://meandni.com/2019/01/11/jvm_note2/</loc>
+    <lastmod>2019-01-11</lastmod>
+  </url>  <url>
     <loc>https://meandni.com/2019/01/10/jvm_note1/</loc>
-    <lastmod>2019-01-11T04:32:18.840Z</lastmod>
-    <data>
-        <display>
-        <title>《深入理解java虚拟机》笔记1——Java内存区域与Java对象</title>
-        <pubTime>2019-01-10T03:02:02.000Z</pubTime>
-        
-        <tag>读书</tag>
-         
-        <tag>jvm</tag>
-         
-         
-           
-             
-              <breadCrumb title="整理" url="https://meandni.com/categories/%E6%95%B4%E7%90%86/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
+    <lastmod>2019-01-11</lastmod>
+  </url>  <url>
     <loc>https://meandni.com/2019/01/05/winter_vacation/</loc>
-    <lastmod>2019-01-10T03:22:09.189Z</lastmod>
-    <data>
-        <display>
-        <title>2019年寒假计划</title>
-        <pubTime>2019-01-05T09:30:52.000Z</pubTime>
-        
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-    
-  <url>
+    <lastmod>2019-01-10</lastmod>
+  </url>  <url>
     <loc>https://meandni.com/2019/01/04/5671/</loc>
-    <lastmod>2019-01-04T12:42:21.401Z</lastmod>
-    <data>
-        <display>
-        <title>经验：Flutter项目IOS真机部署及问题</title>
-        <pubTime>2019-01-04T12:12:57.000Z</pubTime>
-        
-        <tag>总结</tag>
-         
-        <tag>flutter</tag>
-         
-        <tag>问题</tag>
-         
-         
-           
-             
-              <breadCrumb title="整理" url="https://meandni.com/categories/%E6%95%B4%E7%90%86/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
+    <lastmod>2019-01-04</lastmod>
+  </url>  <url>
     <loc>https://meandni.com/2018/03/02/3079/</loc>
-    <lastmod>2019-01-03T15:20:02.193Z</lastmod>
-    <data>
-        <display>
-        <title>JQuery定时自动消失提示框/弹出框(转)</title>
-        <pubTime>2018-03-02T05:43:08.000Z</pubTime>
-        
-        <tag>javascript</tag>
-         
-        <tag>JQuery</tag>
-         
-        <tag>Web</tag>
-         
-         
-           
-             
-              <breadCrumb title="非原创" url="https://meandni.com/categories/%E9%9D%9E%E5%8E%9F%E5%88%9B/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
+    <lastmod>2019-01-03</lastmod>
+  </url>  <url>
     <loc>https://meandni.com/2018/12/25/644b/</loc>
-    <lastmod>2019-01-03T15:17:49.533Z</lastmod>
-    <data>
-        <display>
-        <title>Android进阶之路</title>
-        <pubTime>2018-12-25T07:15:58.000Z</pubTime>
-        
-        <tag>Android</tag>
-         
-        <tag>读书</tag>
-         
-         
-           
-             
-              <breadCrumb title="原创" url="https://meandni.com/categories/%E5%8E%9F%E5%88%9B/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
+    <lastmod>2019-01-03</lastmod>
+  </url>  <url>
     <loc>https://meandni.com/2018/09/07/f1a1/</loc>
-    <lastmod>2019-01-03T15:17:22.098Z</lastmod>
-    <data>
-        <display>
-        <title>《The Modern Javascript Tutorial》：javascript递归函数的分析</title>
-        <pubTime>2018-09-07T03:25:47.000Z</pubTime>
-        
-        <tag>javascript</tag>
-         
-        <tag>读书</tag>
-         
-         
-           
-             
-              <breadCrumb title="非原创" url="https://meandni.com/categories/%E9%9D%9E%E5%8E%9F%E5%88%9B/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
+    <lastmod>2019-01-03</lastmod>
+  </url>  <url>
     <loc>https://meandni.com/2018/09/08/f1a1/</loc>
-    <lastmod>2019-01-03T15:17:09.574Z</lastmod>
-    <data>
-        <display>
-        <title>《The Modern Javascript Tutorial》：javascript中的"this"</title>
-        <pubTime>2018-09-08T03:25:47.000Z</pubTime>
-        
-        <tag>javascript</tag>
-         
-        <tag>读书</tag>
-         
-         
-           
-             
-              <breadCrumb title="非原创" url="https://meandni.com/categories/%E9%9D%9E%E5%8E%9F%E5%88%9B/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
+    <lastmod>2019-01-03</lastmod>
+  </url>  <url>
     <loc>https://meandni.com/2018/11/11/3b09/</loc>
-    <lastmod>2019-01-03T15:16:53.659Z</lastmod>
-    <data>
-        <display>
-        <title>跟着Google学习架构2：todo‑mvp代码分析</title>
-        <pubTime>2018-11-11T14:01:00.000Z</pubTime>
-        
-        <tag>Android</tag>
-         
-        <tag>架构</tag>
-         
-        <tag>模块化</tag>
-         
-         
-           
-             
-              <breadCrumb title="整理" url="https://meandni.com/categories/%E6%95%B4%E7%90%86/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
+    <lastmod>2019-01-03</lastmod>
+  </url>  <url>
     <loc>https://meandni.com/2018/11/10/33d5/</loc>
-    <lastmod>2019-01-03T15:16:46.591Z</lastmod>
-    <data>
-        <display>
-        <title>跟着Google学习架构1：todo‑mvp和todo‑mvp‑clean</title>
-        <pubTime>2018-11-10T14:01:00.000Z</pubTime>
-        
-        <tag>Android</tag>
-         
-        <tag>架构</tag>
-         
-        <tag>模块化</tag>
-         
-         
-           
-             
-              <breadCrumb title="整理" url="https://meandni.com/categories/%E6%95%B4%E7%90%86/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
+    <lastmod>2019-01-03</lastmod>
+  </url>  <url>
     <loc>https://meandni.com/2018/08/15/integration-with-existing-apps/</loc>
-    <lastmod>2019-01-03T14:35:04.988Z</lastmod>
-    <data>
-        <display>
-        <title>跨平台方案：将ReactNative集成到现有原生应用(Android)</title>
-        <pubTime>2018-08-15T11:59:00.000Z</pubTime>
-        
-        <tag>android</tag>
-         
-        <tag>混合开发</tag>
-         
-        <tag>reactnative</tag>
-         
-         
-           
-             
-              <breadCrumb title="非原创" url="https://meandni.com/categories/%E9%9D%9E%E5%8E%9F%E5%88%9B/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
+    <lastmod>2019-01-03</lastmod>
+  </url>  <url>
     <loc>https://meandni.com/2018/08/22/3a79/</loc>
-    <lastmod>2019-01-03T14:34:55.709Z</lastmod>
-    <data>
-        <display>
-        <title>跨平台方案：Weex使用小记</title>
-        <pubTime>2018-08-22T03:25:47.000Z</pubTime>
-        
-        <tag>混合开发</tag>
-         
-         
-           
-             
-              <breadCrumb title="原创" url="https://meandni.com/categories/%E5%8E%9F%E5%88%9B/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
+    <lastmod>2019-01-03</lastmod>
+  </url>  <url>
     <loc>https://meandni.com/2018/11/21/86ef/</loc>
-    <lastmod>2019-01-03T13:51:48.033Z</lastmod>
-    <data>
-        <display>
-        <title>Android 框架组件(Android Architecture Components)使用指南</title>
-        <pubTime>2018-11-21T06:17:01.833Z</pubTime>
-        
-         
-           
-             
-              <breadCrumb title="非原创" url="https://meandni.com/categories/%E9%9D%9E%E5%8E%9F%E5%88%9B/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
+    <lastmod>2019-01-03</lastmod>
+  </url>  <url>
     <loc>https://meandni.com/2018/04/16/2c96/</loc>
-    <lastmod>2019-01-03T13:47:29.653Z</lastmod>
-    <data>
-        <display>
-        <title>java中的Json数据格式的使用——Gson</title>
-        <pubTime>2018-04-16T07:07:32.000Z</pubTime>
-        
-        <tag>android</tag>
-         
-        <tag>java</tag>
-         
-        <tag>gson</tag>
-         
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
+    <lastmod>2019-01-03</lastmod>
+  </url>  <url>
     <loc>https://meandni.com/2018/02/27/dfa1/</loc>
-    <lastmod>2019-01-03T13:45:32.943Z</lastmod>
-    <data>
-        <display>
-        <title>自学Php+jquery框架+bootstrap框架搭建博客！</title>
-        <pubTime>2018-02-27T15:45:48.000Z</pubTime>
-        
-        <tag>jqurey</tag>
-         
-        <tag>php</tag>
-         
-        <tag>昼夜颠倒</tag>
-         
-        <tag>自学</tag>
-         
-         
-           
-             
-              <breadCrumb title="原创" url="https://meandni.com/categories/%E5%8E%9F%E5%88%9B/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
+    <lastmod>2019-01-03</lastmod>
+  </url>  <url>
     <loc>https://meandni.com/2018/03/25/d89c/</loc>
-    <lastmod>2019-01-03T13:45:18.016Z</lastmod>
-    <data>
-        <display>
-        <title>我做第一个Android项目的过程！</title>
-        <pubTime>2018-03-25T06:06:02.000Z</pubTime>
-        
-        <tag>android</tag>
-         
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
+    <lastmod>2019-01-03</lastmod>
+  </url>  <url>
     <loc>https://meandni.com/2018/09/12/1011/</loc>
-    <lastmod>2019-01-03T13:44:55.793Z</lastmod>
-    <data>
-        <display>
-        <title>推荐一下Typora：极致简洁的markdown编辑器</title>
-        <pubTime>2018-09-12T02:32:42.000Z</pubTime>
-        
-        <tag>markdown</tag>
-         
-        <tag>软件</tag>
-         
-         
-           
-             
-              <breadCrumb title="非原创" url="https://meandni.com/categories/%E9%9D%9E%E5%8E%9F%E5%88%9B/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
+    <lastmod>2019-01-03</lastmod>
+  </url>  <url>
     <loc>https://meandni.com/2018/04/15/1a8e/</loc>
-    <lastmod>2019-01-03T13:43:32.494Z</lastmod>
-    <data>
-        <display>
-        <title>每天的新东西（Android篇）</title>
-        <pubTime>2018-04-15T07:00:57.000Z</pubTime>
-        
-        <tag>android</tag>
-         
-        <tag>java</tag>
-         
-         
-           
-             
-              <breadCrumb title="原创" url="https://meandni.com/categories/%E5%8E%9F%E5%88%9B/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
+    <lastmod>2019-01-03</lastmod>
+  </url>  <url>
     <loc>https://meandni.com/2018/10/10/a03f/</loc>
-    <lastmod>2019-01-03T13:43:16.653Z</lastmod>
-    <data>
-        <display>
-        <title>理解 IntelliJ IDEA 的项目配置和Web部署</title>
-        <pubTime>2018-10-10T04:37:00.230Z</pubTime>
-        
-        <tag>软件</tag>
-         
-        <tag>IntelliJ IDEA</tag>
-         
-        <tag>javaweb</tag>
-         
-         
-           
-             
-              <breadCrumb title="非原创" url="https://meandni.com/categories/%E9%9D%9E%E5%8E%9F%E5%88%9B/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
+    <lastmod>2019-01-03</lastmod>
+  </url>  <url>
     <loc>https://meandni.com/2018/04/16/2fd8/</loc>
-    <lastmod>2019-01-03T13:42:25.238Z</lastmod>
-    <data>
-        <display>
-        <title>简单验证Adapter每次显示部分数据的原理</title>
-        <pubTime>2018-04-16T14:24:40.000Z</pubTime>
-        
-        <tag>android</tag>
-         
-         
-           
-             
-              <breadCrumb title="原创" url="https://meandni.com/categories/%E5%8E%9F%E5%88%9B/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
+    <lastmod>2019-01-03</lastmod>
+  </url>  <url>
     <loc>https://meandni.com/2018/10/05/3a4f/</loc>
-    <lastmod>2019-01-03T13:38:52.892Z</lastmod>
-    <data>
-        <display>
-        <title>2018.10.5有感！</title>
-        <pubTime>2018-10-05T14:33:37.782Z</pubTime>
-        
-        <tag>感想</tag>
-         
-        <tag>人生</tag>
-         
-         
-           
-             
-              <breadCrumb title="原创" url="https://meandni.com/categories/%E5%8E%9F%E5%88%9B/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
+    <lastmod>2019-01-03</lastmod>
+  </url>  <url>
     <loc>https://meandni.com/2018/02/26/82e4/</loc>
-    <lastmod>2019-01-03T13:37:47.553Z</lastmod>
-    <data>
-        <display>
-        <title>大二寒假、总结！</title>
-        <pubTime>2018-02-26T12:05:17.000Z</pubTime>
-        
-        <tag>寒假</tag>
-         
-        <tag>总结</tag>
-         
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
+    <lastmod>2019-01-03</lastmod>
+  </url>  <url>
     <loc>https://meandni.com/2018/08/17/react-tutorial/</loc>
-    <lastmod>2019-01-03T13:37:29.684Z</lastmod>
-    <data>
-        <display>
-        <title>尝试翻译React英文文档</title>
-        <pubTime>2018-08-17T12:58:00.000Z</pubTime>
-        
-        <tag>自学</tag>
-         
-        <tag>react</tag>
-         
-        <tag>翻译</tag>
-         
-         
-           
-             
-              <breadCrumb title="原创" url="https://meandni.com/categories/%E5%8E%9F%E5%88%9B/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
+    <lastmod>2019-01-03</lastmod>
+  </url>  <url>
     <loc>https://meandni.com/2018/08/14/0/</loc>
-    <lastmod>2019-01-03T13:34:01.652Z</lastmod>
-    <data>
-        <display>
-        <title>读《第一行代码》</title>
-        <pubTime>2018-08-14T14:21:37.000Z</pubTime>
-        
-        <tag>Android</tag>
-         
-        <tag>读书</tag>
-         
-         
-           
-             
-              <breadCrumb title="原创" url="https://meandni.com/categories/%E5%8E%9F%E5%88%9B/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
+    <lastmod>2019-01-03</lastmod>
+  </url>  <url>
     <loc>https://meandni.com/2018/08/14/3eeb/</loc>
-    <lastmod>2018-09-02T06:16:39.000Z</lastmod>
-    <data>
-        <display>
-        <title>Hello World</title>
-        <pubTime>2018-08-14T03:27:16.000Z</pubTime>
-        
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-    
-    
+    <lastmod>2018-09-02</lastmod>
+  </url>
 </urlset>

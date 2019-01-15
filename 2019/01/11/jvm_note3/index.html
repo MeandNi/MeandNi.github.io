@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<head>
+<head><meta name="generator" content="Hexo 3.8.0">
     
 
     
@@ -38,7 +38,7 @@
 <meta property="og:image" content="http://pic.yupoo.com/meandni/400d294e/1d022e13.png">
 <meta property="og:image" content="http://pic.yupoo.com/meandni/5393369d/5f8cbd42.png">
 <meta property="og:image" content="http://pic.yupoo.com/meandni/ce8ef9fc/10c8999f.jpg">
-<meta property="og:updated_time" content="2019-01-11T04:32:37.847Z">
+<meta property="og:updated_time" content="2019-01-14T07:45:49.751Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="《深入理解Java虚拟机》笔记3——7种垃圾收集器">
 <meta name="twitter:description" content="2019大三的寒假计划——利用在公司每天早起的时间读书，第一本是周志明老师的《深入理解Java虚拟机——JVM高级特性与最佳实践》，这一系列是通过对原文的拜读与自己理解加上网络上的资料文章整理出的读书笔记。  如果说收集算法是内存回收的方法论，那么垃圾收集器就是内存回收的具体实现。**Java虚拟机规范中对垃圾收集器应该如何实现并没有任何规定，因此不同的厂商、版本的虚拟机所提供的垃圾收集器都可能">
@@ -58,7 +58,7 @@
 <body>
     <div id="loading" class="active"></div>
 
-    <aside id="menu" class="hide" >
+    <aside id="menu" class="hide">
   <div class="inner flex-row-vertical">
     <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
         <i class="icon icon-lg icon-close"></i>
@@ -78,42 +78,42 @@
       <ul class="nav">
         
             <li class="waves-block waves-effect">
-              <a href="/"  >
+              <a href="/">
                 <i class="icon icon-lg icon-home"></i>
                 主页
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="/archives"  >
+              <a href="/archives">
                 <i class="icon icon-lg icon-archives"></i>
                 Archives
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="/tags"  >
+              <a href="/tags">
                 <i class="icon icon-lg icon-tags"></i>
                 Tags
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="/categories"  >
+              <a href="/categories">
                 <i class="icon icon-lg icon-th-list"></i>
                 Categories
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="https://github.com/MeandNi" target="_blank" >
+              <a href="https://github.com/MeandNi" target="_blank">
                 <i class="icon icon-lg icon-github"></i>
                 Github
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="/about"  >
+              <a href="/about">
                 <i class="icon icon-lg icon-link"></i>
                 AboutMe
               </a>
@@ -177,18 +177,17 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#相关概念"><span class="post-toc-number">1.</span> <span class="post-toc-text">相关概念</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#并行和并发"><span class="post-toc-number">1.0.0.1.</span> <span class="post-toc-text">并行和并发</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#吞吐量（Throughput）"><span class="post-toc-number">1.0.0.2.</span> <span class="post-toc-text">吞吐量（Throughput）</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Minor-GC-和-Full-GC"><span class="post-toc-number">1.0.0.3.</span> <span class="post-toc-text">Minor GC 和 Full GC</span></a></li></ol></li></ol></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#各收集器阐述"><span class="post-toc-number">2.</span> <span class="post-toc-text">各收集器阐述</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1-Serial-收集器"><span class="post-toc-number">2.0.0.1.</span> <span class="post-toc-text">1. Serial 收集器</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#2-ParNew-收集器"><span class="post-toc-number">2.0.0.2.</span> <span class="post-toc-text">2. ParNew 收集器</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#3-Parallel-Scavenge-收集器"><span class="post-toc-number">2.0.0.3.</span> <span class="post-toc-text">3. Parallel Scavenge 收集器</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#4-Serial-Old-收集器"><span class="post-toc-number">2.0.0.4.</span> <span class="post-toc-text">4. Serial Old 收集器</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#5-Parallel-Old-收集器"><span class="post-toc-number">2.0.0.5.</span> <span class="post-toc-text">5. Parallel Old 收集器</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#6-CMS-收集器"><span class="post-toc-number">2.0.0.6.</span> <span class="post-toc-text">6. CMS 收集器</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#7-G1-收集器"><span class="post-toc-number">2.0.0.7.</span> <span class="post-toc-text">7. G1 收集器</span></a></li></ol></li></ol></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#总结"><span class="post-toc-number">3.</span> <span class="post-toc-text">总结</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#参考资料"><span class="post-toc-number">4.</span> <span class="post-toc-text">参考资料</span></a></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#相关概念"><span class="post-toc-number">1.</span> <span class="post-toc-text">相关概念</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#并行和并发"><span class="post-toc-number">1.0.0.1.</span> <span class="post-toc-text">并行和并发</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#吞吐量（Throughput）"><span class="post-toc-number">1.0.0.2.</span> <span class="post-toc-text">吞吐量（Throughput）</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Minor-GC-和-Full-GC"><span class="post-toc-number">1.0.0.3.</span> <span class="post-toc-text">Minor GC 和 Full GC</span></a></li></ol></li></ol><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#各收集器阐述"><span class="post-toc-number">2.</span> <span class="post-toc-text">各收集器阐述</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1-Serial-收集器"><span class="post-toc-number">2.0.0.1.</span> <span class="post-toc-text">1. Serial 收集器</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#2-ParNew-收集器"><span class="post-toc-number">2.0.0.2.</span> <span class="post-toc-text">2. ParNew 收集器</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#3-Parallel-Scavenge-收集器"><span class="post-toc-number">2.0.0.3.</span> <span class="post-toc-text">3. Parallel Scavenge 收集器</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#4-Serial-Old-收集器"><span class="post-toc-number">2.0.0.4.</span> <span class="post-toc-text">4. Serial Old 收集器</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#5-Parallel-Old-收集器"><span class="post-toc-number">2.0.0.5.</span> <span class="post-toc-text">5. Parallel Old 收集器</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#6-CMS-收集器"><span class="post-toc-number">2.0.0.6.</span> <span class="post-toc-text">6. CMS 收集器</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#7-G1-收集器"><span class="post-toc-number">2.0.0.7.</span> <span class="post-toc-text">7. G1 收集器</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#总结"><span class="post-toc-number">3.</span> <span class="post-toc-text">总结</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#参考资料"><span class="post-toc-number">4.</span> <span class="post-toc-text">参考资料</span></a></li>
         </nav>
     </aside>
 
 
-<article id="post-2019-01-11-jvm-note3"
-  class="post-article article-type-post fade" itemprop="blogPost">
+<article id="post-2019-01-11-jvm-note3" class="post-article article-type-post fade" itemprop="blogPost">
 
     <div class="post-card">
         <h1 class="post-card-title">《深入理解Java虚拟机》笔记3——7种垃圾收集器</h1>
         <div class="post-meta">
-            <time class="post-time" title="2019-01-11 11:50:40" datetime="2019-01-11T03:50:40.000Z"  itemprop="datePublished">2019-01-11</time>
+            <time class="post-time" title="2019-01-11 11:50:40" datetime="2019-01-11T03:50:40.000Z" itemprop="datePublished">2019-01-11</time>
 
             
 	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/整理/">整理</a></li></ul>
@@ -376,7 +375,7 @@
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2019-01-11T04:32:37.847Z" itemprop="dateUpdated">2019-01-11 12:32:37</time>
+    Last updated: <time datetime="2019-01-14T07:45:49.751Z" itemprop="dateUpdated">2019-01-14 15:45:49</time>
 </span><br>
 
 
@@ -511,8 +510,7 @@
         </div>
         
         <label class="reward-toggle">
-            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
-                data-wechat="/img/wechat.png" data-alipay="/img/alipay.jpg">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check" data-wechat="/img/wechat.png" data-alipay="/img/alipay.jpg">
             <div class="reward-toggle-ctrol">
                 <span class="reward-toggle-item wechat">微信</span>
                 <span class="reward-toggle-label"></span>
