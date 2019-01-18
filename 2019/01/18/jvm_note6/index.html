@@ -14,7 +14,7 @@
     
     
     
-    <title>《深入理解Java虚拟机》笔记5——高效并发 | Joker&#39;s Blog | 个人分享博客</title>
+    <title>《深入理解Java虚拟机》笔记6——高效并发 | Joker&#39;s Blog | 个人分享博客</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
     <meta name="theme-color" content="#3F51B5">
@@ -24,7 +24,7 @@
     <meta name="description" content="第五部分 高效并发第十二章 Java内存模型与线程并发处理的广泛应用是使得Amdahl定律代替摩尔定律成为计算机性能发展源动力的根本原因，也是人类“压榨”计算机运算能力的最有力武器。 12.1 概述 多任务处理在现代计算机操作系统中几乎已是一项必备的功能了； 除了充分利用计算机处理器的能力外，一个服务端同时对多个客户端提供服务则是另一个更具体的并发应用场景； 服务端是Java语言最擅长的领域之一，">
 <meta name="keywords" content="读书,jvm">
 <meta property="og:type" content="article">
-<meta property="og:title" content="《深入理解Java虚拟机》笔记5——高效并发">
+<meta property="og:title" content="《深入理解Java虚拟机》笔记6——高效并发">
 <meta property="og:url" content="https://meandni.com/2019/01/18/jvm_note6/index.html">
 <meta property="og:site_name" content="Joker&#39;s Blog">
 <meta property="og:description" content="第五部分 高效并发第十二章 Java内存模型与线程并发处理的广泛应用是使得Amdahl定律代替摩尔定律成为计算机性能发展源动力的根本原因，也是人类“压榨”计算机运算能力的最有力武器。 12.1 概述 多任务处理在现代计算机操作系统中几乎已是一项必备的功能了； 除了充分利用计算机处理器的能力外，一个服务端同时对多个客户端提供服务则是另一个更具体的并发应用场景； 服务端是Java语言最擅长的领域之一，">
@@ -33,9 +33,9 @@
 <meta property="og:image" content="https:////upload-images.jianshu.io/upload_images/3709321-68f2cc99d1439039.png">
 <meta property="og:image" content="https:////upload-images.jianshu.io/upload_images/3709321-5ab1ae52e69821c1.png">
 <meta property="og:image" content="https:////upload-images.jianshu.io/upload_images/3709321-2501d5d148f80a2d.png">
-<meta property="og:updated_time" content="2019-01-18T01:55:07.374Z">
+<meta property="og:updated_time" content="2019-01-18T01:59:09.876Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="《深入理解Java虚拟机》笔记5——高效并发">
+<meta name="twitter:title" content="《深入理解Java虚拟机》笔记6——高效并发">
 <meta name="twitter:description" content="第五部分 高效并发第十二章 Java内存模型与线程并发处理的广泛应用是使得Amdahl定律代替摩尔定律成为计算机性能发展源动力的根本原因，也是人类“压榨”计算机运算能力的最有力武器。 12.1 概述 多任务处理在现代计算机操作系统中几乎已是一项必备的功能了； 除了充分利用计算机处理器的能力外，一个服务端同时对多个客户端提供服务则是另一个更具体的并发应用场景； 服务端是Java语言最擅长的领域之一，">
 <meta name="twitter:image" content="https:////upload-images.jianshu.io/upload_images/3709321-01c9d97d757d8c1f.png">
     
@@ -125,7 +125,7 @@
         <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
           <i class="icon icon-lg icon-navicon"></i>
         </a>
-        <div class="flex-col header-title ellipsis">《深入理解Java虚拟机》笔记5——高效并发</div>
+        <div class="flex-col header-title ellipsis">《深入理解Java虚拟机》笔记6——高效并发</div>
         
         <div class="search-wrap" id="search-wrap">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
@@ -147,7 +147,7 @@
 <header class="content-header post-header">
 
     <div class="container fade-scale">
-        <h1 class="title">《深入理解Java虚拟机》笔记5——高效并发</h1>
+        <h1 class="title">《深入理解Java虚拟机》笔记6——高效并发</h1>
         <h5 class="subtitle">
             
                 <time datetime="2019-01-18T01:47:40.000Z" itemprop="datePublished" class="page-time">
@@ -180,7 +180,7 @@
 <article id="post-2019-01-18-jvm-note6" class="post-article article-type-post fade" itemprop="blogPost">
 
     <div class="post-card">
-        <h1 class="post-card-title">《深入理解Java虚拟机》笔记5——高效并发</h1>
+        <h1 class="post-card-title">《深入理解Java虚拟机》笔记6——高效并发</h1>
         <div class="post-meta">
             <time class="post-time" title="2019-01-18 09:47:40" datetime="2019-01-18T01:47:40.000Z" itemprop="datePublished">2019-01-18</time>
 
@@ -318,7 +318,7 @@
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2019-01-18T01:55:07.374Z" itemprop="dateUpdated">2019-01-18 09:55:07</time>
+    Last updated: <time datetime="2019-01-18T01:59:09.876Z" itemprop="dateUpdated">2019-01-18 09:59:09</time>
 </span><br>
 
 
@@ -352,7 +352,7 @@
 <div class="page-share" id="pageShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://meandni.com/2019/01/18/jvm_note6/&title=《《深入理解Java虚拟机》笔记5——高效并发》 — Joker's Blog&pic=https://meandni.com/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://meandni.com/2019/01/18/jvm_note6/&title=《《深入理解Java虚拟机》笔记6——高效并发》 — Joker's Blog&pic=https://meandni.com/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -362,7 +362,7 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://meandni.com/2019/01/18/jvm_note6/&title=《《深入理解Java虚拟机》笔记5——高效并发》 — Joker's Blog&source=分享生活、技术、学习心得" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://meandni.com/2019/01/18/jvm_note6/&title=《《深入理解Java虚拟机》笔记6——高效并发》 — Joker's Blog&source=分享生活、技术、学习心得" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
@@ -372,7 +372,7 @@
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《《深入理解Java虚拟机》笔记5——高效并发》 — Joker's Blog&url=https://meandni.com/2019/01/18/jvm_note6/&via=https://meandni.com" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《《深入理解Java虚拟机》笔记6——高效并发》 — Joker's Blog&url=https://meandni.com/2019/01/18/jvm_note6/&via=https://meandni.com" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
@@ -402,9 +402,9 @@
 
   
     <div class="waves-block waves-effect next">
-      <a href="/2019/01/17/3e04/" id="post-next" class="post-nav-link">
+      <a href="/2019/01/15/jvm_note5/" id="post-next" class="post-nav-link">
         <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
-        <h4 class="title">2019-01-17-Leetcode刷</h4>
+        <h4 class="title">《深入理解Java虚拟机》笔记5——类加载机制与字节码执行引擎</h4>
       </a>
     </div>
   
@@ -491,7 +491,7 @@
 <div class="global-share" id="globalShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://meandni.com/2019/01/18/jvm_note6/&title=《《深入理解Java虚拟机》笔记5——高效并发》 — Joker's Blog&pic=https://meandni.com/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://meandni.com/2019/01/18/jvm_note6/&title=《《深入理解Java虚拟机》笔记6——高效并发》 — Joker's Blog&pic=https://meandni.com/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -501,7 +501,7 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://meandni.com/2019/01/18/jvm_note6/&title=《《深入理解Java虚拟机》笔记5——高效并发》 — Joker's Blog&source=分享生活、技术、学习心得" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://meandni.com/2019/01/18/jvm_note6/&title=《《深入理解Java虚拟机》笔记6——高效并发》 — Joker's Blog&source=分享生活、技术、学习心得" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
@@ -511,7 +511,7 @@
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《《深入理解Java虚拟机》笔记5——高效并发》 — Joker's Blog&url=https://meandni.com/2019/01/18/jvm_note6/&via=https://meandni.com" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《《深入理解Java虚拟机》笔记6——高效并发》 — Joker's Blog&url=https://meandni.com/2019/01/18/jvm_note6/&via=https://meandni.com" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
