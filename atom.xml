@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://meandni.com/"/>
-  <updated>2019-01-18T01:59:09.876Z</updated>
+  <updated>2019-01-19T03:33:32.720Z</updated>
   <id>https://meandni.com/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>2019第一次阅读记录</title>
+    <link href="https://meandni.com/2019/01/18/first-reading-record/"/>
+    <id>https://meandni.com/2019/01/18/first-reading-record/</id>
+    <published>2019-01-18T03:01:05.000Z</published>
+    <updated>2019-01-19T03:33:32.720Z</updated>
+    
+    <content type="html"><![CDATA[<p><a href="http://www.ruanyifeng.com/blog/2018/02/node-event-loop.html" target="_blank" rel="noopener">《Node 定时器详解》</a></p><p><a href="https://juejin.im/post/5c408f40e51d455222642b1c" target="_blank" rel="noopener">一位年度作者的年度总结 | 掘金年度征文</a></p><p><a href="https://segmentfault.com/a/1190000011145364" target="_blank" rel="noopener">前端常见跨域解决方案（全）</a> ？</p><p><a href="https://juejin.im/post/5aad40e4f265da237f1e12ed" target="_blank" rel="noopener">前端笔试题面试题记录（上）| 掘金技术征文</a></p><p><a href="https://github.com/KieSun/Blog/issues/2" target="_blank" rel="noopener">深度解析原型中的各个难点 </a></p><hr><p><a href="https://juejin.im/post/5c0dbe7ee51d451dac076e6c" target="_blank" rel="noopener">Android MVVM组件化架构方案</a></p><p><a href="https://juejin.im/post/5c404cca5188251e10159d09" target="_blank" rel="noopener">基于源码分析 Android View 事件分发机制</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;a href=&quot;http://www.ruanyifeng.com/blog/2018/02/node-event-loop.html&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;《Node 定时器详解》&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;htt
+      
+    
+    </summary>
+    
+      <category term="整理" scheme="https://meandni.com/categories/%E6%95%B4%E7%90%86/"/>
+    
+    
+      <category term="阅读" scheme="https://meandni.com/tags/%E9%98%85%E8%AF%BB/"/>
+    
+  </entry>
   
   <entry>
     <title>《深入理解Java虚拟机》笔记6——高效并发</title>
@@ -103,7 +129,7 @@
     <link href="https://meandni.com/2019/01/12/flutter-practice2/"/>
     <id>https://meandni.com/2019/01/12/flutter-practice2/</id>
     <published>2019-01-12T13:43:40.000Z</published>
-    <updated>2019-01-13T11:02:11.117Z</updated>
+    <updated>2019-01-18T02:00:43.179Z</updated>
     
     <content type="html"><![CDATA[<p>打造一款通用的AppUI结构，包括登录、注册、首页及各中共用部分，最后能够构成一款完整的APP，目前还在完善，希望大家一起加入。</p><p>引用我在<a href="https://github.com/MeandNi/AndroidEfficientBaseUtils" target="_blank" rel="noopener">AndroidEfficientBaseUtils</a>说过的话，相当于给你一个完完整整地漂亮的盒子，你只需把自己需要的东西放进去就好。而且这是跨平台的呀。</p><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="https://github.com/MeandNi/flutter_commonApp/raw/master/show/appshow.jpg" alt="" title="">                </div>                <div class="image-caption"></div>            </figure><h2 id="结构清单"><a href="#结构清单" class="headerlink" title="结构清单"></a>结构清单</h2><ul><li style="list-style: none"><input type="checkbox" checked> Welcome - 首页</li><li style="list-style: none"><input type="checkbox" checked> Login - 登录</li><li style="list-style: none"><input type="checkbox"> Register - 注册</li><li style="list-style: none"><input type="checkbox" checked> Home - 首页</li><li style="list-style: none"><input type="checkbox"> Personal information - 个人信息</li><li style="list-style: none"><input type="checkbox"> ….</li></ul><h2 id="作者"><a href="#作者" class="headerlink" title="作者"></a>作者</h2><ul><li>Yangjiakang, <a href="https://github.com/MeandNi/flutter_commonApp" target="_blank" rel="noopener"><strong>MeandNi</strong></a></li><li><p>….</p></li><li><p>相信这一套结构可以适用于大部分App（当然自己要根据需求修改。），这里追求的是通用而不是花哨的效果。</p></li></ul><h2 id="完整代码"><a href="#完整代码" class="headerlink" title="完整代码"></a>完整代码</h2><p><a href="https://github.com/MeandNi/flutter_commonApp" target="_blank" rel="noopener">代码</a></p>]]></content>
     
@@ -117,6 +143,12 @@
     
     </summary>
     
+      <category term="原创" scheme="https://meandni.com/categories/%E5%8E%9F%E5%88%9B/"/>
+    
+    
+      <category term="自学" scheme="https://meandni.com/tags/%E8%87%AA%E5%AD%A6/"/>
+    
+      <category term="flutter" scheme="https://meandni.com/tags/flutter/"/>
     
   </entry>
   
@@ -209,16 +241,16 @@
     <link href="https://meandni.com/2019/01/05/winter_vacation/"/>
     <id>https://meandni.com/2019/01/05/winter_vacation/</id>
     <published>2019-01-05T09:30:52.000Z</published>
-    <updated>2019-01-10T03:22:09.189Z</updated>
+    <updated>2019-01-19T03:26:34.856Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="读书"><a href="#读书" class="headerlink" title="读书"></a>读书</h2><ul><li style="list-style: none"><input type="checkbox"> 细读《Android进阶之光》</li><li style="list-style: none"><input type="checkbox"> 细读《Android群英传》</li><li style="list-style: none"><input type="checkbox"> 读《Android开发艺术探索》</li><li style="list-style: none"><input type="checkbox"> 读《Android音视频开发》</li><li style="list-style: none"><input type="checkbox"> 读《深入理解JAVA虚拟机》</li><li style="list-style: none"><input type="checkbox"> 读《kotlin实战》</li><li style="list-style: none"><input type="checkbox"> 读《深度学习入门：基于python的理论与实现》</li><li style="list-style: none"><input type="checkbox"> 重温细读《第一行代码》</li><li style="list-style: none"><input type="checkbox"> 重温细读《The Modern Javascript Tutorial》</li></ul><p>阅读是不能停的，除了以上书籍还有大量技术博客博文代码的阅读。</p><h2 id="文章"><a href="#文章" class="headerlink" title="文章"></a>文章</h2><ul><li><p>[ ] Android基础总结（依据第一行代码）</p></li><li><p>[ ] Android进阶总结（依据进阶书籍）</p></li><li><p>[ ] 跟着Google学习架构系列</p></li><li><p>[ ] 5篇以上Flutter实战文章</p></li><li><p>[ ] 待续….</p></li></ul><h2 id="视频"><a href="#视频" class="headerlink" title="视频"></a>视频</h2><ul><li style="list-style: none"><input type="checkbox"> 剑指Java面试</li><li style="list-style: none"><input type="checkbox"> 全面系统 Python3入门+进阶课程</li><li style="list-style: none"><input type="checkbox"> Python3入门机器学习 经典算法与应用(波波)</li><li style="list-style: none"><input type="checkbox"> FFmpeg音视频核心技术精讲与实战</li><li style="list-style: none"><input type="checkbox"> ……</li></ul><h2 id="技术栈"><a href="#技术栈" class="headerlink" title="技术栈"></a>技术栈</h2><ul><li style="list-style: none"><input type="checkbox"> android架构组件实战 —— MVP、MVVM</li><li style="list-style: none"><input type="checkbox"> Flutter样例实战</li><li style="list-style: none"><input type="checkbox"> Redux实战</li><li style="list-style: none"><input type="checkbox"> 待续….</li></ul>]]></content>
+    <content type="html"><![CDATA[<h2 id="读书"><a href="#读书" class="headerlink" title="读书"></a>读书</h2><ul><li style="list-style: none"><input type="checkbox" checked> 细读《Android进阶之光》</li><li style="list-style: none"><input type="checkbox"> 细读《Android群英传》</li><li style="list-style: none"><input type="checkbox"> 读《Android开发艺术探索》</li><li style="list-style: none"><input type="checkbox"> 读《Android音视频开发》</li><li style="list-style: none"><input type="checkbox" checked> 读《深入理解JAVA虚拟机》</li><li style="list-style: none"><input type="checkbox"> 读《kotlin实战》</li><li style="list-style: none"><input type="checkbox"> 读《深度学习入门：基于python的理论与实现》</li><li style="list-style: none"><input type="checkbox"> 重温细读《第一行代码》</li><li style="list-style: none"><input type="checkbox"> 重温细读《The Modern Javascript Tutorial》</li></ul><h2 id="文章"><a href="#文章" class="headerlink" title="文章"></a>文章</h2><ul><li><p>[ ] Android基础总结（依据第一行代码）</p></li><li><p>[ ] Android进阶总结（依据进阶书籍）</p></li><li><p>[ ] 跟着Google学习架构系列</p></li><li><p>[ ] 5篇以上Flutter实战文章</p></li><li><p>[ ] 待续….</p></li></ul><h2 id="视频"><a href="#视频" class="headerlink" title="视频"></a>视频</h2><ul><li style="list-style: none"><input type="checkbox"> 剑指Java面试</li><li style="list-style: none"><input type="checkbox"> 全面系统 Python3入门+进阶课程</li><li style="list-style: none"><input type="checkbox"> Python3入门机器学习 经典算法与应用(波波)</li><li style="list-style: none"><input type="checkbox"> FFmpeg音视频核心技术精讲与实战</li><li style="list-style: none"><input type="checkbox"> ……</li></ul><h2 id="技术栈"><a href="#技术栈" class="headerlink" title="技术栈"></a>技术栈</h2><ul><li style="list-style: none"><input type="checkbox"> android架构组件实战 —— MVP、MVVM</li><li style="list-style: none"><input type="checkbox"> Flutter样例实战</li><li style="list-style: none"><input type="checkbox"> Redux实战</li><li style="list-style: none"><input type="checkbox"> 待续….</li></ul>]]></content>
     
     <summary type="html">
     
       
       
         &lt;h2 id=&quot;读书&quot;&gt;&lt;a href=&quot;#读书&quot; class=&quot;headerlink&quot; title=&quot;读书&quot;&gt;&lt;/a&gt;读书&lt;/h2&gt;&lt;ul&gt;
-&lt;li style=&quot;list-style: none&quot;&gt;&lt;input type=&quot;checkbox&quot;&gt; 细读《Android进阶之光》
+&lt;li style=&quot;list-style: none&quot;&gt;&lt;input type=&quot;checkbox&quot; checked&gt; 细读《Andr
       
     
     </summary>
@@ -286,12 +318,12 @@
   
   <entry>
     <title>Android进阶之路</title>
-    <link href="https://meandni.com/2018/12/25/644b/"/>
-    <id>https://meandni.com/2018/12/25/644b/</id>
+    <link href="https://meandni.com/2018/12/25/android-advanced/"/>
+    <id>https://meandni.com/2018/12/25/android-advanced/</id>
     <published>2018-12-25T07:15:58.000Z</published>
-    <updated>2019-01-03T15:17:49.533Z</updated>
+    <updated>2019-01-19T03:39:04.892Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="读书进阶Android"><a href="#读书进阶Android" class="headerlink" title="读书进阶Android"></a>读书进阶Android</h2><p>已读：《Android群英传》</p><p>正读：《Android进阶之光》</p><p>未读：《Android开发艺术探索》</p>]]></content>
+    <content type="html"><![CDATA[<h2 id="读书进阶Android"><a href="#读书进阶Android" class="headerlink" title="读书进阶Android"></a>读书进阶Android</h2><p>已读：《Android群英传》</p><p>正读：《Android进阶之光》</p><p>未读：《Android开发艺术探索》</p><hr><h4 id="进阶知识点："><a href="#进阶知识点：" class="headerlink" title="进阶知识点："></a>进阶知识点：</h4><ul><li>Activity启动模式</li><li>View的滑动与动画</li><li>View的事件分发机制</li><li>自定义View、ViewGrroup</li><li>多线程编程、线程池使用与原理</li><li>网络编程、网络框架使用与原理</li><li>设计模式（单例、工厂……）</li><li>常用框架原理（RXJava、EventBus、Dagger2……）</li><li>应用架构（MVP、MVVM）</li><li>性能优化</li><li>JNI和NDK编程</li></ul><hr><h4 id="专项进阶："><a href="#专项进阶：" class="headerlink" title="专项进阶："></a>专项进阶：</h4><ul><li>Android音视频</li><li>Android通信</li></ul>]]></content>
     
     <summary type="html">
     
@@ -532,31 +564,6 @@
       <category term="javascript" scheme="https://meandni.com/tags/javascript/"/>
     
       <category term="读书" scheme="https://meandni.com/tags/%E8%AF%BB%E4%B9%A6/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>跨平台方案：Weex使用小记</title>
-    <link href="https://meandni.com/2018/08/22/3a79/"/>
-    <id>https://meandni.com/2018/08/22/3a79/</id>
-    <published>2018-08-22T03:25:47.000Z</published>
-    <updated>2019-01-03T14:34:55.709Z</updated>
-    
-    <content type="html"><![CDATA[<p>还记得刚接触ReactNative时有多激动，此前还没想过能有这么强大的框架，后来对看多了混合开发的资料发现这真的已经成了不许要学会的一个技能，于是招收学习起了React，效果不尽人意，可能是先接触了Vue，已经习惯了它的开放方式，对React总是用不习惯，有些知识点甚至不能掌握更别提做出格完整的项目了，于是就我而言React是没有Vue好用的，之前也在网上找过Vue有没有类似Native的框架，了解了NativeScript发现国内用的人比较少，文档都是全英文（虽并无大碍）但坑太多我自己安装起来也比较吃力，于是有放弃了对VueNative的探索，继续学习RN～～～还算入门了，但就是不习惯啊，偶然想到另一门技术Weex，之前看到过但并不知道它是基于Vue的跨平台框架于是没去学习，了解后发现它原来是阿里开发的，它原来是基于Vue的，虽然用的人还不多，但他原来有那么全的中文文档～～～卧槽。。。。</p><p>用所有的东西都是有坑的，但我坚信对我而言国内人开发的东西会极大的亲近我们，于是开始了搭建环境、学习的旅程。</p><h2 id="环境搭建"><a href="#环境搭建" class="headerlink" title="环境搭建"></a>环境搭建</h2><p>相比NativeScript，Weex简直是水到渠成，web端一下子就能运行起来，而且代码是那么的熟悉，Vue在心中已有一席之地，想想以后的混合开发会是如此的畅快！</p><ol><li>安装脚手架</li></ol><p><code>npm install weex-toolkit -g</code></p><ol start="2"><li>创建项目</li></ol><p><code>weex create awesome-app</code></p><ol start="3"><li>运行项目</li></ol><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cd awesome-app</span><br><span class="line">npm install</span><br><span class="line">npm start</span><br></pre></td></tr></table></figure><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="http://weex.apache.org/guide/images/toolkit-preview.png" alt="Weex" title="">                </div>                <div class="image-caption">Weex</div>            </figure><h2 id="android端运行"><a href="#android端运行" class="headerlink" title="android端运行"></a>android端运行</h2><ul><li>添加特定平台的项目</li></ul><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">weex platform add ios</span><br><span class="line">weex platform add android</span><br></pre></td></tr></table></figure><p>官网都说了：</p><blockquote><p>由于网络环境的不同，安装过程可能需要一些时间，请耐心等待。如果安装失败，请确保自己的网络环境畅通。</p></blockquote><p>所以昨晚在这一步发生的错误应该就是网络的原因，今天早上网络流畅点就好了</p><ul><li>在本地机器上打开 Android 和 iOS 项目</li></ul><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">weex run ios</span><br><span class="line">weex run android</span><br><span class="line">weex run web</span><br></pre></td></tr></table></figure><p>下面是运行中遇到的一些问题：</p><h3 id="studio3-0对其的不兼容"><a href="#studio3-0对其的不兼容" class="headerlink" title="studio3.0对其的不兼容"></a>studio3.0对其的不兼容</h3><p>坑都在这里了，我想这些坑原因应该都来自于Android Studio 3.0新版特性</p><h4 id="无法下载到版本所对应的gradle"><a href="#无法下载到版本所对应的gradle" class="headerlink" title="无法下载到版本所对应的gradle"></a>无法下载到版本所对应的gradle</h4><blockquote><p>Error: Error: Command failed: ./gradlew  assembleDebug<br>Exception in thread “main” javax.net.ssl.SSLException: Connection has been shutdown: javax.net.ssl.SSLException: SSL peer shut down incorrectly</p></blockquote><p>原因：<br>由于网络被墙，无法下载到版本所对应的gradle。</p><p>解决：<br>将<code>app/platforms/android/gradle/wrapper</code>下的<code>distributionUrl</code>改为本地对应的版本号</p><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="/images/QQ20180908-121118.png" alt="distributionUrl" title="">                </div>                <div class="image-caption">distributionUrl</div>            </figure><h4 id="Gradle自定义apk名称报错"><a href="#Gradle自定义apk名称报错" class="headerlink" title="Gradle自定义apk名称报错"></a>Gradle自定义apk名称报错</h4><blockquote><p>Cannot set the value of read-only property ‘outputFile’ for ApkVariantOutputImpl_Decorated{apkData=Main{type=MAIN, fullName=debug, filters=[]}} of type com.android.build.gradle.internal.api.ApkVariantOutputImpl.</p></blockquote><p>AS 3.0之前自定义apk名称：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">applicationVariants.all &#123; variant -&gt;</span><br><span class="line">    variant.outputs.each &#123; output -&gt;</span><br><span class="line">    def fileName = &quot;$&#123;variant.versionName&#125;_release.apk&quot;</span><br><span class="line">    def outFile = output.outputFile</span><br><span class="line">    if (outFile != null &amp;&amp; outFile.name.endsWith(&apos;.apk&apos;)) &#123;</span><br><span class="line">        output.outputFile =newFile(outFile.parent, fileName)</span><br><span class="line">    &#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>修改为：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">applicationVariants.all &#123; variant -&gt;</span><br><span class="line">    variant.outputs.all &#123; output -&gt;  // each 改为 all</span><br><span class="line">    def fileName = &quot;$&#123;variant.versionName&#125;_release.apk&quot;</span><br><span class="line">    def outFile = output.outputFile</span><br><span class="line">    if (outFile != null &amp;&amp; outFile.name.endsWith(&apos;.apk&apos;)) &#123;</span><br><span class="line">        outputFileName = fileName  //  output.outputFile 改为 outputFileName </span><br><span class="line">    &#125;    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p><p>把<code>each</code>修改为<code>all</code>，然后通过<code>outputFileName</code>修改生成apk的名称。此外，AS 3.0后打包完，除了apk包文件，还会多一个 <code>output.json</code> 参数文件。</p><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="/images/QQ20180908-122053.png" alt="/awesome-app/platforms/android/app" title="">                </div>                <div class="image-caption">/awesome-app/platforms/android/app</div>            </figure><h2 id="学习！"><a href="#学习！" class="headerlink" title="学习！"></a>学习！</h2><p>下面就开始各种使用它了！</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;还记得刚接触ReactNative时有多激动，此前还没想过能有这么强大的框架，后来对看多了混合开发的资料发现这真的已经成了不许要学会的一个技能，于是招收学习起了React，效果不尽人意，可能是先接触了Vue，已经习惯了它的开放方式，对React总是用不习惯，有些知识点甚至不
-      
-    
-    </summary>
-    
-      <category term="原创" scheme="https://meandni.com/categories/%E5%8E%9F%E5%88%9B/"/>
-    
-    
-      <category term="混合开发" scheme="https://meandni.com/tags/%E6%B7%B7%E5%90%88%E5%BC%80%E5%8F%91/"/>
     
   </entry>
   
