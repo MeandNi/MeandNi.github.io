@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://meandni.com/"/>
-  <updated>2019-01-19T03:33:32.720Z</updated>
+  <updated>2019-01-21T16:30:25.608Z</updated>
   <id>https://meandni.com/</id>
   
   <author>
@@ -21,16 +21,15 @@
     <link href="https://meandni.com/2019/01/18/first-reading-record/"/>
     <id>https://meandni.com/2019/01/18/first-reading-record/</id>
     <published>2019-01-18T03:01:05.000Z</published>
-    <updated>2019-01-19T03:33:32.720Z</updated>
+    <updated>2019-01-21T16:30:25.608Z</updated>
     
-    <content type="html"><![CDATA[<p><a href="http://www.ruanyifeng.com/blog/2018/02/node-event-loop.html" target="_blank" rel="noopener">《Node 定时器详解》</a></p><p><a href="https://juejin.im/post/5c408f40e51d455222642b1c" target="_blank" rel="noopener">一位年度作者的年度总结 | 掘金年度征文</a></p><p><a href="https://segmentfault.com/a/1190000011145364" target="_blank" rel="noopener">前端常见跨域解决方案（全）</a> ？</p><p><a href="https://juejin.im/post/5aad40e4f265da237f1e12ed" target="_blank" rel="noopener">前端笔试题面试题记录（上）| 掘金技术征文</a></p><p><a href="https://github.com/KieSun/Blog/issues/2" target="_blank" rel="noopener">深度解析原型中的各个难点 </a></p><hr><p><a href="https://juejin.im/post/5c0dbe7ee51d451dac076e6c" target="_blank" rel="noopener">Android MVVM组件化架构方案</a></p><p><a href="https://juejin.im/post/5c404cca5188251e10159d09" target="_blank" rel="noopener">基于源码分析 Android View 事件分发机制</a></p>]]></content>
+    <content type="html"><![CDATA[<h4 id="已读"><a href="#已读" class="headerlink" title="已读"></a>已读</h4><p><a href="http://www.ruanyifeng.com/blog/2018/02/node-event-loop.html" target="_blank" rel="noopener">《Node 定时器详解》</a></p><p><a href="https://juejin.im/post/5c408f40e51d455222642b1c" target="_blank" rel="noopener">一位年度作者的年度总结 | 掘金年度征文</a></p><p><a href="https://segmentfault.com/a/1190000011145364" target="_blank" rel="noopener">前端常见跨域解决方案（全）</a> ？</p><p><a href="https://juejin.im/post/5aad40e4f265da237f1e12ed" target="_blank" rel="noopener">前端笔试题面试题记录（上）| 掘金技术征文</a></p><p><a href="https://github.com/KieSun/Blog/issues/2" target="_blank" rel="noopener">深度解析原型中的各个难点 </a></p><hr><p><a href="https://juejin.im/post/5c0dbe7ee51d451dac076e6c" target="_blank" rel="noopener">Android MVVM组件化架构方案</a></p><p><a href="https://juejin.im/post/5c404cca5188251e10159d09" target="_blank" rel="noopener">基于源码分析 Android View 事件分发机制</a></p><p><a href="https://juejin.im/post/5bdfaed0e51d4505086fa4cd" target="_blank" rel="noopener">回到最初：开发不需要“编译” 的 WebApp</a></p><p><a href="http://www.ruanyifeng.com/blog/2019/01/weekly-issue-40.html" target="_blank" rel="noopener">每周分享第 40 期</a></p><p><a href="https://www.cnblogs.com/xueweihan/p/5220513.html" target="_blank" rel="noopener">什么是真正的程序员</a></p><p><a href="https://hellogithub.com/periodical/volume/32/" target="_blank" rel="noopener">分享 GitHub 上 有趣、入门级的开源项目</a></p><hr><p><a href="https://juejin.im/post/5b2b4c36f265da59b243cac9" target="_blank" rel="noopener">flutter-dart 类的构造函数</a></p><p><a href="https://juejin.im/post/5c453f97f265da61776c3fed" target="_blank" rel="noopener">2018年值得熬夜看完的书</a></p><h4 id="要读没读"><a href="#要读没读" class="headerlink" title="要读没读"></a>要读没读</h4><p><a href="https://juejin.im/post/5ba34e54e51d450e5162789b" target="_blank" rel="noopener">2万5千字大厂面经</a></p>]]></content>
     
     <summary type="html">
     
       
       
-        &lt;p&gt;&lt;a href=&quot;http://www.ruanyifeng.com/blog/2018/02/node-event-loop.html&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;《Node 定时器详解》&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;htt
+        &lt;h4 id=&quot;已读&quot;&gt;&lt;a href=&quot;#已读&quot; class=&quot;headerlink&quot; title=&quot;已读&quot;&gt;&lt;/a&gt;已读&lt;/h4&gt;&lt;p&gt;&lt;a href=&quot;http://www.ruanyifeng.com/blog/2018/02/node-event-loop.html&quot; 
       
     
     </summary>
@@ -241,9 +240,9 @@
     <link href="https://meandni.com/2019/01/05/winter_vacation/"/>
     <id>https://meandni.com/2019/01/05/winter_vacation/</id>
     <published>2019-01-05T09:30:52.000Z</published>
-    <updated>2019-01-19T03:26:34.856Z</updated>
+    <updated>2019-01-19T03:45:48.809Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="读书"><a href="#读书" class="headerlink" title="读书"></a>读书</h2><ul><li style="list-style: none"><input type="checkbox" checked> 细读《Android进阶之光》</li><li style="list-style: none"><input type="checkbox"> 细读《Android群英传》</li><li style="list-style: none"><input type="checkbox"> 读《Android开发艺术探索》</li><li style="list-style: none"><input type="checkbox"> 读《Android音视频开发》</li><li style="list-style: none"><input type="checkbox" checked> 读《深入理解JAVA虚拟机》</li><li style="list-style: none"><input type="checkbox"> 读《kotlin实战》</li><li style="list-style: none"><input type="checkbox"> 读《深度学习入门：基于python的理论与实现》</li><li style="list-style: none"><input type="checkbox"> 重温细读《第一行代码》</li><li style="list-style: none"><input type="checkbox"> 重温细读《The Modern Javascript Tutorial》</li></ul><h2 id="文章"><a href="#文章" class="headerlink" title="文章"></a>文章</h2><ul><li><p>[ ] Android基础总结（依据第一行代码）</p></li><li><p>[ ] Android进阶总结（依据进阶书籍）</p></li><li><p>[ ] 跟着Google学习架构系列</p></li><li><p>[ ] 5篇以上Flutter实战文章</p></li><li><p>[ ] 待续….</p></li></ul><h2 id="视频"><a href="#视频" class="headerlink" title="视频"></a>视频</h2><ul><li style="list-style: none"><input type="checkbox"> 剑指Java面试</li><li style="list-style: none"><input type="checkbox"> 全面系统 Python3入门+进阶课程</li><li style="list-style: none"><input type="checkbox"> Python3入门机器学习 经典算法与应用(波波)</li><li style="list-style: none"><input type="checkbox"> FFmpeg音视频核心技术精讲与实战</li><li style="list-style: none"><input type="checkbox"> ……</li></ul><h2 id="技术栈"><a href="#技术栈" class="headerlink" title="技术栈"></a>技术栈</h2><ul><li style="list-style: none"><input type="checkbox"> android架构组件实战 —— MVP、MVVM</li><li style="list-style: none"><input type="checkbox"> Flutter样例实战</li><li style="list-style: none"><input type="checkbox"> Redux实战</li><li style="list-style: none"><input type="checkbox"> 待续….</li></ul>]]></content>
+    <content type="html"><![CDATA[<h2 id="读书"><a href="#读书" class="headerlink" title="读书"></a>读书</h2><ul><li style="list-style: none"><input type="checkbox" checked> 细读《Android进阶之光》</li><li style="list-style: none"><input type="checkbox"> 细读《Android群英传》</li><li style="list-style: none"><input type="checkbox"> 读《Android开发艺术探索》</li><li style="list-style: none"><input type="checkbox"> 读《Android音视频开发》</li><li style="list-style: none"><input type="checkbox" checked> 读《深入理解JAVA虚拟机》</li><li style="list-style: none"><input type="checkbox"> 读《kotlin实战》</li><li style="list-style: none"><input type="checkbox"> 读《深度学习入门：基于python的理论与实现》</li><li style="list-style: none"><input type="checkbox"> 重温细读《第一行代码》</li><li style="list-style: none"><input type="checkbox"> 重温细读《The Modern Javascript Tutorial》</li></ul><h2 id="文章"><a href="#文章" class="headerlink" title="文章"></a>文章</h2><ul><li style="list-style: none"><input type="checkbox"> Android基础总结（依据第一行代码）</li><li style="list-style: none"><input type="checkbox"> Android进阶总结（依据进阶书籍）</li><li style="list-style: none"><input type="checkbox"> 跟着Google学习架构系列</li><li style="list-style: none"><input type="checkbox"> 5篇以上Flutter实战文章</li><li style="list-style: none"><input type="checkbox"> 待续….</li></ul><h2 id="视频"><a href="#视频" class="headerlink" title="视频"></a>视频</h2><ul><li style="list-style: none"><input type="checkbox"> 剑指Java面试</li><li style="list-style: none"><input type="checkbox"> 全面系统 Python3入门+进阶课程</li><li style="list-style: none"><input type="checkbox"> Python3入门机器学习 经典算法与应用(波波)</li><li style="list-style: none"><input type="checkbox"> FFmpeg音视频核心技术精讲与实战</li><li style="list-style: none"><input type="checkbox"> ……</li></ul><h2 id="技术栈"><a href="#技术栈" class="headerlink" title="技术栈"></a>技术栈</h2><ul><li style="list-style: none"><input type="checkbox"> android架构组件实战 —— MVP、MVVM</li><li style="list-style: none"><input type="checkbox"> Flutter样例实战</li><li style="list-style: none"><input type="checkbox"> Redux实战</li><li style="list-style: none"><input type="checkbox"> 待续….</li></ul>]]></content>
     
     <summary type="html">
     
@@ -503,9 +502,9 @@
       <category term="非原创" scheme="https://meandni.com/categories/%E9%9D%9E%E5%8E%9F%E5%88%9B/"/>
     
     
-      <category term="markdown" scheme="https://meandni.com/tags/markdown/"/>
-    
       <category term="软件" scheme="https://meandni.com/tags/%E8%BD%AF%E4%BB%B6/"/>
+    
+      <category term="markdown" scheme="https://meandni.com/tags/markdown/"/>
     
   </entry>
   
