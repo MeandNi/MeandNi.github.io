@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>音视频学习之FFmpeg1:概念入门与常用命令实战 | Joker&#39;s Blog | 个人分享博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="FFmpeg">
+    <meta name="description" content="音视频大火，刚好我又跟他有着深厚的渊源，小时候做音乐网站时，一直想象着自己能做一套炫酷的播放器出来，可当时没有高人指点浓厚的兴趣随着慢慢长大而消失，当下算是对移动应用开发比较擅长了，想让自己的应用更丰富多彩，怎么能少了多媒体，因此我开始学习了这一套多媒体框架。 知识点应用场景 音视频格式、分辨率转换 音视频合并 音视频录制、裁剪  命令分类         基本信息查询命令 裁剪与合并命令   录">
+<meta name="keywords" content="FFmpeg">
+<meta property="og:type" content="article">
+<meta property="og:title" content="音视频学习之FFmpeg1:概念入门与常用命令实战">
+<meta property="og:url" content="https://meandni.com/2019/01/23/2173/index.html">
+<meta property="og:site_name" content="Joker&#39;s Blog">
+<meta property="og:description" content="音视频大火，刚好我又跟他有着深厚的渊源，小时候做音乐网站时，一直想象着自己能做一套炫酷的播放器出来，可当时没有高人指点浓厚的兴趣随着慢慢长大而消失，当下算是对移动应用开发比较擅长了，想让自己的应用更丰富多彩，怎么能少了多媒体，因此我开始学习了这一套多媒体框架。 知识点应用场景 音视频格式、分辨率转换 音视频合并 音视频录制、裁剪  命令分类         基本信息查询命令 裁剪与合并命令   录">
+<meta property="og:locale" content="Chinese">
+<meta property="og:updated_time" content="2019-01-23T09:41:26.790Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="音视频学习之FFmpeg1:概念入门与常用命令实战">
+<meta name="twitter:description" content="音视频大火，刚好我又跟他有着深厚的渊源，小时候做音乐网站时，一直想象着自己能做一套炫酷的播放器出来，可当时没有高人指点浓厚的兴趣随着慢慢长大而消失，当下算是对移动应用开发比较擅长了，想让自己的应用更丰富多彩，怎么能少了多媒体，因此我开始学习了这一套多媒体框架。 知识点应用场景 音视频格式、分辨率转换 音视频合并 音视频录制、裁剪  命令分类         基本信息查询命令 裁剪与合并命令   录">
+    
+        <link rel="alternate" type="application/atom+xml" title="Joker&#39;s Blog" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Joker</h5>
+          <a href="mailto:yangjiakay@gmail.com" title="yangjiakay@gmail.com" class="mail">yangjiakay@gmail.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/">
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives">
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags">
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories">
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/MeandNi" target="_blank">
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about">
+                <i class="icon icon-lg icon-link"></i>
+                AboutMe
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">音视频学习之FFmpeg1:概念入门与常用命令实战</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">音视频学习之FFmpeg1:概念入门与常用命令实战</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-01-23T07:34:26.000Z" itemprop="datePublished" class="page-time">
+  2019-01-23
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/原创/">原创</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#知识点"><span class="post-toc-number">1.</span> <span class="post-toc-text">知识点</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#应用场景"><span class="post-toc-number">1.0.1.</span> <span class="post-toc-text">应用场景</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#命令分类"><span class="post-toc-number">1.0.2.</span> <span class="post-toc-text">命令分类</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#FFmpeg处理流程"><span class="post-toc-number">1.0.3.</span> <span class="post-toc-text">FFmpeg处理流程</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#基本信息查询命令"><span class="post-toc-number">1.0.4.</span> <span class="post-toc-text">基本信息查询命令</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#录制命令"><span class="post-toc-number">1.0.5.</span> <span class="post-toc-text">录制命令</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#录制"><span class="post-toc-number">1.0.5.0.1.</span> <span class="post-toc-text">录制</span></a></li><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#播放"><span class="post-toc-number">1.0.5.0.2.</span> <span class="post-toc-text">播放</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#分解与复用命令"><span class="post-toc-number">1.0.6.</span> <span class="post-toc-text">分解与复用命令</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#处理原始数据"><span class="post-toc-number">1.0.7.</span> <span class="post-toc-text">处理原始数据</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#提取YUV数据"><span class="post-toc-number">1.0.7.0.1.</span> <span class="post-toc-text">提取YUV数据</span></a></li><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#提取PCM数据"><span class="post-toc-number">1.0.7.0.2.</span> <span class="post-toc-text">提取PCM数据</span></a></li></ol></li></ol><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#滤镜命令"><span class="post-toc-number">1.0.8.</span> <span class="post-toc-text">滤镜命令</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#滤镜-视频裁剪"><span class="post-toc-number">1.0.8.1.</span> <span class="post-toc-text">滤镜-视频裁剪</span></a></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#裁剪与合并命令"><span class="post-toc-number">1.0.9.</span> <span class="post-toc-text">裁剪与合并命令</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#视频图片互转"><span class="post-toc-number">1.0.10.</span> <span class="post-toc-text">视频图片互转</span></a></li>
+        </nav>
+    </aside>
+
+
+<article id="post-2019-01-23-ffmpeg-note1" class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">音视频学习之FFmpeg1:概念入门与常用命令实战</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-01-23 15:34:26" datetime="2019-01-23T07:34:26.000Z" itemprop="datePublished">2019-01-23</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/原创/">原创</a></li></ul>
+
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>音视频大火，刚好我又跟他有着深厚的渊源，小时候做音乐网站时，一直想象着自己能做一套炫酷的播放器出来，可当时没有高人指点浓厚的兴趣随着慢慢长大而消失，当下算是对移动应用开发比较擅长了，想让自己的应用更丰富多彩，怎么能少了多媒体，因此我开始学习了这一套多媒体框架。</p>
+<h2 id="知识点"><a href="#知识点" class="headerlink" title="知识点"></a>知识点</h2><h4 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h4><ul>
+<li>音视频格式、分辨率转换</li>
+<li>音视频合并</li>
+<li>音视频录制、裁剪</li>
+</ul>
+<h4 id="命令分类"><a href="#命令分类" class="headerlink" title="命令分类"></a>命令分类</h4><table>
+<thead>
+<tr>
+<th style="text-align:left"></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">基本信息查询命令</td>
+<td>裁剪与合并命令</td>
+</tr>
+<tr>
+<td style="text-align:left">录制命令</td>
+<td>图片/视频互转命令</td>
+</tr>
+<tr>
+<td style="text-align:left">分解复用命令</td>
+<td>直播相关命令</td>
+</tr>
+<tr>
+<td style="text-align:left">处理原始数据命令</td>
+<td>各种滤镜命令</td>
+</tr>
+</tbody>
+</table>
+<h4 id="FFmpeg处理流程"><a href="#FFmpeg处理流程" class="headerlink" title="FFmpeg处理流程"></a>FFmpeg处理流程</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"> _______              ______________</span><br><span class="line">|       |            |              |</span><br><span class="line">| input |  demuxer   | encoded data |   decoder</span><br><span class="line">| file  | ---------&gt; | packets      | -----+</span><br><span class="line">|_______|            |______________|      |</span><br><span class="line">                                           v</span><br><span class="line">                                       _________</span><br><span class="line">                                      |         |</span><br><span class="line">                                      | decoded |</span><br><span class="line">                                      | frames  |</span><br><span class="line">                                      |_________|</span><br><span class="line"> ________             ______________       |</span><br><span class="line">|        |           |              |      |</span><br><span class="line">| output | &lt;-------- | encoded data | &lt;----+</span><br><span class="line">| file   |   muxer   | packets      |   encoder</span><br><span class="line">|________|           |______________|</span><br></pre></td></tr></table></figure>
+<p>ffmpeg从输入文件（input_file）中通过解复用器（demuxer，包含在libavformat库中）读取到压缩之后的编码数据（encoded data）；压缩的数据通过解码器（decoder）的解码，还原为原始的数据（decoded frame，音频PCM、视频YUV），这些数据可作为filter的输入；原始音视频数据通常可以直接传递给编码器（encoder），输出编码后的数据（encoded packet，重新编码），这个过程也可以省略；通过复用器（muxer）的处理输出指定的封装格式。</p>
+<h4 id="基本信息查询命令"><a href="#基本信息查询命令" class="headerlink" title="基本信息查询命令"></a>基本信息查询命令</h4><p>如下：</p>
+<table>
+<thead>
+<tr>
+<th><strong>参数</strong></th>
+<th><strong>说明</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-version</td>
+<td>显示版本。</td>
+</tr>
+<tr>
+<td>-formats</td>
+<td>显示可用的格式（包括设备）。</td>
+</tr>
+<tr>
+<td>-demuxers</td>
+<td>显示可用的demuxers。</td>
+</tr>
+<tr>
+<td>-muxers</td>
+<td>显示可用的muxers。</td>
+</tr>
+<tr>
+<td>-devices</td>
+<td>显示可用的设备。</td>
+</tr>
+<tr>
+<td>-codecs</td>
+<td>显示libavcodec已知的所有编解码器。</td>
+</tr>
+<tr>
+<td>-decoders</td>
+<td>显示可用的解码器。</td>
+</tr>
+<tr>
+<td>-encoders</td>
+<td>显示所有可用的编码器。</td>
+</tr>
+<tr>
+<td>-bsfs</td>
+<td>显示可用的比特流filter。</td>
+</tr>
+<tr>
+<td>-protocols</td>
+<td>显示可用的协议。</td>
+</tr>
+<tr>
+<td>-filters</td>
+<td>显示可用的libavfilter过滤器。</td>
+</tr>
+<tr>
+<td>-pix_fmts</td>
+<td>显示可用的像素格式。</td>
+</tr>
+<tr>
+<td>-sample_fmts</td>
+<td>显示可用的采样格式。</td>
+</tr>
+<tr>
+<td>-layouts</td>
+<td>显示channel名称和标准channel布局。</td>
+</tr>
+<tr>
+<td>-colors</td>
+<td>显示识别的颜色名称。</td>
+</tr>
+</tbody>
+</table>
+<h4 id="录制命令"><a href="#录制命令" class="headerlink" title="录制命令"></a>录制命令</h4><p><code>ffmpeg -f avfoundation -list\_devices true -i &quot;&quot;</code></p>
+<h6 id="录制"><a href="#录制" class="headerlink" title="录制"></a>录制</h6><p><code>ffmpeg -f avfoundation -i 1 -r 30 out.yuv</code></p>
+<p><code>ffmpeg -f avfoundation -i :0 -r 30 out.wav</code></p>
+<ul>
+<li>-f 指定使用 avfoundation 采集数据。</li>
+<li>-i 指定从哪儿采集数据，它是一个文件索引号。在我的MAC上，1代表桌面（可以通过上面的命令查询设备索引号）。</li>
+<li>-r 指定帧率。按ffmpeg官方文档说-r与-framerate作用相同，但实际测试时发现不同。-framerate 用于限制输入，而-r用于限制输出。</li>
+</ul>
+<h6 id="播放"><a href="#播放" class="headerlink" title="播放"></a>播放</h6><p><code>ffplay -s 1440x900 -pix_fmt uyvy422 out.yuv</code></p>
+<h4 id="分解与复用命令"><a href="#分解与复用命令" class="headerlink" title="分解与复用命令"></a>分解与复用命令</h4><p><code>ffmpeg -i out.mp4 -vcodec copy -acodec copy out.flv</code></p>
+<p>上面的命令表式的是音频、视频都直接 copy，只是将 mp4 的封装格式转成了flv。</p>
+<h4 id="处理原始数据"><a href="#处理原始数据" class="headerlink" title="处理原始数据"></a>处理原始数据</h4><h6 id="提取YUV数据"><a href="#提取YUV数据" class="headerlink" title="提取YUV数据"></a>提取YUV数据</h6><p><code>ffmpeg -i input.mp4 -an -c:v rawvideo -pixel_format yuv420p out.yuv</code></p>
+<p><code>ffplay -s wxh out.yuv</code></p>
+<ul>
+<li>-c:v rawvideo 指定将视频转成原始数据</li>
+<li>-pixel_format yuv420p 指定转换格式为yuv420p</li>
+</ul>
+<h6 id="提取PCM数据"><a href="#提取PCM数据" class="headerlink" title="提取PCM数据"></a>提取PCM数据</h6><p><code>ffmpeg -i out.mp4 -vn -ar 44100 -ac 2 -f s16le out.pcm</code></p>
+<p><code>ffplay -ar 44100 -ac 2 -f s16le -i out.pcm</code></p>
+<h4 id="滤镜命令"><a href="#滤镜命令" class="headerlink" title="滤镜命令"></a>滤镜命令</h4><p>在编码之前，ffmpeg可以使用libavfilter库中的过滤器处理原始音频和视频帧。 几个链式过滤器形成一个过滤器图形。 ffmpeg区分两种类型的过滤器图形：简单和复杂。</p>
+<p>简单的过滤器图是那些只有一个输入和输出，都是相同的类型。 在上面的图中，它们可以通过在解码和编码之间插入一个额外的步骤来表示。</p>
+<p>简单的filtergraphs配置了per-stream-filter选项（分别为视频和音频使用-vf和-af别名）。 一个简单的视频filtergraph可以看起来像这样的例子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"> _______        _____________        _______        ________</span><br><span class="line">|       |      |             |      |       |      |        |</span><br><span class="line">| input | ---&gt; | deinterlace | ---&gt; | scale | ---&gt; | output |</span><br><span class="line">|_______|      |_____________|      |_______|      |________|</span><br></pre></td></tr></table></figure>
+<p>复杂的过滤器图是那些不能简单描述为应用于一个流的线性处理链的过滤器图。 例如，当图形有多个输入和/或输出，或者当输出流类型与输入不同时，就是这种情况。 他们可以用下图来表示：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"> _________</span><br><span class="line">|         |</span><br><span class="line">| input 0 |\                    __________</span><br><span class="line">|_________| \                  |          |</span><br><span class="line">             \   _________    /| output 0 |</span><br><span class="line">              \ |         |  / |__________|</span><br><span class="line"> _________     \| complex | /</span><br><span class="line">|         |     |         |/</span><br><span class="line">| input 1 |----&gt;| filter  |\</span><br><span class="line">|_________|     |         | \   __________</span><br><span class="line">               /| graph   |  \ |          |</span><br><span class="line">              / |         |   \| output 1 |</span><br><span class="line"> _________   /  |_________|    |__________|</span><br><span class="line">|         | /</span><br><span class="line">| input 2 |/</span><br><span class="line">|_________|</span><br></pre></td></tr></table></figure>
+<p>复杂的过滤器图使用<code>-filter_complex</code>选项进行配置。 请注意，此选项是全局性的，因为复杂的过滤器图形本质上不能与单个流或文件明确关联。</p>
+<p><code>-lavfi</code>选项等同于<code>-filter_complex</code>。</p>
+<p>一个复杂的过滤器图的一个简单的例子是覆盖过滤器，它有两个视频输入和一个视频输出，包含一个视频叠加在另一个上面。 它的音频对应是amix滤波器。</p>
+<h5 id="滤镜-视频裁剪"><a href="#滤镜-视频裁剪" class="headerlink" title="滤镜-视频裁剪"></a>滤镜-视频裁剪</h5><p><code>ffmpeg -i VR.mov -vf crop=in_w-200:in_h-200 -c:v libx264 -c:a copy -video_size 1280x720 vr_new.mp4</code></p>
+<p>crop 格式：crop=out_w:out_h​ ​: x :​ y</p>
+<ul>
+<li>out_w: 输出的宽度。可以使用 in_w 表式输入视频的宽度。</li>
+<li>out_h: 输出的高度。可以使用 in_h 表式输入视频的高度。</li>
+<li>x : X坐标</li>
+<li>y : Y坐标</li>
+</ul>
+<p>如果 x和y 设置为 0,说明从左上角开始裁剪。如果不写是从中心点裁剪。</p>
+<h4 id="裁剪与合并命令"><a href="#裁剪与合并命令" class="headerlink" title="裁剪与合并命令"></a>裁剪与合并命令</h4><p><strong>裁剪</strong></p>
+<p><code>ffmpeg -i in.mp4 -ss 00:00:00 -t 10 out.ts</code></p>
+<ul>
+<li>-ss 指定裁剪的开始时间，精确到秒</li>
+<li>-t 被裁剪后的时长。</li>
+</ul>
+<p><strong>合并</strong></p>
+<p>首先创建一个 inputs.txt 文件，文件内容如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">file &apos;1.flv&apos;</span><br><span class="line">file &apos;2.flv&apos;</span><br><span class="line">file &apos;3.flv&apos;</span><br></pre></td></tr></table></figure>
+<p><code>ffmpeg -f concat -i inputs.txt -c copy output.flv</code></p>
+<h4 id="视频图片互转"><a href="#视频图片互转" class="headerlink" title="视频图片互转"></a>视频图片互转</h4><p><strong>视频转JPEG</strong></p>
+<p><code>ffmpeg -i test.flv -r 1 -f image2 image-%3d.jpeg</code></p>
+<p><strong>视频转gif</strong></p>
+<p><code>ffmpeg -i out.mp4 -ss 00:00:00 -t 10 out.gif</code></p>
+<p><strong>图片转视频</strong></p>
+<p><code>ffmpeg  -f image2 -i image-%3d.jpeg images.mp4</code></p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2019-01-23T09:41:26.790Z" itemprop="dateUpdated">2019-01-23 17:41:26</time>
+</span><br>
+
+
+        
+    </div>
+    
+    <footer>
+        <a href="https://meandni.com">
+            <img src="/img/avatar.jpg" alt="Joker">
+            Joker
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/FFmpeg/">FFmpeg</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://meandni.com/2019/01/23/2173/&title=《音视频学习之FFmpeg1:概念入门与常用命令实战》 — Joker's Blog&pic=https://meandni.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://meandni.com/2019/01/23/2173/&title=《音视频学习之FFmpeg1:概念入门与常用命令实战》 — Joker's Blog&source=分享生活、技术、学习心得" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://meandni.com/2019/01/23/2173/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《音视频学习之FFmpeg1:概念入门与常用命令实战》 — Joker's Blog&url=https://meandni.com/2019/01/23/2173/&via=https://meandni.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://meandni.com/2019/01/23/2173/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2019/01/18/first-reading-record/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">2019第一次阅读记录</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        感谢打赏~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat.png" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check" data-wechat="/img/wechat.png" data-alipay="/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Joker &copy; 2018 - 2019</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://meandni.com/2019/01/23/2173/&title=《音视频学习之FFmpeg1:概念入门与常用命令实战》 — Joker's Blog&pic=https://meandni.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://meandni.com/2019/01/23/2173/&title=《音视频学习之FFmpeg1:概念入门与常用命令实战》 — Joker's Blog&source=分享生活、技术、学习心得" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://meandni.com/2019/01/23/2173/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《音视频学习之FFmpeg1:概念入门与常用命令实战》 — Joker's Blog&url=https://meandni.com/2019/01/23/2173/&via=https://meandni.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://meandni.com/2019/01/23/2173/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAACuCAAAAACKZ2kyAAABxklEQVR42u3a0YrDIBAF0P7/T3dhnxZKknvV2Cwcn0pJ9JiHQWfm9YrH+3d8/vN3fD55/sznnMsGLi7uNPd9Oo64RwsfUdqNHW4JFxd3I/c8eF1MsZR+YcPFxX0YNzn0JNBkflxc3P/CzZdPLjm4uLjP5yaXn/knk8PQsrsaLi7uBLdNmN7x+8b8Li4ubsl9lyNZPgfVq+Pi4m7h5imP9rqS0Ae3iouLezN3MJTEG2vfuijb4OLibuSOhaE8SdoGrMN/cHFxv8RtD0BjidGxQxIuLu4ebt501RZUZjKfF0clXFzcm7nt9aYNTMnmi0+Gi4u7hdsmLNqEyPznwMXF3c+db8A6X2YsvXL4Fi4u7kZu24yVJ0Rmyiq4uLhP4OZp0LFDz0yHCC4u7k7u2G2pXSbqDsuvQ7i4uDdz58snq0JbVKbFxcXdyG0vPzMhrMjd4uLifpWbj7G6xrLCKi4u7hZuG1BWtWW0rRv1ZnBxcae5MyXVpEySz3P+Li4u7n5um7wY28bi/C4uLu4DuOfhbyxpkgdBXFzcJ3PzJq32cBMVZXFxcTdyi2JnWQJpw9yytAguLu4Et02YtqWXvKxShDNcXNy7uD8h203UwbV7GAAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

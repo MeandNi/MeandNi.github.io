@@ -2,9 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://meandni.com/2019/01/23/2173/</loc>
+    
+    <lastmod>2019-01-23T09:41:26.790Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://meandni.com/2019/01/18/first-reading-record/</loc>
     
-    <lastmod>2019-01-21T16:30:25.608Z</lastmod>
+    <lastmod>2019-01-23T09:37:38.924Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://meandni.com/2019/01/14/jvm_note4/</loc>
+    
+    <lastmod>2019-01-23T08:08:36.992Z</lastmod>
     
   </url>
   
@@ -40,13 +54,6 @@
     <loc>https://meandni.com/2019/01/15/jvm_note5/</loc>
     
     <lastmod>2019-01-15T05:12:17.120Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://meandni.com/2019/01/14/jvm_note4/</loc>
-    
-    <lastmod>2019-01-15T04:12:27.367Z</lastmod>
     
   </url>
   
