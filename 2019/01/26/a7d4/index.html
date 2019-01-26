@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>Flutter进阶：深入探究 TextField | Joker&#39;s Blog | 个人分享博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="flutter进阶">
+    <meta name="description" content="TextField 介绍TextField 组件可以让用户填写信息。 TextField 的代码非常简单： 1TextField()">
+<meta name="keywords" content="flutter进阶">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Flutter进阶：深入探究 TextField">
+<meta property="og:url" content="https://meandni.com/2019/01/26/a7d4/index.html">
+<meta property="og:site_name" content="Joker&#39;s Blog">
+<meta property="og:description" content="TextField 介绍TextField 组件可以让用户填写信息。 TextField 的代码非常简单： 1TextField()">
+<meta property="og:locale" content="Chinese">
+<meta property="og:image" content="https://meandni.com/images/textfield.png">
+<meta property="og:image" content="https://meandni.com/images/textfield1.png">
+<meta property="og:image" content="https://meandni.com/images/textfield2.gif">
+<meta property="og:image" content="https://meandni.com/images/textfield3.gif">
+<meta property="og:image" content="https://meandni.com/images/textfield4.png">
+<meta property="og:image" content="https://meandni.com/images/textfield5.png">
+<meta property="og:image" content="https://meandni.com/images/textfield6.png">
+<meta property="og:image" content="https://meandni.com/images/textfield7.png">
+<meta property="og:image" content="https://meandni.com/images/textfield8.png">
+<meta property="og:image" content="https://meandni.com/images/textfield9.png">
+<meta property="og:image" content="https://meandni.com/images/textfield10.png">
+<meta property="og:image" content="https://meandni.com/images/textfield11.png">
+<meta property="og:image" content="https://meandni.com/images/textfield12.png">
+<meta property="og:image" content="https://meandni.com/images/textfield13.png">
+<meta property="og:image" content="https://meandni.com/images/textfield14.png">
+<meta property="og:image" content="https://meandni.com/images/textfield15.png">
+<meta property="og:image" content="https://meandni.com/images/textfield16.png">
+<meta property="og:image" content="https://meandni.com/images/textfield17.png">
+<meta property="og:image" content="https://meandni.com/images/textfield18.png">
+<meta property="og:image" content="https://meandni.com/images/textfield19.png">
+<meta property="og:image" content="https://meandni.com/images/textfield20.png">
+<meta property="og:image" content="https://meandni.com/images/textfield21.png">
+<meta property="og:image" content="https://meandni.com/images/textfield22.png">
+<meta property="og:image" content="https://meandni.com/images/textfield23.png">
+<meta property="og:updated_time" content="2019-01-26T08:49:37.063Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Flutter进阶：深入探究 TextField">
+<meta name="twitter:description" content="TextField 介绍TextField 组件可以让用户填写信息。 TextField 的代码非常简单： 1TextField()">
+<meta name="twitter:image" content="https://meandni.com/images/textfield.png">
+    
+        <link rel="alternate" type="application/atom+xml" title="Joker&#39;s Blog" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Joker</h5>
+          <a href="mailto:yangjiakay@gmail.com" title="yangjiakay@gmail.com" class="mail">yangjiakay@gmail.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/">
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives">
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags">
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories">
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/MeandNi" target="_blank">
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about">
+                <i class="icon icon-lg icon-link"></i>
+                AboutMe
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">Flutter进阶：深入探究 TextField</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">Flutter进阶：深入探究 TextField</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-01-26T07:34:32.000Z" itemprop="datePublished" class="page-time">
+  2019-01-26
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/整理/">整理</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#TextField-介绍"><span class="post-toc-number">1.</span> <span class="post-toc-text">TextField 介绍</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#从TextField中检索信息"><span class="post-toc-number">2.</span> <span class="post-toc-text">从TextField中检索信息</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#TextField-中其他的回调"><span class="post-toc-number">3.</span> <span class="post-toc-text">TextField 中其他的回调</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#在-TextField-中使用焦点"><span class="post-toc-number">4.</span> <span class="post-toc-text">在 TextField 中使用焦点</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-使其自动聚焦"><span class="post-toc-number">4.1.</span> <span class="post-toc-text">1. 使其自动聚焦</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-自定义更改焦点"><span class="post-toc-number">4.2.</span> <span class="post-toc-text">2.自定义更改焦点</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#更改-TextFields-的键盘属性"><span class="post-toc-number">5.</span> <span class="post-toc-text">更改 TextFields 的键盘属性</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-键盘类型"><span class="post-toc-number">5.1.</span> <span class="post-toc-text">1.键盘类型</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-TextInputAction"><span class="post-toc-number">5.2.</span> <span class="post-toc-text">2.TextInputAction</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3-自动更正"><span class="post-toc-number">5.3.</span> <span class="post-toc-text">3.自动更正</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#4-文本大写"><span class="post-toc-number">5.4.</span> <span class="post-toc-text">4.文本大写</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Text-Style-Alignment-和-Cursor"><span class="post-toc-number">6.</span> <span class="post-toc-text">Text Style, Alignment 和 Cursor</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#TextField-内的文本对齐方式"><span class="post-toc-number">6.1.</span> <span class="post-toc-text">TextField 内的文本对齐方式</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#在-TextField-中设置文本样式"><span class="post-toc-number">6.2.</span> <span class="post-toc-text">在 TextField 中设置文本样式</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#更改-TextField-中的光标"><span class="post-toc-number">6.3.</span> <span class="post-toc-text">更改 TextField 中的光标</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#控制-TextField-中的大小和最大长度"><span class="post-toc-number">6.4.</span> <span class="post-toc-text">控制 TextField 中的大小和最大长度</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#控制最大字符数"><span class="post-toc-number">6.4.1.</span> <span class="post-toc-text">控制最大字符数</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#制作可扩展的TextField"><span class="post-toc-number">6.4.2.</span> <span class="post-toc-text">制作可扩展的TextField</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#模糊文字"><span class="post-toc-number">6.4.3.</span> <span class="post-toc-text">模糊文字</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#装饰-TextField"><span class="post-toc-number">7.</span> <span class="post-toc-text">装饰 TextField</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#使用提示和标签属性向用户提供信息"><span class="post-toc-number">7.1.</span> <span class="post-toc-text">使用提示和标签属性向用户提供信息</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#您可以使用-“icon”，“prefixIcon”-和-“suffixIcon”-添加图标"><span class="post-toc-number">7.2.</span> <span class="post-toc-text">您可以使用 “icon”，“prefixIcon” 和 “suffixIcon” 添加图标</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#对于其他任何组件，使用-“prefix”-而不是-“prefixIcon”"><span class="post-toc-number">7.3.</span> <span class="post-toc-text">对于其他任何组件，使用 “prefix” 而不是 “prefixIcon”</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#像-hint-，label-等每个属性都有各自的样式字段"><span class="post-toc-number">7.4.</span> <span class="post-toc-text">像 hint ，label 等每个属性都有各自的样式字段</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#如果您不想要标签而想要为用户提供持久消息，请使用-“helperText”-。"><span class="post-toc-number">7.5.</span> <span class="post-toc-text">如果您不想要标签而想要为用户提供持久消息，请使用 “helperText” 。</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#使用-“decoration：null”-或-InputDecoration-collapsed-删除-TextField-上的默认下划线"><span class="post-toc-number">7.6.</span> <span class="post-toc-text">使用 “decoration：null” 或 InputDecoration.collapsed 删除 TextField 上的默认下划线</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#使用-“border”-为-TextField-设置边框"><span class="post-toc-number">7.7.</span> <span class="post-toc-text">使用 “border” 为 TextField 设置边框</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-2019-01-26-flutter-exploring-textfield" class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">Flutter进阶：深入探究 TextField</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-01-26 15:34:32" datetime="2019-01-26T07:34:32.000Z" itemprop="datePublished">2019-01-26</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/整理/">整理</a></li></ul>
+
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/images/textfield.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<h2 id="TextField-介绍"><a href="#TextField-介绍" class="headerlink" title="TextField 介绍"></a>TextField 介绍</h2><p>TextField 组件可以让用户填写信息。 TextField 的代码非常简单：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">TextField()</span><br></pre></td></tr></table></figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/images/textfield1.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<h2 id="从TextField中检索信息"><a href="#从TextField中检索信息" class="headerlink" title="从TextField中检索信息"></a>从TextField中检索信息</h2><p>由于 TextFields 组件没有像 Android 中那样的 ID，因此无法根据需要检索文本，而必须在更改时将其存储在变量中或使用控制器。</p>
+<ol>
+<li><p>最简单的方法是使用 onChanged 方法并将当前值存储在一个变量中。示例代码如下：</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">String</span> value = <span class="string">""</span>;</span><br><span class="line">TextField(</span><br><span class="line">  onChanged: (text) &#123;</span><br><span class="line">    value = text;</span><br><span class="line">  &#125;,</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>第二种方法是使用 TextEditingController 。 控制器连接到 TextField ，让我们也可以监听和控制 TextField 的内容。</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">TextEditingController controller = TextEditingController();</span><br><span class="line">TextField(</span><br><span class="line">  controller: controller,</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<p>我们可以这样监听变化</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">controller.addListener(() &#123;</span><br><span class="line">  <span class="comment">// Do something here</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>获取、设置文本内容：</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(controller.text); <span class="comment">// Print current value</span></span><br><span class="line">controller.text = <span class="string">"Demo Text"</span>; <span class="comment">// Set new value</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="TextField-中其他的回调"><a href="#TextField-中其他的回调" class="headerlink" title="TextField 中其他的回调"></a>TextField 中其他的回调</h2><p>TextField 组件还提供其他回调，例如：</p>
+<ol>
+<li>onEditingCompleted</li>
+<li>onSubmitted</li>
+</ol>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">onEditingComplete: () &#123;&#125;,</span><br><span class="line">onSubmitted: (value) &#123;&#125;,</span><br></pre></td></tr></table></figure>
+<p>这些是在用户单击 iOS 上的“完成”按钮时调用的回调。</p>
+<h2 id="在-TextField-中使用焦点"><a href="#在-TextField-中使用焦点" class="headerlink" title="在 TextField 中使用焦点"></a>在 TextField 中使用焦点</h2><p>在 TextField 上“聚焦”意味着激活 TextField ，键盘的任何输入都将导致在聚焦的 TextField 中输入数据。</p>
+<h3 id="1-使其自动聚焦"><a href="#1-使其自动聚焦" class="headerlink" title="1. 使其自动聚焦"></a>1. 使其自动聚焦</h3><p>要在创建窗口时在 TextField 上自动对焦，请将自动对焦字段设置为 true 。</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">TextField(</span><br><span class="line">  autofocus: <span class="keyword">true</span>,</span><br><span class="line">),</span><br></pre></td></tr></table></figure>
+<p>默认情况下，这会将焦点设置在 TextField 上。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/images/textfield2.gif" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<h3 id="2-自定义更改焦点"><a href="#2-自定义更改焦点" class="headerlink" title="2.自定义更改焦点"></a>2.自定义更改焦点</h3><p>如果我们想要改变焦点而不仅仅是自动对焦怎么办？ 看下面代码 ，我们将 FocusNode 附加到 TextField 并使用它来切换焦点。</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Initialise outside the build method</span></span><br><span class="line">FocusNode nodeOne = FocusNode();</span><br><span class="line">FocusNode nodeTwo = FocusNode();</span><br><span class="line"><span class="comment">// Do this inside the build method</span></span><br><span class="line">TextField(</span><br><span class="line">  focusNode: nodeOne,</span><br><span class="line">),</span><br><span class="line">TextField(</span><br><span class="line">  focusNode: nodeTwo,</span><br><span class="line">),</span><br><span class="line">RaisedButton(</span><br><span class="line">  onPressed: () &#123;</span><br><span class="line">    FocusScope.of(context).requestFocus(nodeTwo);</span><br><span class="line">  &#125;,</span><br><span class="line">  child: Text(<span class="string">"Next Field"</span>),</span><br><span class="line">),</span><br></pre></td></tr></table></figure>
+<p>我们创建两个焦点节点并将它们附加到 TextFields 。 按下按钮时，我们使用 FocusScope 请求焦点到下一个TextField。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/images/textfield3.gif" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<h2 id="更改-TextFields-的键盘属性"><a href="#更改-TextFields-的键盘属性" class="headerlink" title="更改 TextFields 的键盘属性"></a>更改 TextFields 的键盘属性</h2><p>Flutter 中的 TextField 允许我们自定义与键盘相关的属性。</p>
+<h3 id="1-键盘类型"><a href="#1-键盘类型" class="headerlink" title="1.键盘类型"></a>1.键盘类型</h3><p>TextField 允许您自定义在 TextField 成为焦点时显示的键盘类型。 我们更改 keyboardType 属性。</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">TextField(</span><br><span class="line">  keyboardType: TextInputType.number,</span><br><span class="line">),</span><br></pre></td></tr></table></figure>
+<p>类型有：</p>
+<ol>
+<li><strong>TextInputType.text</strong> (普通全键盘)</li>
+<li><strong>TextInputType.number</strong> (数字键盘)</li>
+<li><strong>TextInputType.emailAddress</strong> (普通键盘，带有“@”符号)</li>
+<li><strong>TextInputType.datetime</strong> (数字键盘，带有 “/” 和  “:” 符号)</li>
+<li><strong>TextInputType.multiline</strong> (数字键盘，带有启用有符号和十进制模式的选项)</li>
+</ol>
+<h3 id="2-TextInputAction"><a href="#2-TextInputAction" class="headerlink" title="2.TextInputAction"></a>2.TextInputAction</h3><p>更改 TextField 的 textInputAction 可以更改键盘本身的操作按钮。</p>
+<p>例如：</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">TextField(</span><br><span class="line">  textInputAction: TextInputAction.continueAction,</span><br><span class="line">),</span><br></pre></td></tr></table></figure>
+<p>这会导致 “Done” 按钮被 “Continue” 按钮替换：</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/images/textfield4.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>或者：</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">TextField(</span><br><span class="line">  textInputAction: TextInputAction.send,</span><br><span class="line">),</span><br></pre></td></tr></table></figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/images/textfield5.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>还有很多类型，这里不一一列举。</p>
+<h3 id="3-自动更正"><a href="#3-自动更正" class="headerlink" title="3.自动更正"></a>3.自动更正</h3><p>启用或禁用特定 TextField 的自动更正。 使用自动更正字段进行如下设置。</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">TextField(</span><br><span class="line">  autocorrect: <span class="keyword">false</span>,</span><br><span class="line">),</span><br></pre></td></tr></table></figure>
+<p>这将禁用更正。</p>
+<h3 id="4-文本大写"><a href="#4-文本大写" class="headerlink" title="4.文本大写"></a>4.文本大写</h3><p>TextField 提供了一些有关如何使用户输入中的字母大写的选项。</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">TextField(</span><br><span class="line">  textCapitalization: TextCapitalization.sentences,</span><br><span class="line">),</span><br></pre></td></tr></table></figure>
+<p>选项有：</p>
+<ol>
+<li><p><strong>TextCapitalization.sentences</strong></p>
+<p>这可以使每个句子的首字母大写。</p>
+<p><img src="/images/textfield6.png" alt=""></p>
+</li>
+<li><p><strong>TextCapitalization.characters</strong></p>
+<p>大写句子中的所有字符。</p>
+<p><img src="/images/textfield7.png" alt=""></p>
+</li>
+<li><p><strong>TextCapitalization.words</strong></p>
+<p>大写每个单词的首字母。</p>
+<p><img src="/images/textfield8.png" alt=""></p>
+<h2 id="Text-Style-Alignment-和-Cursor"><a href="#Text-Style-Alignment-和-Cursor" class="headerlink" title="Text Style, Alignment 和 Cursor"></a>Text Style, Alignment 和 Cursor</h2></li>
+</ol>
+<p>Flutter 允许自定义 TextField 内的文本样式和对齐方式以及 TextField 内的光标。</p>
+<h3 id="TextField-内的文本对齐方式"><a href="#TextField-内的文本对齐方式" class="headerlink" title="TextField 内的文本对齐方式"></a>TextField 内的文本对齐方式</h3><p>使用 textAlign 属性调整 TextField 中光标的位置。</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">TextField(</span><br><span class="line">  textAlign: TextAlign.center,</span><br><span class="line">),</span><br></pre></td></tr></table></figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/images/textfield9.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>通常的对齐属性有：<strong>start, end, left, right, center, justify</strong>.</p>
+<h3 id="在-TextField-中设置文本样式"><a href="#在-TextField-中设置文本样式" class="headerlink" title="在 TextField 中设置文本样式"></a>在 TextField 中设置文本样式</h3><p>我们使用 style 属性来更改 TextField 内部文本的样式。 使用它来更改颜色，字体大小等。这类似于文本组件中的样式属性，这里我们不多做介绍。</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">TextField(</span><br><span class="line">  style: TextStyle(color: Colors.red, fontWeight: FontWeight.w300),</span><br><span class="line">),</span><br></pre></td></tr></table></figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/images/textfield10.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<h3 id="更改-TextField-中的光标"><a href="#更改-TextField-中的光标" class="headerlink" title="更改 TextField 中的光标"></a>更改 TextField 中的光标</h3><p>可以直接自定义 TextField 组件的光标。</p>
+<p>您可以更改光标颜色，宽度和半径。 例如，在这里我自定义了一个圆形红色光标。</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">TextField(</span><br><span class="line">  cursorColor: Colors.red,</span><br><span class="line">  cursorRadius: Radius.circular(<span class="number">16.0</span>),</span><br><span class="line">  cursorWidth: <span class="number">16.0</span>,</span><br><span class="line">),</span><br></pre></td></tr></table></figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/images/textfield11.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<h3 id="控制-TextField-中的大小和最大长度"><a href="#控制-TextField-中的大小和最大长度" class="headerlink" title="控制 TextField 中的大小和最大长度"></a>控制 TextField 中的大小和最大长度</h3><p>TextFields 可以控制其中写入的最大字符数、最大行数并在键入文本时展开。</p>
+<h4 id="控制最大字符数"><a href="#控制最大字符数" class="headerlink" title="控制最大字符数"></a>控制最大字符数</h4><figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">TextField(</span><br><span class="line">  maxLength: <span class="number">4</span>,</span><br><span class="line">),</span><br></pre></td></tr></table></figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/images/textfield12.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>通过设置 maxLength 属性，将强制执行最大长度，并且默认情况下会将计数器添加到 TextField 。</p>
+<h4 id="制作可扩展的TextField"><a href="#制作可扩展的TextField" class="headerlink" title="制作可扩展的TextField"></a>制作可扩展的TextField</h4><p>有时，我们需要 TextField 当一行完成时会扩展。 在Flutter中，做法有点奇怪（但很容易）。 我们将 maxLines 设置为 null ，默认为1。 </p>
+<p><img src="/images/textfield13.png" alt=""></p>
+<p><strong>注意：默认情况下，将 maxLines 设置为直接值会将其自动扩展为该行数。</strong></p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">TextField(</span><br><span class="line">  maxLines: <span class="number">3</span>,</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/images/textfield14.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<h4 id="模糊文字"><a href="#模糊文字" class="headerlink" title="模糊文字"></a>模糊文字</h4><p>要隐藏 TextField 中的文本，请将 obscureText 设置为true 。</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">TextField(</span><br><span class="line">  obscureText: <span class="keyword">true</span>,</span><br><span class="line">),</span><br></pre></td></tr></table></figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/images/textfield15.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<h2 id="装饰-TextField"><a href="#装饰-TextField" class="headerlink" title="装饰 TextField"></a>装饰 TextField</h2><p>至此，我们专注于 Flutter 提供的输入功能。 现在我们来实际设计一个漂亮的 TextField 。</p>
+<p>为了装饰 TextField，我们使用了带有 InputDecoration 的 decoration 属性。 由于 InputDecoration 类非常庞大，我们快速过一遍它的重要属性。</p>
+<h3 id="使用提示和标签属性向用户提供信息"><a href="#使用提示和标签属性向用户提供信息" class="headerlink" title="使用提示和标签属性向用户提供信息"></a>使用提示和标签属性向用户提供信息</h3><p>提示和标签都是字符串，可帮助用户理解要在 TextField 中输入的信息。 不同之处在于，当标签浮动在 TextField上时，一旦用户开始输入，提示就会消失。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/images/textfield16.png" alt="Hint" title="">
+                </div>
+                <div class="image-caption">Hint</div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/images/textfield17.png" alt="Label" title="">
+                </div>
+                <div class="image-caption">Label</div>
+            </figure>
+<h3 id="您可以使用-“icon”，“prefixIcon”-和-“suffixIcon”-添加图标"><a href="#您可以使用-“icon”，“prefixIcon”-和-“suffixIcon”-添加图标" class="headerlink" title="您可以使用 “icon”，“prefixIcon” 和 “suffixIcon” 添加图标"></a>您可以使用 “icon”，“prefixIcon” 和 “suffixIcon” 添加图标</h3><p>您可以直接向 TextFields 添加图标。 您也可以使用 prefixText 和 suffixText 代替 Text。</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">TextField(</span><br><span class="line">  decoration: InputDecoration(</span><br><span class="line">    icon: Icon(Icons.<span class="built_in">print</span>)</span><br><span class="line">  ),</span><br><span class="line">),</span><br></pre></td></tr></table></figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/images/textfield18.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">TextField(</span><br><span class="line">  decoration: InputDecoration(</span><br><span class="line">    prefixIcon: Icon(Icons.<span class="built_in">print</span>)</span><br><span class="line">  ),</span><br><span class="line">),</span><br></pre></td></tr></table></figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/images/textfield19.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<h3 id="对于其他任何组件，使用-“prefix”-而不是-“prefixIcon”"><a href="#对于其他任何组件，使用-“prefix”-而不是-“prefixIcon”" class="headerlink" title="对于其他任何组件，使用 “prefix” 而不是 “prefixIcon”"></a>对于其他任何组件，使用 “prefix” 而不是 “prefixIcon”</h3><p>要使用通用组件而不是仅仅一个图标，请使用 prefix field 。让我们在 TextField 中添加一个圆形进度框。</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">TextField(</span><br><span class="line">  decoration: InputDecoration(</span><br><span class="line">    prefix: CircularProgressIndicator(),</span><br><span class="line">  ),</span><br><span class="line">),</span><br></pre></td></tr></table></figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/images/textfield20.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<h3 id="像-hint-，label-等每个属性都有各自的样式字段"><a href="#像-hint-，label-等每个属性都有各自的样式字段" class="headerlink" title="像 hint ，label 等每个属性都有各自的样式字段"></a>像 <strong>hint</strong> ，<strong>label</strong> 等每个属性都有各自的样式字段</h3><figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">TextField(</span><br><span class="line">  decoration: InputDecoration(</span><br><span class="line">    hintText: <span class="string">"Demo Text"</span>,</span><br><span class="line">    hintStyle: TextStyle(fontWeight: FontWeight.w300, color: Colors.red)</span><br><span class="line">  ),</span><br><span class="line">),</span><br></pre></td></tr></table></figure>
+<p><strong>注意：虽然我在此示例中这样操作，但通常不会更改提示颜色。</strong></p>
+<h3 id="如果您不想要标签而想要为用户提供持久消息，请使用-“helperText”-。"><a href="#如果您不想要标签而想要为用户提供持久消息，请使用-“helperText”-。" class="headerlink" title="如果您不想要标签而想要为用户提供持久消息，请使用 “helperText” 。"></a>如果您不想要标签而想要为用户提供持久消息，请使用 “helperText” 。</h3><figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">TextField(</span><br><span class="line">  decoration: InputDecoration(</span><br><span class="line">    helperText: <span class="string">"Hello"</span></span><br><span class="line">  ),</span><br><span class="line">),</span><br></pre></td></tr></table></figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/images/textfield21.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<h3 id="使用-“decoration：null”-或-InputDecoration-collapsed-删除-TextField-上的默认下划线"><a href="#使用-“decoration：null”-或-InputDecoration-collapsed-删除-TextField-上的默认下划线" class="headerlink" title="使用 “decoration：null” 或 InputDecoration.collapsed 删除 TextField 上的默认下划线"></a>使用 “decoration：null” 或 InputDecoration.collapsed 删除 TextField 上的默认下划线</h3><p>使用这些删除 TextField 上的默认下划线。</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">TextField(</span><br><span class="line">  decoration: InputDecoration.collapsed(hintText: <span class="string">""</span>)</span><br><span class="line">),</span><br></pre></td></tr></table></figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/images/textfield22.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<h3 id="使用-“border”-为-TextField-设置边框"><a href="#使用-“border”-为-TextField-设置边框" class="headerlink" title="使用 “border” 为 TextField 设置边框"></a>使用 “border” 为 TextField 设置边框</h3><figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">TextField(</span><br><span class="line">  decoration: InputDecoration(</span><br><span class="line">    border: OutlineInputBorder()</span><br><span class="line">  )</span><br><span class="line">),</span><br></pre></td></tr></table></figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/images/textfield23.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>您可以进一步做大量的装饰，我不可能将所有你需要的样式做出来。 但我希望这我已经让你知道怎么将它做出来！</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2019-01-26T08:49:37.063Z" itemprop="dateUpdated">2019-01-26 16:49:37</time>
+</span><br>
+
+
+        
+    </div>
+    
+    <footer>
+        <a href="https://meandni.com">
+            <img src="/img/avatar.jpg" alt="Joker">
+            Joker
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/flutter进阶/">flutter进阶</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://meandni.com/2019/01/26/a7d4/&title=《Flutter进阶：深入探究 TextField》 — Joker's Blog&pic=https://meandni.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://meandni.com/2019/01/26/a7d4/&title=《Flutter进阶：深入探究 TextField》 — Joker's Blog&source=分享生活、技术、学习心得" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://meandni.com/2019/01/26/a7d4/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Flutter进阶：深入探究 TextField》 — Joker's Blog&url=https://meandni.com/2019/01/26/a7d4/&via=https://meandni.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://meandni.com/2019/01/26/a7d4/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2019/01/26/1be6/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">Flutter进阶：深入探究 ListView 和 ScrollPhysics</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        感谢打赏~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat.png" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check" data-wechat="/img/wechat.png" data-alipay="/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Joker &copy; 2018 - 2019</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://meandni.com/2019/01/26/a7d4/&title=《Flutter进阶：深入探究 TextField》 — Joker's Blog&pic=https://meandni.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://meandni.com/2019/01/26/a7d4/&title=《Flutter进阶：深入探究 TextField》 — Joker's Blog&source=分享生活、技术、学习心得" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://meandni.com/2019/01/26/a7d4/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Flutter进阶：深入探究 TextField》 — Joker's Blog&url=https://meandni.com/2019/01/26/a7d4/&via=https://meandni.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://meandni.com/2019/01/26/a7d4/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAACuCAAAAACKZ2kyAAAByklEQVR42u3aSw7DIBAE0dz/0uQAlnE1AxNHKlZRPuaRxYhp+HzwGJdx/fTu9fVXd8/ZNuTKlVvmjumYT0AmThcw/2vkypXbySXT3H1/vjD+d8wNcuXKfTN3vusghY8/X65cuf/FHXjwYidXrty3cStbEN4ytfZqcuXKLXB5Snnu9ZF8V65cuUvcEQ5ewnhrFMwuV67cFi4vKGusStRy+0y5cuU2ctMIo0Ln8etDryZXrtzD3LWHppFrZaMjV67cHi6PQcn75NClFLjIlSu3hcsnmF+k4O+kByeo7sqVK3crd+14lbRJa5ctHpofuXLltnDXwhFyrJJuYoLAVK5cuS1cHl6kxWtvgCJXrtz3cNduRlVuWJUKmVy5cg/HImtlK722FR/SyJUrt5HLJ+CFr9LwoItZcuXKPcxNJ0sXww9fg+ZHrly5jdw0+kwPWXkhQx/LlSt3K3eEo97q8DInV67cX3HT4kKWQaDphilejFy5csvcXdezSMxKLm2g5keuXLkt3DTonE9D2qfNgalcuXJ/yuXHrrwdijs2uXLlvp5bKX9xhCpXrtxGLo880nYlPaZ9+KZcuXJbuGkpWdvK8F1KevFLrly5W7lfWk5xsM70DRcAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
