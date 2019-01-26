@@ -25,12 +25,11 @@
 <meta name="keywords" content="flutter进阶">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Flutter进阶：深入探究 ListView 和 ScrollPhysics">
-<meta property="og:url" content="https://meandni.com/2019/01/26/1be6/index.html">
+<meta property="og:url" content="https://meandni.com/2019/01/26/flutter-exploring-list/index.html">
 <meta property="og:site_name" content="Joker&#39;s Blog">
 <meta property="og:description" content="Flutter 中的 ListView 可以对比 Android 中的 ListView 或者 RecycleView（当然也有不同之处） ，是可滚动项的线性列表。 我们可以用它来制作可">
 <meta property="og:locale" content="Chinese">
 <meta property="og:image" content="https://meandni.com/images/listview.png">
-<meta property="og:image" content="https://meandni.com/images/listview1.gif">
 <meta property="og:image" content="https://meandni.com/images/listview2.gif">
 <meta property="og:image" content="https://meandni.com/images/listview3.gif">
 <meta property="og:image" content="https://meandni.com/images/listview4.gif">
@@ -39,7 +38,7 @@
 <meta property="og:image" content="https://meandni.com/images/listview7.gif">
 <meta property="og:image" content="https://meandni.com/images/listview8.gif">
 <meta property="og:image" content="https://meandni.com/images/listview9.png">
-<meta property="og:updated_time" content="2019-01-26T07:35:39.204Z">
+<meta property="og:updated_time" content="2019-01-26T09:04:26.322Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Flutter进阶：深入探究 ListView 和 ScrollPhysics">
 <meta name="twitter:description" content="Flutter 中的 ListView 可以对比 Android 中的 ListView 或者 RecycleView（当然也有不同之处） ，是可滚动项的线性列表。 我们可以用它来制作可">
@@ -137,7 +136,7 @@
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
                 <i class="icon icon-lg icon-chevron-left"></i>
             </a>
-            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="検索">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
                 <i class="icon icon-lg icon-search"></i>
             </a>
@@ -178,7 +177,7 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#探究各类型的-ListView"><span class="post-toc-number">1.</span> <span class="post-toc-text">探究各类型的 ListView</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#ListView"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">ListView</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#ListView-builder"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">ListView.builder()</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#ListView-separated"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">ListView.separated()</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#ListView-custom"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">ListView.custom()</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#探究-ScrollPhysics"><span class="post-toc-number">2.</span> <span class="post-toc-text">探究 ScrollPhysics</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#NeverScrollablePhysics"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">NeverScrollablePhysics</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#BouncingScrollPhysics"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">BouncingScrollPhysics</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#ClampingScrollPhysics"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">ClampingScrollPhysics</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#FixedExtentScrollPhysics"><span class="post-toc-number">2.4.</span> <span class="post-toc-text">FixedExtentScrollPhysics</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#你应当知道的其他事情"><span class="post-toc-number">3.</span> <span class="post-toc-text">你应当知道的其他事情</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#如何在列表中保留被破坏的元素？"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">如何在列表中保留被破坏的元素？</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#为什么我的-ListView-在列表和外部小部件之间有空格？"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">为什么我的 ListView 在列表和外部小部件之间有空格？</span></a></li></ol></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#探究各类型的-ListView"><span class="post-toc-number">1.</span> <span class="post-toc-text">探究各类型的 ListView</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#ListView"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">ListView</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#ListView-builder"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">ListView.builder()</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#ListView-separated"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">ListView.separated()</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#ListView-custom"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">ListView.custom()</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#探究-ScrollPhysics"><span class="post-toc-number">2.</span> <span class="post-toc-text">探究 ScrollPhysics</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#NeverScrollablePhysics"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">NeverScrollablePhysics</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#BouncingScrollPhysics"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">BouncingScrollPhysics</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#ClampingScrollPhysics"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">ClampingScrollPhysics</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#FixedExtentScrollPhysics"><span class="post-toc-number">2.4.</span> <span class="post-toc-text">FixedExtentScrollPhysics</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#你应当知道的其他事情"><span class="post-toc-number">3.</span> <span class="post-toc-text">你应当知道的其他事情</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#如何在列表中保留被破坏的元素？"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">如何在列表中保留被破坏的元素？</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#为什么我的-ListView-在列表和外部小部件之间有空格？"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">为什么我的 ListView 在列表和外部小部件之间有空格？</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#最后"><span class="post-toc-number">4.</span> <span class="post-toc-text">最后</span></a></li></ol>
         </nav>
     </aside>
 
@@ -215,13 +214,6 @@
 <li><strong>ListView.custom</strong></li>
 </ol>
 <h3 id="ListView"><a href="#ListView" class="headerlink" title="ListView"></a>ListView</h3><p>这是 ListView 类的默认构造函数。 ListView 内有任意个数的子元素都可使其滚动。</p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="/images/listview1.gif" alt="/images/listview1.gif" title="">
-                </div>
-                <div class="image-caption">/images/listview1.gif</div>
-            </figure>
 <p>代码的格式为：</p>
 <figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">ListView(</span><br><span class="line">  children: &lt;Widget&gt;[</span><br><span class="line">    ItemOne(),</span><br><span class="line">    ItemTwo(),</span><br><span class="line">    ItemThree(),</span><br><span class="line">  ],</span><br><span class="line">),</span><br></pre></td></tr></table></figure>
 <p>通常这里应该放少量的子元素，因为 ListView 也会将当前不可见的元素构建起来，因此大量的子元素可能使 App 性能降低。</p>
@@ -314,6 +306,11 @@
                 <div class="image-caption">/images/listview9.png</div>
             </figure>
 <h3 id="为什么我的-ListView-在列表和外部小部件之间有空格？"><a href="#为什么我的-ListView-在列表和外部小部件之间有空格？" class="headerlink" title="为什么我的 ListView 在列表和外部小部件之间有空格？"></a>为什么我的 ListView 在列表和外部小部件之间有空格？</h3><p>ListView 在它与外部窗口组件之间有默认填充，将填充设置为 EdgeInsets.all(0.0) 就可以删除它。</p>
+<h2 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h2><p>利用时间整理分析自己所学的知识是件非常有意义的事情，希望这也能帮到其他正在学习的同学。同时我也正在用Flutter写几个项目，写好之后就会开源给大家。</p>
+<p>Github：<a href="https://github.com/MeandNi" target="_blank" rel="noopener">https://github.com/MeandNi</a></p>
+<p>微信：yangjk128</p>
+<p>原文博客：<a href="https://meandni.com/2019/01/26/1be6/">https://meandni.com/2019/01/26/1be6/</a></p>
+<p>欢迎一起交流移动开发的技术！</p>
 
         </div>
 
@@ -322,7 +319,7 @@
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2019-01-26T07:35:39.204Z" itemprop="dateUpdated">2019-01-26 15:35:39</time>
+    最終更新：<time datetime="2019-01-26T09:04:26.322Z" itemprop="dateUpdated">2019-01-26 17:04:26</time>
 </span><br>
 
 
@@ -356,7 +353,7 @@
 <div class="page-share" id="pageShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://meandni.com/2019/01/26/1be6/&title=《Flutter进阶：深入探究 ListView 和 ScrollPhysics》 — Joker's Blog&pic=https://meandni.com/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://meandni.com/2019/01/26/flutter-exploring-list/&title=《Flutter进阶：深入探究 ListView 和 ScrollPhysics》 — Joker's Blog&pic=https://meandni.com/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -366,22 +363,22 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://meandni.com/2019/01/26/1be6/&title=《Flutter进阶：深入探究 ListView 和 ScrollPhysics》 — Joker's Blog&source=分享生活、技术、学习心得" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://meandni.com/2019/01/26/flutter-exploring-list/&title=《Flutter进阶：深入探究 ListView 和 ScrollPhysics》 — Joker's Blog&source=分享生活、技术、学习心得" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://meandni.com/2019/01/26/1be6/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://meandni.com/2019/01/26/flutter-exploring-list/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Flutter进阶：深入探究 ListView 和 ScrollPhysics》 — Joker's Blog&url=https://meandni.com/2019/01/26/1be6/&via=https://meandni.com" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Flutter进阶：深入探究 ListView 和 ScrollPhysics》 — Joker's Blog&url=https://meandni.com/2019/01/26/flutter-exploring-list/&via=https://meandni.com" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://meandni.com/2019/01/26/1be6/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://meandni.com/2019/01/26/flutter-exploring-list/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -413,9 +410,9 @@
 
   
     <div class="waves-block waves-effect next">
-      <a href="/2019/01/23/2173/" id="post-next" class="post-nav-link">
+      <a href="/2019/01/18/first-reading-record/" id="post-next" class="post-nav-link">
         <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
-        <h4 class="title">音视频学习之FFmpeg1:概念入门与常用命令实战</h4>
+        <h4 class="title">2019第一次阅读记录</h4>
       </a>
     </div>
   
@@ -480,7 +477,7 @@
             
                 <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
             
-            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
+            <span>このブログの内容物は<a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.ja">クリエイティブ・コモンズ 表示 - 非営利 - 継承 4.0 国際ライセンスの下に提供されています</a></span>
         </p>
     </div>
     <div class="bottom">
@@ -502,7 +499,7 @@
 <div class="global-share" id="globalShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://meandni.com/2019/01/26/1be6/&title=《Flutter进阶：深入探究 ListView 和 ScrollPhysics》 — Joker's Blog&pic=https://meandni.com/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://meandni.com/2019/01/26/flutter-exploring-list/&title=《Flutter进阶：深入探究 ListView 和 ScrollPhysics》 — Joker's Blog&pic=https://meandni.com/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -512,22 +509,22 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://meandni.com/2019/01/26/1be6/&title=《Flutter进阶：深入探究 ListView 和 ScrollPhysics》 — Joker's Blog&source=分享生活、技术、学习心得" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://meandni.com/2019/01/26/flutter-exploring-list/&title=《Flutter进阶：深入探究 ListView 和 ScrollPhysics》 — Joker's Blog&source=分享生活、技术、学习心得" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://meandni.com/2019/01/26/1be6/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://meandni.com/2019/01/26/flutter-exploring-list/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Flutter进阶：深入探究 ListView 和 ScrollPhysics》 — Joker's Blog&url=https://meandni.com/2019/01/26/1be6/&via=https://meandni.com" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Flutter进阶：深入探究 ListView 和 ScrollPhysics》 — Joker's Blog&url=https://meandni.com/2019/01/26/flutter-exploring-list/&via=https://meandni.com" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://meandni.com/2019/01/26/1be6/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://meandni.com/2019/01/26/flutter-exploring-list/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -538,7 +535,7 @@
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAACuCAAAAACKZ2kyAAABu0lEQVR42u3aS27DMAwFwN7/0inQVTZxHkVRdoHxynD8GWUhiI/6+YmP19/xfv5+Jbkzf8OGAxcXt819XR4JN6HkT30y4OLinudWJ68cVKV/seHi4j6MuwuavBMXF/e/cJNFyfUwEjouLu5zuEnxkwQZybP54HFxce/irgWme8/H811cXNxNXYlkUutMPeWv4+LiHuFexxxJKZIMJvlKHqHi4uJOc6thRydCTf6O6wHj4uKe4VaLkE7kUW3WfryCi4s7zO2XPdVyKG+ffJl3cXFxx7jVdmm1UZqDCm1aXFzcI9ykgMkDkU57phC54uLiDnOrcWc1EMkjElxc3Odw1xYfuxoqG7pAuLi4Y9ykCZovcfIBr5VVuLi4c9y16WliSBEdFxf3CHetyZo3Rap3RuUQLi7uMDcJQ6u/dqKQL5EKLi7uQW61mbHGLYehuLi4t3Kr27P62ylafWBcXNxhbn+rRKc06gQuuLi409xkGuoUOXm7JXozLi7uQe7a5NVZ4mzOd3FxcW/i7lpJtSJXXFzcR3KTAawFIoubNXFxcce4ebMzvz6yaQMXF/cItxqYJpNXP2DFxcW9ifsLM0kGHPtFj+AAAAAASUVORK5CYII=" alt="微信分享二维码">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACJ0lEQVR42u3aS27jQAwFQN//0g4wq9m49UhaQdRdvTKUQFJpQfD3esXn/e/8//vTlfX1/D6vOw4GBsZjGe/lWT/gXTzrp68/2cXdMDAwDmDkQXYdENfg9RPz/8TAwMBY324ddpNwPAdjYGBgVF89/2ueCGJgYGD0ithqc239Carsr9XiGBgYD2T0BgO/8/v2+QYGBsafZ0za+tUBZB6Cy2+FgYGxNaOa0lVbaUn4nuxUvPLsEgMD47GManmZAPJlsiRBjMI9BgbG1oz8YfNmWS8QJ40/DAyMvRnz0rG6SFFdIyvU4hgYGJsy8mFAr9zt8SZLHhgYGPsxeu3+PARXF7++XItjYGBszcj77ZNyNB8YXAR6DAyMAxiTkDcpTXuf5mJnBAMDYztGdQ0ib7RVtyB6QR8DA+MERt6U73Xs7lu2wMDAOJORJF53t95yHgYGxmmMJNjNw+5keHnxiTEwMLZm5GlcXqaOkrxBIw8DA+M0xmSFq5dcTtbOMDAw9mb02vr5t0mQk0ECBgbGyYzeleoQtJeefqzFMTAwNmXct7tRyEkHy2EYGBgnMN7Fkxe31ZFnr5QtTGIxMDAey8hPdcDZI80DPQYGxq6MeZCtrl9MeBe5LQYGxtaM3gLEeniQp3e9IvbjjhsGBsbBjHzEmPN6pSkGBgZGPlCsBtnqQtjtARcDA+NRjGoR23uhJEDngwQMDIxzGNXBQHXQOBk6fg2AgYHxVMYPjJ8UGUHJXrsAAAAASUVORK5CYII=" alt="微信分享二维码">
 </div>
 
 
