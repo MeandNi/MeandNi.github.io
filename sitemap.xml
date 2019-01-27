@@ -2,6 +2,34 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://meandni.com/2019/01/27/flutter-hero/</loc>
+    
+    <lastmod>2019-01-27T13:10:52.619Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://meandni.com/2019/01/11/jvm_note2/</loc>
+    
+    <lastmod>2019-01-27T12:22:44.032Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://meandni.com/2019/01/18/first-reading-record/</loc>
+    
+    <lastmod>2019-01-26T13:01:52.086Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://meandni.com/2019/01/26/flutter-exploring-textfield/</loc>
+    
+    <lastmod>2019-01-26T10:45:06.562Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://meandni.com/2019/01/26/flutter-exploring-list/</loc>
     
     <lastmod>2019-01-26T09:04:26.322Z</lastmod>
@@ -9,23 +37,9 @@
   </url>
   
   <url>
-    <loc>https://meandni.com/2019/01/26/a7d4/</loc>
-    
-    <lastmod>2019-01-26T08:49:37.063Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://meandni.com/images/A%20Deep%20Dive%20Into%20Flutter%20TextFields%20%E2%80%93%20Flutter%20Community%20%E2%80%93%20Medium.html</loc>
     
     <lastmod>2019-01-26T07:44:13.744Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://meandni.com/2019/01/18/first-reading-record/</loc>
-    
-    <lastmod>2019-01-25T14:42:03.475Z</lastmod>
     
   </url>
   
@@ -89,13 +103,6 @@
     <loc>https://meandni.com/2018/03/01/d010/</loc>
     
     <lastmod>2019-01-12T04:04:18.275Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://meandni.com/2019/01/11/jvm_note2/</loc>
-    
-    <lastmod>2019-01-11T04:34:28.268Z</lastmod>
     
   </url>
   
