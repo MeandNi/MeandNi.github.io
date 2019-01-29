@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>Flutter知乎App实践：UI+Json+Utils | Joker&#39;s Blog | 个人分享博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="flutter实战">
+    <meta name="description" content="Flutter实践之知乎App预览图：                                                                                              app展示">
+<meta name="keywords" content="flutter实战">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Flutter知乎App实践：UI+Json+Utils">
+<meta property="og:url" content="https://meandni.com/2019/01/29/flutter-zhihu/index.html">
+<meta property="og:site_name" content="Joker&#39;s Blog">
+<meta property="og:description" content="Flutter实践之知乎App预览图：                                                                                              app展示">
+<meta property="og:locale" content="Chinese">
+<meta property="og:image" content="https://meandni.com/images/showapp.jpg">
+<meta property="og:image" content="https://meandni.com/images/showapp2.jpg">
+<meta property="og:image" content="https://meandni.com/images/common.png">
+<meta property="og:image" content="https://meandni.com/images/common2.png">
+<meta property="og:image" content="https://meandni.com/images/recommend.png">
+<meta property="og:image" content="https://meandni.com/images/idea.png">
+<meta property="og:image" content="https://meandni.com/images/question.png">
+<meta property="og:updated_time" content="2019-01-29T08:53:28.870Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Flutter知乎App实践：UI+Json+Utils">
+<meta name="twitter:description" content="Flutter实践之知乎App预览图：                                                                                              app展示">
+<meta name="twitter:image" content="https://meandni.com/images/showapp.jpg">
+    
+        <link rel="alternate" type="application/atom+xml" title="Joker&#39;s Blog" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Joker</h5>
+          <a href="mailto:yangjiakay@gmail.com" title="yangjiakay@gmail.com" class="mail">yangjiakay@gmail.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/">
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives">
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags">
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories">
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/MeandNi" target="_blank">
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about">
+                <i class="icon icon-lg icon-link"></i>
+                AboutMe
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">Flutter知乎App实践：UI+Json+Utils</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">Flutter知乎App实践：UI+Json+Utils</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-01-29T07:17:22.000Z" itemprop="datePublished" class="page-time">
+  2019-01-29
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/原创/">原创</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Flutter实践之知乎App"><span class="post-toc-number">1.</span> <span class="post-toc-text">Flutter实践之知乎App</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#开发环境"><span class="post-toc-number">1.0.1.</span> <span class="post-toc-text">开发环境</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#编译运行"><span class="post-toc-number">1.0.2.</span> <span class="post-toc-text">编译运行</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#UI-大致结构"><span class="post-toc-number">1.0.3.</span> <span class="post-toc-text">UI 大致结构</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Ui-细节"><span class="post-toc-number">1.0.4.</span> <span class="post-toc-text">Ui 细节</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#数据结构"><span class="post-toc-number">1.0.5.</span> <span class="post-toc-text">数据结构</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#第三方框架"><span class="post-toc-number">1.0.6.</span> <span class="post-toc-text">第三方框架</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#鸣谢"><span class="post-toc-number">1.0.7.</span> <span class="post-toc-text">鸣谢</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-2019-01-29-flutter-zhihu" class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">Flutter知乎App实践：UI+Json+Utils</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-01-29 15:17:22" datetime="2019-01-29T07:17:22.000Z" itemprop="datePublished">2019-01-29</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/原创/">原创</a></li></ul>
+
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h2 id="Flutter实践之知乎App"><a href="#Flutter实践之知乎App" class="headerlink" title="Flutter实践之知乎App"></a>Flutter实践之知乎App</h2><p>预览图：</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/images/showapp.jpg" alt="app展示" title="">
+                </div>
+                <div class="image-caption">app展示</div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/images/showapp2.jpg" alt="app展示" title="">
+                </div>
+                <div class="image-caption">app展示</div>
+            </figure>
+<h4 id="开发环境"><a href="#开发环境" class="headerlink" title="开发环境"></a>开发环境</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Flutter 1.0.0 • channel stable • https://github.com/flutter/flutter.git</span><br><span class="line">Framework • revision 5391447fae (9 weeks ago) • 2018-11-29 19:41:26 -0800</span><br><span class="line">Engine • revision 7375a0f414</span><br><span class="line">Tools • Dart 2.1.0 (build 2.1.0-dev.9.4 f9ebf21297)</span><br></pre></td></tr></table></figure>
+<h4 id="编译运行"><a href="#编译运行" class="headerlink" title="编译运行"></a>编译运行</h4><ol>
+<li><p>克隆代码</p>
+<p>源码地址：<a href="https://github.com/MeandNi/Flutter_ZhiHu" target="_blank" rel="noopener">https://github.com/MeandNi/Flutter_ZhiHu</a></p>
+</li>
+<li><p>安装依赖</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flutter packages get</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h4 id="UI-大致结构"><a href="#UI-大致结构" class="headerlink" title="UI 大致结构"></a>UI 大致结构</h4><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/images/common.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>采用类似 Android 模块化思想，将整个 App 的内容分为5个部分.</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/images/common2.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<h4 id="Ui-细节"><a href="#Ui-细节" class="headerlink" title="Ui 细节"></a>Ui 细节</h4><p>暂不叙述，项目目前还在更新完善中，预计使用Redux、Sqlflite等技术栈填充数据部分，本项目部分界面及工具类来自<a href="https://github.com/MeandNi/Flutter_CommonApp" target="_blank" rel="noopener">Flutter_CommonApp</a> 。</p>
+<h4 id="数据结构"><a href="#数据结构" class="headerlink" title="数据结构"></a>数据结构</h4><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/images/recommend.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/images/idea.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/images/question.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>结构图壕无专业性可言，仅供观赏😀。</p>
+<h4 id="第三方框架"><a href="#第三方框架" class="headerlink" title="第三方框架"></a>第三方框架</h4><table>
+<thead>
+<tr>
+<th>库</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>dio</strong></td>
+<td><strong>网络框架</strong></td>
+</tr>
+<tr>
+<td><strong>carousel_slider</strong></td>
+<td><strong>轮播图</strong></td>
+</tr>
+<tr>
+<td><strong>cached_network_image</strong></td>
+<td><strong>图片加载</strong></td>
+</tr>
+<tr>
+<td><strong>share</strong></td>
+<td><strong>链接分享</strong></td>
+</tr>
+<tr>
+<td><strong>flutter_webview_plugin</strong></td>
+<td><strong>WebView</strong></td>
+</tr>
+</tbody>
+</table>
+<h4 id="鸣谢"><a href="#鸣谢" class="headerlink" title="鸣谢"></a>鸣谢</h4><p>感谢那些热爱开源、一起奋斗的朋友们。</p>
+<p>值得学习请Star啊^_^</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2019-01-29T08:53:28.870Z" itemprop="dateUpdated">2019-01-29 16:53:28</time>
+</span><br>
+
+
+        
+    </div>
+    
+    <footer>
+        <a href="https://meandni.com">
+            <img src="/img/avatar.jpg" alt="Joker">
+            Joker
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/flutter实战/">flutter实战</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://meandni.com/2019/01/29/flutter-zhihu/&title=《Flutter知乎App实践：UI+Json+Utils》 — Joker's Blog&pic=https://meandni.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://meandni.com/2019/01/29/flutter-zhihu/&title=《Flutter知乎App实践：UI+Json+Utils》 — Joker's Blog&source=分享生活、技术、学习心得" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://meandni.com/2019/01/29/flutter-zhihu/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Flutter知乎App实践：UI+Json+Utils》 — Joker's Blog&url=https://meandni.com/2019/01/29/flutter-zhihu/&via=https://meandni.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://meandni.com/2019/01/29/flutter-zhihu/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2019/01/28/flutter-hero/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">Flutter进阶：手势（Gestures）强化</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        感谢打赏~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat.png" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check" data-wechat="/img/wechat.png" data-alipay="/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Joker &copy; 2018 - 2019</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://meandni.com/2019/01/29/flutter-zhihu/&title=《Flutter知乎App实践：UI+Json+Utils》 — Joker's Blog&pic=https://meandni.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://meandni.com/2019/01/29/flutter-zhihu/&title=《Flutter知乎App实践：UI+Json+Utils》 — Joker's Blog&source=分享生活、技术、学习心得" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://meandni.com/2019/01/29/flutter-zhihu/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Flutter知乎App实践：UI+Json+Utils》 — Joker's Blog&url=https://meandni.com/2019/01/29/flutter-zhihu/&via=https://meandni.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://meandni.com/2019/01/29/flutter-zhihu/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACKklEQVR42u3aS27EIBAFwLn/pR0p28Txe81MJONiFXkcQ7FA9Of1isfxPf5+8vP5cTKS91+fGBgYGLdlHH+OswnO/j77Zr5NyUb88k0MDIwHMNqjM3neLjr59fQ5BgYGRvzp5Nf8CxgYGBgzRh4/rlwrMTAwMGZB7Gyy9s2Px+IYGBg3ZLSFgf/8+4P1DQwMjJswjnLM0nPt4upVYWBgbM2YJfeTwkCyxCSQLpJ6GBgYWzPyS2F+vK68k2xQjcHAwLgto/2396bb8qTeRbiLgYGxNaMtT+akJJXftsBGQSwGBsZ2jE8Eru2CZluGgYHxHEbe1JW8GU1WblARi2NgYDyAsdJ4sZKSy1N7F8cxBgbG1oxZ68PK8Rqlz0YrwcDAeAJjFl6ut1+0abgLNgYGxkaM/EqXXODaoLcNmE/nwsDA2JqRh4jt9LMgtj2CMTAwnszID8o2Ps4bNerwFQMDY2vGu8oDbSp/lu7HwMB4MqMtA8zaI5JS5ex9DAyMXRlJCiwJXPPSwqzkGRUGMDAwHsNoj9GlC1xcVLjYSgwMjK0Z60HsLAR9LYwod4iBgbER4yjHrNkiuWLO0nAYGBhPYKyXAdrJ2uXO0nYYGBj7MWYNFvkh2JYKkjUUNQ0MDIyNGOuHbL6s9roZxeIYGBgYC6MtHrQkDAwMjDZYbQ/iWfvFGw5cDAyMGzLyIHa9naJNqEUHOgYGxtaMWWEgT8m9t7Vi6fsYGBj3Y3wBg7m3PcB4y+0AAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
