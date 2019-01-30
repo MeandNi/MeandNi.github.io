@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://meandni.com/"/>
-  <updated>2019-01-29T08:59:53.698Z</updated>
+  <updated>2019-01-30T15:29:49.618Z</updated>
   <id>https://meandni.com/</id>
   
   <author>
@@ -15,6 +15,20 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>2019-01-30-Fluuter-State-Management</title>
+    <link href="https://meandni.com/2019/01/30/c828/"/>
+    <id>https://meandni.com/2019/01/30/c828/</id>
+    <published>2019-01-30T12:54:19.000Z</published>
+    <updated>2019-01-30T15:29:49.618Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>Flutter知乎App实践：UI+Json+Utils</title>
@@ -39,31 +53,6 @@
     
     
       <category term="flutter实战" scheme="https://meandni.com/tags/flutter%E5%AE%9E%E6%88%98/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Flutter进阶：手势（Gestures）强化</title>
-    <link href="https://meandni.com/2019/01/28/flutter-hero/"/>
-    <id>https://meandni.com/2019/01/28/flutter-hero/</id>
-    <published>2019-01-28T14:53:52.000Z</published>
-    <updated>2019-01-28T14:58:07.658Z</updated>
-    
-    <content type="html"><![CDATA[<p>Flutter provides some really amazing widgets out of the box which comes pre-built for handling touch events such as in <code>InkWell</code> and <code>InkResponse</code>. These widgets wrap your widgets so that they are able to respond to touch events. In addition to doing this, it also adds the Material Ink splash to your widget. <code>InkResponse</code>, for example, has options to control the shape and clipping of the splash as it extends out of the widget’s boundary. An interesting thing to note is <code>InkWell</code> and <code>InkResponse</code> don’t do any rendering, instead they update the parent <em>Material</em> widget. A common example of this is an image. If you wrap an image in an <code>inkWell</code>, you would notice that the ripple is not visible. This is because it is drawn behind the image on the <em>Material</em>. To make the <code>Ink</code> splash visible, wrap your image using <code>Ink.Image</code>. While useful for most tasks, if you want to capture more events, such as when a user drags across the screen, one should use <code>GestureDetector</code>.</p><p>Flutter 已经为我们提供了一些可以处理触摸事件的组件，如“InkWell”和“InkResponse”。将这些组件包裹其他组件便可使组件相应相应的触摸事件。</p><p>Flutter 提供了一些非常棒的小工具，它们预先构建用于处理触摸事件，例如“InkWell”和“InkResponse”。 这些小部件包装您的小部件，以便他们能够响应触摸事件。 除此之外，它还会向您的窗口小部件添加Material Ink启动。 例如，<code>InkResponse</code>可以选择控制飞溅的形状和剪裁，因为它会延伸到小部件的边界之外。 一个有趣的事情是“InkWell”和“InkResponse”不做任何渲染，而是更新父 Material <em>小部件。 一个常见的例子是图像。 如果将图像包装在<code>inkWell</code>中，您会注意到纹波不可见。 这是因为它是在</em> Material 上的图像后面绘制的。 要使“Ink”图像可见，请使用“Ink.Image”包装图像。 虽然对大多数任务很有用，但如果你想捕获更多事件，例如当用户在屏幕上拖动时，应该使用<code>GestureDetector</code>。…</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;Flutter provides some really amazing widgets out of the box which comes pre-built for handling touch events such as in &lt;code&gt;InkWell&lt;/cod
-      
-    
-    </summary>
-    
-      <category term="整理" scheme="https://meandni.com/categories/%E6%95%B4%E7%90%86/"/>
-    
-    
-      <category term="flutter进阶" scheme="https://meandni.com/tags/flutter%E8%BF%9B%E9%98%B6/"/>
     
   </entry>
   
@@ -472,9 +461,9 @@
       <category term="原创" scheme="https://meandni.com/categories/%E5%8E%9F%E5%88%9B/"/>
     
     
-      <category term="Android" scheme="https://meandni.com/tags/Android/"/>
-    
       <category term="读书" scheme="https://meandni.com/tags/%E8%AF%BB%E4%B9%A6/"/>
+    
+      <category term="Android" scheme="https://meandni.com/tags/Android/"/>
     
   </entry>
   

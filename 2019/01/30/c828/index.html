@@ -14,25 +14,25 @@
     
     
     
-    <title>Android进阶之路 | Joker&#39;s Blog | 个人分享博客</title>
+    <title>2019-01-30-Fluuter-State-Management | Joker&#39;s Blog | 个人分享博客</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
     <meta name="theme-color" content="#3F51B5">
     
     
-    <meta name="keywords" content="读书,Android">
-    <meta name="description" content="读书进阶Android已读：《Android群英传》 正读：《Android进阶之光》 未读：《Android开发艺术探索》  进阶知识点： Activity启动模式 View的滑动与动画 View的事件分发机制 自定义View、ViewGrroup 多线程编程、线程池使用与原理 网络编程、网络框架使用与原理 设计模式（单例、工厂……） 常用框架原理（RXJava、EventBus、Dagger2">
-<meta name="keywords" content="读书,Android">
+    <meta name="keywords" content="">
+    <meta name="description" content="分享生活、技术、学习心得">
+<meta name="keywords" content="android,web,java,javascript,vue,react,技术分享,学习心得,学习笔记,程序员人生">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Android进阶之路">
-<meta property="og:url" content="https://meandni.com/2018/12/25/android-advanced/index.html">
+<meta property="og:title" content="2019-01-30-Fluuter-State-Management">
+<meta property="og:url" content="https://meandni.com/2019/01/30/c828/index.html">
 <meta property="og:site_name" content="Joker&#39;s Blog">
-<meta property="og:description" content="读书进阶Android已读：《Android群英传》 正读：《Android进阶之光》 未读：《Android开发艺术探索》  进阶知识点： Activity启动模式 View的滑动与动画 View的事件分发机制 自定义View、ViewGrroup 多线程编程、线程池使用与原理 网络编程、网络框架使用与原理 设计模式（单例、工厂……） 常用框架原理（RXJava、EventBus、Dagger2">
+<meta property="og:description" content="分享生活、技术、学习心得">
 <meta property="og:locale" content="Chinese">
-<meta property="og:updated_time" content="2019-01-19T03:39:04.892Z">
+<meta property="og:updated_time" content="2019-01-30T15:29:49.618Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Android进阶之路">
-<meta name="twitter:description" content="读书进阶Android已读：《Android群英传》 正读：《Android进阶之光》 未读：《Android开发艺术探索》  进阶知识点： Activity启动模式 View的滑动与动画 View的事件分发机制 自定义View、ViewGrroup 多线程编程、线程池使用与原理 网络编程、网络框架使用与原理 设计模式（单例、工厂……） 常用框架原理（RXJava、EventBus、Dagger2">
+<meta name="twitter:title" content="2019-01-30-Fluuter-State-Management">
+<meta name="twitter:description" content="分享生活、技术、学习心得">
     
         <link rel="alternate" type="application/atom+xml" title="Joker&#39;s Blog" href="/atom.xml">
     
@@ -120,7 +120,7 @@
         <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
           <i class="icon icon-lg icon-navicon"></i>
         </a>
-        <div class="flex-col header-title ellipsis">Android进阶之路</div>
+        <div class="flex-col header-title ellipsis">2019-01-30-Fluuter-State-Management</div>
         
         <div class="search-wrap" id="search-wrap">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
@@ -142,15 +142,13 @@
 <header class="content-header post-header">
 
     <div class="container fade-scale">
-        <h1 class="title">Android进阶之路</h1>
+        <h1 class="title">2019-01-30-Fluuter-State-Management</h1>
         <h5 class="subtitle">
             
-                <time datetime="2018-12-25T07:15:58.000Z" itemprop="datePublished" class="page-time">
-  2018-12-25
+                <time datetime="2019-01-30T12:54:19.000Z" itemprop="datePublished" class="page-time">
+  2019-01-30
 </time>
 
-
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/原创/">原创</a></li></ul>
 
             
         </h5>
@@ -164,53 +162,22 @@
 
 <div class="container body-wrap">
     
-    <aside class="post-widget">
-        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
-            <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#读书进阶Android"><span class="post-toc-number">1.</span> <span class="post-toc-text">读书进阶Android</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#进阶知识点："><span class="post-toc-number">1.0.1.</span> <span class="post-toc-text">进阶知识点：</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#专项进阶："><span class="post-toc-number">1.0.2.</span> <span class="post-toc-text">专项进阶：</span></a></li></ol></li></ol>
-        </nav>
-    </aside>
 
-
-<article id="post-2018-12-25-android-advance" class="post-article article-type-post fade" itemprop="blogPost">
+<article id="post-2019-01-30-fluuter-state-management" class="post-article article-type-post fade" itemprop="blogPost">
 
     <div class="post-card">
-        <h1 class="post-card-title">Android进阶之路</h1>
+        <h1 class="post-card-title">2019-01-30-Fluuter-State-Management</h1>
         <div class="post-meta">
-            <time class="post-time" title="2018-12-25 15:15:58" datetime="2018-12-25T07:15:58.000Z" itemprop="datePublished">2018-12-25</time>
+            <time class="post-time" title="2019-01-30 20:54:19" datetime="2019-01-30T12:54:19.000Z" itemprop="datePublished">2019-01-30</time>
 
             
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/原创/">原创</a></li></ul>
-
 
 
             
 
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
-            <h2 id="读书进阶Android"><a href="#读书进阶Android" class="headerlink" title="读书进阶Android"></a>读书进阶Android</h2><p>已读：《Android群英传》</p>
-<p>正读：《Android进阶之光》</p>
-<p>未读：《Android开发艺术探索》</p>
-<hr>
-<h4 id="进阶知识点："><a href="#进阶知识点：" class="headerlink" title="进阶知识点："></a>进阶知识点：</h4><ul>
-<li>Activity启动模式</li>
-<li>View的滑动与动画</li>
-<li>View的事件分发机制</li>
-<li>自定义View、ViewGrroup</li>
-<li>多线程编程、线程池使用与原理</li>
-<li>网络编程、网络框架使用与原理</li>
-<li>设计模式（单例、工厂……）</li>
-<li>常用框架原理（RXJava、EventBus、Dagger2……）</li>
-<li>应用架构（MVP、MVVM）</li>
-<li>性能优化</li>
-<li>JNI和NDK编程</li>
-</ul>
-<hr>
-<h4 id="专项进阶："><a href="#专项进阶：" class="headerlink" title="专项进阶："></a>专项进阶：</h4><ul>
-<li>Android音视频</li>
-<li>Android通信</li>
-</ul>
-
+            
         </div>
 
         <blockquote class="post-copyright">
@@ -218,7 +185,7 @@
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2019-01-19T03:39:04.892Z" itemprop="dateUpdated">2019-01-19 11:39:04</time>
+    Last updated: <time datetime="2019-01-30T15:29:49.618Z" itemprop="dateUpdated">2019-01-30 23:29:49</time>
 </span><br>
 
 
@@ -242,8 +209,6 @@
 
         <div class="post-footer">
             
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/读书/">读书</a></li></ul>
-
 
             
 <div class="page-share-wrap">
@@ -252,7 +217,7 @@
 <div class="page-share" id="pageShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://meandni.com/2018/12/25/android-advanced/&title=《Android进阶之路》 — Joker's Blog&pic=https://meandni.com/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://meandni.com/2019/01/30/c828/&title=《2019-01-30-Fluuter-State-Management》 — Joker's Blog&pic=https://meandni.com/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -262,22 +227,22 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://meandni.com/2018/12/25/android-advanced/&title=《Android进阶之路》 — Joker's Blog&source=分享生活、技术、学习心得" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://meandni.com/2019/01/30/c828/&title=《2019-01-30-Fluuter-State-Management》 — Joker's Blog&source=分享生活、技术、学习心得" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://meandni.com/2018/12/25/android-advanced/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://meandni.com/2019/01/30/c828/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Android进阶之路》 — Joker's Blog&url=https://meandni.com/2018/12/25/android-advanced/&via=https://meandni.com" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《2019-01-30-Fluuter-State-Management》 — Joker's Blog&url=https://meandni.com/2019/01/30/c828/&via=https://meandni.com" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://meandni.com/2018/12/25/android-advanced/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://meandni.com/2019/01/30/c828/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -297,21 +262,14 @@
     </div>
 
     
-<nav class="post-nav flex-row flex-justify-between">
-  
-    <div class="waves-block waves-effect prev">
-      <a href="/2019/01/04/5671/" id="post-prev" class="post-nav-link">
-        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
-        <h4 class="title">经验：Flutter项目IOS真机部署及问题</h4>
-      </a>
-    </div>
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
   
 
   
     <div class="waves-block waves-effect next">
-      <a href="/2018/11/21/86ef/" id="post-next" class="post-nav-link">
+      <a href="/2019/01/29/flutter-zhihu/" id="post-next" class="post-nav-link">
         <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
-        <h4 class="title">Android 框架组件(Android Architecture Components)使用指南</h4>
+        <h4 class="title">Flutter知乎App实践：UI+Json+Utils</h4>
       </a>
     </div>
   
@@ -398,7 +356,7 @@
 <div class="global-share" id="globalShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://meandni.com/2018/12/25/android-advanced/&title=《Android进阶之路》 — Joker's Blog&pic=https://meandni.com/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://meandni.com/2019/01/30/c828/&title=《2019-01-30-Fluuter-State-Management》 — Joker's Blog&pic=https://meandni.com/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -408,22 +366,22 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://meandni.com/2018/12/25/android-advanced/&title=《Android进阶之路》 — Joker's Blog&source=分享生活、技术、学习心得" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://meandni.com/2019/01/30/c828/&title=《2019-01-30-Fluuter-State-Management》 — Joker's Blog&source=分享生活、技术、学习心得" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://meandni.com/2018/12/25/android-advanced/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://meandni.com/2019/01/30/c828/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Android进阶之路》 — Joker's Blog&url=https://meandni.com/2018/12/25/android-advanced/&via=https://meandni.com" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《2019-01-30-Fluuter-State-Management》 — Joker's Blog&url=https://meandni.com/2019/01/30/c828/&via=https://meandni.com" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://meandni.com/2018/12/25/android-advanced/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://meandni.com/2019/01/30/c828/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -434,7 +392,7 @@
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACOElEQVR42u3aS27jMBAFQN//0g4wqyxi5b0mM4Co0sqQIVKlRaM/fL3i6/3vau9//zf//WnNDRcGBsZtGe/L63rjfLVPz14zknfDwMB4DuM6mF4v8csGwQu1nwwDAwNjlsDlgDZZxMDAwFgJuMn9BI+BgYGRMJJ0Ld8sKjvjondzLY6BgXFDRjsY+J+//3C+gYGBcRPGu7x2PdWmm7+sj4GBcTQjGSte30+2n5XKSUpavBwGBsYRjFm5uBJ8V0YOdS2OgYFxW0YeLq9b+bsacBsmGxgYGEczku1nTbpZeC2acRgYGA9gzErWNjVsP83wmAUGBsZxjPyx9uXytHI2GBieccPAwLghI0nU2hJ39iHaZtwPk1gMDIxDGe3Br/aQxK5EsEguMTAwDmW0I4FZ46xds94RAwPjUEbyWNs4aw9nJGnl0ggTAwPjAYw21LZBeXYU42O7DQMD42hGW4LORgXtvCL6EBgYGEcz8vRutn2eOLbHNX5YDQMD4zGMleXyZC4P7vVpEQwMjOMYbRjddWh1NnioT3NgYGAcxEheOlpudER15eN+bLdhYGAcxFhp37f/zorbosGHgYFxKGNWvrbsNu2rU0wMDIyjGfmVDBeTEvcvVsbAwHgCY/0YRNvWb1PA1+wxDAyM4xhJYjcbUubslaCPgYGB0Tb689bbyicYBlwMDIzHMFZa/0lDLQn9GwIuBgbGrRhJEbteoF6vtlTcYmBgHM3YNRiYBco2AZ0VwBgYGLdlfAFkgOZUcfZ95gAAAABJRU5ErkJggg==" alt="微信分享二维码">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAACuCAAAAACKZ2kyAAABxElEQVR42u3awYqDMBQFUP//pzswq4FS594kRgsnK7GoJ108kpt3HPF4/Y7k1/frv+P9/nHFwMXFnea+TkfC/fS28/vnE/s4JVxc3I3cpDwlhSkpWPnfgYuL+3zu+VM5NHk/Li7ut3DHJjD2d+Di4j6B2y5i2uVLfmfZXg0XF3eC2wamV1xfmO/i4uKW3Fc58hAkKUP113Fxcbdw823MFWWr3Vzh4uLu5OYRZxuMFmHHaYHDxcXdz5058jyH5oFI8RVcXNyN3LZZqm22aI9PosYsXFzcC7jzBxirnoqWSri4uBu5+c4iWdC0m5x6f4aLi7uRm5ShPEhNlj55yIKLi7uTm3ygbaiazzb/eQoXF/cmbruByWOOmeKIi4u7h5tHlnlg2jZtFG/AxcXdws0jiTHo/BYrOlDBxcVdym2JM3FJHpXi4uI+gduWm7FodcEWCxcXdyN3vgErb+CoD1ZX7clwcXFHKsYxVpjGmjbyxo68dOLi4q7lrgpD2+OW9oAWFxd3P3dsOZIvjBbnu7i4uI/htq+eiWIXFDJcXNybuPlnZlpCcXFx7+K2IWkebSxu2sDFxd3CbQPTMVY+1XZiuLi4S7k/UCyfZsnA9fcAAAAASUVORK5CYII=" alt="微信分享二维码">
 </div>
 
 
