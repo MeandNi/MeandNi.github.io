@@ -30,12 +30,15 @@
 <meta property="og:description" content="利用 Flutter 内置的许多控件我们可以打造出一款不仅漂亮而且完美跨平台的 App 外壳，我利用其特性完成了类似知乎App的UI界面，然而一款完整的应用程序显然不止有外壳这么简单。填充在外壳里面的是数据，数据来源或从本地，或从云端，大量的数据处理很容易造成数据的混乱，耦合度提高，不便于维护，于是诞生了很多设计模式和状态管理的方式。 目前 Flutter 常用状态管理方式有如下几种：  Scop">
 <meta property="og:locale" content="Chinese">
 <meta property="og:image" content="https://meandni.com/images/flutterstate1.png">
+<meta property="og:image" content="https://meandni.com/images/flutterstate8.gif">
+<meta property="og:image" content="https://meandni.com/images/flutterstate7.png">
+<meta property="og:image" content="https://meandni.com/images/flutterstate9.gif">
 <meta property="og:image" content="https://meandni.com/images/flutterstate2.png">
 <meta property="og:image" content="https://meandni.com/images/flutterstate3.png">
 <meta property="og:image" content="https://meandni.com/images/flutterstate4.png">
 <meta property="og:image" content="https://meandni.com/images/flutterstate5.png">
 <meta property="og:image" content="https://meandni.com/images/flutterstate6.png">
-<meta property="og:updated_time" content="2019-01-31T10:27:34.019Z">
+<meta property="og:updated_time" content="2019-01-31T10:48:30.516Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Flutter实践：深入探索 Flutter 中的状态管理方式">
 <meta name="twitter:description" content="利用 Flutter 内置的许多控件我们可以打造出一款不仅漂亮而且完美跨平台的 App 外壳，我利用其特性完成了类似知乎App的UI界面，然而一款完整的应用程序显然不止有外壳这么简单。填充在外壳里面的是数据，数据来源或从本地，或从云端，大量的数据处理很容易造成数据的混乱，耦合度提高，不便于维护，于是诞生了很多设计模式和状态管理的方式。 目前 Flutter 常用状态管理方式有如下几种：  Scop">
@@ -133,7 +136,7 @@
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
                 <i class="icon icon-lg icon-chevron-left"></i>
             </a>
-            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="検索">
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
                 <i class="icon icon-lg icon-search"></i>
             </a>
@@ -234,6 +237,13 @@
                 <div class="image-caption"></div>
             </figure>
 <p>通过这种简单的方式已经可以说明一个问题，即以最简单的方式我们已经可以完成状态传递和组件渲染，而路由间保持状态一致还不能解决。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/images/flutterstate8.gif" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
 <h3 id="InheritedWidget"><a href="#InheritedWidget" class="headerlink" title="InheritedWidget"></a>InheritedWidget</h3><p>Google 官方给我们的解决方案是 <code>InheritedWidget</code>，怎么理解他，我们可以称它为“状态树”，它使得所有的 widget 的 State 来源统一，这样一旦有一处触发状态改变，Flutter 以某种方式感应到了（有个监听器），砍掉它，长出一个新树，Perfect！所有地方都能感受到他的变化。上面提到的第一种状态管理方式 <code>ScopedModel</code>便是基于此而产生的一套第三方库。</p>
 <p>其实现在看来 InheritedWidget 已经非常简单了，我们抓住两个点即可完全掌握它：</p>
 <ol>
@@ -245,12 +255,20 @@
 <li><p>使用状态树中数据的其他 Widget</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// 拿到状态树中的值</span><br><span class="line">MyInheritedValue.of(context).value</span><br></pre></td></tr></table></figure>
 <p>请注意：这种情况下是不能改 InheritedWidget 中的值的，需要改也很简单就是将 MyInheritedValue 的值封装成一个对象，每次改变这个对象的值，具体法相看我的<a href="https://github.com/MeandNi/Flutter_StatePro" target="_blank" rel="noopener">样例代码</a>！</p>
+<p><img src="/images/flutterstate7.png" alt=""></p>
 </li>
 </ol>
 <p>上面所说砍掉整棵树过于粗暴却并不夸张，因为一处改变它将联动整棵树，</p>
 <p>ScopedModel 是基于 InheritedWidget 的库，实现起来与 InheritedWidget 大同小异，而且其有一种可以让局部组件不改变的方式：设置 rebuildOnChange 为 false。</p>
 <figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">return</span> ScopedModelDescendant&lt;CartModel&gt;(</span><br><span class="line">          rebuildOnChange: <span class="keyword">false</span>,</span><br><span class="line">          builder: (context, child, model) =&gt; ProductSquare(</span><br><span class="line">                product: product,</span><br><span class="line">                onTap: () =&gt; model.add(product),</span><br><span class="line">              ),</span><br><span class="line">        );</span><br></pre></td></tr></table></figure>
 <p>具体代码请看 GitHub，ScopedModel 样例截取一个老外给的实例，就是下方参考链接 Google 开发者大会上演讲的那两位其中之一。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/images/flutterstate9.gif" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
 <p>这种方式显然有点不足之处就是一旦遇到小规模变动就要引起大规模重新渲染，所以当项目达到一定的规模考虑 Google 爸爸给我们的另一种解决方案。</p>
 <h3 id="Streams（流）"><a href="#Streams（流）" class="headerlink" title="Streams（流）"></a>Streams（流）</h3><p>在 Android 开发中我们经常会用到 RxJava 这类响应式编程方法的框架，其强大之处无须多言，而 Stream 看上去就是在 Dart 语言中的响应式编程的一种实现。</p>
 <ul>
@@ -356,7 +374,7 @@
     <div class="content">
         
 <span class="post-time">
-    最終更新：<time datetime="2019-01-31T10:27:34.019Z" itemprop="dateUpdated">2019-01-31 18:27:34</time>
+    Last updated: <time datetime="2019-01-31T10:48:30.516Z" itemprop="dateUpdated">2019-01-31 18:48:30</time>
 </span><br>
 
 
@@ -507,7 +525,7 @@
             
                 <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
             
-            <span>このブログの内容物は<a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.ja">クリエイティブ・コモンズ 表示 - 非営利 - 継承 4.0 国際ライセンスの下に提供されています</a></span>
+            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
         </p>
     </div>
     <div class="bottom">
