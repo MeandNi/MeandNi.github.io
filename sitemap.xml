@@ -2,9 +2,30 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://meandni.com/2019/02/02/flutter-state1/</loc>
+    
+    <lastmod>2019-02-02T08:29:50.348Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://meandni.com/2019/01/30/flutter-state1/</loc>
     
-    <lastmod>2019-01-31T10:48:30.516Z</lastmod>
+    <lastmod>2019-02-02T04:33:30.606Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://meandni.com/2018/08/14/0/</loc>
+    
+    <lastmod>2019-02-01T14:01:45.590Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://meandni.com/2018/04/15/1a8e/</loc>
+    
+    <lastmod>2019-02-01T13:04:16.979Z</lastmod>
     
   </url>
   
@@ -226,13 +247,6 @@
   </url>
   
   <url>
-    <loc>https://meandni.com/2018/04/15/1a8e/</loc>
-    
-    <lastmod>2019-01-03T13:43:32.494Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://meandni.com/2018/10/10/a03f/</loc>
     
     <lastmod>2019-01-03T13:43:16.653Z</lastmod>
@@ -264,13 +278,6 @@
     <loc>https://meandni.com/2018/08/17/react-tutorial/</loc>
     
     <lastmod>2019-01-03T13:37:29.684Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://meandni.com/2018/08/14/0/</loc>
-    
-    <lastmod>2019-01-03T13:34:01.652Z</lastmod>
     
   </url>
   
