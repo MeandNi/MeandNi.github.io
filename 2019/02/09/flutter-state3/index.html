@@ -6,6 +6,11 @@
     
 
     
+<!-- Baidu Tongji -->
+<script>var _hmt = _hmt || []</script>
+<script async src="//hm.baidu.com/hm.js?9a21c201a5d94ea2a1e286639fc24646"></script>
+<!-- End Baidu Tongji -->
+
 
 
 
@@ -20,12 +25,12 @@
     <meta name="theme-color" content="#3F51B5">
     
     
-    <meta name="keywords" content="">
+    <meta name="keywords" content="flutter实战">
     <meta name="description" content="至此这已经是 Flutter 状态管理方式文章的最后一篇，之后我将将他们应用在实际项目中开发并将值的学习的项目开源出来。对于其中讲解可能有点浅尝则止，因为给出的实例相对简单，但相信聪明的程序员都会有自己的学习方法，你可以从给出的实例结合自己的所学引深出更好的设计方法。 同时要送给大家的建议是：请在需要这些状态管理方式时使用它，我见过不少的开发者都有用大刀砍白菜的意思，这并不是一个好习惯，你会发现这">
-<meta name="keywords" content="android,web,java,javascript,vue,react,技术分享,学习心得,学习笔记,程序员人生">
+<meta name="keywords" content="flutter实战">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Flutter实践：深入 Flutter 的状态管理方式(3)——Redux与旅途小结">
-<meta property="og:url" content="https://meandni.com/2019/02/09/f2c7/index.html">
+<meta property="og:url" content="https://meandni.com/2019/02/09/flutter-state3/index.html">
 <meta property="og:site_name" content="Joker&#39;s Blog">
 <meta property="og:description" content="至此这已经是 Flutter 状态管理方式文章的最后一篇，之后我将将他们应用在实际项目中开发并将值的学习的项目开源出来。对于其中讲解可能有点浅尝则止，因为给出的实例相对简单，但相信聪明的程序员都会有自己的学习方法，你可以从给出的实例结合自己的所学引深出更好的设计方法。 同时要送给大家的建议是：请在需要这些状态管理方式时使用它，我见过不少的开发者都有用大刀砍白菜的意思，这并不是一个好习惯，你会发现这">
 <meta property="og:locale" content="Chinese">
@@ -35,7 +40,7 @@
 <meta property="og:image" content="https://meandni.com/images/redux5.gif">
 <meta property="og:image" content="https://meandni.com/images/redux3.png">
 <meta property="og:image" content="https://meandni.com/images/redux4.png">
-<meta property="og:updated_time" content="2019-02-09T11:42:38.170Z">
+<meta property="og:updated_time" content="2019-02-09T11:55:51.246Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Flutter实践：深入 Flutter 的状态管理方式(3)——Redux与旅途小结">
 <meta name="twitter:description" content="至此这已经是 Flutter 状态管理方式文章的最后一篇，之后我将将他们应用在实际项目中开发并将值的学习的项目开源出来。对于其中讲解可能有点浅尝则止，因为给出的实例相对简单，但相信聪明的程序员都会有自己的学习方法，你可以从给出的实例结合自己的所学引深出更好的设计方法。 同时要送给大家的建议是：请在需要这些状态管理方式时使用它，我见过不少的开发者都有用大刀砍白菜的意思，这并不是一个好习惯，你会发现这">
@@ -133,7 +138,7 @@
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
                 <i class="icon icon-lg icon-chevron-left"></i>
             </a>
-            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="検索">
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
                 <i class="icon icon-lg icon-search"></i>
             </a>
@@ -156,6 +161,8 @@
   2019-02-09
 </time>
 
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/原创/">原创</a></li></ul>
 
             
         </h5>
@@ -185,6 +192,8 @@
             <time class="post-time" title="2019-02-09 16:54:54" datetime="2019-02-09T08:54:54.000Z" itemprop="datePublished">2019-02-09</time>
 
             
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/原创/">原创</a></li></ul>
+
 
 
             
@@ -298,7 +307,7 @@
     <div class="content">
         
 <span class="post-time">
-    最終更新：<time datetime="2019-02-09T11:42:38.170Z" itemprop="dateUpdated">2019-02-09 19:42:38</time>
+    Last updated: <time datetime="2019-02-09T11:55:51.246Z" itemprop="dateUpdated">2019-02-09 19:55:51</time>
 </span><br>
 
 
@@ -322,6 +331,8 @@
 
         <div class="post-footer">
             
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/flutter实战/">flutter实战</a></li></ul>
+
 
             
 <div class="page-share-wrap">
@@ -330,7 +341,7 @@
 <div class="page-share" id="pageShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://meandni.com/2019/02/09/f2c7/&title=《Flutter实践：深入 Flutter 的状态管理方式(3)——Redux与旅途小结》 — Joker's Blog&pic=https://meandni.com/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://meandni.com/2019/02/09/flutter-state3/&title=《Flutter实践：深入 Flutter 的状态管理方式(3)——Redux与旅途小结》 — Joker's Blog&pic=https://meandni.com/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -340,22 +351,22 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://meandni.com/2019/02/09/f2c7/&title=《Flutter实践：深入 Flutter 的状态管理方式(3)——Redux与旅途小结》 — Joker's Blog&source=分享生活、技术、学习心得" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://meandni.com/2019/02/09/flutter-state3/&title=《Flutter实践：深入 Flutter 的状态管理方式(3)——Redux与旅途小结》 — Joker's Blog&source=分享生活、技术、学习心得" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://meandni.com/2019/02/09/f2c7/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://meandni.com/2019/02/09/flutter-state3/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Flutter实践：深入 Flutter 的状态管理方式(3)——Redux与旅途小结》 — Joker's Blog&url=https://meandni.com/2019/02/09/f2c7/&via=https://meandni.com" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Flutter实践：深入 Flutter 的状态管理方式(3)——Redux与旅途小结》 — Joker's Blog&url=https://meandni.com/2019/02/09/flutter-state3/&via=https://meandni.com" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://meandni.com/2019/02/09/f2c7/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://meandni.com/2019/02/09/flutter-state3/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -447,7 +458,7 @@
             
                 <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
             
-            <span>このブログの内容物は<a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.ja">クリエイティブ・コモンズ 表示 - 非営利 - 継承 4.0 国際ライセンスの下に提供されています</a></span>
+            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
         </p>
     </div>
     <div class="bottom">
@@ -469,7 +480,7 @@
 <div class="global-share" id="globalShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://meandni.com/2019/02/09/f2c7/&title=《Flutter实践：深入 Flutter 的状态管理方式(3)——Redux与旅途小结》 — Joker's Blog&pic=https://meandni.com/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://meandni.com/2019/02/09/flutter-state3/&title=《Flutter实践：深入 Flutter 的状态管理方式(3)——Redux与旅途小结》 — Joker's Blog&pic=https://meandni.com/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -479,22 +490,22 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://meandni.com/2019/02/09/f2c7/&title=《Flutter实践：深入 Flutter 的状态管理方式(3)——Redux与旅途小结》 — Joker's Blog&source=分享生活、技术、学习心得" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://meandni.com/2019/02/09/flutter-state3/&title=《Flutter实践：深入 Flutter 的状态管理方式(3)——Redux与旅途小结》 — Joker's Blog&source=分享生活、技术、学习心得" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://meandni.com/2019/02/09/f2c7/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://meandni.com/2019/02/09/flutter-state3/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Flutter实践：深入 Flutter 的状态管理方式(3)——Redux与旅途小结》 — Joker's Blog&url=https://meandni.com/2019/02/09/f2c7/&via=https://meandni.com" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Flutter实践：深入 Flutter 的状态管理方式(3)——Redux与旅途小结》 — Joker's Blog&url=https://meandni.com/2019/02/09/flutter-state3/&via=https://meandni.com" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://meandni.com/2019/02/09/f2c7/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://meandni.com/2019/02/09/flutter-state3/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -505,7 +516,7 @@
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAACuCAAAAACKZ2kyAAABw0lEQVR42u3aQW7DMAwEQP//0ynQU4vU8VK0mBQYnQxDiYY+EBSl44jH43s8Pyczf47n98eOgYuL2+Y+Xo4O8WyVJLDTkHBxcQe5VcTam4R+YcPFxf0wboKozsHFxf3v3LzQSX6Fi4v7+dxk89OfmRRDt+3VcHFxG9xOw/Su56H+Li4ubvtUIm+erqWe8uq4uLgj3NfL5wsk9Gob5TRsXFzcN3E7bdNqQyT5KLi4uJPcziFoDq0mrNM3uLi449y8uVltca4drF4kMlxc3M3cagJa2950Qv2VyHBxcUe4a+hOqzT5HEdePeHi4m7jdoqPPKTW9S9cXNxBbn50unY0kn+Ii2SKi4s7yM3bFnkAa4nsImvh4uK+idu5GFFYeO2fcXFxR7jV443OLalkfpQEcXFxN3PzhulaS7Sazi48uLi4g9yclc9PLnvlQeLi4s5z85E0Q+8KODr5wcXF3cC9q0DJn6tnpvmWCRcX917uvdcxX5c11SLpj1VwcXEHuWtXIvLCaEt/FxcX9wO4SZLKi5tkm9RKZLi4uIPcpJHRb6yc2nBxcQe5nQU6m59qIwYXF3eGW22YVuckG6G1UgkXF3cD9wvJcwYcIJ6N4wAAAABJRU5ErkJggg==" alt="微信分享二维码">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACJ0lEQVR42u3aQXKDMAwF0Nz/0um2i8Z8SaEz2I8VkwTwY6FIsl6v+Hgvj/Xvf3+SnH+65xcODAyMxzKSJa4/WWOSpySwiydiYGAcwEgWsT5Pvl1ftSZdrBkDAwNj/JskZGNgYGDcwagWpUmSh4GBgTEpYvN+Vy/F7AVlDAyMExh51/3/z2/Z38DAwHgU4108eq23XrJYWBUGBsbWjEna1wuX3wq4GBgYpzGSLKs3PJGXpnkZPEoWMTAwHsjIL5g0wiZBNhrswMDA2Jox2WicbGTmd8hfKwYGxt6MasmaNNduGaeoZrsYGBhbMJot+OK7yUvW5lMwMDAOZvQC8Xrpk8TxIw8DA2NrRq/HXg2dyUKrYT3awsTAwNiOkYfIJHTmgbv3xMKYBQYGxkaM3uBFL4mcD1tgYGBgrG83Ga2oDpmNMBgYGFswqmNe1XI0b7RV221/TItgYGBszciDXV7KVsvOXppY3t/AwMB4IKM3HlFtwFUL4zxJLVfhGBgYj2XkjbDeA5IXkZfNzTwXAwNjC0YeWCfDYdUUsBxwMTAwDmD02l75VXlAjxptGBgYBzDexSNfUP5qkjtc/A1gYGBszegF1nzzIC+Gq0VvE4OBgfFYRl5qzuPbfVdhYGCcwOhtRuYts+q1zVocAwMDI07pvtuYKzTdMDAwMILzvFlWHde4CNMYGBgHMPKRiOri5tsDUTjGwMDYmlEtHavnvbSv+hIxMDA2ZfwAVpFLqZRw+X8AAAAASUVORK5CYII=" alt="微信分享二维码">
 </div>
 
 
