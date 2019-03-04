@@ -1,6 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://meandni.com/2019/03/04/flutter-route/</loc>
+    <lastmod>2019-03-04</lastmod>
+  </url>  <url>
+    <loc>https://meandni.com/2019/01/05/winter_vacation/</loc>
+    <lastmod>2019-02-23</lastmod>
+  </url>  <url>
+    <loc>https://meandni.com/2019/01/14/jvm_note4/</loc>
+    <lastmod>2019-02-22</lastmod>
+  </url>  <url>
+    <loc>https://meandni.com/2019/01/11/jvm_note2/</loc>
+    <lastmod>2019-02-22</lastmod>
+  </url>  <url>
+    <loc>https://meandni.com/2019/01/18/jvm_note6/</loc>
+    <lastmod>2019-02-22</lastmod>
+  </url>  <url>
     <loc>https://meandni.com/2019/02/09/flutter-state3/</loc>
     <lastmod>2019-02-09</lastmod>
   </url>  <url>
@@ -22,9 +37,6 @@
     <loc>https://meandni.com/2019/01/27/flutter-hero/</loc>
     <lastmod>2019-01-27</lastmod>
   </url>  <url>
-    <loc>https://meandni.com/2019/01/11/jvm_note2/</loc>
-    <lastmod>2019-01-27</lastmod>
-  </url>  <url>
     <loc>https://meandni.com/2019/01/18/first-reading-record/</loc>
     <lastmod>2019-01-26</lastmod>
   </url>  <url>
@@ -34,19 +46,10 @@
     <loc>https://meandni.com/2019/01/26/flutter-exploring-list/</loc>
     <lastmod>2019-01-26</lastmod>
   </url>  <url>
-    <loc>https://meandni.com/2019/01/14/jvm_note4/</loc>
-    <lastmod>2019-01-23</lastmod>
-  </url>  <url>
-    <loc>https://meandni.com/2019/01/05/winter_vacation/</loc>
-    <lastmod>2019-01-19</lastmod>
-  </url>  <url>
     <loc>https://meandni.com/2018/12/25/android-advanced/</loc>
     <lastmod>2019-01-19</lastmod>
   </url>  <url>
     <loc>https://meandni.com/2019/01/12/flutter-practice2/</loc>
-    <lastmod>2019-01-18</lastmod>
-  </url>  <url>
-    <loc>https://meandni.com/2019/01/18/jvm_note6/</loc>
     <lastmod>2019-01-18</lastmod>
   </url>  <url>
     <loc>https://meandni.com/2019/01/15/jvm_note5/</loc>

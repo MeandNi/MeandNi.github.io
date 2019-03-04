@@ -26,13 +26,13 @@
     
     
     <meta name="keywords" content="flutter实战">
-    <meta name="description" content="至此这已经是 Flutter 状态管理方式文章的最后一篇，之后我将将他们应用在实际项目中开发并将值的学习的项目开源出来。对于其中讲解可能有点浅尝则止，因为给出的实例相对简单，但相信聪明的程序员都会有自己的学习方法，你可以从给出的实例结合自己的所学引深出更好的设计方法。 同时要送给大家的建议是：请在需要这些状态管理方式时使用它，我见过不少的开发者都有用大刀砍白菜的意思，这并不是一个好习惯，你会发现这">
+    <meta name="description" content="至此，这已经是探索 Flutter 状态管理方式文章的最后一篇，同时这也是新年后的第一篇文章，之后我将将他们应用在实际项目中开发并将值的学习的项目开源出来。对于其中讲解可能有点浅尝则止，因为给出的实例相对简单，但相信聪明的程序员都会有自己的学习方法，你可以从给出的实例结合自己的所学引深出更好的设计方法。 同时要送给大家的建议是：请在需要这些状态管理方式时使用它，我见过不少的开发者都有用大刀砍白菜的">
 <meta name="keywords" content="flutter实战">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Flutter实践：深入 Flutter 的状态管理方式(3)——Redux与旅途小结">
 <meta property="og:url" content="https://meandni.com/2019/02/09/flutter-state3/index.html">
 <meta property="og:site_name" content="Joker&#39;s Blog">
-<meta property="og:description" content="至此这已经是 Flutter 状态管理方式文章的最后一篇，之后我将将他们应用在实际项目中开发并将值的学习的项目开源出来。对于其中讲解可能有点浅尝则止，因为给出的实例相对简单，但相信聪明的程序员都会有自己的学习方法，你可以从给出的实例结合自己的所学引深出更好的设计方法。 同时要送给大家的建议是：请在需要这些状态管理方式时使用它，我见过不少的开发者都有用大刀砍白菜的意思，这并不是一个好习惯，你会发现这">
+<meta property="og:description" content="至此，这已经是探索 Flutter 状态管理方式文章的最后一篇，同时这也是新年后的第一篇文章，之后我将将他们应用在实际项目中开发并将值的学习的项目开源出来。对于其中讲解可能有点浅尝则止，因为给出的实例相对简单，但相信聪明的程序员都会有自己的学习方法，你可以从给出的实例结合自己的所学引深出更好的设计方法。 同时要送给大家的建议是：请在需要这些状态管理方式时使用它，我见过不少的开发者都有用大刀砍白菜的">
 <meta property="og:locale" content="Chinese">
 <meta property="og:image" content="https://meandni.com/images/redux1.png">
 <meta property="og:image" content="https://meandni.com/images/redux2.png">
@@ -40,10 +40,10 @@
 <meta property="og:image" content="https://meandni.com/images/redux5.gif">
 <meta property="og:image" content="https://meandni.com/images/redux3.png">
 <meta property="og:image" content="https://meandni.com/images/redux4.png">
-<meta property="og:updated_time" content="2019-02-09T11:55:51.246Z">
+<meta property="og:updated_time" content="2019-02-09T12:16:34.855Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Flutter实践：深入 Flutter 的状态管理方式(3)——Redux与旅途小结">
-<meta name="twitter:description" content="至此这已经是 Flutter 状态管理方式文章的最后一篇，之后我将将他们应用在实际项目中开发并将值的学习的项目开源出来。对于其中讲解可能有点浅尝则止，因为给出的实例相对简单，但相信聪明的程序员都会有自己的学习方法，你可以从给出的实例结合自己的所学引深出更好的设计方法。 同时要送给大家的建议是：请在需要这些状态管理方式时使用它，我见过不少的开发者都有用大刀砍白菜的意思，这并不是一个好习惯，你会发现这">
+<meta name="twitter:description" content="至此，这已经是探索 Flutter 状态管理方式文章的最后一篇，同时这也是新年后的第一篇文章，之后我将将他们应用在实际项目中开发并将值的学习的项目开源出来。对于其中讲解可能有点浅尝则止，因为给出的实例相对简单，但相信聪明的程序员都会有自己的学习方法，你可以从给出的实例结合自己的所学引深出更好的设计方法。 同时要送给大家的建议是：请在需要这些状态管理方式时使用它，我见过不少的开发者都有用大刀砍白菜的">
 <meta name="twitter:image" content="https://meandni.com/images/redux1.png">
     
         <link rel="alternate" type="application/atom+xml" title="Joker&#39;s Blog" href="/atom.xml">
@@ -200,7 +200,7 @@
 
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
-            <p>至此这已经是 Flutter 状态管理方式文章的最后一篇，之后我将将他们应用在实际项目中开发并将值的学习的项目开源出来。对于其中讲解可能有点浅尝则止，因为给出的实例相对简单，但相信聪明的程序员都会有自己的学习方法，你可以从给出的实例结合自己的所学引深出更好的设计方法。</p>
+            <p>至此，这已经是探索 Flutter 状态管理方式文章的最后一篇，同时这也是新年后的第一篇文章，之后我将将他们应用在实际项目中开发并将值的学习的项目开源出来。对于其中讲解可能有点浅尝则止，因为给出的实例相对简单，但相信聪明的程序员都会有自己的学习方法，你可以从给出的实例结合自己的所学引深出更好的设计方法。</p>
 <p>同时要送给大家的建议是：请在需要这些状态管理方式时使用它，我见过不少的开发者都有用大刀砍白菜的意思，这并不是一个好习惯，你会发现这些状态管理方式有时候不但不会使开发简单，其实还会加大代码量，使其变得复杂，对于如何选择，这里还不够说清楚，希望你们都能找到自己的管理应用程序的方式。</p>
 <p>所有实例：</p>
 <p> github 地址：<a href="https://github.com/MeandNi/Flutter_StateManagement" target="_blank" rel="noopener">https://github.com/MeandNi/Flutter_StateManagement</a></p>
@@ -213,10 +213,6 @@
 <li><a href="https://github.com/MeandNi/Flutter_StateManagement/tree/master/lib/redux_counter" target="_blank" rel="noopener">Redux_counter</a></li>
 <li><a href="https://github.com/MeandNi/Flutter_StateManagement/tree/master/lib/redux_cart" target="_blank" rel="noopener">Redux_Cart</a></li>
 </ul>
-<p>博客地址：<a href="https://meandni.com/">https://meandni.com/</a></p>
-<p>Githib：<a href="https://github.com/MeandNi/" target="_blank" rel="noopener">https://github.com/MeandNi/</a></p>
-<p>欢迎一起交流学习！</p>
-<p>下面请看正文：</p>
 <hr>
 <p>Redux 由 Facebook 2015年提出，是基于 Flux 理念实现的一个响应式框架的状态管理方式，最早应用于 React 中，而后 React Native 、 Flutter 等多个框架也同样可以使用。</p>
 <p>学习 Redux 之前，请了解 Redux 所能做到的事情：</p>
@@ -307,7 +303,7 @@
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2019-02-09T11:55:51.246Z" itemprop="dateUpdated">2019-02-09 19:55:51</time>
+    Last updated: <time datetime="2019-02-09T12:16:34.855Z" itemprop="dateUpdated">2019-02-09 20:16:34</time>
 </span><br>
 
 
@@ -386,7 +382,14 @@
     </div>
 
     
-<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2019/03/04/flutter-route/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">Flutter进阶：路由、路由栈详解及案例分析</h4>
+      </a>
+    </div>
   
 
   

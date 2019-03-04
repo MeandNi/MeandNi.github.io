@@ -38,7 +38,7 @@
 <meta property="og:image" content="https:////upload-images.jianshu.io/upload_images/3709321-68f2cc99d1439039.png">
 <meta property="og:image" content="https:////upload-images.jianshu.io/upload_images/3709321-5ab1ae52e69821c1.png">
 <meta property="og:image" content="https:////upload-images.jianshu.io/upload_images/3709321-2501d5d148f80a2d.png">
-<meta property="og:updated_time" content="2019-01-18T01:59:09.876Z">
+<meta property="og:updated_time" content="2019-02-22T03:24:31.944Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="《深入理解Java虚拟机》笔记6——高效并发">
 <meta name="twitter:description" content="第五部分 高效并发第十二章 Java内存模型与线程并发处理的广泛应用是使得Amdahl定律代替摩尔定律成为计算机性能发展源动力的根本原因，也是人类“压榨”计算机运算能力的最有力武器。 12.1 概述 多任务处理在现代计算机操作系统中几乎已是一项必备的功能了； 除了充分利用计算机处理器的能力外，一个服务端同时对多个客户端提供服务则是另一个更具体的并发应用场景； 服务端是Java语言最擅长的领域之一，">
@@ -263,7 +263,13 @@
 <h4 id="12-4-3-状态转换"><a href="#12-4-3-状态转换" class="headerlink" title="12.4.3 状态转换"></a>12.4.3 状态转换</h4><ul>
 <li>Java语言定义了五种线程状态，在任意一个时间点，一个线程只能有且只有其中一种状态，分别是新建（New）、运行（Runnable）、无限期等待（Waiting）、限期等待（Timed Waiting）、阻塞（Blocled）、结束（Terminated）。它们之间相互的转换关系如下所示：</li>
 </ul>
-<p><img src="https:////upload-images.jianshu.io/upload_images/3709321-68f2cc99d1439039.png" alt="线程状态转换关系"></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https:////upload-images.jianshu.io/upload_images/3709321-68f2cc99d1439039.png" alt="线程状态转换关系" title="">
+                </div>
+                <div class="image-caption">线程状态转换关系</div>
+            </figure>
 <h3 id="12-5-本章小结"><a href="#12-5-本章小结" class="headerlink" title="12.5 本章小结"></a>12.5 本章小结</h3><p>本章我们首先了解了虚拟机Java内存模型的结构及操作，然后讲解了原子性、可见性、有序性在Java内存模型中的体现，最后介绍了先行发生原则的规则及使用。另外，我们还了解了线程在Java语言之中是如何实现的。</p>
 <p>在本章主要介绍了虚拟机如何实现并发，而在下一章我们主要关注点将是虚拟机如何实现高效，以及虚拟机对我们编写的并发代码提供了什么样的优化手段。</p>
 <h2 id="第十三章-线程安全与锁优化"><a href="#第十三章-线程安全与锁优化" class="headerlink" title="第十三章 线程安全与锁优化"></a>第十三章 线程安全与锁优化</h2><h3 id="13-1-概述"><a href="#13-1-概述" class="headerlink" title="13.1 概述"></a>13.1 概述</h3><ul>
@@ -323,7 +329,7 @@
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2019-01-18T01:59:09.876Z" itemprop="dateUpdated">2019-01-18 09:59:09</time>
+    Last updated: <time datetime="2019-02-22T03:24:31.944Z" itemprop="dateUpdated">2019-02-22 11:24:31</time>
 </span><br>
 
 

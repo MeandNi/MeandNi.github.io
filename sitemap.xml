@@ -2,16 +2,51 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://meandni.com/2019/03/04/flutter-route/</loc>
+    
+    <lastmod>2019-03-04T12:27:41.880Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://meandni.com/2019/01/05/winter_vacation/</loc>
+    
+    <lastmod>2019-02-23T05:36:06.651Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://meandni.com/2019/01/14/jvm_note4/</loc>
+    
+    <lastmod>2019-02-22T04:08:15.891Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://meandni.com/2019/01/11/jvm_note2/</loc>
+    
+    <lastmod>2019-02-22T03:50:47.691Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://meandni.com/2019/01/18/jvm_note6/</loc>
+    
+    <lastmod>2019-02-22T03:24:31.944Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://meandni.com/2019/02/09/flutter-state3/</loc>
     
-    <lastmod>2019-02-09T11:55:51.246Z</lastmod>
+    <lastmod>2019-02-09T12:16:34.855Z</lastmod>
     
   </url>
   
   <url>
     <loc>https://meandni.com/2019/01/30/flutter-state1/</loc>
     
-    <lastmod>2019-02-09T09:06:45.894Z</lastmod>
+    <lastmod>2019-02-09T12:15:31.485Z</lastmod>
     
   </url>
   
@@ -51,13 +86,6 @@
   </url>
   
   <url>
-    <loc>https://meandni.com/2019/01/11/jvm_note2/</loc>
-    
-    <lastmod>2019-01-27T12:22:44.032Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://meandni.com/2019/01/18/first-reading-record/</loc>
     
     <lastmod>2019-01-26T13:01:52.086Z</lastmod>
@@ -86,20 +114,6 @@
   </url>
   
   <url>
-    <loc>https://meandni.com/2019/01/14/jvm_note4/</loc>
-    
-    <lastmod>2019-01-23T08:08:36.992Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://meandni.com/2019/01/05/winter_vacation/</loc>
-    
-    <lastmod>2019-01-19T03:45:48.809Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://meandni.com/2018/12/25/android-advanced/</loc>
     
     <lastmod>2019-01-19T03:39:04.892Z</lastmod>
@@ -110,13 +124,6 @@
     <loc>https://meandni.com/2019/01/12/flutter-practice2/</loc>
     
     <lastmod>2019-01-18T02:00:43.179Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://meandni.com/2019/01/18/jvm_note6/</loc>
-    
-    <lastmod>2019-01-18T01:59:09.876Z</lastmod>
     
   </url>
   
