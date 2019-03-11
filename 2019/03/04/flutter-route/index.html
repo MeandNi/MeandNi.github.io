@@ -44,7 +44,7 @@
 <meta property="og:image" content="https://meandni.com/images/route7.png">
 <meta property="og:image" content="https://meandni.com/images/route8.png">
 <meta property="og:image" content="https://meandni.com/images/route9.gif">
-<meta property="og:updated_time" content="2019-03-05T13:41:46.897Z">
+<meta property="og:updated_time" content="2019-03-05T14:02:33.503Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Flutter进阶：路由、路由栈详解及案例分析">
 <meta name="twitter:description" content="路由初体验路由（Routes）是什么？路由是屏幕或应用程序页面的抽象。 Flutter 使我们能够优雅地管理路由主要依赖的是 Navigator（导航器）类。这是一个用于管理一组具有某种进出规则的页面的 Widget，也就是说用它我们能够实现各个页面间有规律的切换。而这里的规则便是在其内部维护的一个“ 路由栈”。 学习 Android 的同学知道 Activity 的启动模式可以实现各种业务需求，">
@@ -183,7 +183,7 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#路由初体验"><span class="post-toc-number">1.</span> <span class="post-toc-text">路由初体验</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#组件路由"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">组件路由</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#命名路由"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">命名路由</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Pop"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">Pop</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#详解路由栈"><span class="post-toc-number">2.</span> <span class="post-toc-text">详解路由栈</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#pushReplacementNamed-与-popAndPushNamed"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">pushReplacementNamed 与 popAndPushNamed</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#案例："><span class="post-toc-number">2.1.1.</span> <span class="post-toc-text">案例：</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#pushNamedAndRemoveUntil"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">pushNamedAndRemoveUntil</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#popUntil"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">popUntil</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Popup-routes（弹出路由）"><span class="post-toc-number">2.4.</span> <span class="post-toc-text">Popup routes（弹出路由）</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#自定义路由"><span class="post-toc-number">2.5.</span> <span class="post-toc-text">自定义路由</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#嵌套路由"><span class="post-toc-number">2.6.</span> <span class="post-toc-text">嵌套路由</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#页面间数据传递"><span class="post-toc-number">3.</span> <span class="post-toc-text">页面间数据传递</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#数据传递"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">数据传递</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#数据返回"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">数据返回</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#其他效果解释"><span class="post-toc-number">4.</span> <span class="post-toc-text">其他效果解释</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#maybePop"><span class="post-toc-number">4.1.</span> <span class="post-toc-text">maybePop</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#canPop"><span class="post-toc-number">4.2.</span> <span class="post-toc-text">canPop</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#如何去除默认返回按钮"><span class="post-toc-number">4.3.</span> <span class="post-toc-text">如何去除默认返回按钮</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#参考链接"><span class="post-toc-number">5.</span> <span class="post-toc-text">参考链接</span></a></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#路由初体验"><span class="post-toc-number">1.</span> <span class="post-toc-text">路由初体验</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#组件路由"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">组件路由</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#命名路由"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">命名路由</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Pop"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">Pop</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#详解路由栈"><span class="post-toc-number">2.</span> <span class="post-toc-text">详解路由栈</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#pushReplacementNamed-与-popAndPushNamed"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">pushReplacementNamed 与 popAndPushNamed</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#pushNamedAndRemoveUntil"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">pushNamedAndRemoveUntil</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#popUntil"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">popUntil</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Popup-routes（弹出路由）"><span class="post-toc-number">2.4.</span> <span class="post-toc-text">Popup routes（弹出路由）</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#自定义路由"><span class="post-toc-number">2.5.</span> <span class="post-toc-text">自定义路由</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#嵌套路由"><span class="post-toc-number">2.6.</span> <span class="post-toc-text">嵌套路由</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#页面间数据传递"><span class="post-toc-number">3.</span> <span class="post-toc-text">页面间数据传递</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#数据传递"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">数据传递</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#数据返回"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">数据返回</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#其他效果解释"><span class="post-toc-number">4.</span> <span class="post-toc-text">其他效果解释</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#maybePop"><span class="post-toc-number">4.1.</span> <span class="post-toc-text">maybePop</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#canPop"><span class="post-toc-number">4.2.</span> <span class="post-toc-text">canPop</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#如何去除默认返回按钮"><span class="post-toc-number">4.3.</span> <span class="post-toc-text">如何去除默认返回按钮</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#参考链接"><span class="post-toc-number">5.</span> <span class="post-toc-text">参考链接</span></a></li></ol>
         </nav>
     </aside>
 
@@ -214,7 +214,9 @@
 <figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> RaisedButton(</span><br><span class="line">   onPressed:()&#123;</span><br><span class="line">   Navigator.push(context, MaterialPageRoute&lt;<span class="keyword">void</span>&gt;(</span><br><span class="line">      builder: (BuildContext context) &#123;</span><br><span class="line">        <span class="keyword">return</span> Scaffold(</span><br><span class="line">          appBar: AppBar(title: Text(<span class="string">'My Page'</span>)),</span><br><span class="line">          body: Center(</span><br><span class="line">            child: FlatButton(</span><br><span class="line">              child: Text(<span class="string">'POP'</span>),</span><br><span class="line">              onPressed: () &#123;</span><br><span class="line">                Navigator.pop(context);</span><br><span class="line">              &#125;,</span><br><span class="line">            ),</span><br><span class="line">          ),</span><br><span class="line">        );</span><br><span class="line">      &#125;,</span><br><span class="line">    ));</span><br><span class="line">   &#125;,</span><br><span class="line">   child: <span class="keyword">new</span> Text(<span class="string">"Push to Screen 2"</span>),</span><br><span class="line">),</span><br></pre></td></tr></table></figure>
 <p>点击执行上方操作，我们将成功打开第二个页面。</p>
 <h2 id="命名路由"><a href="#命名路由" class="headerlink" title="命名路由"></a>命名路由</h2><p>在一般应用中，我们用的最多的还是命名路由，它是将应用中需要访问的每个页面命名为不重复的字符串，我们便可以通过这个字符串来将该页面实例推进路由。</p>
+<blockquote>
 <p>例如，’/ home’ 表示 HomeScreen， ‘/ login’ 表示 LoginScreen。 ‘/‘ 表示主页面。 这里的命名规范与 REST API 开发中的路由类似。 所以 ‘/‘ 通常表示的是我们的根页面。</p>
+</blockquote>
 <p>请看下方案例：</p>
 <figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> MaterialApp(</span><br><span class="line">  home: <span class="keyword">new</span> Screen1(),</span><br><span class="line">  routes: &lt;<span class="built_in">String</span>, WidgetBuilder&gt; &#123;</span><br><span class="line">    <span class="string">'/screen1'</span>: (BuildContext context) =&gt; <span class="keyword">new</span> Screen1(),</span><br><span class="line">    <span class="string">'/screen2'</span> : (BuildContext context) =&gt; <span class="keyword">new</span> Screen2(),</span><br><span class="line">    <span class="string">'/screen3'</span> : (BuildContext context) =&gt; <span class="keyword">new</span> Screen3(),</span><br><span class="line">    <span class="string">'/screen4'</span> : (BuildContext context) =&gt; <span class="keyword">new</span> Screen4()</span><br><span class="line">  &#125;,</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
 <p><em>Screen1()、Screen2()等是每个页面的类名。</em></p>
@@ -222,6 +224,7 @@
 <figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> RaisedButton(</span><br><span class="line">   onPressed:()&#123;</span><br><span class="line">     Navigator.of(context).pushNamed(<span class="string">'/screen2'</span>);</span><br><span class="line">   &#125;,</span><br><span class="line">   child: <span class="keyword">new</span> Text(<span class="string">"Push to Screen 2"</span>),</span><br><span class="line">),</span><br></pre></td></tr></table></figure>
 <p>或者：</p>
 <figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> RaisedButton(</span><br><span class="line">   onPressed:()&#123;</span><br><span class="line">     Navigator.pushNamed(context, <span class="string">"/screen2"</span>)</span><br><span class="line">   &#125;,</span><br><span class="line">   child: <span class="keyword">new</span> Text(<span class="string">"Push to Screen 2"</span>),</span><br><span class="line">),</span><br></pre></td></tr></table></figure>
+<p>同样可以实现上方效果。</p>
 <h2 id="Pop"><a href="#Pop" class="headerlink" title="Pop"></a>Pop</h2><p>实现上面两种方法，此时，路由栈中的情况如下：</p>
 <figure class="image-bubble">
                 <div class="img-lightbox">
@@ -241,7 +244,9 @@
             </figure>
 <p>使用 Scaffold 时，通常不需要显式弹出路径，因为 Scaffold 会自动向其 AppBar 添加一个“后退”按钮，按下时会调用 <code>Navigator.pop()</code>。 </p>
 <p>在 Android 中，按下设备后退按钮也会这样做。但是，我们也有可能需要将此方法用于其他组件，例如在用户单击“取消”按钮时弹出 AlertDialog。</p>
+<blockquote>
 <p><strong>这里要注意的是：</strong>切勿用 push 代替 pop，有同学说我在 Screen2 push Screen1 部照样能实现这个功能吗？其实不然啊，请看下图：</p>
+</blockquote>
 <figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
@@ -249,7 +254,9 @@
                 </div>
                 <div class="image-caption">1_Xsyo5c8s1JwO6f2OQ1nNEg</div>
             </figure>
+<blockquote>
 <p>所以 <strong>push 只用于向栈中添加实例，pop 弹出实例！（特殊需求除外）</strong></p>
+</blockquote>
 <h1 id="详解路由栈"><a href="#详解路由栈" class="headerlink" title="详解路由栈"></a>详解路由栈</h1><p>前面，我们已经知道如何简单在路由栈中 push、pop 实例，然而，当遇到一些特殊的情况，这显然不能满足需求。学习 Android 的同学知道 Activity 的各种启动模式可以完成相应需求，Flutter 当然也有类似的可以解决各种业务需求的实现方式！</p>
 <p>请看下面使用方法与案例分析。</p>
 <h2 id="pushReplacementNamed-与-popAndPushNamed"><a href="#pushReplacementNamed-与-popAndPushNamed" class="headerlink" title="pushReplacementNamed 与 popAndPushNamed"></a>pushReplacementNamed 与 popAndPushNamed</h2><figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">RaisedButton(</span><br><span class="line">  onPressed: () &#123;</span><br><span class="line">    Navigator.pushReplacementNamed(context, <span class="string">"/screen4"</span>);</span><br><span class="line">  &#125;,</span><br><span class="line">  child: Text(<span class="string">"pushReplacementNamed"</span>),</span><br><span class="line">),</span><br><span class="line">RaisedButton(</span><br><span class="line">  onPressed: () &#123;</span><br><span class="line">    Navigator.popAndPushNamed(context, <span class="string">"/screen4"</span>);</span><br><span class="line">  &#125;,</span><br><span class="line">  child: Text(<span class="string">"popAndPushNamed"</span>),</span><br><span class="line">),</span><br></pre></td></tr></table></figure>
@@ -271,9 +278,14 @@
                 </div>
                 <div class="image-caption">1_cr77kgOgz7KRjwvMAVXoAg</div>
             </figure>
-<h3 id="案例："><a href="#案例：" class="headerlink" title="案例："></a>案例：</h3><p><strong>pushReplacementNamed</strong>：当用户成功登录并且现在在 <code>HomeScreen</code> 上时，您不希望用户还能够返回到 <code>LoginScreen</code>。因此，登录应完全由首页替换。另一个例子是从 <code>SplashScreen</code> 转到 <code>HomeScreen</code>。 它应该只显示一次，用户不能再从 <code>HomeScreen</code> 返回它。 在这种情况下，由于我们要进入一个全新的屏幕，我们可能需要借助此方法。</p>
+<p>案例：</p>
+<blockquote>
+<p><strong>pushReplacementNamed</strong>：当用户成功登录并且现在在 <code>HomeScreen</code> 上时，您不希望用户还能够返回到 <code>LoginScreen</code>。因此，登录应完全由首页替换。另一个例子是从 <code>SplashScreen</code> 转到 <code>HomeScreen</code>。 它应该只显示一次，用户不能再从 <code>HomeScreen</code> 返回它。 在这种情况下，由于我们要进入一个全新的屏幕，我们可能需要借助此方法。</p>
 <p><strong>popAndPushNamed</strong>：假设您正在有一个 <code>Shopping</code> 应用程序，该应用程序在 <code>ProductsListScreen</code> 中显示产品列表，用户可以在 <code>FiltersScreen</code> 中应用过滤商品。 当用户单击“应用筛选”按钮时，应弹出 <code>FiltersScreen</code> 并使用新的过滤器值推回到 <code>ProductsListScreen</code>。 这里 <code>popAndPushNamed</code> 显然更为合适。</p>
-<h2 id="pushNamedAndRemoveUntil"><a href="#pushNamedAndRemoveUntil" class="headerlink" title="pushNamedAndRemoveUntil"></a>pushNamedAndRemoveUntil</h2><p>用户已经登陆进入 <code>HomeScreen</code> ，然后经过一系列操作回到配合只界面想要退出登录，你不能够直接进入 <code>LoginScreen</code> 吧？你需要将之前路由中的实例全部删除是的用户不会在回到先前的路由中。</p>
+</blockquote>
+<h2 id="pushNamedAndRemoveUntil"><a href="#pushNamedAndRemoveUntil" class="headerlink" title="pushNamedAndRemoveUntil"></a>pushNamedAndRemoveUntil</h2><blockquote>
+<p>用户已经登陆进入 <code>HomeScreen</code> ，然后经过一系列操作回到配合只界面想要退出登录，你不能够直接 Push 进入 <code>LoginScreen</code> 吧？<strong>你需要将之前路由中的实例全部删除是的用户不会在回到先前的路由中。</strong></p>
+</blockquote>
 <p>pushNamedAndRemoveUntil 可实现该功能：</p>
 <figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Navigator.of(context).pushNamedAndRemoveUntil(<span class="string">'/screen4'</span>, (Route&lt;<span class="keyword">dynamic</span>&gt; route) =&gt; <span class="keyword">false</span>);</span><br></pre></td></tr></table></figure>
 <p>这里的 <code>(Route&lt;dynamic&gt; route) =&gt; false</code> 能够确保删除先前所有实例。</p>
@@ -284,8 +296,10 @@
                 </div>
                 <div class="image-caption">Logging out removes all routes and takes user back to LoginScreen</div>
             </figure>
-<p>现在又有一个需求：我们不希望删除先前所有实例，我们只要求删除置顶个数的实例：</p>
+<p>现在又有一个需求：我们不希望删除先前所有实例，<strong>我们只要求删除指定个数的实例</strong>。</p>
+<blockquote>
 <p>我们有一个需要付款交易的购物应用。在应用程序中，一旦用户完成了支付交易，就应该从堆栈中删除所有与交易或购物车相关的页面，并且用户应该被带到 <code>PaymentConfirmationScreen</code> ,单击后退按钮应该只将它们带回到 <code>ProductsListScreen</code> 或 <code>HomeScreen</code>：</p>
+</blockquote>
 <figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
@@ -313,7 +327,7 @@
 <figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Navigator.popUntil(context, ModalRoute.withName(<span class="string">'/screen2'</span>));</span><br></pre></td></tr></table></figure>
 <h2 id="Popup-routes（弹出路由）"><a href="#Popup-routes（弹出路由）" class="headerlink" title="Popup routes（弹出路由）"></a>Popup routes（弹出路由）</h2><p>路由不一定要遮挡整个屏幕。 <a href="https://docs.flutter.io/flutter/widgets/PopupRoute-class.html" target="_blank" rel="noopener">PopupRoute</a>s 使用 <a href="https://docs.flutter.io/flutter/widgets/ModalRoute/barrierColor.html" target="_blank" rel="noopener">ModalRoute.barrierColor</a>  覆盖屏幕，<a href="https://docs.flutter.io/flutter/widgets/ModalRoute/barrierColor.html" target="_blank" rel="noopener">ModalRoute.barrierColor</a> 只能部分不透明以允许当前屏幕显示。 弹出路由是“模态”的，因为它们阻止了对下面其他组件的输入。</p>
 <p>有一些方法可以创建和显示这类弹出路由。 例如：showDialog，showMenu 和 showModalBottomSheet。 如上所述，这些函数返回其推送路由的 Future（异步数据，参考下面的数据部分）。 执行可以等待返回的值在弹出路由时执行操作。</p>
-<p>还有一些组件可以创建弹出路由，如 PopupMenuButton 和 DropdownButton。 这些组件创建 PopupRoute 的内部子类，并使用 Navigator 的push 和 pop 方法来显示和关闭它们。</p>
+<p>还有一些组件可以创建弹出路由，如 PopupMenuButton 和 DropdownButton。 这些组件创建 PopupRoute 的内部子类，并使用 Navigator 的 push 和 pop 方法来显示和关闭它们。</p>
 <h2 id="自定义路由"><a href="#自定义路由" class="headerlink" title="自定义路由"></a>自定义路由</h2><p>您可以创建自己的一个窗口z组件库路由类（如 PopupRoute，ModalRoute 或 PageRoute）的子类，以控制用于显示路径的动画过渡，路径的模态屏障的颜色和行为以及路径的其他各个特性。</p>
 <p>PageRouteBuilder 类可以根据回调定义自定义路由。 下面是一个在路由出现或消失时旋转并淡化其子节点的示例。 此路由不会遮挡整个屏幕，因为它指定了opaque：false，就像弹出路由一样。</p>
 <figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">Navigator.push(context, PageRouteBuilder(</span><br><span class="line">  opaque: <span class="keyword">false</span>,</span><br><span class="line">  pageBuilder: (BuildContext context, _, __) &#123;</span><br><span class="line">    <span class="keyword">return</span> Center(child: Text(<span class="string">'My PageRoute'</span>));</span><br><span class="line">  &#125;,</span><br><span class="line">  transitionsBuilder: (___, Animation&lt;<span class="built_in">double</span>&gt; animation, ____, Widget child) &#123;</span><br><span class="line">    <span class="keyword">return</span> FadeTransition(</span><br><span class="line">      opacity: animation,</span><br><span class="line">      child: RotationTransition(</span><br><span class="line">        turns: Tween&lt;<span class="built_in">double</span>&gt;(begin: <span class="number">0.5</span>, end: <span class="number">1.0</span>).animate(animation),</span><br><span class="line">        child: child,</span><br><span class="line">      ),</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">));</span><br></pre></td></tr></table></figure>
@@ -362,7 +376,7 @@
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2019-03-05T13:41:46.897Z" itemprop="dateUpdated">2019-03-05 21:41:46</time>
+    Last updated: <time datetime="2019-03-05T14:02:33.503Z" itemprop="dateUpdated">2019-03-05 22:02:33</time>
 </span><br>
 
 
@@ -441,7 +455,14 @@
     </div>
 
     
-<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2019/03/06/2019-weekly1/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">2019 学习周记（1）</h4>
+      </a>
+    </div>
   
 
   
