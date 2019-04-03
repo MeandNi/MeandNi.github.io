@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    
+
+    
+
+    
+<!-- Baidu Tongji -->
+<script>var _hmt = _hmt || []</script>
+<script async src="//hm.baidu.com/hm.js?9a21c201a5d94ea2a1e286639fc24646"></script>
+<!-- End Baidu Tongji -->
+
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>2019第二次阅读记录 | Joker&#39;s Blog | 个人分享博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="阅读">
+    <meta name="description" content="强缓存和协商缓存 缓存详解 轻松理解JS函数节流和函数防抖 Flutter 的渲染逻辑及和 Native 通信 Flutter 原理简解 TCP/IP, WebSocket 和 MQTT android开发时，finish()跟System.exit(0)的区别(转)  Ajax原理一篇就够了 【原创】说说JSON和JSONP，也许你会豁然开朗，含jQuery用例 react-router的实现原">
+<meta name="keywords" content="阅读">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2019第二次阅读记录">
+<meta property="og:url" content="https://meandni.com/2019/03/12/reading-record2/index.html">
+<meta property="og:site_name" content="Joker&#39;s Blog">
+<meta property="og:description" content="强缓存和协商缓存 缓存详解 轻松理解JS函数节流和函数防抖 Flutter 的渲染逻辑及和 Native 通信 Flutter 原理简解 TCP/IP, WebSocket 和 MQTT android开发时，finish()跟System.exit(0)的区别(转)  Ajax原理一篇就够了 【原创】说说JSON和JSONP，也许你会豁然开朗，含jQuery用例 react-router的实现原">
+<meta property="og:locale" content="Chinese">
+<meta property="og:updated_time" content="2019-04-03T12:13:00.137Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="2019第二次阅读记录">
+<meta name="twitter:description" content="强缓存和协商缓存 缓存详解 轻松理解JS函数节流和函数防抖 Flutter 的渲染逻辑及和 Native 通信 Flutter 原理简解 TCP/IP, WebSocket 和 MQTT android开发时，finish()跟System.exit(0)的区别(转)  Ajax原理一篇就够了 【原创】说说JSON和JSONP，也许你会豁然开朗，含jQuery用例 react-router的实现原">
+    
+        <link rel="alternate" type="application/atom+xml" title="Joker&#39;s Blog" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Joker</h5>
+          <a href="mailto:yangjiakay@gmail.com" title="yangjiakay@gmail.com" class="mail">yangjiakay@gmail.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/">
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives">
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags">
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories">
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/MeandNi" target="_blank">
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about">
+                <i class="icon icon-lg icon-link"></i>
+                AboutMe
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">2019第二次阅读记录</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">2019第二次阅读记录</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-03-12T06:53:59.000Z" itemprop="datePublished" class="page-time">
+  2019-03-12
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/整理/">整理</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+
+<article id="post-2019-03-12-reading-record2" class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">2019第二次阅读记录</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-03-12 14:53:59" datetime="2019-03-12T06:53:59.000Z" itemprop="datePublished">2019-03-12</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/整理/">整理</a></li></ul>
+
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p><a href="https://www.jianshu.com/p/fb59c770160c" target="_blank" rel="noopener">强缓存和协商缓存</a></p>
+<p><a href="https://juejin.im/post/5a6c87c46fb9a01ca560b4d7" target="_blank" rel="noopener">缓存详解</a></p>
+<p><a href="https://juejin.im/post/5a35ed25f265da431d3cc1b1" target="_blank" rel="noopener">轻松理解JS函数节流和函数防抖</a></p>
+<p><a href="https://juejin.im/post/5c80e846518825355a71d154" target="_blank" rel="noopener">Flutter 的渲染逻辑及和 Native 通信</a></p>
+<p><a href="https://mp.weixin.qq.com/s/CQQXD0TrlbaNWjoClIcDtw" target="_blank" rel="noopener">Flutter 原理简解</a></p>
+<p><a href="http://www.cnblogs.com/shanyou/p/4085802.html" target="_blank" rel="noopener">TCP/IP, WebSocket 和 MQTT</a></p>
+<p><a href="https://blog.csdn.net/jamesliulyc/article/details/6711828" target="_blank" rel="noopener">android开发时，finish()跟System.exit(0)的区别(转)</a></p>
+<hr>
+<p><a href="https://juejin.im/post/5b1cebece51d4506ae71addf" target="_blank" rel="noopener">Ajax原理一篇就够了</a></p>
+<p><a href="https://www.cnblogs.com/dowinning/archive/2012/04/19/json-jsonp-jquery.html" target="_blank" rel="noopener">【原创】说说JSON和JSONP，也许你会豁然开朗，含jQuery用例</a></p>
+<p><a href="https://zhenhua-lee.github.io/react/history.html" target="_blank" rel="noopener">react-router的实现原理</a></p>
+<p><a href="http://blog.poetries.top/2018/12/20/react-router-anaylse/" target="_blank" rel="noopener">React Router原理</a>🌟</p>
+<p><a href="https://juejin.im/post/5b50b0dd6fb9a04f932ff53f" target="_blank" rel="noopener">面试官所认为的单例模式</a></p>
+<hr>
+<p><a href="https://www.toutiao.com/i6545790064104833539/" target="_blank" rel="noopener">为什么HashMap非线程安全</a></p>
+<p><a href="https://juejin.im/post/5c6fbf54f265da2db718216a" target="_blank" rel="noopener">TCP和UDP比较</a></p>
+<p> <a href="https://www.cnblogs.com/codingmylife/archive/2012/10/21/2732980.html" target="_blank" rel="noopener">稳定排序和不稳定排序</a></p>
+<p><a href="https://www.cnblogs.com/codingmylife/archive/2012/10/21/2732980.html" target="_blank" rel="noopener">稳定排序和不稳定排序</a></p>
+<p><a href="https://juejin.im/entry/58371f13a22b9d006882902d" target="_blank" rel="noopener">面试旧敌之红黑树（直白介绍深入理解）</a></p>
+<p><a href="https://blog.csdn.net/sinat_35297665/article/details/80979181" target="_blank" rel="noopener">TCP第四次挥手为什么要等待2MSL</a></p>
+<p><a href="https://juejin.im/post/5ad43b86f265da239236cedc" target="_blank" rel="noopener">Web安全防范—–防止重放攻击</a></p>
+<p><a href="https://blog.csdn.net/u012758088/article/details/76020966" target="_blank" rel="noopener">网络编程—链路层报文、网络层IP报文、传输层TCP报文</a></p>
+<hr>
+<p><a href="https://juejin.im/post/5c98a834f265da6111675253" target="_blank" rel="noopener">Flutter 实现原理及在马蜂窝的跨平台开发实践</a></p>
+<hr>
+<p><a href="https://www.jianshu.com/p/b0b6b88fe9fe" target="_blank" rel="noopener">1- Https流程和原理</a></p>
+<p><a href="https://www.cnblogs.com/liyuhui-Z/p/7844880.html" target="_blank" rel="noopener">HTTPS 建立连接的详细过程</a></p>
+<p><a href="https://www.cnblogs.com/chentingk/p/6497107.html" target="_blank" rel="noopener">生产者消费者模式-Java实现</a></p>
+<p><a href="https://www.cnblogs.com/gavinsp/p/5513536.html" target="_blank" rel="noopener">数据库索引详解</a></p>
+<p><a href="https://www.cnblogs.com/gonjan-blog/p/6685611.html" target="_blank" rel="noopener">java动态代理实现与原理详细分析</a></p>
+<p><a href="https://www.cnblogs.com/chengxiao/p/6842045.html" target="_blank" rel="noopener">ConcurrentHashMap实现原理及源码分析</a></p>
+<p><a href="https://www.cnblogs.com/gonjan-blog/p/6685611.html" target="_blank" rel="noopener">java动态代理实现与原理详细分析</a></p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2019-04-03T12:13:00.137Z" itemprop="dateUpdated">2019-04-03 20:13:00</time>
+</span><br>
+
+
+        
+    </div>
+    
+    <footer>
+        <a href="https://meandni.com">
+            <img src="/img/avatar.jpg" alt="Joker">
+            Joker
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/阅读/">阅读</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://meandni.com/2019/03/12/reading-record2/&title=《2019第二次阅读记录》 — Joker's Blog&pic=https://meandni.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://meandni.com/2019/03/12/reading-record2/&title=《2019第二次阅读记录》 — Joker's Blog&source=分享生活、技术、学习心得" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://meandni.com/2019/03/12/reading-record2/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《2019第二次阅读记录》 — Joker's Blog&url=https://meandni.com/2019/03/12/reading-record2/&via=https://meandni.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://meandni.com/2019/03/12/reading-record2/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2019/03/06/2019-recording/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">2019 动态记录（1）</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        感谢打赏~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat.png" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check" data-wechat="/img/wechat.png" data-alipay="/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Joker &copy; 2018 - 2019</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://meandni.com/2019/03/12/reading-record2/&title=《2019第二次阅读记录》 — Joker's Blog&pic=https://meandni.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://meandni.com/2019/03/12/reading-record2/&title=《2019第二次阅读记录》 — Joker's Blog&source=分享生活、技术、学习心得" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://meandni.com/2019/03/12/reading-record2/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《2019第二次阅读记录》 — Joker's Blog&url=https://meandni.com/2019/03/12/reading-record2/&via=https://meandni.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://meandni.com/2019/03/12/reading-record2/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACL0lEQVR42u3awY7DIAxF0f7/T2e2I7Wh99mkEnBZVSlJOFlY2Pj1wuP6N96v3/1+H/yu1xNDhgwZyzKu4bibM37CmNr/HB+oMmTIOIBxF8Hu5vDFkYBLZn5ZswwZMmSA7do4TKfBXYYMGTI6DLLcNOyOnyxDhgwZnSDIQypf7uO5uAwZMhZk8Kr7738/cr4hQ4aMpRhXOGoBcbwsUqT78hYZMmRszaiV0siy+DNnlfZkyJCxK4Mvi2NqaTBvxfhwRYYMGccwyOLQQ0sHnK33ypAhY2sGL9OnSSkvmaXBV4YMGWcy4r8bx5C1J/AQLEOGjBMYvG2CJJxpKwZJjIsnrjJkyFicUQuFcxNgXmj7ssOVIUPGpgzS6FAr4nfA6bZShgwZezN4kSto0sLhtUb6cJcMGTK2ZqRNErNm1hLjeFMoQ4aMjRi89MYL9+TAgAfiIkaGDBmLM9ICWRoiZ5Xk4nqhDBkyNmJ0Grb6xbJ0OxiksjJkyNiUkZ4h9BsmaleChjAZMmRsxJiVjqYHBvxAAuXiMmTIOIDReWWtLSMN0GgnK0OGjAMYfE5t0ekxQ7BOGTJkbMq4wsFDdu2uWnosQ4aMvRl8dBbaadcYz49hMmTIWJZBlpi2X5CvxRs1pn1pGTJkLM7gga9WUEuL/vFMGTJkyGi0hdUKbTy5lSFDhoxxeO1sBHnLF2pZkyFDxgEMksSmieVzjWIyZMg4jTGrlpWG3dqhQutQU4YMGesx/gDjS7wq0B0iSwAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
