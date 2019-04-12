@@ -6,11 +6,6 @@
     
 
     
-<!-- Baidu Tongji -->
-<script>var _hmt = _hmt || []</script>
-<script async src="//hm.baidu.com/hm.js?9a21c201a5d94ea2a1e286639fc24646"></script>
-<!-- End Baidu Tongji -->
-
 
 
 
@@ -130,7 +125,7 @@
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
                 <i class="icon icon-lg icon-chevron-left"></i>
             </a>
-            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="検索">
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
                 <i class="icon icon-lg icon-search"></i>
             </a>
@@ -197,7 +192,7 @@
     
 
         <a href="/2019/04/12/angry-event/" class="post-more waves-effect waves-button">
-            続きを読む…
+            Continue reading...
         </a>
     </div>
     
@@ -253,7 +248,7 @@ react-router的...
     
 
         <a href="/2019/03/12/reading-record2/" class="post-more waves-effect waves-button">
-            続きを読む…
+            Continue reading...
         </a>
     </div>
     
@@ -301,7 +296,7 @@ Flutter 使我们能够优雅地管理路由主要依赖的是 Navigator（导�
     
 
         <a href="/2019/03/04/flutter-route/" class="post-more waves-effect waves-button">
-            続きを読む…
+            Continue reading...
         </a>
     </div>
     
@@ -348,7 +343,7 @@ Flutter 使我们能够优雅地管理路由主要依赖的是 Navigator（导�
     
 
         <a href="/2019/02/09/flutter-state3/" class="post-more waves-effect waves-button">
-            続きを読む…
+            Continue reading...
         </a>
     </div>
     
@@ -395,7 +390,7 @@ Flutter 使我们能够优雅地管理路由主要依赖的是 Navigator（导�
     
 
         <a href="/2019/02/02/flutter-state1/" class="post-more waves-effect waves-button">
-            続きを読む…
+            Continue reading...
         </a>
     </div>
     
@@ -444,7 +439,7 @@ S...
     
 
         <a href="/2019/01/30/flutter-state1/" class="post-more waves-effect waves-button">
-            続きを読む…
+            Continue reading...
         </a>
     </div>
     
@@ -502,7 +497,7 @@ S...
     
 
         <a href="/2019/01/29/flutter-zhihu/" class="post-more waves-effect waves-button">
-            続きを読む…
+            Continue reading...
         </a>
     </div>
     
@@ -565,7 +560,7 @@ https://juejin.im/post/5c4c202df265da...
     
 
         <a href="/2019/01/27/flutter-hero/" class="post-more waves-effect waves-button">
-            続きを読む…
+            Continue reading...
         </a>
     </div>
     
@@ -622,7 +617,7 @@ TextField 介绍TextField 组件可以让用户填写信息。 TextField 的代�
     
 
         <a href="/2019/01/26/flutter-exploring-textfield/" class="post-more waves-effect waves-button">
-            続きを読む…
+            Continue reading...
         </a>
     </div>
     
@@ -675,7 +670,7 @@ Flutter 中的 ListView 可以对比 Android 中的 ListView 或者 RecycleView�
     
 
         <a href="/2019/01/26/flutter-exploring-list/" class="post-more waves-effect waves-button">
-            続きを読む…
+            Continue reading...
         </a>
     </div>
     
@@ -709,11 +704,11 @@ Flutter 中的 ListView 可以对比 Android 中的 ListView 或者 RecycleView�
             
                 <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
             
-            <span>このブログの内容物は<a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.ja">クリエイティブ・コモンズ 表示 - 非営利 - 継承 4.0 国際ライセンスの下に提供されています</a></span>
+            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
         </p>
     </div>
     <div class="bottom">
-        <p><span>Joker &copy; 2018 - 2019</span>
+        <p><span>Joker &copy; 2015 - 2019</span>
             <span>
                 
                 Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
@@ -808,6 +803,23 @@ var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
 
 
 
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
 
 
 

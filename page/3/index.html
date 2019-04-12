@@ -6,11 +6,6 @@
     
 
     
-<!-- Baidu Tongji -->
-<script>var _hmt = _hmt || []</script>
-<script async src="//hm.baidu.com/hm.js?9a21c201a5d94ea2a1e286639fc24646"></script>
-<!-- End Baidu Tongji -->
-
 
 
 
@@ -130,7 +125,7 @@
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
                 <i class="icon icon-lg icon-chevron-left"></i>
             </a>
-            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="検索">
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
                 <i class="icon icon-lg icon-search"></i>
             </a>
@@ -201,7 +196,7 @@
     
 
         <a href="/2019/01/04/5671/" class="post-more waves-effect waves-button">
-            続きを読む…
+            Continue reading...
         </a>
     </div>
     
@@ -259,7 +254,7 @@ View的事件分发机制
     
 
         <a href="/2018/12/25/android-advanced/" class="post-more waves-effect waves-button">
-            続きを読む…
+            Continue reading...
         </a>
     </div>
     
@@ -306,7 +301,7 @@ View的事件分发机制
     
 
         <a href="/2018/11/21/86ef/" class="post-more waves-effect waves-button">
-            続きを読む…
+            Continue reading...
         </a>
     </div>
     
@@ -356,7 +351,7 @@ Presenter: 从Mod...
     
 
         <a href="/2018/11/11/3b09/" class="post-more waves-effect waves-button">
-            続きを読む…
+            Continue reading...
         </a>
     </div>
     
@@ -403,7 +398,7 @@ android-architecture-todoapp-mvpgoo...
     
 
         <a href="/2018/11/10/33d5/" class="post-more waves-effect waves-button">
-            続きを読む…
+            Continue reading...
         </a>
     </div>
     
@@ -454,7 +449,7 @@ android-architecture-todoapp-mvpgoo...
     
 
         <a href="/2018/10/10/a03f/" class="post-more waves-effect waves-button">
-            続きを読む…
+            Continue reading...
         </a>
     </div>
     
@@ -501,7 +496,7 @@ android-architecture-todoapp-mvpgoo...
     
 
         <a href="/2018/10/05/3a4f/" class="post-more waves-effect waves-button">
-            続きを読む…
+            Continue reading...
         </a>
     </div>
     
@@ -558,7 +553,7 @@ android-architecture-todoapp-mvpgoo...
     
 
         <a href="/2018/09/12/1011/" class="post-more waves-effect waves-button">
-            続きを読む…
+            Continue reading...
         </a>
     </div>
     
@@ -609,7 +604,7 @@ run12345678...
     
 
         <a href="/2018/09/08/f1a1/" class="post-more waves-effect waves-button">
-            続きを読む…
+            Continue reading...
         </a>
     </div>
     
@@ -660,7 +655,7 @@ run12345678...
     
 
         <a href="/2018/09/07/f1a1/" class="post-more waves-effect waves-button">
-            続きを読む…
+            Continue reading...
         </a>
     </div>
     
@@ -694,11 +689,11 @@ run12345678...
             
                 <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
             
-            <span>このブログの内容物は<a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.ja">クリエイティブ・コモンズ 表示 - 非営利 - 継承 4.0 国際ライセンスの下に提供されています</a></span>
+            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
         </p>
     </div>
     <div class="bottom">
-        <p><span>Joker &copy; 2018 - 2019</span>
+        <p><span>Joker &copy; 2015 - 2019</span>
             <span>
                 
                 Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
@@ -793,6 +788,23 @@ var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
 
 
 
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
 
 
 
