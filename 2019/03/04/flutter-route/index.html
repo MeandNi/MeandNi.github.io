@@ -25,9 +25,9 @@
     <meta name="theme-color" content="#3F51B5">
     
     
-    <meta name="keywords" content="flutter进阶">
+    <meta name="keywords" content="flutter">
     <meta name="description" content="路由初体验路由（Routes）是什么？路由是屏幕或应用程序页面的抽象。 Flutter 使我们能够优雅地管理路由主要依赖的是 Navigator（导航器）类。这是一个用于管理一组具有某种进出规则的页面的 Widget，也就是说用它我们能够实现各个页面间有规律的切换。而这里的规则便是在其内部维护的一个“ 路由栈”。 学习 Android 的同学知道 Activity 的启动模式可以实现各种业务需求，">
-<meta name="keywords" content="flutter进阶">
+<meta name="keywords" content="flutter">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Flutter进阶：路由、路由栈详解及案例分析">
 <meta property="og:url" content="https://meandni.com/2019/03/04/flutter-route/index.html">
@@ -44,7 +44,7 @@
 <meta property="og:image" content="https://meandni.com/images/route7.png">
 <meta property="og:image" content="https://meandni.com/images/route8.png">
 <meta property="og:image" content="https://meandni.com/images/route9.gif">
-<meta property="og:updated_time" content="2019-03-05T14:02:33.503Z">
+<meta property="og:updated_time" content="2019-04-12T07:24:28.287Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Flutter进阶：路由、路由栈详解及案例分析">
 <meta name="twitter:description" content="路由初体验路由（Routes）是什么？路由是屏幕或应用程序页面的抽象。 Flutter 使我们能够优雅地管理路由主要依赖的是 Navigator（导航器）类。这是一个用于管理一组具有某种进出规则的页面的 Widget，也就是说用它我们能够实现各个页面间有规律的切换。而这里的规则便是在其内部维护的一个“ 路由栈”。 学习 Android 的同学知道 Activity 的启动模式可以实现各种业务需求，">
@@ -341,7 +341,7 @@
 <p>路由两部分构成，“pageBuilder”和“transitionsBuilder”。 该页面成为传递给 buildTransitions 方法的子代的后代。 通常，页面只构建一次，因为它不依赖于其动画参数（在此示例中以_和__表示）。 过渡是建立在每个帧的持续时间。</p>
 <h2 id="嵌套路由"><a href="#嵌套路由" class="headerlink" title="嵌套路由"></a>嵌套路由</h2><p>一个应用程序可以使用多个路由导航器。将一个导航器嵌套在另一个导航器下方可用于创建“内部旅程”，例如选项卡式导航，用户注册，商店结帐或代表整个应用程序子部分的其他独立个体。</p>
 <p>iOS应用程序的标准做法是使用选项卡式导航，其中每个选项卡都维护自己的导航历史记录。因此，每个选项卡都有自己的导航器，创建了一种“并行导航”。</p>
-<p>除了选项卡的并行导航之外，还可以启动完全覆盖选项卡的全屏页面。例如：入职流程或警报对话框。因此，必须存在位于选项卡导航上方的“根”导航器。因此，每个选项卡的 Navigators 实际上都是嵌套在一个根导航器下面的Navigators。</p>
+<p>除了选项卡的并行导航之外，还可以启动完全覆盖选项卡的全屏页面。例如：入职流程或警报对话框。因此，必须存在位于选项卡导航上方的“根”导航器。因此，每个选项卡的 Navigators 实际上都是嵌套在一个根导航器下面的 Navigators。</p>
 <p>用于选项卡式导航的嵌套导航器位于 WidgetApp 和 <a href="https://docs.flutter.io/flutter/cupertino/CupertinoTabView-class.html" target="_blank" rel="noopener">CupertinoTabView</a> 中，因此在这种情况下您无需担心嵌套的导航器，但它是使用嵌套导航器的真实示例。</p>
 <p>以下示例演示了如何使用嵌套的 Navigator 来呈现独立的用户注册过程。</p>
 <p>尽管此示例使用两个 Navigators 来演示嵌套的 Navigators，但仅使用一个 Navigato r就可以获得类似的结果。 </p>
@@ -376,7 +376,7 @@
     <div class="content">
         
 <span class="post-time">
-    最終更新：<time datetime="2019-03-05T14:02:33.503Z" itemprop="dateUpdated">2019-03-05 22:02:33</time>
+    最終更新：<time datetime="2019-04-12T07:24:28.287Z" itemprop="dateUpdated">2019-04-12 15:24:28</time>
 </span><br>
 
 
@@ -400,7 +400,7 @@
 
         <div class="post-footer">
             
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/flutter进阶/">flutter进阶</a></li></ul>
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/flutter/">flutter</a></li></ul>
 
 
             
@@ -485,6 +485,23 @@
 
 
 
+
+<section class="comments" id="comments">
+    <div id="gitment_thread"></div>
+    <link rel="stylesheet" href="//unpkg.com/gitment/style/default.css">
+    <script src="//unpkg.com/gitment/dist/gitment.browser.js"></script>
+    <script>
+        var gitment = new Gitment({
+            owner: '',
+            repo: '',
+            oauth: {
+                client_id: '12faa9d04b92d2d70968',
+                client_secret: 'ad1023eebffeb2972301ce0e730e0c277f64cf23',
+            },
+        })
+        gitment.render('comments')
+    </script>
+</section>
 
 
 

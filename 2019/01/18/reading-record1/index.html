@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    
+
+    
+
+    
+<!-- Baidu Tongji -->
+<script>var _hmt = _hmt || []</script>
+<script async src="//hm.baidu.com/hm.js?9a21c201a5d94ea2a1e286639fc24646"></script>
+<!-- End Baidu Tongji -->
+
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>2019第一次阅读记录 | Joker&#39;s Blog | 个人分享博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="阅读">
+    <meta name="description" content="已读《Node 定时器详解》 一位年度作者的年度总结 | 掘金年度征文 前端常见跨域解决方案（全） ？ 前端笔试题面试题记录（上）| 掘金技术征文 深度解析原型中的各个难点  Android MVVM组件化架构方案 基于源码分析 Android View 事件分发机制 回到最初：开发不需要“编译” 的 WebApp 每周分享第 40 期 什么是真正的程序员 分享 GitHub 上 有趣、入门级的开">
+<meta name="keywords" content="阅读">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2019第一次阅读记录">
+<meta property="og:url" content="https://meandni.com/2019/01/18/reading-record1/index.html">
+<meta property="og:site_name" content="Joker&#39;s Blog">
+<meta property="og:description" content="已读《Node 定时器详解》 一位年度作者的年度总结 | 掘金年度征文 前端常见跨域解决方案（全） ？ 前端笔试题面试题记录（上）| 掘金技术征文 深度解析原型中的各个难点  Android MVVM组件化架构方案 基于源码分析 Android View 事件分发机制 回到最初：开发不需要“编译” 的 WebApp 每周分享第 40 期 什么是真正的程序员 分享 GitHub 上 有趣、入门级的开">
+<meta property="og:locale" content="Chinese">
+<meta property="og:updated_time" content="2019-04-12T06:17:28.187Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="2019第一次阅读记录">
+<meta name="twitter:description" content="已读《Node 定时器详解》 一位年度作者的年度总结 | 掘金年度征文 前端常见跨域解决方案（全） ？ 前端笔试题面试题记录（上）| 掘金技术征文 深度解析原型中的各个难点  Android MVVM组件化架构方案 基于源码分析 Android View 事件分发机制 回到最初：开发不需要“编译” 的 WebApp 每周分享第 40 期 什么是真正的程序员 分享 GitHub 上 有趣、入门级的开">
+    
+        <link rel="alternate" type="application/atom+xml" title="Joker&#39;s Blog" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Joker</h5>
+          <a href="mailto:yangjiakay@gmail.com" title="yangjiakay@gmail.com" class="mail">yangjiakay@gmail.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/">
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives">
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags">
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories">
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/MeandNi" target="_blank">
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about">
+                <i class="icon icon-lg icon-link"></i>
+                AboutMe
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">2019第一次阅读记录</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="検索">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">2019第一次阅读记录</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-01-18T06:53:59.000Z" itemprop="datePublished" class="page-time">
+  2019-01-18
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/整理/">整理</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#已读"><span class="post-toc-number">1.</span> <span class="post-toc-text">已读</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-2019-01-18-reading-record1" class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">2019第一次阅读记录</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-01-18 14:53:59" datetime="2019-01-18T06:53:59.000Z" itemprop="datePublished">2019-01-18</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/整理/">整理</a></li></ul>
+
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h4 id="已读"><a href="#已读" class="headerlink" title="已读"></a>已读</h4><p><a href="http://www.ruanyifeng.com/blog/2018/02/node-event-loop.html" target="_blank" rel="noopener">《Node 定时器详解》</a></p>
+<p><a href="https://juejin.im/post/5c408f40e51d455222642b1c" target="_blank" rel="noopener">一位年度作者的年度总结 | 掘金年度征文</a></p>
+<p><a href="https://segmentfault.com/a/1190000011145364" target="_blank" rel="noopener">前端常见跨域解决方案（全）</a> ？</p>
+<p><a href="https://juejin.im/post/5aad40e4f265da237f1e12ed" target="_blank" rel="noopener">前端笔试题面试题记录（上）| 掘金技术征文</a></p>
+<p><a href="https://github.com/KieSun/Blog/issues/2" target="_blank" rel="noopener">深度解析原型中的各个难点</a></p>
+<hr>
+<p><a href="https://juejin.im/post/5c0dbe7ee51d451dac076e6c" target="_blank" rel="noopener">Android MVVM组件化架构方案</a></p>
+<p><a href="https://juejin.im/post/5c404cca5188251e10159d09" target="_blank" rel="noopener">基于源码分析 Android View 事件分发机制</a></p>
+<p><a href="https://juejin.im/post/5bdfaed0e51d4505086fa4cd" target="_blank" rel="noopener">回到最初：开发不需要“编译” 的 WebApp</a></p>
+<p><a href="http://www.ruanyifeng.com/blog/2019/01/weekly-issue-40.html" target="_blank" rel="noopener">每周分享第 40 期</a></p>
+<p><a href="https://www.cnblogs.com/xueweihan/p/5220513.html" target="_blank" rel="noopener">什么是真正的程序员</a></p>
+<p><a href="https://hellogithub.com/periodical/volume/32/" target="_blank" rel="noopener">分享 GitHub 上 有趣、入门级的开源项目</a></p>
+<hr>
+<p><a href="https://juejin.im/post/5b2b4c36f265da59b243cac9" target="_blank" rel="noopener">flutter-dart 类的构造函数</a></p>
+<p><a href="https://juejin.im/post/5c453f97f265da61776c3fed" target="_blank" rel="noopener">2018年值得熬夜看完的书</a></p>
+<p><a href="https://juejin.im/post/5c2c31d3f265da61553aee34" target="_blank" rel="noopener">Android绘制函数图象及正弦函数的介绍</a></p>
+<p><a href="https://juejin.im/post/5c2dd2f75188250fa8362647" target="_blank" rel="noopener">Android多媒体之认识声音、录音与播放(PCM)</a></p>
+<p><a href="https://www.jianshu.com/p/c0e30769ea7e" target="_blank" rel="noopener">Flutter进阶篇（4）– Flutter的Future异步详解</a></p>
+<p><a href="https://juejin.im/post/5b431bff5188251b166ee0c1" target="_blank" rel="noopener">教你如何用 Flutter 的 GestureDetector 构建自定义滑块</a></p>
+<p><a href="https://github.com/xitu/gold-miner/blob/master/TODO/a-blurring-view-for-android.md" target="_blank" rel="noopener">在 Android 下进行实时模糊渲染</a></p>
+<p><a href="https://github.com/ljianshu/Blog/issues/22" target="_blank" rel="noopener">关于Http协议，你必须要知道的</a></p>
+<hr>
+<p><a href="https://www.cnblogs.com/yjiyjige/p/3263858.html#commentform" target="_blank" rel="noopener">详解KMP算法</a></p>
+<p><a href="https://www.jianshu.com/p/aaafcd72c127" target="_blank" rel="noopener">要点提炼|开发艺术之Bitmap&amp;Cache</a></p>
+<p><a href="https://www.jianshu.com/p/10dc575896d3" target="_blank" rel="noopener">要点提炼|开发艺术之Animation</a></p>
+<p><a href="https://mp.weixin.qq.com/s/PCkVsD8nPJV3wXkPg_6yDw" target="_blank" rel="noopener">分享一个我开发的MVVM架构的开源小项目 —— 郭霖</a></p>
+<p><a href="https://medium.com/flutter-community/flutter-push-pop-push-1bb718b13c31" target="_blank" rel="noopener">Flutter: Push, Pop, Push</a></p>
+<p><a href="https://docs.flutter.io/flutter/widgets/Navigator-class.html" target="_blank" rel="noopener">Navigator class</a></p>
+<p><a href="https://www.cnblogs.com/guoyaohua/p/8600214.html" target="_blank" rel="noopener">十大经典排序算法最强总结（含JAVA代码实现）</a></p>
+<p><a href="https://www.jianshu.com/p/06ff0dfeed39" target="_blank" rel="noopener">要点提炼|开发艺术之View</a></p>
+<p><a href="https://www.jianshu.com/p/02962454adf7?utm_campaign=hugo&amp;utm_medium=reader_share&amp;utm_content=note&amp;utm_source=qq" target="_blank" rel="noopener">Android 消息处理机制（Looper、Handler、MessageQueue,Message）</a>🌟</p>
+<p><a href="https://github.com/sucese/android-interview-guide/blob/master/doc/Android%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B%E9%9D%A2%E8%AF%95%E9%A2%98%E9%9B%86.md" target="_blank" rel="noopener">Android网络编程面试题集</a>🌟</p>
+<p><a href="https://tech.meituan.com/2014/03/06/in-depth-understanding-string-intern.html" target="_blank" rel="noopener">深入解析String#intern —— 美团技术</a></p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最終更新：<time datetime="2019-04-12T06:17:28.187Z" itemprop="dateUpdated">2019-04-12 14:17:28</time>
+</span><br>
+
+
+        
+    </div>
+    
+    <footer>
+        <a href="https://meandni.com">
+            <img src="/img/avatar.jpg" alt="Joker">
+            Joker
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/阅读/">阅读</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://meandni.com/2019/01/18/reading-record1/&title=《2019第一次阅读记录》 — Joker's Blog&pic=https://meandni.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://meandni.com/2019/01/18/reading-record1/&title=《2019第一次阅读记录》 — Joker's Blog&source=分享生活、技术、学习心得" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://meandni.com/2019/01/18/reading-record1/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《2019第一次阅读记录》 — Joker's Blog&url=https://meandni.com/2019/01/18/reading-record1/&via=https://meandni.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://meandni.com/2019/01/18/reading-record1/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2019/01/26/flutter-exploring-list/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">Flutter进阶：深入探究 ListView 和 ScrollPhysics</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2019/01/18/jvm_note6/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">《深入理解Java虚拟机》笔记6——高效并发</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+<section class="comments" id="comments">
+    <div id="gitment_thread"></div>
+    <link rel="stylesheet" href="//unpkg.com/gitment/style/default.css">
+    <script src="//unpkg.com/gitment/dist/gitment.browser.js"></script>
+    <script>
+        var gitment = new Gitment({
+            owner: '',
+            repo: '',
+            oauth: {
+                client_id: '12faa9d04b92d2d70968',
+                client_secret: 'ad1023eebffeb2972301ce0e730e0c277f64cf23',
+            },
+        })
+        gitment.render('comments')
+    </script>
+</section>
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        感谢打赏~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat.png" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check" data-wechat="/img/wechat.png" data-alipay="/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>このブログの内容物は<a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.ja">クリエイティブ・コモンズ 表示 - 非営利 - 継承 4.0 国際ライセンスの下に提供されています</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Joker &copy; 2018 - 2019</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://meandni.com/2019/01/18/reading-record1/&title=《2019第一次阅读记录》 — Joker's Blog&pic=https://meandni.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://meandni.com/2019/01/18/reading-record1/&title=《2019第一次阅读记录》 — Joker's Blog&source=分享生活、技术、学习心得" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://meandni.com/2019/01/18/reading-record1/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《2019第一次阅读记录》 — Joker's Blog&url=https://meandni.com/2019/01/18/reading-record1/&via=https://meandni.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://meandni.com/2019/01/18/reading-record1/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACKElEQVR42u3aSW7CAAwFUO5/aSp1VVQRvu0UFedlhRiSvFRyPd1u8XH/Pn6+zt959mly5pMPDAyMj2XcD4/fF8upz65S/c7xvWFgYFyH0Quyxzd0fJ48BB/fGwYGBkYScI9vrhpAMTAwMOYBNwmvx+esBmgMDAyMPAj2QnN+5jfV4hgYGB/I6A0G3vP6z+cbGBgY/55xLx55GK0mmpMDAwNjNyNp6581pOw9jsIwFQMDYzWj19zPS9ZqUpg81hd/EwwMjKWMfFQ5Z588vMTAwFjNqBaWvXwsWbzopZgPtTgGBsZSRn6BZHliUr72Ai4GBsZ1GPMELn8QCaZXDGNgYFyBMRk69pLLagsvWaXFwMDYx+iFzqSU7a2f9sIxBgbGbkY+IMyXJHphNx9eYmBgXI2Rh8hJm6wXvgtrFhgYGBdg5KlYr+GV/LZa9D68g4GBsZoxBxQy0DgRrLbzMDAwdjPmSeFkaXUyVHj6fwMDA2Mdo3qK40Qw+bS6kFFow2FgYCxlVBtnVUy13K2mqhgYGNdh5MPCXupWHSHkiSYGBsYVGMnFJuBqmtgLwRgYGLsZZ61z5asbk7D79LcYGBirGdWSsjponC9+lSexGBgYSxmTkUAeHM9ayIgyRwwMjKWMPMhWH0G5qm6FZgwMDIxqMZl8vzoYeMHGwMDAGLe9JptrSbMPAwPjCoy8idYbBszb+i9STwwMjNWMyWAgD4j569FyGAYGxjbGF+X3VuSEF5RGAAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
