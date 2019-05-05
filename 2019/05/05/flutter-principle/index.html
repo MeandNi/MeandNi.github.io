@@ -20,9 +20,9 @@
     <meta name="theme-color" content="#3F51B5">
     
     
-    <meta name="keywords" content="技术,flutter">
+    <meta name="keywords" content="flutter,技术">
     <meta name="description" content="了解 HTML 的读者一定听说过 DOM 树这个概念，它由页面中每一个控件组成，这些控件所形成的一种天然的嵌套关系使其可以表示为 “树” 结构，我们也可以将这个概念应用在 Flutter 中，例如默认的计数器应用的结构如下图：  我们也可以看到上图中每个控件所形成的树结构中隐含了一些关系，例如在上图中，我们可以说 Text 组件是 Column 组件的子组件，Scaffold 是 AppBar 的">
-<meta name="keywords" content="技术,flutter">
+<meta name="keywords" content="flutter,技术">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Flutter原理：三棵重要的树(渲染过程、布局约束、应用视图的构建等)">
 <meta property="og:url" content="https://meandni.com/2019/05/05/flutter-principle/index.html">
@@ -38,7 +38,7 @@
 <meta property="og:image" content="https://meandni.com/2019/05/05/flutter-principle/image-20190502222125478.png">
 <meta property="og:image" content="https://meandni.com/2019/05/05/flutter-principle/1_Ej811pAFyGniF66paMGKDQ.png">
 <meta property="og:image" content="https://meandni.com/2019/05/05/flutter-principle/1_XsXcNgEDo36GMe7PxKlBUQ.png">
-<meta property="og:updated_time" content="2019-05-05T05:06:23.714Z">
+<meta property="og:updated_time" content="2019-05-05T05:17:27.890Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Flutter原理：三棵重要的树(渲染过程、布局约束、应用视图的构建等)">
 <meta name="twitter:description" content="了解 HTML 的读者一定听说过 DOM 树这个概念，它由页面中每一个控件组成，这些控件所形成的一种天然的嵌套关系使其可以表示为 “树” 结构，我们也可以将这个概念应用在 Flutter 中，例如默认的计数器应用的结构如下图：  我们也可以看到上图中每个控件所形成的树结构中隐含了一些关系，例如在上图中，我们可以说 Text 组件是 Column 组件的子组件，Scaffold 是 AppBar 的">
@@ -143,7 +143,7 @@
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
                 <i class="icon icon-lg icon-chevron-left"></i>
             </a>
-            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="搜尋">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
                 <i class="icon icon-lg icon-search"></i>
             </a>
@@ -182,7 +182,7 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#组件渲染过程简述"><span class="post-toc-number">1.</span> <span class="post-toc-text">组件渲染过程简述</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#简述计数器应用的渲染过程"><span class="post-toc-number">2.</span> <span class="post-toc-text">简述计数器应用的渲染过程</span></a></li></ol><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#元素树详解"><span class="post-toc-number"></span> <span class="post-toc-text">元素树详解</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Element-中的状态"><span class="post-toc-number">1.</span> <span class="post-toc-text">Element 中的状态</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#例子证明-Elment-持有组件状态"><span class="post-toc-number">2.</span> <span class="post-toc-text">例子证明 Elment 持有组件状态</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#渲染树详解"><span class="post-toc-number"></span> <span class="post-toc-text">渲染树详解</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#布局约束"><span class="post-toc-number">1.</span> <span class="post-toc-text">布局约束</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#自定义一个-Center-控件"><span class="post-toc-number">2.</span> <span class="post-toc-text">自定义一个 Center 控件</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#应用视图的构建"><span class="post-toc-number"></span> <span class="post-toc-text">应用视图的构建</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#附言"><span class="post-toc-number"></span> <span class="post-toc-text">附言</span></a>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#组件渲染过程简述"><span class="post-toc-number">1.</span> <span class="post-toc-text">组件渲染过程简述</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#简述计数器应用的渲染过程"><span class="post-toc-number">2.</span> <span class="post-toc-text">简述计数器应用的渲染过程</span></a></li></ol><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#元素树详解"><span class="post-toc-number"></span> <span class="post-toc-text">元素树详解</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Element-中的状态"><span class="post-toc-number">1.</span> <span class="post-toc-text">Element 中的状态</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#例子证明-Elment-持有组件状态"><span class="post-toc-number">2.</span> <span class="post-toc-text">例子证明 Elment 持有组件状态</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#渲染树详解"><span class="post-toc-number"></span> <span class="post-toc-text">渲染树详解</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#布局约束"><span class="post-toc-number">1.</span> <span class="post-toc-text">布局约束</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#自定义一个-Center-控件"><span class="post-toc-number">2.</span> <span class="post-toc-text">自定义一个 Center 控件</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#应用视图的构建"><span class="post-toc-number"></span> <span class="post-toc-text">应用视图的构建</span></a>
         </li></nav>
     </aside>
 
@@ -280,7 +280,6 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">void attachRootWidget(Widget rootWidget) &#123;</span><br><span class="line">    _renderViewElement = new RenderObjectToWidgetAdapter&lt;RenderBox&gt;(</span><br><span class="line">      container: renderView,</span><br><span class="line">      debugShortDescription: &apos;[root]&apos;,</span><br><span class="line">      child: rootWidget</span><br><span class="line">    ).attachToRenderTree(buildOwner, renderViewElement);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p><code>attachRootWidget</code> 把 widget交给了 <code>RenderObjectToWidgetAdapter</code>这座桥梁，通过这座桥梁，Element 被创建，并且同时能持有 Widget 和 RenderObject的引用。然后我们从上文就知道后面发生的就是第一次的视图数据构建了。</p>
 <p><strong>从这一部分能印证了：Flutter应用通过 Widget、Element、RenderObject 三种树结构来维护整个应用的视图数据。</strong></p>
-<h2 id="附言"><a href="#附言" class="headerlink" title="附言"></a>附言</h2><p>在没更新文章的这段期间一直在准备春招，原本就准备写一些关于 Flutter 原理的文章，今天发现已经有不少大佬在解析源码，尤其看到了 <a href="https://juejin.im/user/582aca2ba22b9d006b59ae68" target="_blank" rel="noopener">恋猫de小郭</a> 的文章写得很好，希望我的一些总结也能帮助到大家吧！</p>
 
         </div>
 
@@ -289,7 +288,7 @@
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2019-05-05T05:06:23.714Z" itemprop="dateUpdated">2019-05-05 13:06:23</time>
+    最後更新時間：<time datetime="2019-05-05T05:17:27.890Z" itemprop="dateUpdated">2019-05-05 13:17:27</time>
 </span><br>
 
 
@@ -467,7 +466,7 @@
             
                 <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
             
-            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
+            <span>本部落格係採用<a rel="license" href="https://creativecommons.org/licenses/by/4.0/deed.zh_TW">創用 CC 姓名標示 4.0 國際 授權條款授權</a></span>
         </p>
     </div>
     <div class="bottom">
