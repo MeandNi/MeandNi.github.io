@@ -2,7 +2,10 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://meandni.com/2019/05/05/flutter-principle/</loc>
-    <lastmod>2019-05-05</lastmod>
+    <lastmod>2019-05-16</lastmod>
+  </url>  <url>
+    <loc>https://meandni.com/2019/03/12/reading-record2/</loc>
+    <lastmod>2019-05-14</lastmod>
   </url>  <url>
     <loc>https://meandni.com/2019/04/28/spring-rec/</loc>
     <lastmod>2019-04-28</lastmod>
@@ -12,9 +15,6 @@
   </url>  <url>
     <loc>https://meandni.com/2019/04/12/angry-event/</loc>
     <lastmod>2019-04-28</lastmod>
-  </url>  <url>
-    <loc>https://meandni.com/2019/03/12/reading-record2/</loc>
-    <lastmod>2019-04-21</lastmod>
   </url>  <url>
     <loc>https://meandni.com/2019/01/18/reading-record1/</loc>
     <lastmod>2019-04-16</lastmod>
