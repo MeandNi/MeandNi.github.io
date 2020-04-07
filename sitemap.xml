@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://meandni.com/2019/07/02/c0f2/</loc>
+    
+    <lastmod>2020-04-07T10:16:23.466Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://meandni.com/about/index.html</loc>
     
     <lastmod>2020-04-07T10:08:19.332Z</lastmod>
@@ -26,13 +33,6 @@
     <loc>https://meandni.com/2019/05/05/flutter-principle/</loc>
     
     <lastmod>2020-04-07T09:54:55.463Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://meandni.com/2019/07/02/flutter-animation/</loc>
-    
-    <lastmod>2020-04-07T09:30:32.185Z</lastmod>
     
   </url>
   
