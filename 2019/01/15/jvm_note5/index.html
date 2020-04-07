@@ -1,216 +1,17 @@
-<!DOCTYPE html>
-<html>
-<head><meta name="generator" content="Hexo 3.8.0">
-    
-
-    
-
-    
-
-
-
-    <meta charset="utf-8">
-    
-    
-    
-    
-    <title>《深入理解Java虚拟机》笔记5——类加载机制与字节码执行引擎 | Joker&#39;s Blog | 个人分享博客</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    
-    <meta name="theme-color" content="#3F51B5">
-    
-    
-    <meta name="keywords" content="阅读,jvm">
-    <meta name="description" content="第七章 虚拟机类加载机制7.1 概述 虚拟机把描述类的数据从Class文件加载到内存，并对数据进行校验、转换解析和初始化，最终形成可以被虚拟机直接使用的Java类型，这就是虚拟机的类加载机制。 在Java语言里面，类型的加载、连接和初始化过程都是在程序运行期间完成，这虽然增量一些性能开销，但是会为Java应用程序提供高度的灵活性。  7.2 类加载的时机 类的整个生命周期：加载、验证、准备、解析、">
-<meta name="keywords" content="阅读,jvm">
-<meta property="og:type" content="article">
-<meta property="og:title" content="《深入理解Java虚拟机》笔记5——类加载机制与字节码执行引擎">
-<meta property="og:url" content="https://meandni.com/2019/01/15/jvm_note5/index.html">
-<meta property="og:site_name" content="Joker&#39;s Blog">
-<meta property="og:description" content="第七章 虚拟机类加载机制7.1 概述 虚拟机把描述类的数据从Class文件加载到内存，并对数据进行校验、转换解析和初始化，最终形成可以被虚拟机直接使用的Java类型，这就是虚拟机的类加载机制。 在Java语言里面，类型的加载、连接和初始化过程都是在程序运行期间完成，这虽然增量一些性能开销，但是会为Java应用程序提供高度的灵活性。  7.2 类加载的时机 类的整个生命周期：加载、验证、准备、解析、">
-<meta property="og:locale" content="Chinese">
-<meta property="og:image" content="https:////upload-images.jianshu.io/upload_images/3709321-4e150bb5176ab73d.png">
-<meta property="og:image" content="https:////upload-images.jianshu.io/upload_images/3709321-009d0f0efe9f528e.png">
-<meta property="og:image" content="https:////upload-images.jianshu.io/upload_images/3709321-ae7f979f896ae750.png">
-<meta property="og:image" content="https:////upload-images.jianshu.io/upload_images/3709321-4cc3955b129175a3.png">
-<meta property="og:image" content="https:////upload-images.jianshu.io/upload_images/3709321-b640506135b2ccd3.png">
-<meta property="og:image" content="https:////upload-images.jianshu.io/upload_images/3709321-ddf83219167aca0f.png">
-<meta property="og:image" content="https:////upload-images.jianshu.io/upload_images/3709321-8d58d9d3f21a08e2.png">
-<meta property="og:image" content="https:////upload-images.jianshu.io/upload_images/3709321-ede2baf8e9d01bc6.png">
-<meta property="og:image" content="https:////upload-images.jianshu.io/upload_images/3709321-3ddc95e842532183.png">
-<meta property="og:image" content="https:////upload-images.jianshu.io/upload_images/3709321-6a33f07ebfd24e1e.png">
-<meta property="og:image" content="https:////upload-images.jianshu.io/upload_images/3709321-5c270d4c6018cee3.png">
-<meta property="og:updated_time" content="2019-04-12T06:05:29.737Z">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="《深入理解Java虚拟机》笔记5——类加载机制与字节码执行引擎">
-<meta name="twitter:description" content="第七章 虚拟机类加载机制7.1 概述 虚拟机把描述类的数据从Class文件加载到内存，并对数据进行校验、转换解析和初始化，最终形成可以被虚拟机直接使用的Java类型，这就是虚拟机的类加载机制。 在Java语言里面，类型的加载、连接和初始化过程都是在程序运行期间完成，这虽然增量一些性能开销，但是会为Java应用程序提供高度的灵活性。  7.2 类加载的时机 类的整个生命周期：加载、验证、准备、解析、">
-<meta name="twitter:image" content="https:////upload-images.jianshu.io/upload_images/3709321-4e150bb5176ab73d.png">
-    
-        <link rel="alternate" type="application/atom+xml" title="Joker&#39;s Blog" href="/atom.xml">
-    
-    <link rel="shortcut icon" href="/img/favicon.ico">
-    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
-    <script>window.lazyScripts=[]</script>
-
-    <!-- custom head -->
-    
-
-</head>
-
-<body>
-    <div id="loading" class="active"></div>
-
-    <aside id="menu" class="hide">
-  <div class="inner flex-row-vertical">
-    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
-        <i class="icon icon-lg icon-close"></i>
-    </a>
-    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
-      <div class="brand">
-        <a href="/" class="avatar waves-effect waves-circle waves-light">
-          <img src="/img/avatar.jpg">
-        </a>
-        <hgroup class="introduce">
-          <h5 class="nickname">Joker</h5>
-          <a href="mailto:yangjiakay@gmail.com" title="yangjiakay@gmail.com" class="mail">yangjiakay@gmail.com</a>
-        </hgroup>
-      </div>
-    </div>
-    <div class="scroll-wrap flex-col">
-      <ul class="nav">
-        
-            <li class="waves-block waves-effect">
-              <a href="/">
-                <i class="icon icon-lg icon-home"></i>
-                主页
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="/archives">
-                <i class="icon icon-lg icon-archives"></i>
-                Archives
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="/tags">
-                <i class="icon icon-lg icon-tags"></i>
-                Tags
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="/categories">
-                <i class="icon icon-lg icon-th-list"></i>
-                Categories
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="https://juejin.im/user/5bc6cb81f265da0aac700ced" target="_blank">
-                <i class="icon icon-lg icon-codepen"></i>
-                掘金
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="https://github.com/MeandNi" target="_blank">
-                <i class="icon icon-lg icon-github"></i>
-                Github
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="/about">
-                <i class="icon icon-lg icon-link"></i>
-                AboutMe
-              </a>
-            </li>
-        
-      </ul>
-    </div>
-  </div>
-</aside>
-
-    <main id="main">
-        <header class="top-header" id="header">
-    <div class="flex-row">
-        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
-          <i class="icon icon-lg icon-navicon"></i>
-        </a>
-        <div class="flex-col header-title ellipsis">《深入理解Java虚拟机》笔记5——类加载机制与字节码执行引擎</div>
-        
-        <div class="search-wrap" id="search-wrap">
-            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
-                <i class="icon icon-lg icon-chevron-left"></i>
-            </a>
-            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
-            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
-                <i class="icon icon-lg icon-search"></i>
-            </a>
-        </div>
-        
-        
-        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
-            <i class="icon icon-lg icon-share-alt"></i>
-        </a>
-        
-    </div>
-</header>
-<header class="content-header post-header">
-
-    <div class="container fade-scale">
-        <h1 class="title">《深入理解Java虚拟机》笔记5——类加载机制与字节码执行引擎</h1>
-        <h5 class="subtitle">
-            
-                <time datetime="2019-01-15T04:12:44.000Z" itemprop="datePublished" class="page-time">
-  2019-01-15
-</time>
-
-
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/整理/">整理</a></li></ul>
-
-            
-        </h5>
-    </div>
-
-    
-
-
-</header>
-
-
-<div class="container body-wrap">
-    
-    <aside class="post-widget">
-        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
-            <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#第七章-虚拟机类加载机制"><span class="post-toc-number">1.</span> <span class="post-toc-text">第七章 虚拟机类加载机制</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#7-1-概述"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">7.1 概述</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#7-2-类加载的时机"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">7.2 类加载的时机</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#7-3-类加载的过程"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">7.3 类加载的过程</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#7-3-1-加载"><span class="post-toc-number">1.3.1.</span> <span class="post-toc-text">7.3.1 加载</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#7-3-2-验证"><span class="post-toc-number">1.3.2.</span> <span class="post-toc-text">7.3.2 验证</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#7-3-3-准备"><span class="post-toc-number">1.3.3.</span> <span class="post-toc-text">7.3.3 准备</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#7-3-4-解析"><span class="post-toc-number">1.3.4.</span> <span class="post-toc-text">7.3.4 解析</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#7-3-5-初始化"><span class="post-toc-number">1.3.5.</span> <span class="post-toc-text">7.3.5 初始化</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#7-4-类加载器"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">7.4 类加载器</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#7-4-1-类与类加载器"><span class="post-toc-number">1.4.1.</span> <span class="post-toc-text">7.4.1 类与类加载器</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#7-4-2-双亲委派模型"><span class="post-toc-number">1.4.2.</span> <span class="post-toc-text">7.4.2 双亲委派模型</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#7-4-3-破坏双亲委派模型"><span class="post-toc-number">1.4.3.</span> <span class="post-toc-text">7.4.3 破坏双亲委派模型</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#7-5-本章小结"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">7.5 本章小结</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#第八章-虚拟机字节码执行引擎"><span class="post-toc-number">2.</span> <span class="post-toc-text">第八章 虚拟机字节码执行引擎</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#8-1-概述"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">8.1 概述</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#8-2-运行时栈帧结构"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">8.2 运行时栈帧结构</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#8-2-1-局部变量表"><span class="post-toc-number">2.2.1.</span> <span class="post-toc-text">8.2.1 局部变量表</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#8-2-2-操作数栈"><span class="post-toc-number">2.2.2.</span> <span class="post-toc-text">8.2.2 操作数栈</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#8-2-3-动态连接"><span class="post-toc-number">2.2.3.</span> <span class="post-toc-text">8.2.3 动态连接</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#8-2-4-方法返回地址"><span class="post-toc-number">2.2.4.</span> <span class="post-toc-text">8.2.4 方法返回地址</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#8-2-5-附加信息"><span class="post-toc-number">2.2.5.</span> <span class="post-toc-text">8.2.5 附加信息</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#方法调用"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">方法调用</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#8-3-1-解析"><span class="post-toc-number">2.3.1.</span> <span class="post-toc-text">8.3.1 解析</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#8-3-2-分派"><span class="post-toc-number">2.3.2.</span> <span class="post-toc-text">8.3.2 分派</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#8-3-3-动态类型语言支持"><span class="post-toc-number">2.3.3.</span> <span class="post-toc-text">8.3.3 动态类型语言支持</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#8-4-基于栈的字节码解释执行引擎"><span class="post-toc-number">2.4.</span> <span class="post-toc-text">8.4 基于栈的字节码解释执行引擎</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#8-4-1-解释执行"><span class="post-toc-number">2.4.1.</span> <span class="post-toc-text">8.4.1 解释执行</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#8-4-2-基于栈的指令集与基于寄存器的指令集"><span class="post-toc-number">2.4.2.</span> <span class="post-toc-text">8.4.2 基于栈的指令集与基于寄存器的指令集</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#8-4-3-基于栈的解释器执行过程"><span class="post-toc-number">2.4.3.</span> <span class="post-toc-text">8.4.3 基于栈的解释器执行过程</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#8-5-本章小结"><span class="post-toc-number">2.5.</span> <span class="post-toc-text">8.5 本章小结</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#第九章-类加载及执行子系统的案例与实战"><span class="post-toc-number">3.</span> <span class="post-toc-text">第九章 类加载及执行子系统的案例与实战</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#9-1-概述"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">9.1 概述</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#9-2-案例分析"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">9.2 案例分析</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#9-2-1-Tomcat：正统的类加载器架构"><span class="post-toc-number">3.2.1.</span> <span class="post-toc-text">9.2.1 Tomcat：正统的类加载器架构</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#9-2-2-OSGI：灵活的类加载架构"><span class="post-toc-number">3.2.2.</span> <span class="post-toc-text">9.2.2 OSGI：灵活的类加载架构</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#9-2-3-字节码生成技术与动态代理的实现"><span class="post-toc-number">3.2.3.</span> <span class="post-toc-text">9.2.3 字节码生成技术与动态代理的实现</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#9-2-4-Retrotranslator：跨越JDK版本"><span class="post-toc-number">3.2.4.</span> <span class="post-toc-text">9.2.4 Retrotranslator：跨越JDK版本</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#9-3-实战：自己动手实现远程执行功能"><span class="post-toc-number">3.3.</span> <span class="post-toc-text">9.3 实战：自己动手实现远程执行功能</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#9-4-本章小结"><span class="post-toc-number">3.4.</span> <span class="post-toc-text">9.4 本章小结</span></a></li></ol></li></ol>
-        </nav>
-    </aside>
-
-
-<article id="post-2019-01-15-jvm-note5" class="post-article article-type-post fade" itemprop="blogPost">
-
-    <div class="post-card">
-        <h1 class="post-card-title">《深入理解Java虚拟机》笔记5——类加载机制与字节码执行引擎</h1>
-        <div class="post-meta">
-            <time class="post-time" title="2019-01-15 12:12:44" datetime="2019-01-15T04:12:44.000Z" itemprop="datePublished">2019-01-15</time>
-
-            
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/整理/">整理</a></li></ul>
-
-
-
-            
-
-        </div>
-        <div class="post-content" id="post-content" itemprop="postContent">
-            <h2 id="第七章-虚拟机类加载机制"><a href="#第七章-虚拟机类加载机制" class="headerlink" title="第七章 虚拟机类加载机制"></a>第七章 虚拟机类加载机制</h2><h3 id="7-1-概述"><a href="#7-1-概述" class="headerlink" title="7.1 概述"></a>7.1 概述</h3><ul>
+<!DOCTYPE html><html lang="zh-Hans"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta name="description" content="《深入理解Java虚拟机》笔记5——类加载机制与字节码执行引擎"><meta name="keywords" content="jvm"><meta name="author" content="Joker"><meta name="copyright" content="Joker"><title>《深入理解Java虚拟机》笔记5——类加载机制与字节码执行引擎 | Joker's Blog</title><link rel="shortcut icon" href="/img/favicon.ico"><link rel="stylesheet" href="/css/index.css?version=1.7.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@latest/css/font-awesome.min.css?version=1.7.0"><meta name="format-detection" content="telephone=no"><meta http-equiv="x-dns-prefetch-control" content="on"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.css"><script src="https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.js"></script><script src="https://cdn.jsdelivr.net/npm/blueimp-md5@2.10.0/js/md5.min.js"></script><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  }
+} </script><meta name="generator" content="Hexo 4.2.0"></head><body><i class="fa fa-arrow-right" id="toggle-sidebar" aria-hidden="true"></i><div id="sidebar" data-display="true"><div class="toggle-sidebar-info text-center"><span data-toggle="切换文章详情">切换站点概览</span><hr></div><div class="sidebar-toc"><div class="sidebar-toc__title">目录</div><div class="sidebar-toc__progress"><span class="progress-notice">你已经读了</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar"></div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#第七章-虚拟机类加载机制"><span class="toc-number">1.</span> <span class="toc-text">第七章 虚拟机类加载机制</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#7-1-概述"><span class="toc-number">1.1.</span> <span class="toc-text">7.1 概述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-2-类加载的时机"><span class="toc-number">1.2.</span> <span class="toc-text">7.2 类加载的时机</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-3-类加载的过程"><span class="toc-number">1.3.</span> <span class="toc-text">7.3 类加载的过程</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#7-3-1-加载"><span class="toc-number">1.3.1.</span> <span class="toc-text">7.3.1 加载</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#7-3-2-验证"><span class="toc-number">1.3.2.</span> <span class="toc-text">7.3.2 验证</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#7-3-3-准备"><span class="toc-number">1.3.3.</span> <span class="toc-text">7.3.3 准备</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#7-3-4-解析"><span class="toc-number">1.3.4.</span> <span class="toc-text">7.3.4 解析</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#7-3-5-初始化"><span class="toc-number">1.3.5.</span> <span class="toc-text">7.3.5 初始化</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-4-类加载器"><span class="toc-number">1.4.</span> <span class="toc-text">7.4 类加载器</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#7-4-1-类与类加载器"><span class="toc-number">1.4.1.</span> <span class="toc-text">7.4.1 类与类加载器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#7-4-2-双亲委派模型"><span class="toc-number">1.4.2.</span> <span class="toc-text">7.4.2 双亲委派模型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#7-4-3-破坏双亲委派模型"><span class="toc-number">1.4.3.</span> <span class="toc-text">7.4.3 破坏双亲委派模型</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-5-本章小结"><span class="toc-number">1.5.</span> <span class="toc-text">7.5 本章小结</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#第八章-虚拟机字节码执行引擎"><span class="toc-number">2.</span> <span class="toc-text">第八章 虚拟机字节码执行引擎</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#8-1-概述"><span class="toc-number">2.1.</span> <span class="toc-text">8.1 概述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-2-运行时栈帧结构"><span class="toc-number">2.2.</span> <span class="toc-text">8.2 运行时栈帧结构</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#8-2-1-局部变量表"><span class="toc-number">2.2.1.</span> <span class="toc-text">8.2.1 局部变量表</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#8-2-2-操作数栈"><span class="toc-number">2.2.2.</span> <span class="toc-text">8.2.2 操作数栈</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#8-2-3-动态连接"><span class="toc-number">2.2.3.</span> <span class="toc-text">8.2.3 动态连接</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#8-2-4-方法返回地址"><span class="toc-number">2.2.4.</span> <span class="toc-text">8.2.4 方法返回地址</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#8-2-5-附加信息"><span class="toc-number">2.2.5.</span> <span class="toc-text">8.2.5 附加信息</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#方法调用"><span class="toc-number">2.3.</span> <span class="toc-text">方法调用</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#8-3-1-解析"><span class="toc-number">2.3.1.</span> <span class="toc-text">8.3.1 解析</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#8-3-2-分派"><span class="toc-number">2.3.2.</span> <span class="toc-text">8.3.2 分派</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#8-3-3-动态类型语言支持"><span class="toc-number">2.3.3.</span> <span class="toc-text">8.3.3 动态类型语言支持</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-4-基于栈的字节码解释执行引擎"><span class="toc-number">2.4.</span> <span class="toc-text">8.4 基于栈的字节码解释执行引擎</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#8-4-1-解释执行"><span class="toc-number">2.4.1.</span> <span class="toc-text">8.4.1 解释执行</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#8-4-2-基于栈的指令集与基于寄存器的指令集"><span class="toc-number">2.4.2.</span> <span class="toc-text">8.4.2 基于栈的指令集与基于寄存器的指令集</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#8-4-3-基于栈的解释器执行过程"><span class="toc-number">2.4.3.</span> <span class="toc-text">8.4.3 基于栈的解释器执行过程</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-5-本章小结"><span class="toc-number">2.5.</span> <span class="toc-text">8.5 本章小结</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#第九章-类加载及执行子系统的案例与实战"><span class="toc-number">3.</span> <span class="toc-text">第九章 类加载及执行子系统的案例与实战</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#9-1-概述"><span class="toc-number">3.1.</span> <span class="toc-text">9.1 概述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9-2-案例分析"><span class="toc-number">3.2.</span> <span class="toc-text">9.2 案例分析</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#9-2-1-Tomcat：正统的类加载器架构"><span class="toc-number">3.2.1.</span> <span class="toc-text">9.2.1 Tomcat：正统的类加载器架构</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#9-2-2-OSGI：灵活的类加载架构"><span class="toc-number">3.2.2.</span> <span class="toc-text">9.2.2 OSGI：灵活的类加载架构</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#9-2-3-字节码生成技术与动态代理的实现"><span class="toc-number">3.2.3.</span> <span class="toc-text">9.2.3 字节码生成技术与动态代理的实现</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#9-2-4-Retrotranslator：跨越JDK版本"><span class="toc-number">3.2.4.</span> <span class="toc-text">9.2.4 Retrotranslator：跨越JDK版本</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9-3-实战：自己动手实现远程执行功能"><span class="toc-number">3.3.</span> <span class="toc-text">9.3 实战：自己动手实现远程执行功能</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9-4-本章小结"><span class="toc-number">3.4.</span> <span class="toc-text">9.4 本章小结</span></a></li></ol></li></ol></div></div><div class="author-info hide"><div class="author-info__avatar text-center"><img src="/img/avatar.jpg"></div><div class="author-info__name text-center">Joker</div><div class="author-info__description text-center">分享生活、技术、学习心得</div><hr><div class="author-info-articles"><a class="author-info-articles__archives article-meta" href="/archives"><span class="pull-left">文章</span><span class="pull-right">37</span></a><a class="author-info-articles__tags article-meta" href="/tags"><span class="pull-left">标签</span><span class="pull-right">26</span></a><a class="author-info-articles__categories article-meta" href="/categories"><span class="pull-left">分类</span><span class="pull-right">11</span></a></div></div></div><div id="content-outer"><div class="no-bg" id="top-container"><div id="page-header"><span class="pull-left"> <a id="site-name" href="/">Joker's Blog</a></span><i class="fa fa-bars toggle-menu pull-right" aria-hidden="true"></i><span class="pull-right menus">   <a class="site-page" href="/">首页</a><a class="site-page" href="/archives">目录</a><a class="site-page" href="/tags">标签</a><a class="site-page" href="/categories">分类</a><a class="site-page" href="/about">关于我</a></span><span class="pull-right"></span></div><div id="post-info"><div id="post-title">《深入理解Java虚拟机》笔记5——类加载机制与字节码执行引擎</div><div id="post-meta"><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2019-01-15</time><span class="post-meta__separator">|</span><i class="fa fa-inbox post-meta__icon" aria-hidden="true"></i><a class="post-meta__categories" href="/categories/%E6%95%B4%E7%90%86/">整理</a><i class="fa fa-angle-right" aria-hidden="true"></i><i class="fa fa-inbox post-meta__icon" aria-hidden="true"></i><a class="post-meta__categories" href="/categories/%E6%95%B4%E7%90%86/%E7%AC%94%E8%AE%B0/">笔记</a></div></div></div><div class="layout" id="content-inner"><article id="post"><div class="article-container" id="post-content"><h2 id="第七章-虚拟机类加载机制"><a href="#第七章-虚拟机类加载机制" class="headerlink" title="第七章 虚拟机类加载机制"></a>第七章 虚拟机类加载机制</h2><h3 id="7-1-概述"><a href="#7-1-概述" class="headerlink" title="7.1 概述"></a>7.1 概述</h3><ul>
 <li>虚拟机把描述类的数据从Class文件加载到内存，并对数据进行校验、转换解析和初始化，最终形成可以被虚拟机直接使用的Java类型，这就是虚拟机的类加载机制。</li>
 <li>在Java语言里面，类型的加载、连接和初始化过程都是在程序运行期间完成，这虽然增量一些性能开销，但是会为Java应用程序提供高度的灵活性。</li>
 </ul>
+<a id="more"></a>
 <h3 id="7-2-类加载的时机"><a href="#7-2-类加载的时机" class="headerlink" title="7.2 类加载的时机"></a>7.2 类加载的时机</h3><ul>
 <li>类的整个生命周期：加载、验证、准备、解析、初始化、使用和卸载；其中验证、准备和解析统称为连接；</li>
 <li>虚拟机规范没有强制约束类加载的时机，但严格规定了有且只有5种情况必须立即对类进行初始化：遇到new、getstatic、putstatic和invokestatic指令；对类进行反射调用时如果类没有进行过初始化；初始化时发现父类还没有进行初始化；虚拟机启动指定的主类；动态语言中MethodHandle实例最后解析结果REF_getStatic等的方法句柄对应的类没有初始化时；</li>
@@ -236,10 +37,10 @@
 </ul>
 <h4 id="7-3-5-初始化"><a href="#7-3-5-初始化" class="headerlink" title="7.3.5 初始化"></a>7.3.5 初始化</h4><ul>
 <li>是类加载过程的最后一步，真正开始执行类中定义的Java程序代码（或者说是字节码）；</li>
-<li>初始化阶段是执行类构造器<clinit>方法的过程，该方法是由编译器自动收集类中的所有类变量的赋值动作和静态语句块中的语句合并产生的；</clinit></li>
-<li><clinit>方法与类的构造函数（或者说是实例构造器<init>方法）不同，它不需要显式地调用父类构造器，虚拟机会保证在子类的<clinit>方法执行之前，父类的<clinit>方法已执行完毕；</clinit></clinit></init></clinit></li>
-<li>执行接口的<clinit>方法不需要先执行父接口的<clinit>方法，只有当父接口中定义的变量使用时父接口才会初始化，接口的实现类在初始化时也一样不会执行接口的<clinit>方法；</clinit></clinit></clinit></li>
-<li><clinit>方法初始化是加锁阻塞等待的，应当避免在<clinit>方法中有耗时很长的操作；</clinit></clinit></li>
+<li>初始化阶段是执行类构造器<clinit>方法的过程，该方法是由编译器自动收集类中的所有类变量的赋值动作和静态语句块中的语句合并产生的；</li>
+<li><clinit>方法与类的构造函数（或者说是实例构造器<init>方法）不同，它不需要显式地调用父类构造器，虚拟机会保证在子类的<clinit>方法执行之前，父类的<clinit>方法已执行完毕；</li>
+<li>执行接口的<clinit>方法不需要先执行父接口的<clinit>方法，只有当父接口中定义的变量使用时父接口才会初始化，接口的实现类在初始化时也一样不会执行接口的<clinit>方法；</li>
+<li><clinit>方法初始化是加锁阻塞等待的，应当避免在<clinit>方法中有耗时很长的操作；</li>
 </ul>
 <h3 id="7-4-类加载器"><a href="#7-4-类加载器" class="headerlink" title="7.4 类加载器"></a>7.4 类加载器</h3><ul>
 <li>虚拟机设计团队把类加载阶段的“通过一个类的全限定名来获取描述此类的二进制字节流”这个动作放到虚拟机外部去实现，实现这个动作的代码模块称为类加载器；</li>
@@ -267,13 +68,7 @@
 <li>在虚拟机规范中制定了虚拟机字节码执行引擎的概念模型，该模型成为各种虚拟机执行引擎的统一外观；</li>
 <li>在不同的虚拟机实现里面，执行引擎在执行Java代码时可能会有解释执行和编译执行两种选择，也可能两者兼备，甚至还可能会包含几个不同级别的编译器执行引擎，但从外观来说是一致的：输入的都是字节码文件，处理过程是字节码解析的等效过程，输出的是执行结果。</li>
 </ul>
-<h3 id="8-2-运行时栈帧结构"><a href="#8-2-运行时栈帧结构" class="headerlink" title="8.2 运行时栈帧结构"></a>8.2 运行时栈帧结构</h3><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="https:////upload-images.jianshu.io/upload_images/3709321-009d0f0efe9f528e.png" alt="运行时栈帧结构" title="">
-                </div>
-                <div class="image-caption">运行时栈帧结构</div>
-            </figure>
+<h3 id="8-2-运行时栈帧结构"><a href="#8-2-运行时栈帧结构" class="headerlink" title="8.2 运行时栈帧结构"></a>8.2 运行时栈帧结构</h3><p><img src="https:////upload-images.jianshu.io/upload_images/3709321-009d0f0efe9f528e.png" alt="运行时栈帧结构"></p>
 <ul>
 <li>栈帧是用于支持虚拟机进行方法调用和方法执行的数据结构，它是虚拟机运行时数据区中的虚拟机栈的栈元素；</li>
 <li>栈帧存储了方法的局部变量表、操作数栈、动态连接和方法返回地址等信息，每一个方法从调用开始至执行完成的过程，都对应着一个栈帧在虚拟机里面从入栈到出栈的过程；</li>
@@ -337,58 +132,22 @@
 <li>基于栈的指令集主要的优点是可移植性，寄存器由硬件直接提供，程序直接依赖这些硬件寄存器则不可避免地要受到硬件的约束；主要缺点是执行速度相对来说会稍慢一点；</li>
 </ul>
 <h4 id="8-4-3-基于栈的解释器执行过程"><a href="#8-4-3-基于栈的解释器执行过程" class="headerlink" title="8.4.3 基于栈的解释器执行过程"></a>8.4.3 基于栈的解释器执行过程</h4><p>一段简单的算法代码</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">public int calc()&#123;</span><br><span class="line">    int a = 100;</span><br><span class="line">    int b = 200;</span><br><span class="line">    int c = 300;</span><br><span class="line">    return (a + b) * c;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">public int calc()&#123;</span><br><span class="line">    int a &#x3D; 100;</span><br><span class="line">    int b &#x3D; 200;</span><br><span class="line">    int c &#x3D; 300;</span><br><span class="line">    return (a + b) * c;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>上述代码的字节码表示</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">public int calc();</span><br><span class="line">Code:</span><br><span class="line">Stack=2, Locals=4, Args_size=1</span><br><span class="line">0:bipush 100</span><br><span class="line">2:istore_1</span><br><span class="line">3:sipush 200</span><br><span class="line">6:istore_2</span><br><span class="line">7:sipush 300</span><br><span class="line">10:istore_3</span><br><span class="line">11:iload_1</span><br><span class="line">12:iload_2</span><br><span class="line">13:iadd</span><br><span class="line">14:iload_3</span><br><span class="line">15:imul</span><br><span class="line">16:ireturn</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">public int calc();</span><br><span class="line">Code:</span><br><span class="line">Stack&#x3D;2, Locals&#x3D;4, Args_size&#x3D;1</span><br><span class="line">0:bipush 100</span><br><span class="line">2:istore_1</span><br><span class="line">3:sipush 200</span><br><span class="line">6:istore_2</span><br><span class="line">7:sipush 300</span><br><span class="line">10:istore_3</span><br><span class="line">11:iload_1</span><br><span class="line">12:iload_2</span><br><span class="line">13:iadd</span><br><span class="line">14:iload_3</span><br><span class="line">15:imul</span><br><span class="line">16:ireturn</span><br></pre></td></tr></table></figure>
 <p>javap提示这段代码需要深度为2的操作数栈和4个Slot的局部变量空间，作者根据这些信息画了示意图来说明执行过程中的变化情况：</p>
 <p>执行偏移地址为0的指令</p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="https:////upload-images.jianshu.io/upload_images/3709321-ae7f979f896ae750.png" alt="执行偏移地址为0的指令" title="">
-                </div>
-                <div class="image-caption">执行偏移地址为0的指令</div>
-            </figure>
+<p><img src="https:////upload-images.jianshu.io/upload_images/3709321-ae7f979f896ae750.png" alt="执行偏移地址为0的指令"></p>
 <p>执行偏移地址为2的指令</p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="https:////upload-images.jianshu.io/upload_images/3709321-4cc3955b129175a3.png" alt="执行偏移地址为2的指令" title="">
-                </div>
-                <div class="image-caption">执行偏移地址为2的指令</div>
-            </figure>
+<p><img src="https:////upload-images.jianshu.io/upload_images/3709321-4cc3955b129175a3.png" alt="执行偏移地址为2的指令"></p>
 <p>执行偏移地址为11的指令</p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="https:////upload-images.jianshu.io/upload_images/3709321-b640506135b2ccd3.png" alt="执行偏移地址为11的指令" title="">
-                </div>
-                <div class="image-caption">执行偏移地址为11的指令</div>
-            </figure>
+<p><img src="https:////upload-images.jianshu.io/upload_images/3709321-b640506135b2ccd3.png" alt="执行偏移地址为11的指令"></p>
 <p>执行偏移地址为12的指令</p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="https:////upload-images.jianshu.io/upload_images/3709321-ddf83219167aca0f.png" alt="img" title="">
-                </div>
-                <div class="image-caption">img</div>
-            </figure>
+<p><img src="https:////upload-images.jianshu.io/upload_images/3709321-ddf83219167aca0f.png" alt="img"></p>
 <p>执行偏移地址为13的指令</p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="https:////upload-images.jianshu.io/upload_images/3709321-8d58d9d3f21a08e2.png" alt="执行偏移地址为13的指令" title="">
-                </div>
-                <div class="image-caption">执行偏移地址为13的指令</div>
-            </figure>
+<p><img src="https:////upload-images.jianshu.io/upload_images/3709321-8d58d9d3f21a08e2.png" alt="执行偏移地址为13的指令"></p>
 <p>执行偏移地址为14的指令</p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="https:////upload-images.jianshu.io/upload_images/3709321-ede2baf8e9d01bc6.png" alt="执行偏移地址为14的指令" title="">
-                </div>
-                <div class="image-caption">执行偏移地址为14的指令</div>
-            </figure>
+<p><img src="https:////upload-images.jianshu.io/upload_images/3709321-ede2baf8e9d01bc6.png" alt="执行偏移地址为14的指令"></p>
 <p>执行偏移地址为16的指令</p>
 <p><img src="https:////upload-images.jianshu.io/upload_images/3709321-3ddc95e842532183.png" alt="执行偏移地址为16的指令"></p>
 <p>注：上面的执行过程仅仅是一种概念模型，虚拟机中解析器和即时编译器会对输入的字节码进行优化。</p>
@@ -413,7 +172,7 @@
 <li>动态代理的优势在于实现了在原始类和接口还未知的时候就确定类的代理行为，可以很灵活地重用于不同的应用场景之中；</li>
 <li>以下的例子中生成的代理类“$Proxy0.class”文件可以看到代理为传入接口的每一个方法统一调用了InvocationHandler对象的invoke方法；其生成代理类的字节码大致过程其实就是根据Class文件的格式规范去拼接字节码；</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">public class DynamicProxyTest &#123;</span><br><span class="line"></span><br><span class="line">    interface IHello &#123;</span><br><span class="line">        void sayHello();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    static class Hello implements IHello &#123;</span><br><span class="line">        @Override</span><br><span class="line">        public void sayHello() &#123;</span><br><span class="line">            System.out.println(&quot;Hello world&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    static class DynamicProxy implements InvocationHandler &#123;</span><br><span class="line">        Object originalObj;</span><br><span class="line"></span><br><span class="line">        Object bind(Object originalObj) &#123;</span><br><span class="line">            this.originalObj = originalObj;</span><br><span class="line">            return Proxy.newProxyInstance(originalObj.getClass().getClassLoader(), originalObj.getClass().getInterfaces(), this);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        @Override</span><br><span class="line">        public Object invoke(Object proxy, Method method, Object[] args) throws Throwable &#123;</span><br><span class="line">            System.out.println(&quot;Welcome&quot;);</span><br><span class="line">            return method.invoke(originalObj, args);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        // add this property to generate proxy class file</span><br><span class="line">        System.getProperties().put(&quot;sun.misc.ProxyGenerator.saveGeneratedFiles&quot;, &quot;true&quot;);</span><br><span class="line"></span><br><span class="line">        IHello hello = (IHello) new DynamicProxy().bind(new Hello());</span><br><span class="line">        hello.sayHello();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">public class DynamicProxyTest &#123;</span><br><span class="line"></span><br><span class="line">    interface IHello &#123;</span><br><span class="line">        void sayHello();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    static class Hello implements IHello &#123;</span><br><span class="line">        @Override</span><br><span class="line">        public void sayHello() &#123;</span><br><span class="line">            System.out.println(&quot;Hello world&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    static class DynamicProxy implements InvocationHandler &#123;</span><br><span class="line">        Object originalObj;</span><br><span class="line"></span><br><span class="line">        Object bind(Object originalObj) &#123;</span><br><span class="line">            this.originalObj &#x3D; originalObj;</span><br><span class="line">            return Proxy.newProxyInstance(originalObj.getClass().getClassLoader(), originalObj.getClass().getInterfaces(), this);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        @Override</span><br><span class="line">        public Object invoke(Object proxy, Method method, Object[] args) throws Throwable &#123;</span><br><span class="line">            System.out.println(&quot;Welcome&quot;);</span><br><span class="line">            return method.invoke(originalObj, args);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        &#x2F;&#x2F; add this property to generate proxy class file</span><br><span class="line">        System.getProperties().put(&quot;sun.misc.ProxyGenerator.saveGeneratedFiles&quot;, &quot;true&quot;);</span><br><span class="line"></span><br><span class="line">        IHello hello &#x3D; (IHello) new DynamicProxy().bind(new Hello());</span><br><span class="line">        hello.sayHello();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h4 id="9-2-4-Retrotranslator：跨越JDK版本"><a href="#9-2-4-Retrotranslator：跨越JDK版本" class="headerlink" title="9.2.4 Retrotranslator：跨越JDK版本"></a>9.2.4 Retrotranslator：跨越JDK版本</h4><ul>
 <li>Retrotranslator的作用是将JDK 1.5编译出来的Class文件转变为可以在JDK 1.4或JDK 1.3部署的版本，它可以很好地支持自动装箱、泛型、动态注解、枚举、变长参数、遍历循环、静态导入这些语法特性，甚至还可以支持JDK 1.5中新增的集合改进、并发包以及对泛型、注解等的反射操作；</li>
 <li>JDK升级通常包括四种类型：编译器层面的做的改进、Java API的代码增强、需要再字节码中进行支持的活动以及虚拟机内部的改进，Retrotranslator只能模拟前两类，第二类通过独立类库实现，第一类则通过ASM框架直接对字节码进行处理；</li>
@@ -423,304 +182,21 @@
 <li>思路：如何编译提交到服务器的Java代码（客户端编译好上传Class文件而不是Java代码）、如何执行编译之后的Java代码（要能访问其他类库，要能卸载）、如何收集Java代码的执行结果（在执行的类中把System.out的符号引用替换为我们准备的PrintStream的符号引用）；</li>
 <li>具体实现：HotSwapClassLoader用于实现同一个类的代码可以被多次加载，通过公开父类ClassLoader的defineClass实现；HackSystem是为了替换java.lang.System，它直接修改Class文件格式的byte[]数组中的常量池部分，将常量池中指定内容的CONSTANT_Utf8_info常量替换为新的字符串；ClassModifier涉及对byte[]数组操作的部分，主要是将byte[]与int和String互相转换，以及把对byte[]数据的替换操作封装在ByteUtils类中；经过ClassModifier处理过的byte[]数组才会传给HotSwapClassLoader.loadByte方法进行类加载；而JavaClassExecutor是提供给外部调用的入口；</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">public class JavaClassExecutor &#123;</span><br><span class="line"></span><br><span class="line">    public static String execute(byte[] classByte) &#123;</span><br><span class="line">        HackSystem.clearBuffer();</span><br><span class="line">        ClassModifier cm = new ClassModifier(classByte);</span><br><span class="line">        byte[] modifiedBytes = cm.modifyUTF8Constant(&quot;java/lang/System&quot;, &quot;org/fenixsoft/classloading/execute/HackSystem&quot;);</span><br><span class="line">        HotSwapClassLoader hotSwapClassLoader = new HotSwapClassLoader();</span><br><span class="line">        Class clazz = hotSwapClassLoader.loadByte(modifiedBytes);</span><br><span class="line">        try &#123;</span><br><span class="line">            Method method = clazz.getMethod(&quot;main&quot;, new Class[]&#123;String[].class&#125;);</span><br><span class="line">            method.invoke(null, new String[]&#123;null&#125;);</span><br><span class="line">        &#125; catch (Throwable t) &#123;</span><br><span class="line">            t.printStackTrace(HackSystem.out);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        return HackSystem.getBufferString();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">public class JavaClassExecutor &#123;</span><br><span class="line"></span><br><span class="line">    public static String execute(byte[] classByte) &#123;</span><br><span class="line">        HackSystem.clearBuffer();</span><br><span class="line">        ClassModifier cm &#x3D; new ClassModifier(classByte);</span><br><span class="line">        byte[] modifiedBytes &#x3D; cm.modifyUTF8Constant(&quot;java&#x2F;lang&#x2F;System&quot;, &quot;org&#x2F;fenixsoft&#x2F;classloading&#x2F;execute&#x2F;HackSystem&quot;);</span><br><span class="line">        HotSwapClassLoader hotSwapClassLoader &#x3D; new HotSwapClassLoader();</span><br><span class="line">        Class clazz &#x3D; hotSwapClassLoader.loadByte(modifiedBytes);</span><br><span class="line">        try &#123;</span><br><span class="line">            Method method &#x3D; clazz.getMethod(&quot;main&quot;, new Class[]&#123;String[].class&#125;);</span><br><span class="line">            method.invoke(null, new String[]&#123;null&#125;);</span><br><span class="line">        &#125; catch (Throwable t) &#123;</span><br><span class="line">            t.printStackTrace(HackSystem.out);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        return HackSystem.getBufferString();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>用于测试的JSP</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;%@page import=&quot;java.lang.*&quot; %&gt;</span><br><span class="line">&lt;%@page import=&quot;java.io.*&quot; %&gt;</span><br><span class="line">&lt;%@page import=&quot;org.fenixsoft.classloading.execute.*&quot; %&gt;</span><br><span class="line"></span><br><span class="line">&lt;%</span><br><span class="line">InputStream is = new FileInputStream(&quot;c:/TestClass.class&quot;);</span><br><span class="line">byte[] b = new byte[is.available()];</span><br><span class="line">is.read(b);</span><br><span class="line">is.close();</span><br><span class="line"></span><br><span class="line">out.println(JavaClassExecutor.execute(b));</span><br><span class="line"></span><br><span class="line">%&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;%@page import&#x3D;&quot;java.lang.*&quot; %&gt;</span><br><span class="line">&lt;%@page import&#x3D;&quot;java.io.*&quot; %&gt;</span><br><span class="line">&lt;%@page import&#x3D;&quot;org.fenixsoft.classloading.execute.*&quot; %&gt;</span><br><span class="line"></span><br><span class="line">&lt;%</span><br><span class="line">InputStream is &#x3D; new FileInputStream(&quot;c:&#x2F;TestClass.class&quot;);</span><br><span class="line">byte[] b &#x3D; new byte[is.available()];</span><br><span class="line">is.read(b);</span><br><span class="line">is.close();</span><br><span class="line"></span><br><span class="line">out.println(JavaClassExecutor.execute(b));</span><br><span class="line"></span><br><span class="line">%&gt;</span><br></pre></td></tr></table></figure>
 <h3 id="9-4-本章小结"><a href="#9-4-本章小结" class="headerlink" title="9.4 本章小结"></a>9.4 本章小结</h3><p>只有了解虚拟机如何执行程序，才能更好地理解怎样写出优秀的代码。</p>
-
-        </div>
-
-        <blockquote class="post-copyright">
-    
-    <div class="content">
-        
-<span class="post-time">
-    Last updated: <time datetime="2019-04-12T06:05:29.737Z" itemprop="dateUpdated">2019-04-12 14:05:29</time>
-</span><br>
-
-
-        
-    </div>
-    
-    <footer>
-        <a href="https://meandni.com">
-            <img src="/img/avatar.jpg" alt="Joker">
-            Joker
-        </a>
-    </footer>
-</blockquote>
-
-        
-<div class="page-reward">
-    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
-</div>
-
-
-
-        <div class="post-footer">
-            
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/jvm/">jvm</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/阅读/">阅读</a></li></ul>
-
-
-            
-<div class="page-share-wrap">
-    
-
-<div class="page-share" id="pageShare">
-    <ul class="reset share-icons">
-      <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://meandni.com/2019/01/15/jvm_note5/&title=《《深入理解Java虚拟机》笔记5——类加载机制与字节码执行引擎》 — Joker's Blog&pic=https://meandni.com/img/avatar.jpg" data-title="微博">
-          <i class="icon icon-weibo"></i>
-        </a>
-      </li>
-      <li>
-        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
-          <i class="icon icon-weixin"></i>
-        </a>
-      </li>
-      <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://meandni.com/2019/01/15/jvm_note5/&title=《《深入理解Java虚拟机》笔记5——类加载机制与字节码执行引擎》 — Joker's Blog&source=分享生活、技术、学习心得" data-title=" QQ">
-          <i class="icon icon-qq"></i>
-        </a>
-      </li>
-      <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://meandni.com/2019/01/15/jvm_note5/" data-title=" Facebook">
-          <i class="icon icon-facebook"></i>
-        </a>
-      </li>
-      <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《《深入理解Java虚拟机》笔记5——类加载机制与字节码执行引擎》 — Joker's Blog&url=https://meandni.com/2019/01/15/jvm_note5/&via=https://meandni.com" data-title=" Twitter">
-          <i class="icon icon-twitter"></i>
-        </a>
-      </li>
-      <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://meandni.com/2019/01/15/jvm_note5/" data-title=" Google+">
-          <i class="icon icon-google-plus"></i>
-        </a>
-      </li>
-    </ul>
- </div>
-
-
-
-    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
-        <i class="icon icon-share-alt icon-lg"></i>
-    </a>
-</div>
-
-
-
-        </div>
-    </div>
-
-    
-<nav class="post-nav flex-row flex-justify-between">
-  
-    <div class="waves-block waves-effect prev">
-      <a href="/2019/01/18/jvm_note6/" id="post-prev" class="post-nav-link">
-        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
-        <h4 class="title">《深入理解Java虚拟机》笔记6——高效并发</h4>
-      </a>
-    </div>
-  
-
-  
-    <div class="waves-block waves-effect next">
-      <a href="/2019/01/14/jvm_note4/" id="post-next" class="post-nav-link">
-        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
-        <h4 class="title">《深入理解Java虚拟机》笔记4——类文件结构</h4>
-      </a>
-    </div>
-  
-</nav>
-
-
-
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<section class="comments" id="comments">
-    <div id="gitalk-container"></div>
-    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
-    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
-    <script>
-        var id = location.pathname
-        if (location.pathname.length > 50) {
-          id = location.pathname.replace(/\/\d+\/\d+\/\d+\//, '').replace('/', '').substring(0, 50)
-        }
-        const gitalk = new Gitalk({
-          clientID: '12faa9d04b92d2d70968',
-          clientSecret: 'ad1023eebffeb2972301ce0e730e0c277f64cf23',
-          repo: 'MeandNi.github.io',
-          owner: 'MeandNi',
-          admin: ['MeandNi'],
-          id: id,      // Ensure uniqueness and length less than 50
-          title: document.title.split('|')[0],
-          distractionFreeMode: false  // Facebook-like distraction free mode
-        })
-
-        gitalk.render('gitalk-container')
-    </script>
-</section>
-
-
-
-
-</article>
-
-<div id="reward" class="page-modal reward-lay">
-    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <h3 class="reward-title">
-        <i class="icon icon-quote-left"></i>
-        感谢打赏~
-        <i class="icon icon-quote-right"></i>
-    </h3>
-    <div class="reward-content">
-        
-        <div class="reward-code">
-            <img id="rewardCode" src="/img/wechat.png" alt="打赏二维码">
-        </div>
-        
-        <label class="reward-toggle">
-            <input id="rewardToggle" type="checkbox" class="reward-toggle-check" data-wechat="/img/wechat.png" data-alipay="/img/alipay.jpg">
-            <div class="reward-toggle-ctrol">
-                <span class="reward-toggle-item wechat">微信</span>
-                <span class="reward-toggle-label"></span>
-                <span class="reward-toggle-item alipay">支付宝</span>
-            </div>
-        </label>
-        
-    </div>
-</div>
-
-
-
-</div>
-
-        <footer class="footer">
-    <div class="top">
-        
-
-        <p>
-            
-                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
-            
-            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
-        </p>
-    </div>
-    <div class="bottom">
-        <p><span>Joker &copy; 2017 - 2020</span>
-            <span>
-                
-                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
-            </span>
-        </p>
-    </div>
-</footer>
-
-    </main>
-    <div class="mask" id="mask"></div>
-<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
-
-
-
-<div class="global-share" id="globalShare">
-    <ul class="reset share-icons">
-      <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://meandni.com/2019/01/15/jvm_note5/&title=《《深入理解Java虚拟机》笔记5——类加载机制与字节码执行引擎》 — Joker's Blog&pic=https://meandni.com/img/avatar.jpg" data-title="微博">
-          <i class="icon icon-weibo"></i>
-        </a>
-      </li>
-      <li>
-        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
-          <i class="icon icon-weixin"></i>
-        </a>
-      </li>
-      <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://meandni.com/2019/01/15/jvm_note5/&title=《《深入理解Java虚拟机》笔记5——类加载机制与字节码执行引擎》 — Joker's Blog&source=分享生活、技术、学习心得" data-title=" QQ">
-          <i class="icon icon-qq"></i>
-        </a>
-      </li>
-      <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://meandni.com/2019/01/15/jvm_note5/" data-title=" Facebook">
-          <i class="icon icon-facebook"></i>
-        </a>
-      </li>
-      <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《《深入理解Java虚拟机》笔记5——类加载机制与字节码执行引擎》 — Joker's Blog&url=https://meandni.com/2019/01/15/jvm_note5/&via=https://meandni.com" data-title=" Twitter">
-          <i class="icon icon-twitter"></i>
-        </a>
-      </li>
-      <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://meandni.com/2019/01/15/jvm_note5/" data-title=" Google+">
-          <i class="icon icon-google-plus"></i>
-        </a>
-      </li>
-    </ul>
- </div>
-
-
-<div class="page-modal wx-share" id="wxShare">
-    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAACuCAAAAACKZ2kyAAABw0lEQVR42u3aQW7DMAwEwP7/0+61QOtgV5SVFBidAseRRjkQEsmvr3hcv8bP53dv5k82D1xc3DH3ejmSJe8Wzn+VGHBxcc9z7xa7+3wXwl6/nwfE2+e4uLgfyU0mXdsSLi7u/+XmF57Xs+Hi4n4+d3IESa5Ab7ir4eLiDrh5lvK5z4/kd3FxcZe4VznaefK0abQ6Li7uEW4eUJI0x95Uy+26uLi4B7ntFWjSVNGGxfqgg4uLO+YmL609aVsxRrkcXFzcrdw2VOUHoPzbIoGCi4v7MHfeXJUXS9rizR9bxcXFPcJtS6GTckvb5hVdfnBxcR/gtgmRPPAl0DphiouLe5C7a7FJy0UU+HBxcQ9y16C7wlN9V8PFxX2Y2+KSa8yk+BptHhcX903cXc0WbUIkWRcXF/ckt23FmIS/5G+KasK4uLgPcychqej/Ko84EQUXF3cr9yrHE21YxcZwcXGPcNvgsjc85SWWekVcXNwxNw9ek0JLe4labM/CxcXdyq1LGm2ic2me4mtcXNy3cvOESHIwWryx4eLifhi3XWbSihFVfnBxcR/jzpOk7cbaTeLi4p7kTtKda5Pm6dFRfhcXF3eF+w31NwsJ2cv28AAAAABJRU5ErkJggg==" alt="微信分享二维码">
-</div>
-
-
-
-
-    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
-<script>
-var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
-
-
-</script>
-
-<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
-
-
-<div class="search-panel" id="search-panel">
-    <ul class="search-result" id="search-result"></ul>
-</div>
-<template id="search-tpl">
-<li class="item">
-    <a href="{path}" class="waves-block waves-effect">
-        <div class="title ellipsis" title="{title}">{title}</div>
-        <div class="flex-row flex-middle">
-            <div class="tags ellipsis">
-                {tags}
-            </div>
-            <time class="flex-col time">{date}</time>
-        </div>
-    </a>
-</li>
-</template>
-
-<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
-
-
-
-
-
-
-
-
-
-
-</body>
-</html>
+</div></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">Joker</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://meandni.com/2019/01/15/jvm_note5/">https://meandni.com/2019/01/15/jvm_note5/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://meandni.com">Joker's Blog</a>！</span></div></div><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/jvm/">jvm</a></div><div class="post-qr-code"><div class="post-qr-code-item"><img class="post-qr-code__img" src="/img/alipay.jpg"><div class="post-qr-code__desc">支付宝打赏</div></div><div class="post-qr-code-item"><img class="post-qr-code__img" src="/img/wechat.png"><div class="post-qr-code__desc">微信打赏</div></div></div><nav id="pagination"><div class="prev-post pull-left"><a href="/2019/01/18/jvm_note6/"><i class="fa fa-chevron-left">  </i><span>《深入理解Java虚拟机》笔记6——高效并发</span></a></div><div class="next-post pull-right"><a href="/2019/01/14/jvm_note4/"><span>《深入理解Java虚拟机》笔记4——类文件结构</span><i class="fa fa-chevron-right"></i></a></div></nav><div id="gitalk-container"></div><script>var gitalk = new Gitalk({
+  clientID: '12faa9d04b92d2d70968',
+  clientSecret: 'ad1023eebffeb2972301ce0e730e0c277f64cf23',
+  repo: 'MeandNi.github.io',
+  owner: 'MeandNi',
+  admin: 'MeandNi',
+  id: md5(decodeURI(location.pathname)),
+  language: 'zh-CN'
+})
+gitalk.render('gitalk-container')</script></div></div><footer><div class="layout" id="footer"><div class="copyright">&copy;2018 - 2020 By Joker</div><div class="framework-info"><span>驱动 - </span><a href="#"><span>Hexo</span></a><span class="footer-separator">|</span><span>主题 - </span><a href="https://github.com/Molunerfinn/hexo-theme-melody" target="_blank" rel="noopener"><span>Melody</span></a></div></div></footer><i class="fa fa-arrow-up" id="go-up" aria-hidden="true"></i><script src="https://cdn.jsdelivr.net/npm/animejs@latest/anime.min.js"></script><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@latest/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-ui-pack@latest/velocity.ui.min.js"></script><script src="/js/utils.js?version=1.7.0"></script><script src="/js/fancybox.js?version=1.7.0"></script><script src="/js/sidebar.js?version=1.7.0"></script><script src="/js/copy.js?version=1.7.0"></script><script src="/js/fireworks.js?version=1.7.0"></script><script src="/js/transition.js?version=1.7.0"></script><script src="/js/scroll.js?version=1.7.0"></script><script src="/js/head.js?version=1.7.0"></script><script>if(/Android|webOS|iPhone|iPod|iPad|BlackBerry/i.test(navigator.userAgent)) {
+  $('#nav').addClass('is-mobile')
+  $('footer').addClass('is-mobile')
+  $('#top-container').addClass('is-mobile')
+}</script></body></html>

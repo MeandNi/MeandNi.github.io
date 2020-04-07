@@ -1,233 +1,22 @@
-<!DOCTYPE html>
-<html>
-<head><meta name="generator" content="Hexo 3.8.0">
-    
-
-    
-
-    
-
-
-
-    <meta charset="utf-8">
-    
-    
-    
-    
-    <title>《深入理解Java虚拟机》笔记4——类文件结构 | Joker&#39;s Blog | 个人分享博客</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    
-    <meta name="theme-color" content="#3F51B5">
-    
-    
-    <meta name="keywords" content="阅读,jvm">
-    <meta name="description" content="代码编译的结果从本地机器码转变为字节码，是存储格式发展的一小步，却是编程语言发展的一大步。 由于最近十年内虚拟机以及大量建立在虚拟机之上的程序语言如雨后春笋般出现并蓬勃发展，将我们编写的程序编译成二进制本地机器码（Native Code）已不再是唯一的选择，越来越多的程序语言选择了操作系统和机器指令集无关的、平台中立的格式作为程序编译后的存储格式。 无关性的基石 Java刚诞生的宣传口号：一次编写">
-<meta name="keywords" content="阅读,jvm">
-<meta property="og:type" content="article">
-<meta property="og:title" content="《深入理解Java虚拟机》笔记4——类文件结构">
-<meta property="og:url" content="https://meandni.com/2019/01/14/jvm_note4/index.html">
-<meta property="og:site_name" content="Joker&#39;s Blog">
-<meta property="og:description" content="代码编译的结果从本地机器码转变为字节码，是存储格式发展的一小步，却是编程语言发展的一大步。 由于最近十年内虚拟机以及大量建立在虚拟机之上的程序语言如雨后春笋般出现并蓬勃发展，将我们编写的程序编译成二进制本地机器码（Native Code）已不再是唯一的选择，越来越多的程序语言选择了操作系统和机器指令集无关的、平台中立的格式作为程序编译后的存储格式。 无关性的基石 Java刚诞生的宣传口号：一次编写">
-<meta property="og:locale" content="Chinese">
-<meta property="og:image" content="http://pic.yupoo.com/meandni/b630efe6/16c836f2.png">
-<meta property="og:image" content="http://pic.yupoo.com/meandni/0afa8e94/1aaadf08.png">
-<meta property="og:image" content="http://pic.yupoo.com/meandni/65326165/8b3cad31.png">
-<meta property="og:image" content="http://pic.yupoo.com/meandni/4b862df8/2676ca8a.png">
-<meta property="og:image" content="http://pic.yupoo.com/meandni/05bb5ca8/4bcf1947.png">
-<meta property="og:image" content="http://pic.yupoo.com/meandni/81488f7b/0de93189.png">
-<meta property="og:image" content="http://pic.yupoo.com/meandni/ecd4f473/607e8836.png">
-<meta property="og:image" content="http://pic.yupoo.com/meandni/d7e0e573/94dbf52c.png">
-<meta property="og:image" content="http://pic.yupoo.com/meandni/57c3e621/bd0f2fcb.png">
-<meta property="og:image" content="http://pic.yupoo.com/meandni/8f0a69c4/90a97e5a.png">
-<meta property="og:image" content="http://pic.yupoo.com/meandni/4faf2ec0/e70f3e68.png">
-<meta property="og:image" content="http://pic.yupoo.com/meandni/c7da9cd4/f4e72867.png">
-<meta property="og:image" content="http://pic.yupoo.com/meandni/c92bfd15/ce2d3cf7.png">
-<meta property="og:image" content="http://pic.yupoo.com/meandni/63fd6dbe/c879e713.png">
-<meta property="og:image" content="http://pic.yupoo.com/meandni/547e1b38/aa184bbf.png">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/3709321-ff864df8cdb95d59.png?imageMogr2/auto-orient/">
-<meta property="og:image" content="https:////upload-images.jianshu.io/upload_images/3709321-0433c421ea6631bd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/888/format/webp">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/3709321-0433c421ea6631bd.png?imageMogr2/auto-orient/">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/3709321-084cd6c878ad90e3.png?imageMogr2/auto-orient/">
-<meta property="og:image" content="https:////upload-images.jianshu.io/upload_images/3709321-e4ed4191050b93ae.png">
-<meta property="og:image" content="https:////upload-images.jianshu.io/upload_images/3709321-7eee2ac1a903c987.png">
-<meta property="og:image" content="https:////upload-images.jianshu.io/upload_images/3709321-ffb7cc6ecb3d041b.png">
-<meta property="og:image" content="https:////upload-images.jianshu.io/upload_images/3709321-1412b798df574705.png">
-<meta property="og:updated_time" content="2019-04-12T06:05:32.181Z">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="《深入理解Java虚拟机》笔记4——类文件结构">
-<meta name="twitter:description" content="代码编译的结果从本地机器码转变为字节码，是存储格式发展的一小步，却是编程语言发展的一大步。 由于最近十年内虚拟机以及大量建立在虚拟机之上的程序语言如雨后春笋般出现并蓬勃发展，将我们编写的程序编译成二进制本地机器码（Native Code）已不再是唯一的选择，越来越多的程序语言选择了操作系统和机器指令集无关的、平台中立的格式作为程序编译后的存储格式。 无关性的基石 Java刚诞生的宣传口号：一次编写">
-<meta name="twitter:image" content="http://pic.yupoo.com/meandni/b630efe6/16c836f2.png">
-    
-        <link rel="alternate" type="application/atom+xml" title="Joker&#39;s Blog" href="/atom.xml">
-    
-    <link rel="shortcut icon" href="/img/favicon.ico">
-    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
-    <script>window.lazyScripts=[]</script>
-
-    <!-- custom head -->
-    
-
-</head>
-
-<body>
-    <div id="loading" class="active"></div>
-
-    <aside id="menu" class="hide">
-  <div class="inner flex-row-vertical">
-    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
-        <i class="icon icon-lg icon-close"></i>
-    </a>
-    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
-      <div class="brand">
-        <a href="/" class="avatar waves-effect waves-circle waves-light">
-          <img src="/img/avatar.jpg">
-        </a>
-        <hgroup class="introduce">
-          <h5 class="nickname">Joker</h5>
-          <a href="mailto:yangjiakay@gmail.com" title="yangjiakay@gmail.com" class="mail">yangjiakay@gmail.com</a>
-        </hgroup>
-      </div>
-    </div>
-    <div class="scroll-wrap flex-col">
-      <ul class="nav">
-        
-            <li class="waves-block waves-effect">
-              <a href="/">
-                <i class="icon icon-lg icon-home"></i>
-                主页
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="/archives">
-                <i class="icon icon-lg icon-archives"></i>
-                Archives
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="/tags">
-                <i class="icon icon-lg icon-tags"></i>
-                Tags
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="/categories">
-                <i class="icon icon-lg icon-th-list"></i>
-                Categories
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="https://juejin.im/user/5bc6cb81f265da0aac700ced" target="_blank">
-                <i class="icon icon-lg icon-codepen"></i>
-                掘金
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="https://github.com/MeandNi" target="_blank">
-                <i class="icon icon-lg icon-github"></i>
-                Github
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="/about">
-                <i class="icon icon-lg icon-link"></i>
-                AboutMe
-              </a>
-            </li>
-        
-      </ul>
-    </div>
-  </div>
-</aside>
-
-    <main id="main">
-        <header class="top-header" id="header">
-    <div class="flex-row">
-        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
-          <i class="icon icon-lg icon-navicon"></i>
-        </a>
-        <div class="flex-col header-title ellipsis">《深入理解Java虚拟机》笔记4——类文件结构</div>
-        
-        <div class="search-wrap" id="search-wrap">
-            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
-                <i class="icon icon-lg icon-chevron-left"></i>
-            </a>
-            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
-            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
-                <i class="icon icon-lg icon-search"></i>
-            </a>
-        </div>
-        
-        
-        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
-            <i class="icon icon-lg icon-share-alt"></i>
-        </a>
-        
-    </div>
-</header>
-<header class="content-header post-header">
-
-    <div class="container fade-scale">
-        <h1 class="title">《深入理解Java虚拟机》笔记4——类文件结构</h1>
-        <h5 class="subtitle">
-            
-                <time datetime="2019-01-14T07:24:44.000Z" itemprop="datePublished" class="page-time">
-  2019-01-14
-</time>
-
-
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/整理/">整理</a></li></ul>
-
-            
-        </h5>
-    </div>
-
-    
-
-
-</header>
-
-
-<div class="container body-wrap">
-    
-    <aside class="post-widget">
-        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
-            <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#无关性的基石"><span class="post-toc-number">1.</span> <span class="post-toc-text">无关性的基石</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Class类文件的结构"><span class="post-toc-number">2.</span> <span class="post-toc-text">Class类文件的结构</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#魔数和版本（magic、version）"><span class="post-toc-number">2.0.0.1.</span> <span class="post-toc-text">魔数和版本（magic、version）</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#常量池（constant-pool）"><span class="post-toc-number">2.0.0.2.</span> <span class="post-toc-text">常量池（constant_pool）</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#访问标志"><span class="post-toc-number">2.0.0.3.</span> <span class="post-toc-text">访问标志</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#类索引、父类索引与接口索引集合"><span class="post-toc-number">2.0.0.4.</span> <span class="post-toc-text">类索引、父类索引与接口索引集合</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#字段表集合"><span class="post-toc-number">2.0.0.5.</span> <span class="post-toc-text">字段表集合</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#方法表集合"><span class="post-toc-number">2.0.0.6.</span> <span class="post-toc-text">方法表集合</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#属性表集合"><span class="post-toc-number">2.0.0.7.</span> <span class="post-toc-text">属性表集合</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#Code属性"><span class="post-toc-number">2.0.0.7.1.</span> <span class="post-toc-text">Code属性</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#Exceptions属性"><span class="post-toc-number">2.0.0.7.2.</span> <span class="post-toc-text">Exceptions属性</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#LineNumberTable属性"><span class="post-toc-number">2.0.0.7.3.</span> <span class="post-toc-text">LineNumberTable属性</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#LocalVariableTable属性"><span class="post-toc-number">2.0.0.7.4.</span> <span class="post-toc-text">LocalVariableTable属性</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#SourceFile属性"><span class="post-toc-number">2.0.0.7.5.</span> <span class="post-toc-text">SourceFile属性</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#ConstantValue属性"><span class="post-toc-number">2.0.0.7.6.</span> <span class="post-toc-text">ConstantValue属性</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#InnerClass属性"><span class="post-toc-number">2.0.0.7.7.</span> <span class="post-toc-text">InnerClass属性</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#Deprecated及Synthetic属性"><span class="post-toc-number">2.0.0.7.8.</span> <span class="post-toc-text">Deprecated及Synthetic属性</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#StackMapTable属性"><span class="post-toc-number">2.0.0.7.9.</span> <span class="post-toc-text">StackMapTable属性</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#Signature属性"><span class="post-toc-number">2.0.0.7.10.</span> <span class="post-toc-text">Signature属性</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#BootstrapMethods属性"><span class="post-toc-number">2.0.0.7.11.</span> <span class="post-toc-text">BootstrapMethods属性</span></a></li></ol></li></ol></li></ol><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#字节码指令简介"><span class="post-toc-number">3.</span> <span class="post-toc-text">字节码指令简介</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#公有设计和私有实现"><span class="post-toc-number">4.</span> <span class="post-toc-text">公有设计和私有实现</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Class文件结构的发展"><span class="post-toc-number">5.</span> <span class="post-toc-text">Class文件结构的发展</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#本章小结"><span class="post-toc-number">6.</span> <span class="post-toc-text">本章小结</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#参考资料"><span class="post-toc-number">7.</span> <span class="post-toc-text">参考资料</span></a></li>
-        </nav>
-    </aside>
-
-
-<article id="post-2019-01-14-jvm-note4" class="post-article article-type-post fade" itemprop="blogPost">
-
-    <div class="post-card">
-        <h1 class="post-card-title">《深入理解Java虚拟机》笔记4——类文件结构</h1>
-        <div class="post-meta">
-            <time class="post-time" title="2019-01-14 15:24:44" datetime="2019-01-14T07:24:44.000Z" itemprop="datePublished">2019-01-14</time>
-
-            
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/整理/">整理</a></li></ul>
-
-
-
-            
-
-        </div>
-        <div class="post-content" id="post-content" itemprop="postContent">
-            <p>代码编译的结果从本地机器码转变为字节码，是存储格式发展的一小步，却是编程语言发展的一大步。</p>
+<!DOCTYPE html><html lang="zh-Hans"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta name="description" content="《深入理解Java虚拟机》笔记4——类文件结构"><meta name="keywords" content="jvm"><meta name="author" content="Joker"><meta name="copyright" content="Joker"><title>《深入理解Java虚拟机》笔记4——类文件结构 | Joker's Blog</title><link rel="shortcut icon" href="/img/favicon.ico"><link rel="stylesheet" href="/css/index.css?version=1.7.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@latest/css/font-awesome.min.css?version=1.7.0"><meta name="format-detection" content="telephone=no"><meta http-equiv="x-dns-prefetch-control" content="on"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.css"><script src="https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.js"></script><script src="https://cdn.jsdelivr.net/npm/blueimp-md5@2.10.0/js/md5.min.js"></script><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  }
+} </script><meta name="generator" content="Hexo 4.2.0"></head><body><i class="fa fa-arrow-right" id="toggle-sidebar" aria-hidden="true"></i><div id="sidebar" data-display="true"><div class="toggle-sidebar-info text-center"><span data-toggle="切换文章详情">切换站点概览</span><hr></div><div class="sidebar-toc"><div class="sidebar-toc__title">目录</div><div class="sidebar-toc__progress"><span class="progress-notice">你已经读了</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar"></div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#无关性的基石"><span class="toc-number">1.</span> <span class="toc-text">无关性的基石</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Class类文件的结构"><span class="toc-number">2.</span> <span class="toc-text">Class类文件的结构</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#魔数和版本（magic、version）"><span class="toc-number">2.0.0.1.</span> <span class="toc-text">魔数和版本（magic、version）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#常量池（constant-pool）"><span class="toc-number">2.0.0.2.</span> <span class="toc-text">常量池（constant_pool）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#访问标志"><span class="toc-number">2.0.0.3.</span> <span class="toc-text">访问标志</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#类索引、父类索引与接口索引集合"><span class="toc-number">2.0.0.4.</span> <span class="toc-text">类索引、父类索引与接口索引集合</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#字段表集合"><span class="toc-number">2.0.0.5.</span> <span class="toc-text">字段表集合</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#方法表集合"><span class="toc-number">2.0.0.6.</span> <span class="toc-text">方法表集合</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#属性表集合"><span class="toc-number">2.0.0.7.</span> <span class="toc-text">属性表集合</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#Code属性"><span class="toc-number">2.0.0.7.1.</span> <span class="toc-text">Code属性</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Exceptions属性"><span class="toc-number">2.0.0.7.2.</span> <span class="toc-text">Exceptions属性</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#LineNumberTable属性"><span class="toc-number">2.0.0.7.3.</span> <span class="toc-text">LineNumberTable属性</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#LocalVariableTable属性"><span class="toc-number">2.0.0.7.4.</span> <span class="toc-text">LocalVariableTable属性</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#SourceFile属性"><span class="toc-number">2.0.0.7.5.</span> <span class="toc-text">SourceFile属性</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#ConstantValue属性"><span class="toc-number">2.0.0.7.6.</span> <span class="toc-text">ConstantValue属性</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#InnerClass属性"><span class="toc-number">2.0.0.7.7.</span> <span class="toc-text">InnerClass属性</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Deprecated及Synthetic属性"><span class="toc-number">2.0.0.7.8.</span> <span class="toc-text">Deprecated及Synthetic属性</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#StackMapTable属性"><span class="toc-number">2.0.0.7.9.</span> <span class="toc-text">StackMapTable属性</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Signature属性"><span class="toc-number">2.0.0.7.10.</span> <span class="toc-text">Signature属性</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#BootstrapMethods属性"><span class="toc-number">2.0.0.7.11.</span> <span class="toc-text">BootstrapMethods属性</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#字节码指令简介"><span class="toc-number">3.</span> <span class="toc-text">字节码指令简介</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#公有设计和私有实现"><span class="toc-number">4.</span> <span class="toc-text">公有设计和私有实现</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Class文件结构的发展"><span class="toc-number">5.</span> <span class="toc-text">Class文件结构的发展</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#本章小结"><span class="toc-number">6.</span> <span class="toc-text">本章小结</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#参考资料"><span class="toc-number">7.</span> <span class="toc-text">参考资料</span></a></li></ol></div></div><div class="author-info hide"><div class="author-info__avatar text-center"><img src="/img/avatar.jpg"></div><div class="author-info__name text-center">Joker</div><div class="author-info__description text-center">分享生活、技术、学习心得</div><hr><div class="author-info-articles"><a class="author-info-articles__archives article-meta" href="/archives"><span class="pull-left">文章</span><span class="pull-right">37</span></a><a class="author-info-articles__tags article-meta" href="/tags"><span class="pull-left">标签</span><span class="pull-right">26</span></a><a class="author-info-articles__categories article-meta" href="/categories"><span class="pull-left">分类</span><span class="pull-right">11</span></a></div></div></div><div id="content-outer"><div class="no-bg" id="top-container"><div id="page-header"><span class="pull-left"> <a id="site-name" href="/">Joker's Blog</a></span><i class="fa fa-bars toggle-menu pull-right" aria-hidden="true"></i><span class="pull-right menus">   <a class="site-page" href="/">首页</a><a class="site-page" href="/archives">目录</a><a class="site-page" href="/tags">标签</a><a class="site-page" href="/categories">分类</a><a class="site-page" href="/about">关于我</a></span><span class="pull-right"></span></div><div id="post-info"><div id="post-title">《深入理解Java虚拟机》笔记4——类文件结构</div><div id="post-meta"><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2019-01-14</time><span class="post-meta__separator">|</span><i class="fa fa-inbox post-meta__icon" aria-hidden="true"></i><a class="post-meta__categories" href="/categories/%E6%95%B4%E7%90%86/">整理</a><i class="fa fa-angle-right" aria-hidden="true"></i><i class="fa fa-inbox post-meta__icon" aria-hidden="true"></i><a class="post-meta__categories" href="/categories/%E6%95%B4%E7%90%86/%E7%AC%94%E8%AE%B0/">笔记</a></div></div></div><div class="layout" id="content-inner"><article id="post"><div class="article-container" id="post-content"><p>代码编译的结果从本地机器码转变为字节码，是存储格式发展的一小步，却是编程语言发展的一大步。</p>
 <p>由于最近十年内虚拟机以及大量建立在虚拟机之上的程序语言如雨后春笋般出现并蓬勃发展，将我们编写的程序编译成二进制本地机器码（Native Code）已不再是唯一的选择，越来越多的程序语言选择了操作系统和机器指令集无关的、平台中立的格式作为程序编译后的存储格式。</p>
+<a id="more"></a>
 <h1 id="无关性的基石"><a href="#无关性的基石" class="headerlink" title="无关性的基石"></a>无关性的基石</h1><ul>
 <li>Java刚诞生的宣传口号：一次编写，到处运行（Write Once, Run Anywhere）。其最终实现在操作系统的应用层：Sun公司以及其他虚拟机提供商发布了许多可以运行在各种不同平台的虚拟机，这些虚拟机都可以载入和执行同一种平台无关的字节码。</li>
 <li>字节码（ByteCode）是构成平台无关的基石；</li>
 <li>另外虚拟机的语言无关性也越来越被开发者所重视，JVM设计者在最初就考虑过实现让其他语言运行在Java虚拟机之上的可能性，如今已发展出一大批在JVM上运行的语言，比如Clojure、Groovy、JRuby、Jython、Scala；</li>
 <li>实现语言无关性的基础仍是虚拟机和字节码存储格式，Java虚拟机不和包括Java在内的任何语言绑定，它只与Class文件这种特定的二进制文件格式所关联，这使得任何语言的都可以使用特定的编译器将其源码编译成Class文件，从而在虚拟机上运行。</li>
 </ul>
-<p><div align="center"> <img src="http://pic.yupoo.com/meandni/b630efe6/16c836f2.png" width=""> </div><br></p>
+<p><div align="center"> <img src="http://pic.yupoo.com/meandni/b630efe6/16c836f2.png" width=""/> </div><br></p>
 <p>Java虚拟机提供的语言无关性</p>
 <h1 id="Class类文件的结构"><a href="#Class类文件的结构" class="headerlink" title="Class类文件的结构"></a>Class类文件的结构</h1><ul>
 <li>Class文件是一组以8个字节为基础单位的二进制流（可能是磁盘文件，也可能是类加载器直接生成的），各个数据项目严格按照顺序紧凑地排列，中间没有任何分隔符；</li>
@@ -236,12 +25,12 @@
 <li>表是由多个无符号数获取其他表作为数据项构成的复合数据类型，习惯以“_info”结尾；</li>
 <li>无论是无符号数还是表，当需要描述同一个类型但数量不定的多个数据时，经常会使用一个前置的容量计数器加若干个连续的数据项的形式，这时称这一系列连续的某一类型的数据未某一类型的集合。</li>
 </ul>
-<p><div align="center"> <img src="http://pic.yupoo.com/meandni/0afa8e94/1aaadf08.png" width=""> </div><br></p>
+<p><div align="center"> <img src="http://pic.yupoo.com/meandni/0afa8e94/1aaadf08.png" width=""/> </div><br></p>
 <p>下面我以自己本机写的一个简单的Java文件来学习其中各个部分的含义：</p>
-<p><div align="center"> <img src="http://pic.yupoo.com/meandni/65326165/8b3cad31.png" width=""> </div><br>使用javac编译成TestClass.class文件，使用16进制打开：</p>
-<p><div align="center"> <img src="http://pic.yupoo.com/meandni/4b862df8/2676ca8a.png" width=""> </div><br></p>
+<p><div align="center"> <img src="http://pic.yupoo.com/meandni/65326165/8b3cad31.png" width=""/> </div><br>使用javac编译成TestClass.class文件，使用16进制打开：</p>
+<p><div align="center"> <img src="http://pic.yupoo.com/meandni/4b862df8/2676ca8a.png" width=""/> </div><br></p>
 <p>使用javap命令输出Class文件信息：</p>
-<p><div align="center"> <img src="http://pic.yupoo.com/meandni/05bb5ca8/4bcf1947.png" width=""> </div><br></p>
+<p><div align="center"> <img src="http://pic.yupoo.com/meandni/05bb5ca8/4bcf1947.png" width=""/> </div><br></p>
 <h4 id="魔数和版本（magic、version）"><a href="#魔数和版本（magic、version）" class="headerlink" title="魔数和版本（magic、version）"></a>魔数和版本（magic、version）</h4><ul>
 <li>Class文件的头4个字节，唯一作用是确定文件是否为一个可被虚拟机接受的Class文件，固定为“0xCAFEBABE”。</li>
 <li>第5和第6个字节是次版本号，第7和第8个字节是主版本号（0x0034为52，对应JDK版本1.8）；能向下兼容之前的版本，无法运行后续的版本；</li>
@@ -253,12 +42,12 @@
 <li>Java代码在javac编译时不会有“连接”这一步骤，而是在虚拟机加载Class文件的时候进行动态连接；所以在Class文件不会保存各个方法、字段和最终内存布局信息；当虚拟机运行时需要从常量池获取对应的符号引用，再在类创建时或运行时解析、翻译到具体的内存地址中；</li>
 <li>JDK 1.7中常量池共有14种不同的表结构数据，这些表结构开始的第一位是一个u1类型的标志位，代表当前常量的类型，具体如下图所示：</li>
 </ul>
-<p><div align="center"> <img src="http://pic.yupoo.com/meandni/81488f7b/0de93189.png" width=""> </div><br></p>
+<p><div align="center"> <img src="http://pic.yupoo.com/meandni/81488f7b/0de93189.png" width=""/> </div><br></p>
 <ul>
 <li>之所以说常量池是最繁琐的数据就是因为这14种常量类型都有自己的结结构。可以结合下图中各个表结构的说明和之前使用javap解析的文件内容一起看。</li>
 </ul>
-<p><div align="center"> <img src="http://pic.yupoo.com/meandni/ecd4f473/607e8836.png" width=""> </div><br></p>
-<p><div align="center"> <img src="http://pic.yupoo.com/meandni/d7e0e573/94dbf52c.png" width=""> </div><br></p>
+<p><div align="center"> <img src="http://pic.yupoo.com/meandni/ecd4f473/607e8836.png" width=""/> </div><br></p>
+<p><div align="center"> <img src="http://pic.yupoo.com/meandni/d7e0e573/94dbf52c.png" width=""/> </div><br></p>
 <ul>
 <li>第1项：0x0A（15标志为方法句柄），0x0004（指向第4项的类描述符），0x000F（指向第15项的名称及类型描述符）；</li>
 <li>第2项：0x09（9标志为字段符号引用），0x0003（指向第3项类描述符），0x0010（指向第16项的名称及类型描述符）；</li>
@@ -266,7 +55,7 @@
 <li>第4项：0x07（7标志为类符号引用），0x0012（指向第18项全限定名常量项）；</li>
 <li>第5项：0x01（1标志为UTF-字符串常量），0x0001（字符串占用1个字节），6D（字符“m”）；</li>
 <li>第6项：0x01（1标志为UTF-字符串常量），0x0001（字符串占用1个字节），49（字符“I”）；</li>
-<li>第7项：0x01（1标志为UTF-字符串常量），0x0006（字符串占用6个字节），3C 69 6E 69 74 3E（字符“<init>”）；</init></li>
+<li>第7项：0x01（1标志为UTF-字符串常量），0x0006（字符串占用6个字节），3C 69 6E 69 74 3E（字符“<init>”）；</li>
 <li>第8项：0x01（1标志为UTF-字符串常量），0x0003（字符串占用3个字节），28 29 56（字符“()V”）；</li>
 <li>第9项：0x01（1标志为UTF-字符串常量），0x0004（字符串占用4个字节），43 6F 64 65（字符“Code”）；</li>
 <li>第10项：0x01（1标志为UTF-字符串常量），0x000F（字符串占用15个字节），4C 69 6E 65 4E 75 6D 62 65 72 54 61 62 6C 65（字符“LineNumberTable”）；</li>
@@ -289,7 +78,7 @@
 <li>接口索引计算器：u2类型的数据，用于表示索引集合的容量。本例子中为0x0000，说明没有实现接口；</li>
 <li>接口索引集合：一组u2类型的数据的集合，用于确定实现的接口（对于接口来说就是extend的接口）。本例子不存在。</li>
 </ul>
-<h4 id="字段表集合"><a href="#字段表集合" class="headerlink" title="字段表集合"></a>字段表集合</h4><p><div align="center"> <img src="http://pic.yupoo.com/meandni/57c3e621/bd0f2fcb.png" width=""> </div><br></p>
+<h4 id="字段表集合"><a href="#字段表集合" class="headerlink" title="字段表集合"></a>字段表集合</h4><p><div align="center"> <img src="http://pic.yupoo.com/meandni/57c3e621/bd0f2fcb.png" width=""/> </div><br></p>
 <ul>
 <li>用于描述接口或者类中声明的变量，包括类级变量和实例级变量，但不包括方法内部声明的局部变量；它不会列出从父类和超类继承而来的字段；</li>
 <li>0x0001表示这个类只有一个字段表数据；</li>
@@ -301,9 +90,9 @@
 <h4 id="方法表集合"><a href="#方法表集合" class="headerlink" title="方法表集合"></a>方法表集合</h4><ul>
 <li>和字段表集合的方式几乎一样；</li>
 <li>方法里面的代码经过编译器编译成字节码指令后，存放在方法属性表集合中一个名为Code的属性里面；</li>
-<li>0x0002表示这个类有两个方法表数据，分别是编译器添加的实例构造器<init>和源码中的方式inc()；</init></li>
-<li>第一个方法的访问标志是0x0001（public方法），名称索引值为0x0007（常量池第7项，“<init>”），描述符索引值为0x0008（常量池第8项，“()V”），属性表计算器为0x0001（有一项属性），属性名称索引为0x0009（常量池第9项，“Code”）；</init></li>
-<li>根据“6.3.7.1 Code属性”说明，属性值的长度为23（0x0000001D表示29，但需要减去属性名称索引和属性长度固定的6个字节长度），操作数栈深度的最大值为1（0x0001，虚拟机运行时根据这个值来分配栈帧中操作栈深度），局部变量表所需要的存储空间为1个Slot（0x0001，Slot是内存分配的最小单位），字节码长度为5（0x00000005），分别为2A（aload_0，将第0个Slot中为reference类型的本地变量推送到操作数栈顶）、B7（invokespecial，以栈顶的reference类型的数据所指向的对象作为方法接收者，调用此对象的实例构造器方法、private方法或者它父类的方法，后面接着一个u2的参数指向常量池的方法引用）、0x0001（表示常量池的第1项，即Object类的<init>方法）、B1（对应的指令为return，返回值为void）；显式异常表为空（0x0000，计数器为0）；该Code属性还内嵌1个属性（0x0001），属性的名称索引为0x000A（即“LineNumberTable”属性，用于记录对应的代码行数），该内嵌属性的长度为6（0x00000006），对应的行数信息为源码的第3行（0x000100000003）；</init></li>
+<li>0x0002表示这个类有两个方法表数据，分别是编译器添加的实例构造器<init>和源码中的方式inc()；</li>
+<li>第一个方法的访问标志是0x0001（public方法），名称索引值为0x0007（常量池第7项，“<init>”），描述符索引值为0x0008（常量池第8项，“()V”），属性表计算器为0x0001（有一项属性），属性名称索引为0x0009（常量池第9项，“Code”）；</li>
+<li>根据“6.3.7.1 Code属性”说明，属性值的长度为23（0x0000001D表示29，但需要减去属性名称索引和属性长度固定的6个字节长度），操作数栈深度的最大值为1（0x0001，虚拟机运行时根据这个值来分配栈帧中操作栈深度），局部变量表所需要的存储空间为1个Slot（0x0001，Slot是内存分配的最小单位），字节码长度为5（0x00000005），分别为2A（aload_0，将第0个Slot中为reference类型的本地变量推送到操作数栈顶）、B7（invokespecial，以栈顶的reference类型的数据所指向的对象作为方法接收者，调用此对象的实例构造器方法、private方法或者它父类的方法，后面接着一个u2的参数指向常量池的方法引用）、0x0001（表示常量池的第1项，即Object类的<init>方法）、B1（对应的指令为return，返回值为void）；显式异常表为空（0x0000，计数器为0）；该Code属性还内嵌1个属性（0x0001），属性的名称索引为0x000A（即“LineNumberTable”属性，用于记录对应的代码行数），该内嵌属性的长度为6（0x00000006），对应的行数信息为源码的第3行（0x000100000003）；</li>
 <li>第二个方法的访问标志是0x0001（public方法），名称索引值为0x000B（常量池第11项，“inc”），描述符索引值为0x000C（常量池第12项，“()I”），属性表计算器为0x0001（有一项属性），属性名称索引为0x0009（常量池第9项，“Code”）；</li>
 <li>根据“6.3.7.1 Code属性”说明，属性值的长度为25（0x0000001F表示31，但需要减去属性名称索引和属性长度固定的6个字节长度），操作数栈深度的最大值为2（0x0002），局部变量表所需要的存储空间为1个Slot（0x0001），字节码长度为7（0x00000007），分别为2A（aload_0）、B4（getfield，后面接着一个u2的参数指向常量池的属性引用）、0x0002（表示常量池的第2项，即TestClass类的m属性）、04（对应的指令为iconst_1）、60（对应的指令为iadd，整形求和）、AC（对应的指令为ireturn，返回值为整形）；显式异常表为空（0x0000，计数器为0）；该Code属性还内嵌1个属性（0x0001），属性的名称索引为0x000A（即“LineNumberTable”属性，用于记录对应的代码行数），该内嵌属性的长度为6（0x00000006），对应的行数信息为源码的第8行（0x000100000008）；</li>
 </ul>
@@ -312,71 +101,41 @@
 <li>属性表集合的限制较为宽松，不再要求严格的顺序，只要属性名不重复即可；</li>
 <li>以下是Java虚拟机规范里预定义的虚拟机实现应当能识别的属性：</li>
 </ul>
-<p><div align="center"> <img src="http://pic.yupoo.com/meandni/8f0a69c4/90a97e5a.png" width=""> </div><br></p>
-<p><div align="center"> <img src="http://pic.yupoo.com/meandni/4faf2ec0/e70f3e68.png" width=""> </div><br></p>
+<p><div align="center"> <img src="http://pic.yupoo.com/meandni/8f0a69c4/90a97e5a.png" width=""/> </div><br></p>
+<p><div align="center"> <img src="http://pic.yupoo.com/meandni/4faf2ec0/e70f3e68.png" width=""/> </div><br></p>
 <p>虚拟机规范预定义的属性2</p>
 <ul>
 <li>接着我们的例子的Class文件还有最后一段：0x0001表示该Class有一个属性，0x000D表示属性名索引为第13项（对应“SourceFile”），0x00000002表示该属性长度为2，0x000E表示该类的SourceFile名称为第14项（对应“TestClass.java”）。</li>
 </ul>
 <h5 id="Code属性"><a href="#Code属性" class="headerlink" title="Code属性"></a>Code属性</h5><p>Java程序方法体中的代码经过javac编译后，字节码指令存放在Code属性，其属性表结构如下：</p>
-<p><div align="center"> <img src="http://pic.yupoo.com/meandni/c7da9cd4/f4e72867.png" width=""> </div><br></p>
+<p><div align="center"> <img src="http://pic.yupoo.com/meandni/c7da9cd4/f4e72867.png" width=""/> </div><br></p>
 <h5 id="Exceptions属性"><a href="#Exceptions属性" class="headerlink" title="Exceptions属性"></a>Exceptions属性</h5><p>方法描述时throws关键字后面列举的异常，和Code属性里的异常表不同。其属性表结构如下：</p>
-<p><div align="center"> <img src="http://pic.yupoo.com/meandni/c92bfd15/ce2d3cf7.png" width=""> </div><br></p>
+<p><div align="center"> <img src="http://pic.yupoo.com/meandni/c92bfd15/ce2d3cf7.png" width=""/> </div><br></p>
 <h5 id="LineNumberTable属性"><a href="#LineNumberTable属性" class="headerlink" title="LineNumberTable属性"></a>LineNumberTable属性</h5><p>用于描述Java源码行号与字节码行号之间的对应关系，它不是必须的，可以通过javac -g:none取消该信息。没有该信息的影响是运行时抛异常不会显示出错的行号，在代码调试时无法按照源码行来设置断点。</p>
-<p><div align="center"> <img src="http://pic.yupoo.com/meandni/63fd6dbe/c879e713.png" width=""> </div><br></p>
+<p><div align="center"> <img src="http://pic.yupoo.com/meandni/63fd6dbe/c879e713.png" width=""/> </div><br></p>
 <h5 id="LocalVariableTable属性"><a href="#LocalVariableTable属性" class="headerlink" title="LocalVariableTable属性"></a>LocalVariableTable属性</h5><p>用于描述栈帧中局部变量与Java源码中定义的变量之间的关系，它不是运行时必须的，可以通过javac -g:none取消该信息。如果没有这个属性，所有的参数名称都会丢失，取之以arg0、arg1这样的占位符来替代。</p>
-<p><div align="center"> <img src="http://pic.yupoo.com/meandni/547e1b38/aa184bbf.png" width=""> </div><br></p>
+<p><div align="center"> <img src="http://pic.yupoo.com/meandni/547e1b38/aa184bbf.png" width=""/> </div><br></p>
 <p>其中local_variable_info项代表了一个栈帧与源码中局部变量的关联，如下所示：</p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="https://upload-images.jianshu.io/upload_images/3709321-ff864df8cdb95d59.png?imageMogr2/auto-orient/" alt="img" title="">
-                </div>
-                <div class="image-caption">img</div>
-            </figure>
+<p><img src="https://upload-images.jianshu.io/upload_images/3709321-ff864df8cdb95d59.png?imageMogr2/auto-orient/" alt="img"></p>
 <h5 id="SourceFile属性"><a href="#SourceFile属性" class="headerlink" title="SourceFile属性"></a>SourceFile属性</h5><p>用于记录生成这个Class的源码文件名称，这个属性也是可选的。</p>
 <p><img src="https:////upload-images.jianshu.io/upload_images/3709321-0433c421ea6631bd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/888/format/webp" alt="img"></p>
-<h5 id="ConstantValue属性"><a href="#ConstantValue属性" class="headerlink" title="ConstantValue属性"></a>ConstantValue属性</h5><p>作用是通知虚拟机自动为静态变量赋值，只有被static关键字修饰的变量才可以用这个属性。对于非static类型的变量的赋值是在实例构造器<init>方法中进行的；而对于类变量有两种方式：在类构造器<clinit>方法中或者使用ConstantValue属性。目前Sun javac编译器的选择是：同时使用final和static修饰的变量且为基本数据类型或String类型使用ConstantValue属性初始化，否则使用<clinit>初始化。</clinit></clinit></init></p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="https://upload-images.jianshu.io/upload_images/3709321-0433c421ea6631bd.png?imageMogr2/auto-orient/" alt="ConstantValue属性" title="">
-                </div>
-                <div class="image-caption">ConstantValue属性</div>
-            </figure>
+<h5 id="ConstantValue属性"><a href="#ConstantValue属性" class="headerlink" title="ConstantValue属性"></a>ConstantValue属性</h5><p>作用是通知虚拟机自动为静态变量赋值，只有被static关键字修饰的变量才可以用这个属性。对于非static类型的变量的赋值是在实例构造器<init>方法中进行的；而对于类变量有两种方式：在类构造器<clinit>方法中或者使用ConstantValue属性。目前Sun javac编译器的选择是：同时使用final和static修饰的变量且为基本数据类型或String类型使用ConstantValue属性初始化，否则使用<clinit>初始化。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/3709321-0433c421ea6631bd.png?imageMogr2/auto-orient/" alt="ConstantValue属性"></p>
 <h5 id="InnerClass属性"><a href="#InnerClass属性" class="headerlink" title="InnerClass属性"></a>InnerClass属性</h5><p>用于记录内部类与宿主类之间的关联。</p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="https://upload-images.jianshu.io/upload_images/3709321-084cd6c878ad90e3.png?imageMogr2/auto-orient/" alt="InnerClass属性" title="">
-                </div>
-                <div class="image-caption">InnerClass属性</div>
-            </figure>
+<p><img src="https://upload-images.jianshu.io/upload_images/3709321-084cd6c878ad90e3.png?imageMogr2/auto-orient/" alt="InnerClass属性"></p>
 <p>其中number_of_class代表需要记录多少个内部类信息，每个内部类的信息都由一个inner_class_info表进行描述。</p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="https:////upload-images.jianshu.io/upload_images/3709321-e4ed4191050b93ae.png" alt="inner_class_info表的结构" title="">
-                </div>
-                <div class="image-caption">inner_class_info表的结构</div>
-            </figure>
-<h5 id="Deprecated及Synthetic属性"><a href="#Deprecated及Synthetic属性" class="headerlink" title="Deprecated及Synthetic属性"></a>Deprecated及Synthetic属性</h5><p>Deprecated（不推荐使用）和Synthetic（不是由Java源码直接产生编译器自行添加的，有两个例外是实例构造器<init>和类构造器<clinit>）这两个属性都属于布尔属性，只存在有和没有的区别，没有属性值的概念。在属性结构中attribute_length的数据值必须为0x00000000。</clinit></init></p>
+<p><img src="https:////upload-images.jianshu.io/upload_images/3709321-e4ed4191050b93ae.png" alt="inner_class_info表的结构"></p>
+<h5 id="Deprecated及Synthetic属性"><a href="#Deprecated及Synthetic属性" class="headerlink" title="Deprecated及Synthetic属性"></a>Deprecated及Synthetic属性</h5><p>Deprecated（不推荐使用）和Synthetic（不是由Java源码直接产生编译器自行添加的，有两个例外是实例构造器<init>和类构造器<clinit>）这两个属性都属于布尔属性，只存在有和没有的区别，没有属性值的概念。在属性结构中attribute_length的数据值必须为0x00000000。</p>
 <p><img src="https:////upload-images.jianshu.io/upload_images/3709321-7eee2ac1a903c987.png" alt="Deprecated及Synthetic属性"></p>
 <h5 id="StackMapTable属性"><a href="#StackMapTable属性" class="headerlink" title="StackMapTable属性"></a>StackMapTable属性</h5><p>这是一个复杂的变长属性，位于Code属性的属性表中。这个属性会在虚拟机类加载的字节码验证阶段被新类型检查验证器使用，目的在于代替以前比较消耗性能的基于数据流分析的类型推导验证器。</p>
 <p><img src="https:////upload-images.jianshu.io/upload_images/3709321-ffb7cc6ecb3d041b.png" alt="StackMapTable属性"></p>
 <h5 id="Signature属性"><a href="#Signature属性" class="headerlink" title="Signature属性"></a>Signature属性</h5><p>一个可选的定长属性，在JDK 1.5发布后增加的，任何类、接口、初始化方法或成员的泛型签名如果包含了类型变量或参数化类型，则Signature属性会为它记录泛型签名信息。这主要是因为Java的泛型采用的是擦除法实现的伪泛型，在字节码中泛型信息编译之后统统被擦除，在运行期无法将泛型类型与用户定义的普通类型同等对待。通过Signature属性，Java的反射API能够获取泛型类型。</p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="https:////upload-images.jianshu.io/upload_images/3709321-1412b798df574705.png" alt="Signature属性" title="">
-                </div>
-                <div class="image-caption">Signature属性</div>
-            </figure>
+<p><img src="https:////upload-images.jianshu.io/upload_images/3709321-1412b798df574705.png" alt="Signature属性"></p>
 <h5 id="BootstrapMethods属性"><a href="#BootstrapMethods属性" class="headerlink" title="BootstrapMethods属性"></a>BootstrapMethods属性</h5><p>一个复杂的变长属性，位于类文件的属性表中，用于保存invokedynamic指令引用的引导方法限定符。</p>
 <h1 id="字节码指令简介"><a href="#字节码指令简介" class="headerlink" title="字节码指令简介"></a>字节码指令简介</h1><p>Java虚拟机的指令由一个字节长度的、代表着特定操作含义的数字（操作码）以及跟随其后的零至多个代表此操作所需参数（称为操作数）而构成。由于Java虚拟机采用面向操作数栈而不是寄存器的架构，所以大多数的指令都不包含操作数，只有一个操作码。</p>
 <p>在指令集中大多数的指令都包含了其操作所对应的数据类型信息，如iload指令用于从局部变量表中加载int类型的数据到操作数栈中。</p>
 <ul>
-<li>加载和存储指令：iload/iload_<n>等（加载局部变量到操作栈）、istore/istore_<n>等（从操作数栈存储到局部变量表）、bipush/sipush/ldc/iconst_<n>（加载常量到操作数栈）、wide（扩充局部变量表访问索引）；</n></n></n></li>
+<li>加载和存储指令：iload/iload_<n>等（加载局部变量到操作栈）、istore/istore_<n>等（从操作数栈存储到局部变量表）、bipush/sipush/ldc/iconst_<n>（加载常量到操作数栈）、wide（扩充局部变量表访问索引）；</li>
 <li>运算指令：没有直接支持byte、short、char和boolean类型的算术指令而采用int代替；iadd/isub/imul/idiv加减乘除、irem求余、ineg取反、ishl/ishr位移、ior按位或、iand按位与、ixor按位异或、iinc局部变量自增、dcmpg/dcmpl比较；</li>
 <li>类型转换指令：i2b/i2c/i2s/l2i/f2i/f2l/d2i/d2l/d2f；</li>
 <li>对象创建与访问指令：new创建类实例、newarray/anewarray/multianewarray创建数组、getfield/putfield/getstatic/putstatic访问类字段或实例字段、baload/iaload/aaload把一个数组元素加载到操作数栈、bastore/iastore/aastore将一个操作数栈的值存储到数组元素中、arraylength取数组长度、instanceof/checkcast检查类实例类型；</li>
@@ -399,300 +158,17 @@
 <h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><ul>
 <li><a href="https://book.douban.com/subject/24722612/" target="_blank" rel="noopener">《深入理解Java虚拟机——JVM高级特性与最佳实践》－周志明</a></li>
 </ul>
-
-        </div>
-
-        <blockquote class="post-copyright">
-    
-    <div class="content">
-        
-<span class="post-time">
-    Last updated: <time datetime="2019-04-12T06:05:32.181Z" itemprop="dateUpdated">2019-04-12 14:05:32</time>
-</span><br>
-
-
-        
-    </div>
-    
-    <footer>
-        <a href="https://meandni.com">
-            <img src="/img/avatar.jpg" alt="Joker">
-            Joker
-        </a>
-    </footer>
-</blockquote>
-
-        
-<div class="page-reward">
-    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
-</div>
-
-
-
-        <div class="post-footer">
-            
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/jvm/">jvm</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/阅读/">阅读</a></li></ul>
-
-
-            
-<div class="page-share-wrap">
-    
-
-<div class="page-share" id="pageShare">
-    <ul class="reset share-icons">
-      <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://meandni.com/2019/01/14/jvm_note4/&title=《《深入理解Java虚拟机》笔记4——类文件结构》 — Joker's Blog&pic=https://meandni.com/img/avatar.jpg" data-title="微博">
-          <i class="icon icon-weibo"></i>
-        </a>
-      </li>
-      <li>
-        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
-          <i class="icon icon-weixin"></i>
-        </a>
-      </li>
-      <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://meandni.com/2019/01/14/jvm_note4/&title=《《深入理解Java虚拟机》笔记4——类文件结构》 — Joker's Blog&source=分享生活、技术、学习心得" data-title=" QQ">
-          <i class="icon icon-qq"></i>
-        </a>
-      </li>
-      <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://meandni.com/2019/01/14/jvm_note4/" data-title=" Facebook">
-          <i class="icon icon-facebook"></i>
-        </a>
-      </li>
-      <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《《深入理解Java虚拟机》笔记4——类文件结构》 — Joker's Blog&url=https://meandni.com/2019/01/14/jvm_note4/&via=https://meandni.com" data-title=" Twitter">
-          <i class="icon icon-twitter"></i>
-        </a>
-      </li>
-      <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://meandni.com/2019/01/14/jvm_note4/" data-title=" Google+">
-          <i class="icon icon-google-plus"></i>
-        </a>
-      </li>
-    </ul>
- </div>
-
-
-
-    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
-        <i class="icon icon-share-alt icon-lg"></i>
-    </a>
-</div>
-
-
-
-        </div>
-    </div>
-
-    
-<nav class="post-nav flex-row flex-justify-between">
-  
-    <div class="waves-block waves-effect prev">
-      <a href="/2019/01/15/jvm_note5/" id="post-prev" class="post-nav-link">
-        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
-        <h4 class="title">《深入理解Java虚拟机》笔记5——类加载机制与字节码执行引擎</h4>
-      </a>
-    </div>
-  
-
-  
-    <div class="waves-block waves-effect next">
-      <a href="/2019/01/12/flutter-practice2/" id="post-next" class="post-nav-link">
-        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
-        <h4 class="title">实战中学习Flutter2：打造一款通用的APPUI结构，从此走上人生巅峰！</h4>
-      </a>
-    </div>
-  
-</nav>
-
-
-
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<section class="comments" id="comments">
-    <div id="gitalk-container"></div>
-    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
-    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
-    <script>
-        var id = location.pathname
-        if (location.pathname.length > 50) {
-          id = location.pathname.replace(/\/\d+\/\d+\/\d+\//, '').replace('/', '').substring(0, 50)
-        }
-        const gitalk = new Gitalk({
-          clientID: '12faa9d04b92d2d70968',
-          clientSecret: 'ad1023eebffeb2972301ce0e730e0c277f64cf23',
-          repo: 'MeandNi.github.io',
-          owner: 'MeandNi',
-          admin: ['MeandNi'],
-          id: id,      // Ensure uniqueness and length less than 50
-          title: document.title.split('|')[0],
-          distractionFreeMode: false  // Facebook-like distraction free mode
-        })
-
-        gitalk.render('gitalk-container')
-    </script>
-</section>
-
-
-
-
-</article>
-
-<div id="reward" class="page-modal reward-lay">
-    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <h3 class="reward-title">
-        <i class="icon icon-quote-left"></i>
-        感谢打赏~
-        <i class="icon icon-quote-right"></i>
-    </h3>
-    <div class="reward-content">
-        
-        <div class="reward-code">
-            <img id="rewardCode" src="/img/wechat.png" alt="打赏二维码">
-        </div>
-        
-        <label class="reward-toggle">
-            <input id="rewardToggle" type="checkbox" class="reward-toggle-check" data-wechat="/img/wechat.png" data-alipay="/img/alipay.jpg">
-            <div class="reward-toggle-ctrol">
-                <span class="reward-toggle-item wechat">微信</span>
-                <span class="reward-toggle-label"></span>
-                <span class="reward-toggle-item alipay">支付宝</span>
-            </div>
-        </label>
-        
-    </div>
-</div>
-
-
-
-</div>
-
-        <footer class="footer">
-    <div class="top">
-        
-
-        <p>
-            
-                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
-            
-            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
-        </p>
-    </div>
-    <div class="bottom">
-        <p><span>Joker &copy; 2017 - 2020</span>
-            <span>
-                
-                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
-            </span>
-        </p>
-    </div>
-</footer>
-
-    </main>
-    <div class="mask" id="mask"></div>
-<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
-
-
-
-<div class="global-share" id="globalShare">
-    <ul class="reset share-icons">
-      <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://meandni.com/2019/01/14/jvm_note4/&title=《《深入理解Java虚拟机》笔记4——类文件结构》 — Joker's Blog&pic=https://meandni.com/img/avatar.jpg" data-title="微博">
-          <i class="icon icon-weibo"></i>
-        </a>
-      </li>
-      <li>
-        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
-          <i class="icon icon-weixin"></i>
-        </a>
-      </li>
-      <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://meandni.com/2019/01/14/jvm_note4/&title=《《深入理解Java虚拟机》笔记4——类文件结构》 — Joker's Blog&source=分享生活、技术、学习心得" data-title=" QQ">
-          <i class="icon icon-qq"></i>
-        </a>
-      </li>
-      <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://meandni.com/2019/01/14/jvm_note4/" data-title=" Facebook">
-          <i class="icon icon-facebook"></i>
-        </a>
-      </li>
-      <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《《深入理解Java虚拟机》笔记4——类文件结构》 — Joker's Blog&url=https://meandni.com/2019/01/14/jvm_note4/&via=https://meandni.com" data-title=" Twitter">
-          <i class="icon icon-twitter"></i>
-        </a>
-      </li>
-      <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://meandni.com/2019/01/14/jvm_note4/" data-title=" Google+">
-          <i class="icon icon-google-plus"></i>
-        </a>
-      </li>
-    </ul>
- </div>
-
-
-<div class="page-modal wx-share" id="wxShare">
-    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAACuCAAAAACKZ2kyAAABx0lEQVR42u3aQXLDIAwFUN//0ulMV+20Jl8IiBePVSa24dkLjZC4rni8vsfd/z+vzv2zeODi4ra5r+H4y82vdp66fSVcXNyD3HHwGk+Rh7mE/mZmXFzch3HHv3NodR5cXNwnc5NwVg1zuLi4T+Ymm58325JgzqRQsmyvhouL2+BWC6Y7fm+s7+Li4ha5r+KolksWr46Li3uEexdQkmJH8tQ4bOWNlitfBhcXt80dB6B861I9VFHdOOHi4p7nzm1L+ilRHkZ/ZWS4uLibuXlYqTY8cno1kcLFxT3DrW6HJhOUYvOmkDbh4uJu4OYpSN4onWvPlL8lLi7uBm4Vl6Dze6p34uLinufOFTKSYFTdPt3OgIuLe4Q7Vx7tpC95WwUXF/dT3KSN2klQ+m0VXFzc89xqmtJpxFafKhdMcXFxF3E7IayDy1fExcX9FPeaGp1DFdVVcHFxz3PzsbYIMnkACxcXdzO3H7bWJjpzK+Li4u7gJsErP3IxVzAdcwvRFxcXdyl3LnHJC6xzBVNcXNznc5Pwl8+cbJP+uYqLi/tgbhLIktSn3MrFxcU9yM2bndUFklcqfCxcXNwj3H5LtXCEojgnLi7uce4XIKdXrt7P4iAAAAAASUVORK5CYII=" alt="微信分享二维码">
-</div>
-
-
-
-
-    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
-<script>
-var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
-
-
-</script>
-
-<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
-
-
-<div class="search-panel" id="search-panel">
-    <ul class="search-result" id="search-result"></ul>
-</div>
-<template id="search-tpl">
-<li class="item">
-    <a href="{path}" class="waves-block waves-effect">
-        <div class="title ellipsis" title="{title}">{title}</div>
-        <div class="flex-row flex-middle">
-            <div class="tags ellipsis">
-                {tags}
-            </div>
-            <time class="flex-col time">{date}</time>
-        </div>
-    </a>
-</li>
-</template>
-
-<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
-
-
-
-
-
-
-
-
-
-
-</body>
-</html>
+</div></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">Joker</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://meandni.com/2019/01/14/jvm_note4/">https://meandni.com/2019/01/14/jvm_note4/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://meandni.com">Joker's Blog</a>！</span></div></div><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/jvm/">jvm</a></div><div class="post-qr-code"><div class="post-qr-code-item"><img class="post-qr-code__img" src="/img/alipay.jpg"><div class="post-qr-code__desc">支付宝打赏</div></div><div class="post-qr-code-item"><img class="post-qr-code__img" src="/img/wechat.png"><div class="post-qr-code__desc">微信打赏</div></div></div><nav id="pagination"><div class="prev-post pull-left"><a href="/2019/01/15/jvm_note5/"><i class="fa fa-chevron-left">  </i><span>《深入理解Java虚拟机》笔记5——类加载机制与字节码执行引擎</span></a></div><div class="next-post pull-right"><a href="/2019/01/13/flutter-practice2/"><span>实战中学习Flutter2：打造一款通用的APPUI结构，从此走上人生巅峰！</span><i class="fa fa-chevron-right"></i></a></div></nav><div id="gitalk-container"></div><script>var gitalk = new Gitalk({
+  clientID: '12faa9d04b92d2d70968',
+  clientSecret: 'ad1023eebffeb2972301ce0e730e0c277f64cf23',
+  repo: 'MeandNi.github.io',
+  owner: 'MeandNi',
+  admin: 'MeandNi',
+  id: md5(decodeURI(location.pathname)),
+  language: 'zh-CN'
+})
+gitalk.render('gitalk-container')</script></div></div><footer><div class="layout" id="footer"><div class="copyright">&copy;2018 - 2020 By Joker</div><div class="framework-info"><span>驱动 - </span><a href="#"><span>Hexo</span></a><span class="footer-separator">|</span><span>主题 - </span><a href="https://github.com/Molunerfinn/hexo-theme-melody" target="_blank" rel="noopener"><span>Melody</span></a></div></div></footer><i class="fa fa-arrow-up" id="go-up" aria-hidden="true"></i><script src="https://cdn.jsdelivr.net/npm/animejs@latest/anime.min.js"></script><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@latest/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-ui-pack@latest/velocity.ui.min.js"></script><script src="/js/utils.js?version=1.7.0"></script><script src="/js/fancybox.js?version=1.7.0"></script><script src="/js/sidebar.js?version=1.7.0"></script><script src="/js/copy.js?version=1.7.0"></script><script src="/js/fireworks.js?version=1.7.0"></script><script src="/js/transition.js?version=1.7.0"></script><script src="/js/scroll.js?version=1.7.0"></script><script src="/js/head.js?version=1.7.0"></script><script>if(/Android|webOS|iPhone|iPod|iPad|BlackBerry/i.test(navigator.userAgent)) {
+  $('#nav').addClass('is-mobile')
+  $('footer').addClass('is-mobile')
+  $('#top-container').addClass('is-mobile')
+}</script></body></html>

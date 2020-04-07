@@ -1,217 +1,14 @@
-<!DOCTYPE html>
-<html>
-<head><meta name="generator" content="Hexo 3.8.0">
-    
-
-    
-
-    
-
-
-
-    <meta charset="utf-8">
-    
-    
-    
-    
-    <title>Flutter进阶：深入探究 ListView 和 ScrollPhysics | Joker&#39;s Blog | 个人分享博客</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    
-    <meta name="theme-color" content="#3F51B5">
-    
-    
-    <meta name="keywords" content="flutter,技术">
-    <meta name="description" content="Flutter 中的 ListView 可以对比 Android 中的 ListView 或者 RecycleView（当然也有不同之处） ，是可滚动项的线性列表。 我们可以用它来制作可">
-<meta name="keywords" content="flutter,技术">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Flutter进阶：深入探究 ListView 和 ScrollPhysics">
-<meta property="og:url" content="https://meandni.com/2019/01/26/flutter-exploring-list/index.html">
-<meta property="og:site_name" content="Joker&#39;s Blog">
-<meta property="og:description" content="Flutter 中的 ListView 可以对比 Android 中的 ListView 或者 RecycleView（当然也有不同之处） ，是可滚动项的线性列表。 我们可以用它来制作可">
-<meta property="og:locale" content="Chinese">
-<meta property="og:image" content="https://meandni.com/images/listview.png">
-<meta property="og:image" content="https://meandni.com/images/listview2.gif">
-<meta property="og:image" content="https://meandni.com/images/listview3.gif">
-<meta property="og:image" content="https://meandni.com/images/listview4.gif">
-<meta property="og:image" content="https://meandni.com/images/listview5.png">
-<meta property="og:image" content="https://meandni.com/images/listview6.gif">
-<meta property="og:image" content="https://meandni.com/images/listview7.gif">
-<meta property="og:image" content="https://meandni.com/images/listview8.gif">
-<meta property="og:image" content="https://meandni.com/images/listview9.png">
-<meta property="og:updated_time" content="2019-04-12T06:05:16.286Z">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Flutter进阶：深入探究 ListView 和 ScrollPhysics">
-<meta name="twitter:description" content="Flutter 中的 ListView 可以对比 Android 中的 ListView 或者 RecycleView（当然也有不同之处） ，是可滚动项的线性列表。 我们可以用它来制作可">
-<meta name="twitter:image" content="https://meandni.com/images/listview.png">
-    
-        <link rel="alternate" type="application/atom+xml" title="Joker&#39;s Blog" href="/atom.xml">
-    
-    <link rel="shortcut icon" href="/img/favicon.ico">
-    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
-    <script>window.lazyScripts=[]</script>
-
-    <!-- custom head -->
-    
-
-</head>
-
-<body>
-    <div id="loading" class="active"></div>
-
-    <aside id="menu" class="hide">
-  <div class="inner flex-row-vertical">
-    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
-        <i class="icon icon-lg icon-close"></i>
-    </a>
-    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
-      <div class="brand">
-        <a href="/" class="avatar waves-effect waves-circle waves-light">
-          <img src="/img/avatar.jpg">
-        </a>
-        <hgroup class="introduce">
-          <h5 class="nickname">Joker</h5>
-          <a href="mailto:yangjiakay@gmail.com" title="yangjiakay@gmail.com" class="mail">yangjiakay@gmail.com</a>
-        </hgroup>
-      </div>
-    </div>
-    <div class="scroll-wrap flex-col">
-      <ul class="nav">
-        
-            <li class="waves-block waves-effect">
-              <a href="/">
-                <i class="icon icon-lg icon-home"></i>
-                主页
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="/archives">
-                <i class="icon icon-lg icon-archives"></i>
-                Archives
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="/tags">
-                <i class="icon icon-lg icon-tags"></i>
-                Tags
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="/categories">
-                <i class="icon icon-lg icon-th-list"></i>
-                Categories
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="https://juejin.im/user/5bc6cb81f265da0aac700ced" target="_blank">
-                <i class="icon icon-lg icon-codepen"></i>
-                掘金
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="https://github.com/MeandNi" target="_blank">
-                <i class="icon icon-lg icon-github"></i>
-                Github
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="/about">
-                <i class="icon icon-lg icon-link"></i>
-                AboutMe
-              </a>
-            </li>
-        
-      </ul>
-    </div>
-  </div>
-</aside>
-
-    <main id="main">
-        <header class="top-header" id="header">
-    <div class="flex-row">
-        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
-          <i class="icon icon-lg icon-navicon"></i>
-        </a>
-        <div class="flex-col header-title ellipsis">Flutter进阶：深入探究 ListView 和 ScrollPhysics</div>
-        
-        <div class="search-wrap" id="search-wrap">
-            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
-                <i class="icon icon-lg icon-chevron-left"></i>
-            </a>
-            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
-            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
-                <i class="icon icon-lg icon-search"></i>
-            </a>
-        </div>
-        
-        
-        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
-            <i class="icon icon-lg icon-share-alt"></i>
-        </a>
-        
-    </div>
-</header>
-<header class="content-header post-header">
-
-    <div class="container fade-scale">
-        <h1 class="title">Flutter进阶：深入探究 ListView 和 ScrollPhysics</h1>
-        <h5 class="subtitle">
-            
-                <time datetime="2019-01-26T06:19:55.000Z" itemprop="datePublished" class="page-time">
-  2019-01-26
-</time>
-
-
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/整理/">整理</a></li></ul>
-
-            
-        </h5>
-    </div>
-
-    
-
-
-</header>
-
-
-<div class="container body-wrap">
-    
-    <aside class="post-widget">
-        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
-            <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#探究各类型的-ListView"><span class="post-toc-number">1.</span> <span class="post-toc-text">探究各类型的 ListView</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#ListView"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">ListView</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#ListView-builder"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">ListView.builder()</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#ListView-separated"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">ListView.separated()</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#ListView-custom"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">ListView.custom()</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#探究-ScrollPhysics"><span class="post-toc-number">2.</span> <span class="post-toc-text">探究 ScrollPhysics</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#NeverScrollablePhysics"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">NeverScrollablePhysics</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#BouncingScrollPhysics"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">BouncingScrollPhysics</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#ClampingScrollPhysics"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">ClampingScrollPhysics</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#FixedExtentScrollPhysics"><span class="post-toc-number">2.4.</span> <span class="post-toc-text">FixedExtentScrollPhysics</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#你应当知道的其他事情"><span class="post-toc-number">3.</span> <span class="post-toc-text">你应当知道的其他事情</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#如何在列表中保留被破坏的元素？"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">如何在列表中保留被破坏的元素？</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#为什么我的-ListView-在列表和外部小部件之间有空格？"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">为什么我的 ListView 在列表和外部小部件之间有空格？</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#最后"><span class="post-toc-number">4.</span> <span class="post-toc-text">最后</span></a></li></ol>
-        </nav>
-    </aside>
-
-
-<article id="post-2019-01-26-flutter-exploring-list" class="post-article article-type-post fade" itemprop="blogPost">
-
-    <div class="post-card">
-        <h1 class="post-card-title">Flutter进阶：深入探究 ListView 和 ScrollPhysics</h1>
-        <div class="post-meta">
-            <time class="post-time" title="2019-01-26 14:19:55" datetime="2019-01-26T06:19:55.000Z" itemprop="datePublished">2019-01-26</time>
-
-            
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/整理/">整理</a></li></ul>
-
-
-
-            
-
-        </div>
-        <div class="post-content" id="post-content" itemprop="postContent">
-            <figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="/images/listview.png" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure>
+<!DOCTYPE html><html lang="zh-Hans"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta name="description" content="Flutter进阶：深入探究 ListView 和 ScrollPhysics"><meta name="keywords" content="flutter"><meta name="author" content="Joker"><meta name="copyright" content="Joker"><title>Flutter进阶：深入探究 ListView 和 ScrollPhysics | Joker's Blog</title><link rel="shortcut icon" href="/img/favicon.ico"><link rel="stylesheet" href="/css/index.css?version=1.7.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@latest/css/font-awesome.min.css?version=1.7.0"><meta name="format-detection" content="telephone=no"><meta http-equiv="x-dns-prefetch-control" content="on"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.css"><script src="https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.js"></script><script src="https://cdn.jsdelivr.net/npm/blueimp-md5@2.10.0/js/md5.min.js"></script><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  }
+} </script><meta name="generator" content="Hexo 4.2.0"></head><body><i class="fa fa-arrow-right" id="toggle-sidebar" aria-hidden="true"></i><div id="sidebar" data-display="true"><div class="toggle-sidebar-info text-center"><span data-toggle="切换文章详情">切换站点概览</span><hr></div><div class="sidebar-toc"><div class="sidebar-toc__title">目录</div><div class="sidebar-toc__progress"><span class="progress-notice">你已经读了</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar"></div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#探究各类型的-ListView"><span class="toc-number">1.</span> <span class="toc-text">探究各类型的 ListView</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#ListView"><span class="toc-number">1.1.</span> <span class="toc-text">ListView</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ListView-builder"><span class="toc-number">1.2.</span> <span class="toc-text">ListView.builder()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ListView-separated"><span class="toc-number">1.3.</span> <span class="toc-text">ListView.separated()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ListView-custom"><span class="toc-number">1.4.</span> <span class="toc-text">ListView.custom()</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#探究-ScrollPhysics"><span class="toc-number">2.</span> <span class="toc-text">探究 ScrollPhysics</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#NeverScrollablePhysics"><span class="toc-number">2.1.</span> <span class="toc-text">NeverScrollablePhysics</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#BouncingScrollPhysics"><span class="toc-number">2.2.</span> <span class="toc-text">BouncingScrollPhysics</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ClampingScrollPhysics"><span class="toc-number">2.3.</span> <span class="toc-text">ClampingScrollPhysics</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#FixedExtentScrollPhysics"><span class="toc-number">2.4.</span> <span class="toc-text">FixedExtentScrollPhysics</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#你应当知道的其他事情"><span class="toc-number">3.</span> <span class="toc-text">你应当知道的其他事情</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#如何在列表中保留被破坏的元素？"><span class="toc-number">3.1.</span> <span class="toc-text">如何在列表中保留被破坏的元素？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#为什么我的-ListView-在列表和外部小部件之间有空格？"><span class="toc-number">3.2.</span> <span class="toc-text">为什么我的 ListView 在列表和外部小部件之间有空格？</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#最后"><span class="toc-number">4.</span> <span class="toc-text">最后</span></a></li></ol></div></div><div class="author-info hide"><div class="author-info__avatar text-center"><img src="/img/avatar.jpg"></div><div class="author-info__name text-center">Joker</div><div class="author-info__description text-center">分享生活、技术、学习心得</div><hr><div class="author-info-articles"><a class="author-info-articles__archives article-meta" href="/archives"><span class="pull-left">文章</span><span class="pull-right">37</span></a><a class="author-info-articles__tags article-meta" href="/tags"><span class="pull-left">标签</span><span class="pull-right">26</span></a><a class="author-info-articles__categories article-meta" href="/categories"><span class="pull-left">分类</span><span class="pull-right">11</span></a></div></div></div><div id="content-outer"><div class="no-bg" id="top-container"><div id="page-header"><span class="pull-left"> <a id="site-name" href="/">Joker's Blog</a></span><i class="fa fa-bars toggle-menu pull-right" aria-hidden="true"></i><span class="pull-right menus">   <a class="site-page" href="/">首页</a><a class="site-page" href="/archives">目录</a><a class="site-page" href="/tags">标签</a><a class="site-page" href="/categories">分类</a><a class="site-page" href="/about">关于我</a></span><span class="pull-right"></span></div><div id="post-info"><div id="post-title">Flutter进阶：深入探究 ListView 和 ScrollPhysics</div><div id="post-meta"><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2019-01-26</time><span class="post-meta__separator">|</span><i class="fa fa-inbox post-meta__icon" aria-hidden="true"></i><a class="post-meta__categories" href="/categories/%E7%BF%BB%E8%AF%91/">翻译</a><i class="fa fa-angle-right" aria-hidden="true"></i><i class="fa fa-inbox post-meta__icon" aria-hidden="true"></i><a class="post-meta__categories" href="/categories/%E7%BF%BB%E8%AF%91/Flutter/">Flutter</a></div></div></div><div class="layout" id="content-inner"><article id="post"><div class="article-container" id="post-content"><p><img src="/images/listview.png" alt=""></p>
+<a id="more"></a>
 <p>Flutter 中的 ListView 可以对比 Android 中的 ListView 或者 RecycleView（当然也有不同之处） ，是可滚动项的线性列表。 我们可以用它来制作可滚动项目列表或重复项目列表。</p>
 <h2 id="探究各类型的-ListView"><a href="#探究各类型的-ListView" class="headerlink" title="探究各类型的 ListView"></a>探究各类型的 ListView</h2><p>构建 ListView 有以下几种方式：</p>
 <ol>
@@ -222,49 +19,25 @@
 </ol>
 <h3 id="ListView"><a href="#ListView" class="headerlink" title="ListView"></a>ListView</h3><p>这是 ListView 类的默认构造函数。 ListView 内有任意个数的子元素都可使其滚动。</p>
 <p>代码的格式为：</p>
-<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">ListView(</span><br><span class="line">  children: &lt;Widget&gt;[</span><br><span class="line">    ItemOne(),</span><br><span class="line">    ItemTwo(),</span><br><span class="line">    ItemThree(),</span><br><span class="line">  ],</span><br><span class="line">),</span><br></pre></td></tr></table></figure>
+<figure class="highlight dart"><table><tr><td class="code"><pre><span class="line">ListView(</span><br><span class="line">  children: &lt;Widget&gt;[</span><br><span class="line">    ItemOne(),</span><br><span class="line">    ItemTwo(),</span><br><span class="line">    ItemThree(),</span><br><span class="line">  ],</span><br><span class="line">),</span><br></pre></td></tr></table></figure>
 <p>通常这里应该放少量的子元素，因为 ListView 也会将当前不可见的元素构建起来，因此大量的子元素可能使 App 性能降低。</p>
 <h3 id="ListView-builder"><a href="#ListView-builder" class="headerlink" title="ListView.builder()"></a>ListView.builder()</h3><p>builder() 构造函数可以用来构造重复的子项列表，这里我们就可以类比 Android 中的 ListView 。 这个构造函数有两个主要参数：列表中项目数的 itemCount 和构造每个列表子项的 itemBuilder。</p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="/images/listview2.gif" alt="/images/listview2.gif" title="">
-                </div>
-                <div class="image-caption">/images/listview2.gif</div>
-            </figure>
+<p><img src="/images/listview2.gif" alt="/images/listview2.gif"></p>
 <p>代码的格式为：</p>
-<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">ListView.builder(</span><br><span class="line">  itemCount: itemCount,</span><br><span class="line">  itemBuilder: (context, position) &#123;</span><br><span class="line">    <span class="keyword">return</span> listItem();</span><br><span class="line">  &#125;,</span><br><span class="line">),</span><br></pre></td></tr></table></figure>
+<figure class="highlight dart"><table><tr><td class="code"><pre><span class="line">ListView.builder(</span><br><span class="line">  itemCount: itemCount,</span><br><span class="line">  itemBuilder: (context, position) &#123;</span><br><span class="line">    <span class="keyword">return</span> listItem();</span><br><span class="line">  &#125;,</span><br><span class="line">),</span><br></pre></td></tr></table></figure>
 <p>列表项是<strong>懒加载</strong>的，这表明 Flutter 只构造了特定数量的列表项，当用户滚动时，早期的列表项被销毁。</p>
 <p><strong>技巧</strong>：由于元素是懒加载的，只加载了所需数量的元素，我们并不需要将 itemCount 作为必需参数，列表可以是<strong>无限长</strong>的。</p>
-<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">ListView.builder(</span><br><span class="line">  itemBuilder: (context, position) &#123;</span><br><span class="line">    <span class="keyword">return</span> Card(</span><br><span class="line">      child: Padding(</span><br><span class="line">        padding: <span class="keyword">const</span> EdgeInsets.all(<span class="number">16.0</span>),</span><br><span class="line">        child: Text(position.toString(), style: TextStyle(fontSize: <span class="number">22.0</span>),),</span><br><span class="line">      ),</span><br><span class="line">    );</span><br><span class="line">  &#125;,</span><br><span class="line">),</span><br></pre></td></tr></table></figure>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="/images/listview3.gif" alt="/images/listview3.gif" title="">
-                </div>
-                <div class="image-caption">/images/listview3.gif</div>
-            </figure>
+<figure class="highlight dart"><table><tr><td class="code"><pre><span class="line">ListView.builder(</span><br><span class="line">  itemBuilder: (context, position) &#123;</span><br><span class="line">    <span class="keyword">return</span> Card(</span><br><span class="line">      child: Padding(</span><br><span class="line">        padding: <span class="keyword">const</span> EdgeInsets.all(<span class="number">16.0</span>),</span><br><span class="line">        child: Text(position.toString(), style: TextStyle(fontSize: <span class="number">22.0</span>),),</span><br><span class="line">      ),</span><br><span class="line">    );</span><br><span class="line">  &#125;,</span><br><span class="line">),</span><br></pre></td></tr></table></figure>
+<p><img src="/images/listview3.gif" alt="/images/listview3.gif"></p>
 <h3 id="ListView-separated"><a href="#ListView-separated" class="headerlink" title="ListView.separated()"></a>ListView.separated()</h3><p>在 separate() 的构造函数中，我们同样生成一个列表，但这里我们可以指定每个项之间的分隔符。</p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="/images/listview4.gif" alt="/images/listview4.gif" title="">
-                </div>
-                <div class="image-caption">/images/listview4.gif</div>
-            </figure>
+<p><img src="/images/listview4.gif" alt="/images/listview4.gif"></p>
 <p>实质上，这里，<strong>我们构造了两个交织列表</strong>：一个作为主列表，一个作为分隔符列表。</p>
 <p>要注意的是，这里不能应用前面构造函数中所说的无限长度，因为此构造函数会强制执行 itemCount 。</p>
 <p>代码的格式为：</p>
-<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">ListView.separated(</span><br><span class="line">      itemBuilder: (context, position) &#123;</span><br><span class="line">        <span class="keyword">return</span> ListItem();</span><br><span class="line">      &#125;,</span><br><span class="line">      separatorBuilder: (context, position) &#123;</span><br><span class="line">        <span class="keyword">return</span> SeparatorItem();</span><br><span class="line">      &#125;,</span><br><span class="line">      itemCount: itemCount,</span><br><span class="line">),</span><br></pre></td></tr></table></figure>
+<figure class="highlight dart"><table><tr><td class="code"><pre><span class="line">ListView.separated(</span><br><span class="line">      itemBuilder: (context, position) &#123;</span><br><span class="line">        <span class="keyword">return</span> ListItem();</span><br><span class="line">      &#125;,</span><br><span class="line">      separatorBuilder: (context, position) &#123;</span><br><span class="line">        <span class="keyword">return</span> SeparatorItem();</span><br><span class="line">      &#125;,</span><br><span class="line">      itemCount: itemCount,</span><br><span class="line">),</span><br></pre></td></tr></table></figure>
 <p>这种类型的列表允许您动态定义分隔符，为不同类型的子项分配不同类型的分隔符，在需要时添加或删除分隔符等。</p>
 <p>该实现还可以在列表中方便地插入其他类型的子元素（例如广告），而不需要对列表项中的主列表进行任何修改。</p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="/images/listview5.png" alt="/images/listview5.png" title="">
-                </div>
-                <div class="image-caption">/images/listview5.png</div>
-            </figure>
+<p><img src="/images/listview5.png" alt="/images/listview5.png"></p>
 <p><strong>注意：</strong>通常分隔符列表长度比项目列表小 1，因为在最后一个元素之后不存在分隔符。</p>
 <h3 id="ListView-custom"><a href="#ListView-custom" class="headerlink" title="ListView.custom()"></a>ListView.custom()</h3><p>正如其名，custom() 构造函数允许我们自定义构建 ListViews。 需要的主要参数是 SliverChildDelegate ，用于构建子项。 SliverChildDelegates 的类型是：</p>
 <ol>
@@ -278,340 +51,33 @@
 <h2 id="探究-ScrollPhysics"><a href="#探究-ScrollPhysics" class="headerlink" title="探究 ScrollPhysics"></a>探究 ScrollPhysics</h2><p>为了控制列表滚动的发生方式，我们在 ListView 的构造函数中通常需要设置 physics 参数。 各种类型的 physics 参数有：</p>
 <h3 id="NeverScrollablePhysics"><a href="#NeverScrollablePhysics" class="headerlink" title="NeverScrollablePhysics"></a>NeverScrollablePhysics</h3><p>NeverScrollablePhysics 表现为不可滚动的列表。 使用此选项可以完全禁用 ListView 的滚动。</p>
 <h3 id="BouncingScrollPhysics"><a href="#BouncingScrollPhysics" class="headerlink" title="BouncingScrollPhysics"></a>BouncingScrollPhysics</h3><p>BouncingScrollPhysics 在列表结束时<strong>退回</strong>列表。 iOS 中有类似的效果。</p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="/images/listview6.gif" alt="/images/listview6.gif" title="">
-                </div>
-                <div class="image-caption">/images/listview6.gif</div>
-            </figure>
+<p><img src="/images/listview6.gif" alt="/images/listview6.gif"></p>
 <h3 id="ClampingScrollPhysics"><a href="#ClampingScrollPhysics" class="headerlink" title="ClampingScrollPhysics"></a>ClampingScrollPhysics</h3><p>这是 Android 上使用的默认滚动方式。 列表在结尾处停止并给出一定的效果。</p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="/images/listview7.gif" alt="/images/listview7.gif" title="">
-                </div>
-                <div class="image-caption">/images/listview7.gif</div>
-            </figure>
+<p><img src="/images/listview7.gif" alt="/images/listview7.gif"></p>
 <h3 id="FixedExtentScrollPhysics"><a href="#FixedExtentScrollPhysics" class="headerlink" title="FixedExtentScrollPhysics"></a>FixedExtentScrollPhysics</h3><p>该方法与其他方法略有不同，因为它仅适用于 FixedExtendScrollControllers 和使用它们的列表。 举个例子，我们用 ListWheelScrollView 来制作类似轮子的列表。</p>
 <p>FixedExtentScrollPhysics 仅滚动到子项而不存在任何偏移。</p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="/images/listview8.gif" alt="/images/listview8.gif" title="">
-                </div>
-                <div class="image-caption">/images/listview8.gif</div>
-            </figure>
+<p><img src="/images/listview8.gif" alt="/images/listview8.gif"></p>
 <p>样例代码非常简单：</p>
-<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">FixedExtentScrollController fixedExtentScrollController =</span><br><span class="line">    <span class="keyword">new</span> FixedExtentScrollController();</span><br><span class="line">ListWheelScrollView(</span><br><span class="line">  controller: fixedExtentScrollController,</span><br><span class="line">  physics: FixedExtentScrollPhysics(),</span><br><span class="line">  children: monthsOfTheYear.map((month) &#123;</span><br><span class="line">    <span class="keyword">return</span> Card(</span><br><span class="line">        child: Row(</span><br><span class="line">      children: &lt;Widget&gt;[</span><br><span class="line">        Expanded(</span><br><span class="line">            child: Padding(</span><br><span class="line">          padding: <span class="keyword">const</span> EdgeInsets.all(<span class="number">8.0</span>),</span><br><span class="line">          child: Text(</span><br><span class="line">            month,</span><br><span class="line">            style: TextStyle(fontSize: <span class="number">18.0</span>),</span><br><span class="line">          ),</span><br><span class="line">        )),</span><br><span class="line">      ],</span><br><span class="line">    ));</span><br><span class="line">  &#125;).toList(),</span><br><span class="line">  itemExtent: <span class="number">60.0</span>,</span><br><span class="line">),</span><br></pre></td></tr></table></figure>
+<figure class="highlight dart"><table><tr><td class="code"><pre><span class="line">FixedExtentScrollController fixedExtentScrollController =</span><br><span class="line">    <span class="keyword">new</span> FixedExtentScrollController();</span><br><span class="line">ListWheelScrollView(</span><br><span class="line">  controller: fixedExtentScrollController,</span><br><span class="line">  physics: FixedExtentScrollPhysics(),</span><br><span class="line">  children: monthsOfTheYear.map((month) &#123;</span><br><span class="line">    <span class="keyword">return</span> Card(</span><br><span class="line">        child: Row(</span><br><span class="line">      children: &lt;Widget&gt;[</span><br><span class="line">        Expanded(</span><br><span class="line">            child: Padding(</span><br><span class="line">          padding: <span class="keyword">const</span> EdgeInsets.all(<span class="number">8.0</span>),</span><br><span class="line">          child: Text(</span><br><span class="line">            month,</span><br><span class="line">            style: TextStyle(fontSize: <span class="number">18.0</span>),</span><br><span class="line">          ),</span><br><span class="line">        )),</span><br><span class="line">      ],</span><br><span class="line">    ));</span><br><span class="line">  &#125;).toList(),</span><br><span class="line">  itemExtent: <span class="number">60.0</span>,</span><br><span class="line">),</span><br></pre></td></tr></table></figure>
 <h2 id="你应当知道的其他事情"><a href="#你应当知道的其他事情" class="headerlink" title="你应当知道的其他事情"></a>你应当知道的其他事情</h2><h3 id="如何在列表中保留被破坏的元素？"><a href="#如何在列表中保留被破坏的元素？" class="headerlink" title="如何在列表中保留被破坏的元素？"></a>如何在列表中保留被破坏的元素？</h3><p>Flutter 提供了一个 KeepAlive() 小组件，它可以使子元素保持活跃状态，否则会被破坏。 在列表中，默认情况下，元素包装在 AutomaticKeepAlive 中。</p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="/images/listview9.png" alt="/images/listview9.png" title="">
-                </div>
-                <div class="image-caption">/images/listview9.png</div>
-            </figure>
+<p><img src="/images/listview9.png" alt="/images/listview9.png"></p>
 <h3 id="为什么我的-ListView-在列表和外部小部件之间有空格？"><a href="#为什么我的-ListView-在列表和外部小部件之间有空格？" class="headerlink" title="为什么我的 ListView 在列表和外部小部件之间有空格？"></a>为什么我的 ListView 在列表和外部小部件之间有空格？</h3><p>ListView 在它与外部窗口组件之间有默认填充，将填充设置为 EdgeInsets.all(0.0) 就可以删除它。</p>
 <h2 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h2><p>利用时间整理分析自己所学的知识是件非常有意义的事情，希望这也能帮到其他正在学习的同学。同时我也正在用Flutter写几个项目，写好之后就会开源给大家。</p>
 <p>Github：<a href="https://github.com/MeandNi" target="_blank" rel="noopener">https://github.com/MeandNi</a></p>
 <p>微信：yangjk128</p>
 <p>原文博客：<a href="https://meandni.com/2019/01/26/1be6/">https://meandni.com/2019/01/26/1be6/</a></p>
 <p>欢迎一起交流移动开发的技术！</p>
-
-        </div>
-
-        <blockquote class="post-copyright">
-    
-    <div class="content">
-        
-<span class="post-time">
-    Last updated: <time datetime="2019-04-12T06:05:16.286Z" itemprop="dateUpdated">2019-04-12 14:05:16</time>
-</span><br>
-
-
-        
-    </div>
-    
-    <footer>
-        <a href="https://meandni.com">
-            <img src="/img/avatar.jpg" alt="Joker">
-            Joker
-        </a>
-    </footer>
-</blockquote>
-
-        
-<div class="page-reward">
-    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
-</div>
-
-
-
-        <div class="post-footer">
-            
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/flutter/">flutter</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/技术/">技术</a></li></ul>
-
-
-            
-<div class="page-share-wrap">
-    
-
-<div class="page-share" id="pageShare">
-    <ul class="reset share-icons">
-      <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://meandni.com/2019/01/26/flutter-exploring-list/&title=《Flutter进阶：深入探究 ListView 和 ScrollPhysics》 — Joker's Blog&pic=https://meandni.com/img/avatar.jpg" data-title="微博">
-          <i class="icon icon-weibo"></i>
-        </a>
-      </li>
-      <li>
-        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
-          <i class="icon icon-weixin"></i>
-        </a>
-      </li>
-      <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://meandni.com/2019/01/26/flutter-exploring-list/&title=《Flutter进阶：深入探究 ListView 和 ScrollPhysics》 — Joker's Blog&source=分享生活、技术、学习心得" data-title=" QQ">
-          <i class="icon icon-qq"></i>
-        </a>
-      </li>
-      <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://meandni.com/2019/01/26/flutter-exploring-list/" data-title=" Facebook">
-          <i class="icon icon-facebook"></i>
-        </a>
-      </li>
-      <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Flutter进阶：深入探究 ListView 和 ScrollPhysics》 — Joker's Blog&url=https://meandni.com/2019/01/26/flutter-exploring-list/&via=https://meandni.com" data-title=" Twitter">
-          <i class="icon icon-twitter"></i>
-        </a>
-      </li>
-      <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://meandni.com/2019/01/26/flutter-exploring-list/" data-title=" Google+">
-          <i class="icon icon-google-plus"></i>
-        </a>
-      </li>
-    </ul>
- </div>
-
-
-
-    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
-        <i class="icon icon-share-alt icon-lg"></i>
-    </a>
-</div>
-
-
-
-        </div>
-    </div>
-
-    
-<nav class="post-nav flex-row flex-justify-between">
-  
-    <div class="waves-block waves-effect prev">
-      <a href="/2019/01/26/flutter-exploring-textfield/" id="post-prev" class="post-nav-link">
-        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
-        <h4 class="title">Flutter进阶：深入探究 TextField</h4>
-      </a>
-    </div>
-  
-
-  
-    <div class="waves-block waves-effect next">
-      <a href="/2019/01/18/reading-record1/" id="post-next" class="post-nav-link">
-        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
-        <h4 class="title">2019第一次阅读记录</h4>
-      </a>
-    </div>
-  
-</nav>
-
-
-
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<section class="comments" id="comments">
-    <div id="gitalk-container"></div>
-    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
-    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
-    <script>
-        var id = location.pathname
-        if (location.pathname.length > 50) {
-          id = location.pathname.replace(/\/\d+\/\d+\/\d+\//, '').replace('/', '').substring(0, 50)
-        }
-        const gitalk = new Gitalk({
-          clientID: '12faa9d04b92d2d70968',
-          clientSecret: 'ad1023eebffeb2972301ce0e730e0c277f64cf23',
-          repo: 'MeandNi.github.io',
-          owner: 'MeandNi',
-          admin: ['MeandNi'],
-          id: id,      // Ensure uniqueness and length less than 50
-          title: document.title.split('|')[0],
-          distractionFreeMode: false  // Facebook-like distraction free mode
-        })
-
-        gitalk.render('gitalk-container')
-    </script>
-</section>
-
-
-
-
-</article>
-
-<div id="reward" class="page-modal reward-lay">
-    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <h3 class="reward-title">
-        <i class="icon icon-quote-left"></i>
-        感谢打赏~
-        <i class="icon icon-quote-right"></i>
-    </h3>
-    <div class="reward-content">
-        
-        <div class="reward-code">
-            <img id="rewardCode" src="/img/wechat.png" alt="打赏二维码">
-        </div>
-        
-        <label class="reward-toggle">
-            <input id="rewardToggle" type="checkbox" class="reward-toggle-check" data-wechat="/img/wechat.png" data-alipay="/img/alipay.jpg">
-            <div class="reward-toggle-ctrol">
-                <span class="reward-toggle-item wechat">微信</span>
-                <span class="reward-toggle-label"></span>
-                <span class="reward-toggle-item alipay">支付宝</span>
-            </div>
-        </label>
-        
-    </div>
-</div>
-
-
-
-</div>
-
-        <footer class="footer">
-    <div class="top">
-        
-
-        <p>
-            
-                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
-            
-            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
-        </p>
-    </div>
-    <div class="bottom">
-        <p><span>Joker &copy; 2017 - 2020</span>
-            <span>
-                
-                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
-            </span>
-        </p>
-    </div>
-</footer>
-
-    </main>
-    <div class="mask" id="mask"></div>
-<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
-
-
-
-<div class="global-share" id="globalShare">
-    <ul class="reset share-icons">
-      <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://meandni.com/2019/01/26/flutter-exploring-list/&title=《Flutter进阶：深入探究 ListView 和 ScrollPhysics》 — Joker's Blog&pic=https://meandni.com/img/avatar.jpg" data-title="微博">
-          <i class="icon icon-weibo"></i>
-        </a>
-      </li>
-      <li>
-        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
-          <i class="icon icon-weixin"></i>
-        </a>
-      </li>
-      <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://meandni.com/2019/01/26/flutter-exploring-list/&title=《Flutter进阶：深入探究 ListView 和 ScrollPhysics》 — Joker's Blog&source=分享生活、技术、学习心得" data-title=" QQ">
-          <i class="icon icon-qq"></i>
-        </a>
-      </li>
-      <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://meandni.com/2019/01/26/flutter-exploring-list/" data-title=" Facebook">
-          <i class="icon icon-facebook"></i>
-        </a>
-      </li>
-      <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Flutter进阶：深入探究 ListView 和 ScrollPhysics》 — Joker's Blog&url=https://meandni.com/2019/01/26/flutter-exploring-list/&via=https://meandni.com" data-title=" Twitter">
-          <i class="icon icon-twitter"></i>
-        </a>
-      </li>
-      <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://meandni.com/2019/01/26/flutter-exploring-list/" data-title=" Google+">
-          <i class="icon icon-google-plus"></i>
-        </a>
-      </li>
-    </ul>
- </div>
-
-
-<div class="page-modal wx-share" id="wxShare">
-    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACJ0lEQVR42u3aS27jQAwFQN//0g4wq9m49UhaQdRdvTKUQFJpQfD3esXn/e/8//vTlfX1/D6vOw4GBsZjGe/lWT/gXTzrp68/2cXdMDAwDmDkQXYdENfg9RPz/8TAwMBY324ddpNwPAdjYGBgVF89/2ueCGJgYGD0ithqc239Carsr9XiGBgYD2T0BgO/8/v2+QYGBsafZ0za+tUBZB6Cy2+FgYGxNaOa0lVbaUn4nuxUvPLsEgMD47GManmZAPJlsiRBjMI9BgbG1oz8YfNmWS8QJ40/DAyMvRnz0rG6SFFdIyvU4hgYGJsy8mFAr9zt8SZLHhgYGPsxeu3+PARXF7++XItjYGBszcj77ZNyNB8YXAR6DAyMAxiTkDcpTXuf5mJnBAMDYztGdQ0ib7RVtyB6QR8DA+MERt6U73Xs7lu2wMDAOJORJF53t95yHgYGxmmMJNjNw+5keHnxiTEwMLZm5GlcXqaOkrxBIw8DA+M0xmSFq5dcTtbOMDAw9mb02vr5t0mQk0ECBgbGyYzeleoQtJeefqzFMTAwNmXct7tRyEkHy2EYGBgnMN7Fkxe31ZFnr5QtTGIxMDAey8hPdcDZI80DPQYGxq6MeZCtrl9MeBe5LQYGxtaM3gLEeniQp3e9IvbjjhsGBsbBjHzEmPN6pSkGBgZGPlCsBtnqQtjtARcDA+NRjGoR23uhJEDngwQMDIxzGNXBQHXQOBk6fg2AgYHxVMYPjJ8UGUHJXrsAAAAASUVORK5CYII=" alt="微信分享二维码">
-</div>
-
-
-
-
-    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
-<script>
-var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
-
-
-</script>
-
-<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
-
-
-<div class="search-panel" id="search-panel">
-    <ul class="search-result" id="search-result"></ul>
-</div>
-<template id="search-tpl">
-<li class="item">
-    <a href="{path}" class="waves-block waves-effect">
-        <div class="title ellipsis" title="{title}">{title}</div>
-        <div class="flex-row flex-middle">
-            <div class="tags ellipsis">
-                {tags}
-            </div>
-            <time class="flex-col time">{date}</time>
-        </div>
-    </a>
-</li>
-</template>
-
-<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
-
-
-
-
-
-
-
-
-
-
-</body>
-</html>
+</div></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">Joker</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://meandni.com/2019/01/26/flutter-exploring-list/">https://meandni.com/2019/01/26/flutter-exploring-list/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://meandni.com">Joker's Blog</a>！</span></div></div><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/flutter/">flutter</a></div><div class="post-qr-code"><div class="post-qr-code-item"><img class="post-qr-code__img" src="/img/alipay.jpg"><div class="post-qr-code__desc">支付宝打赏</div></div><div class="post-qr-code-item"><img class="post-qr-code__img" src="/img/wechat.png"><div class="post-qr-code__desc">微信打赏</div></div></div><nav id="pagination"><div class="prev-post pull-left"><a href="/2019/01/26/flutter-exploring-textfield/"><i class="fa fa-chevron-left">  </i><span>Flutter进阶：深入探究 TextField</span></a></div><div class="next-post pull-right"><a href="/2019/01/18/reading-record1/"><span>2019第一次阅读记录</span><i class="fa fa-chevron-right"></i></a></div></nav><div id="gitalk-container"></div><script>var gitalk = new Gitalk({
+  clientID: '12faa9d04b92d2d70968',
+  clientSecret: 'ad1023eebffeb2972301ce0e730e0c277f64cf23',
+  repo: 'MeandNi.github.io',
+  owner: 'MeandNi',
+  admin: 'MeandNi',
+  id: md5(decodeURI(location.pathname)),
+  language: 'zh-CN'
+})
+gitalk.render('gitalk-container')</script></div></div><footer><div class="layout" id="footer"><div class="copyright">&copy;2018 - 2020 By Joker</div><div class="framework-info"><span>驱动 - </span><a href="#"><span>Hexo</span></a><span class="footer-separator">|</span><span>主题 - </span><a href="https://github.com/Molunerfinn/hexo-theme-melody" target="_blank" rel="noopener"><span>Melody</span></a></div></div></footer><i class="fa fa-arrow-up" id="go-up" aria-hidden="true"></i><script src="https://cdn.jsdelivr.net/npm/animejs@latest/anime.min.js"></script><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@latest/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-ui-pack@latest/velocity.ui.min.js"></script><script src="/js/utils.js?version=1.7.0"></script><script src="/js/fancybox.js?version=1.7.0"></script><script src="/js/sidebar.js?version=1.7.0"></script><script src="/js/copy.js?version=1.7.0"></script><script src="/js/fireworks.js?version=1.7.0"></script><script src="/js/transition.js?version=1.7.0"></script><script src="/js/scroll.js?version=1.7.0"></script><script src="/js/head.js?version=1.7.0"></script><script>if(/Android|webOS|iPhone|iPod|iPad|BlackBerry/i.test(navigator.userAgent)) {
+  $('#nav').addClass('is-mobile')
+  $('footer').addClass('is-mobile')
+  $('#top-container').addClass('is-mobile')
+}</script></body></html>
