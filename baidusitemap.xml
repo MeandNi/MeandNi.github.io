@@ -1,6 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://meandni.com/2019/04/25/think-about/</loc>
+    <lastmod>2020-04-07</lastmod>
+  </url>  <url>
+    <loc>https://meandni.com/2019/03/04/flutter-route/</loc>
+    <lastmod>2020-04-07</lastmod>
+  </url>  <url>
+    <loc>https://meandni.com/2019/05/05/flutter-principle/</loc>
+    <lastmod>2020-04-07</lastmod>
+  </url>  <url>
     <loc>https://meandni.com/2019/07/01/c0f2/</loc>
     <lastmod>2020-04-07</lastmod>
   </url>  <url>
@@ -10,16 +19,10 @@
     <loc>https://meandni.com/2019/01/28/flutter-hero/</loc>
     <lastmod>2020-04-07</lastmod>
   </url>  <url>
-    <loc>https://meandni.com/2019/05/05/flutter-principle/</loc>
-    <lastmod>2020-04-07</lastmod>
-  </url>  <url>
     <loc>https://meandni.com/2018/11/21/86ef/</loc>
     <lastmod>2020-04-07</lastmod>
   </url>  <url>
     <loc>https://meandni.com/2018/10/05/3a4f/</loc>
-    <lastmod>2020-04-07</lastmod>
-  </url>  <url>
-    <loc>https://meandni.com/2019/04/26/think-about/</loc>
     <lastmod>2020-04-07</lastmod>
   </url>  <url>
     <loc>https://meandni.com/2019/03/12/reading-record2/</loc>
@@ -74,9 +77,6 @@
     <lastmod>2020-04-07</lastmod>
   </url>  <url>
     <loc>https://meandni.com/2019/02/10/flutter-state3/</loc>
-    <lastmod>2020-04-07</lastmod>
-  </url>  <url>
-    <loc>https://meandni.com/2019/03/05/flutter-route/</loc>
     <lastmod>2020-04-07</lastmod>
   </url>  <url>
     <loc>https://meandni.com/2018/03/25/d89c/</loc>
