@@ -18,16 +18,16 @@
 <h2 id="Signing-for-“xxx”-requires-a-development-team-Select-a-development-team"><a href="#Signing-for-“xxx”-requires-a-development-team-Select-a-development-team" class="headerlink" title="Signing for “xxx” requires a development team. Select a development team"></a>Signing for “xxx” requires a development team. Select a development team</h2><p>首次用vscode连上真机以后，点击调试，会出现如下问题：</p>
 <blockquote>
 <p>No Provisioning Profile was found for your project’s Bundle Identifier or your<br>device. You can create a new Provisioning Profile for your project in Xcode for<br>your team by:<br>  1- Open the Flutter project’s Xcode target with<br>       open ios/Runner.xcworkspace<br>  2- Select the ‘Runner’ project in the navigator then the ‘Runner’ target<br>     in the project settings<br>  3- In the ‘General’ tab, make sure a ‘Development Team’ is selected.<br>     You may need to:</p>
-<pre><code>- Log in with your Apple ID in Xcode first
-- Ensure you have a valid unique Bundle ID
-- Register your device with your Apple Developer Account
-- Let Xcode automatically provision a profile for your app
+<pre><code>     - Log in with your Apple ID in Xcode first
+     - Ensure you have a valid unique Bundle ID
+     - Register your device with your Apple Developer Account
+     - Let Xcode automatically provision a profile for your app
 </code></pre><p>  4- Build or run your project again<br>It’s also possible that a previously installed app with the same Bundle<br>Identifier was signed with a different certificate.<br>For more information, please visit:<br>  <a href="https://flutter.io/setup/#deploy-to-ios-devices" target="_blank" rel="noopener">https://flutter.io/setup/#deploy-to-ios-devices</a><br>Or run on an iOS simulator without code signing<br>════════════════════════════════════════════════════════════════════════════════<br>2018-10-27 12:09:29.004 ios-deploy[91734:221562][ !! ] Error 0xe8008015: A valid provisioning profile for this executable was not found. AMDeviceSecureInstallApplication(0, device, url, options, install_callback, 0)<br>Could not install build/ios/iphoneos/Runner.app on b53d6902af4ac5d5166a3125b9013886739c92d2.<br>Try launching Xcode and selecting “Product &gt; Run” to fix the problem:<br>  open ios/Runner.xcworkspace<br>Error launching application on xxx的 iPhone.<br>Exited (sigterm)</p>
 </blockquote>
 <p>用xcode打开 flutter项目<code>/ios/Runner.xcworkspace</code> 这个文件，好，我们手动打开，点击编译，此时会编译不通过～</p>
 <p>出现这个问题的原因是你的xcode project 中的team没有选择，选择方法如下。</p>
 <p><img src="http://pan.94ht.com/QQ20190104-203008.png" alt="img"></p>
-<h2 id="不受信任的开发者"><a href="#不受信任的开发者" class="headerlink" title="不受信任的开发者"></a>不受信任的开发者</h2><p>解决方式：打开手机上的”设置-&gt;通用-&gt;设备管理-&gt;开发者应用”，进入以后，点击”信任 <a href="mailto:xxxxx@xxx.com">xxxxx@xxx.com</a>“</p>
+<h2 id="不受信任的开发者"><a href="#不受信任的开发者" class="headerlink" title="不受信任的开发者"></a>不受信任的开发者</h2><p>解决方式：打开手机上的”设置-&gt;通用-&gt;设备管理-&gt;开发者应用”，进入以后，点击”信任 xxxxx@xxx.com”</p>
 <h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><p>官方链接：<a href="https://flutter.io/docs/get-started/install/macos" target="_blank" rel="noopener">https://flutter.io/docs/get-started/install/macos</a></p>
 </div></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="mailto:undefined">Joker</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="https://meandni.com/2019/01/04/5671/">https://meandni.com/2019/01/04/5671/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/flutter/">flutter</a><a class="post-meta__tags" href="/tags/%E7%9C%9F%E9%A2%98%E8%B0%83%E8%AF%95/">真题调试</a></div><div class="post-qr-code"><div class="post-qr-code-item"><img class="post-qr-code__img" src="/img/alipay.jpg"><div class="post-qr-code__desc">支付宝打赏</div></div><div class="post-qr-code-item"><img class="post-qr-code__img" src="/img/wechat.png"><div class="post-qr-code__desc">微信打赏</div></div></div><nav id="pagination"><div class="prev-post pull-left"><a href="/2019/01/04/flutter-practice1/"><i class="fa fa-chevron-left">  </i><span>实战中学习Flutter1：简易聊天AppUI</span></a></div><div class="next-post pull-right"><a href="/2018/12/25/android-advanced/"><span>Android进阶之路</span><i class="fa fa-chevron-right"></i></a></div></nav><div id="gitalk-container"></div><script>var gitalk = new Gitalk({
   clientID: '12faa9d04b92d2d70968',
@@ -38,7 +38,29 @@
   id: md5(decodeURI(location.pathname)),
   language: 'zh-CN'
 })
-gitalk.render('gitalk-container')</script></div></div><footer><div class="layout" id="footer"><div class="copyright">&copy;2018 - 2020 By Joker</div><div class="framework-info"><span>Driven - </span><a href="#"><span>Hexo</span></a><span class="footer-separator">|</span><span>Theme - </span><a href="https://github.com/Molunerfinn/hexo-theme-melody" target="_blank" rel="noopener"><span>Melody</span></a></div></div></footer><i class="fa fa-arrow-up" id="go-up" aria-hidden="true"></i><script src="https://cdn.jsdelivr.net/npm/animejs@latest/anime.min.js"></script><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@latest/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-ui-pack@latest/velocity.ui.min.js"></script><script src="/js/utils.js?version=1.7.0"></script><script src="/js/fancybox.js?version=1.7.0"></script><script src="/js/sidebar.js?version=1.7.0"></script><script src="/js/copy.js?version=1.7.0"></script><script src="/js/fireworks.js?version=1.7.0"></script><script src="/js/transition.js?version=1.7.0"></script><script src="/js/scroll.js?version=1.7.0"></script><script src="/js/head.js?version=1.7.0"></script><script>if(/Android|webOS|iPhone|iPod|iPad|BlackBerry/i.test(navigator.userAgent)) {
+gitalk.render('gitalk-container')</script></div></div><footer><div class="layout" id="footer"><div class="copyright">&copy;2018 - 2020 By Joker</div><div class="framework-info"><span>Driven - </span><a href="#"><span>Hexo</span></a><span class="footer-separator">|</span><span>Theme - </span><a href="https://github.com/Molunerfinn/hexo-theme-melody" target="_blank" rel="noopener"><span>Melody</span></a></div></div></footer><i class="fa fa-arrow-up" id="go-up" aria-hidden="true"></i><script src="https://cdn.jsdelivr.net/npm/animejs@latest/anime.min.js"></script><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@latest/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-ui-pack@latest/velocity.ui.min.js"></script><script src="/js/utils.js?version=1.7.0"></script><script src="/js/fancybox.js?version=1.7.0"></script><script src="/js/sidebar.js?version=1.7.0"></script><script src="/js/copy.js?version=1.7.0"></script><script src="/js/fireworks.js?version=1.7.0"></script><script src="/js/transition.js?version=1.7.0"></script><script src="/js/scroll.js?version=1.7.0"></script><script src="/js/head.js?version=1.7.0"></script><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+    processEscapes: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  },
+  CommonHTML: {
+    linebreaks: { automatic: true, width: "90% container" }
+  },
+  "HTML-CSS": { 
+    linebreaks: { automatic: true, width: "90% container" }
+  },
+  "SVG": { 
+    linebreaks: { automatic: true, width: "90% container" }
+  }
+});
+</script><script type="text/x-mathjax-config">MathJax.Hub.Queue(function() {
+  var all = MathJax.Hub.getAllJax(), i;
+  for (i=0; i < all.length; i += 1) {
+    all[i].SourceElement().parentNode.className += ' has-jax';
+  }
+});
+</script><script src="https://cdn.jsdelivr.net/npm/mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><script>if(/Android|webOS|iPhone|iPod|iPad|BlackBerry/i.test(navigator.userAgent)) {
   $('#nav').addClass('is-mobile')
   $('footer').addClass('is-mobile')
   $('#top-container').addClass('is-mobile')

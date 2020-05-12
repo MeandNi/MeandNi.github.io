@@ -80,14 +80,14 @@
 <p>这样做使得<strong>每次都是对整个半区进行内存回收</strong>，内存分配时也就<strong>不用考虑内存碎片</strong>等复杂情况，只要<strong>移动堆顶指针，按顺序分配内存</strong>即可，实现简单，运行高效。只是这种算法的代价是<strong>将内存缩小为原来的一半</strong>，代价可能过高了。复制算法的执行过程如下图所示：</p>
 <center><img src="https://pic.yupoo.com/crowhawk/62b8a3a8/f1cada8a.png"></center>
 
-<big><strong>Minor GC与复制算法</strong></big>
+<big>**Minor GC与复制算法**</big>
 
 <p><strong>现在的商业虚拟机都使用复制算法来回收新生代。</strong>新生代的GC又叫<strong>“Minor GC”</strong>，IBM公司的专门研究表明：新生代中的对象98%是<strong>“朝生夕死”</strong>的，所以Minor GC非常频繁，一般回收速度也比较快，同时<strong>“朝生夕死”</strong>的特性也使得Minor GC使用复制算法时不需要按照1:1的比例来划分新生代内存空间。</p>
-<big><strong>Minor GC过程</strong></big>
+<big>**Minor GC过程**</big>
 
 <p>事实上，新生代将内存分为<strong>一块较大的Eden空间</strong>和<strong>两块较小的Survivor空间（From Survivor和To Survivor）</strong>，<strong>每次Minor GC都使用Eden和From Survivor</strong>，当回收时，<strong>将Eden和From Survivor中还存活着的对象都一次性地复制到另外一块To Survivor空间上</strong>，最后清理掉Eden和刚使用的Survivor空间。<strong>一次Minor GC结束的时候</strong>，<strong>Eden</strong>空间和<strong>From Survivor</strong>空间都是空的，而<strong>To Survivor</strong>空间里面存储着存活的对象。<strong>在下次MinorGC的时候</strong>，两个Survivor空间交换他们的标签，现在是空的<strong>“From” Survivor</strong>标记成为<strong>“To”</strong>，<strong>“To” Survivor</strong>标记为<strong>“From”</strong>。因此，在MinorGC结束的时候，Eden空间是空的，两个Survivor空间中的一个是空的，而另一个存储着存活的对象。</p>
 <p>HotSpot虚拟机默认的<strong>Eden : Survivor</strong>的比例是<strong>8 : 1</strong>，由于一共有两块Survivor，所以<strong>每次新生代中可用内存空间为整个新生代容量的90%（80%＋10%）</strong>，只有10%的容量会被“浪费”。</p>
-<big><strong>分配担保</strong></big>
+<big>**分配担保**</big>
 
 <p>上文说的98%的对象可回收只是一般场景下的数据，我们没有办法保证每次回收都只有不多于10%的对象存活，<strong>当Survivor空间不够用时</strong>，需要依赖<strong>老年代内存</strong>进行<strong>分配担保（Handle Promotion）</strong>。如果另外一块Survivor上没有足够空间存放上一次新生代收集下来的存活对象，这些对象将直接通过分配担保机制进入老年代。</p>
 <h5 id="标记－整理（Mark-Compact）算法"><a href="#标记－整理（Mark-Compact）算法" class="headerlink" title="标记－整理（Mark-Compact）算法"></a>标记－整理（Mark-Compact）算法</h5><p>复制算法在对象存活率较高时要进行较多的复制操作，效率将会变低。更关键的是：如果不想浪费50%的空间，就需要有额外的空间进行分配担保，以应对被使用的内存中所有对象都100%存活的极端情况，所以在<strong>老年代一般不能直接选用复制算法</strong>。</p>
@@ -101,10 +101,10 @@
 </ul>
 <h1 id="HotSpot的算法实现"><a href="#HotSpot的算法实现" class="headerlink" title="HotSpot的算法实现"></a>HotSpot的算法实现</h1><p>前面两大节主要从理论上介绍了对象存活判定算法和垃圾收集算法，而在HotSpot虚拟机上实现这些算法时，必须对算法的执行效率有严格的考量，才能保证虚拟机高效运行。</p>
 <h4 id="枚举根节点"><a href="#枚举根节点" class="headerlink" title="枚举根节点"></a>枚举根节点</h4><p>从可达性分析中<strong>从GC Roots节点找引用链</strong>这个操作为例，可作为GC Roots的节点主要在<strong>全局性的引用</strong>（例如常量或类静态属性）与<strong>执行上下文</strong>（例如栈帧中的局部变量表）中，现在很多应用仅仅方法区就有数百兆，如果要逐个检查这里面的引用，那么必然会消耗很多时间。</p>
-<big><strong>GC停顿（”Stop The World”）</strong></big>
+<big>**GC停顿（"Stop The World"）**</big>
 
 <p>另外，可达性分析工作必须在一个<strong>能确保一致性的快照</strong>中进行——这里<strong>“一致性”</strong>的意思是指<strong>在整个分析期间整个执行系统看起来就像被冻结在某个时间点上</strong>，不可以出现分析过程中对象引用关系还在不断变化的情况，这是保证分析结果准确性的基础。这点是导致GC进行时必须<strong>停顿所有Java执行线程</strong>（Sun将这件事情称为<strong>“Stop The World”</strong>）的其中一个重要原因，即使是在号称（几乎）不会发生停顿的CMS收集器中，枚举根节点时也是必须要停顿的。</p>
-<big><strong>准确式GC与OopMap</strong></big>
+<big>**准确式GC与OopMap**</big>
 
 <p>由于目前的主流Java虚拟机使用的都是<strong>准确式GC（即使用准确式内存管理，虚拟机可用知道内存中某个位置的数据具体是什么类型）</strong>，所以当执行系统停顿下来后，并不需要一个不漏地检查完所有执行上下文和全局的引用位置，虚拟机应当是有办法直接得知哪些地方存放着对象引用。在HotSpot的实现中，是使用一组称为<strong>OopMap</strong>的数据结构来达到这个目的的，在类加载完成的时候，HotSpot就把<strong>对象内什么偏移量上是什么类型的数据</strong>计算出来，在JIT编译过程中，也会在特定的位置记录下<strong>栈和寄存器中哪些位置是引用</strong>。这样，GC在扫描时就可以直接得知这些信息了。</p>
 <h4 id="安全点（Safepoint）——进行GC时程序停顿的位置"><a href="#安全点（Safepoint）——进行GC时程序停顿的位置" class="headerlink" title="安全点（Safepoint）——进行GC时程序停顿的位置"></a>安全点（Safepoint）——进行GC时程序停顿的位置</h4><p>在OopMap的协助下，HotSpot可以快速且准确地完成GC Roots枚举，但一个很现实的问题随之而来：可能导致引用关系变化，或者说OopMap内容变化的指令非常多，<strong>如果为每一条指令都生成对应的OopMap，那将会需要大量的额外空间，这样GC的空间成本将会变得很高。</strong></p>
@@ -154,7 +154,29 @@
   id: md5(decodeURI(location.pathname)),
   language: 'zh-CN'
 })
-gitalk.render('gitalk-container')</script></div></div><footer><div class="layout" id="footer"><div class="copyright">&copy;2018 - 2020 By Joker</div><div class="framework-info"><span>Driven - </span><a href="#"><span>Hexo</span></a><span class="footer-separator">|</span><span>Theme - </span><a href="https://github.com/Molunerfinn/hexo-theme-melody" target="_blank" rel="noopener"><span>Melody</span></a></div></div></footer><i class="fa fa-arrow-up" id="go-up" aria-hidden="true"></i><script src="https://cdn.jsdelivr.net/npm/animejs@latest/anime.min.js"></script><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@latest/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-ui-pack@latest/velocity.ui.min.js"></script><script src="/js/utils.js?version=1.7.0"></script><script src="/js/fancybox.js?version=1.7.0"></script><script src="/js/sidebar.js?version=1.7.0"></script><script src="/js/copy.js?version=1.7.0"></script><script src="/js/fireworks.js?version=1.7.0"></script><script src="/js/transition.js?version=1.7.0"></script><script src="/js/scroll.js?version=1.7.0"></script><script src="/js/head.js?version=1.7.0"></script><script>if(/Android|webOS|iPhone|iPod|iPad|BlackBerry/i.test(navigator.userAgent)) {
+gitalk.render('gitalk-container')</script></div></div><footer><div class="layout" id="footer"><div class="copyright">&copy;2018 - 2020 By Joker</div><div class="framework-info"><span>Driven - </span><a href="#"><span>Hexo</span></a><span class="footer-separator">|</span><span>Theme - </span><a href="https://github.com/Molunerfinn/hexo-theme-melody" target="_blank" rel="noopener"><span>Melody</span></a></div></div></footer><i class="fa fa-arrow-up" id="go-up" aria-hidden="true"></i><script src="https://cdn.jsdelivr.net/npm/animejs@latest/anime.min.js"></script><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@latest/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-ui-pack@latest/velocity.ui.min.js"></script><script src="/js/utils.js?version=1.7.0"></script><script src="/js/fancybox.js?version=1.7.0"></script><script src="/js/sidebar.js?version=1.7.0"></script><script src="/js/copy.js?version=1.7.0"></script><script src="/js/fireworks.js?version=1.7.0"></script><script src="/js/transition.js?version=1.7.0"></script><script src="/js/scroll.js?version=1.7.0"></script><script src="/js/head.js?version=1.7.0"></script><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+    processEscapes: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  },
+  CommonHTML: {
+    linebreaks: { automatic: true, width: "90% container" }
+  },
+  "HTML-CSS": { 
+    linebreaks: { automatic: true, width: "90% container" }
+  },
+  "SVG": { 
+    linebreaks: { automatic: true, width: "90% container" }
+  }
+});
+</script><script type="text/x-mathjax-config">MathJax.Hub.Queue(function() {
+  var all = MathJax.Hub.getAllJax(), i;
+  for (i=0; i < all.length; i += 1) {
+    all[i].SourceElement().parentNode.className += ' has-jax';
+  }
+});
+</script><script src="https://cdn.jsdelivr.net/npm/mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><script>if(/Android|webOS|iPhone|iPod|iPad|BlackBerry/i.test(navigator.userAgent)) {
   $('#nav').addClass('is-mobile')
   $('footer').addClass('is-mobile')
   $('#top-container').addClass('is-mobile')

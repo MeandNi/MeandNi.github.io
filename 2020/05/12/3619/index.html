@@ -28,7 +28,7 @@
 <p><img src="/images/201105031137227086.png" alt="GB2312 简体中文编码表"></p>
 <p>这样，我们中国就有了属于自己的字符集了，但中国的汉字又是在是太多了，人们很快就发现 GB2312 字符集只能够那点汉字明显不够（如中国前总理朱镕基的 “镕” 字并不在 GB2312 字符集中），于是专家们又继续把 GB2312 没有用到的码位使用到其他没有被收录的汉字中。</p>
 <p>后来还是不够用，于是干脆不再要求低字节一定是 127 号之后的内码，只要第一个字节是大于 127 就固定表示这是一个汉字的开始，不管后面跟的是不是扩展字符集里的内容。结果扩展之后的编码方案被称为 GBK 标准，GBK 包括了 GB2312 的所有内容，同时又增加了近 20000 个新的汉字（包括繁体字）和符号。</p>
-<p>当时的各个国家都像中国这样制定出了一套自己的编码标准，之后当我们需要使用计算机与国际接轨时，问题出现了！国家与国家之间谁也不懂谁的编码，130 在法语编码中代表了 <code>é</code>，在希伯来语编码中却代表了字母 <code>Gimel</code> (<code>ג</code>)，在俄语编码中又会代表另一个符号。但是所有这些编码方式中，0–127 表示的符号依然都是一样的，因为他们都兼容 ASCII 码，这一点，如今也是一样。</p>
+<p>当时的各个国家都像中国这样制定出了一套自己的编码标准，之后当我们需要使用计算机与国际接轨时，问题出现了！国家与国家之间谁也不懂谁的编码，130 在法语编码中代表了 <code>é</code>，在希伯来语编码中却代表了字母 <code>Gimel</code> (<code>ג</code>)，在俄语编码中又会代表另一个符号。但是所有这些编码方式中，0—127 表示的符号依然都是一样的，因为他们都兼容 ASCII 码，这一点，如今也是一样。</p>
 <h2 id="Unicode"><a href="#Unicode" class="headerlink" title="Unicode"></a>Unicode</h2><p>正如上一节中所说的，世界上各国都有不同的编码方式，同一个二进制数字可以被解码成不同的符号。因此，要想打开一个文本文件，就必须知道它的编码方式，否则用错误的编码方式解读，就会出现乱码。为了解决这个问题，最终的集大成者 Unicode 字符集出现了，它将世界上所有的符号都纳入其中，成功实现了每个数字代表唯一的至少在某种语言中使用的符号，目前，Unicode 字符集中已经收录超过 13 万个字符（第十万个字符在2005年获采纳）。值得关注的是，Unicode 依然兼容 ASCII，即 0～127 意义依然不变。</p>
 <h3 id="码点"><a href="#码点" class="headerlink" title="码点"></a>码点</h3><p>Unicode 表示的是一个字符集，与我们通常所说的 UTF-8、UTF-6 等编码方式并不相同，本节介绍的<strong>编号</strong>就相当于 ASCII 码中的 ASCII 值，它就是 Unicode 字符集中唯一表示某个字符的标识，在 Unicode 也称作<strong>码点（Code Point）</strong>，如码点 U+0061，这里的 61 就是 97 的十六进制表示，它就表示 Unicode 字符集中的字符 ‘a‘。</p>
 <p>码点的表示的形式为 U+[XX]XXXX，X 代表一个十六制数字，一般可以有 4-6 位，不足 4 位前补 0 补足 4 位，超过则按是几位就是几位，具体范围是 U+0000~U+10FFFF，大概是 111 万。按 Unicode 官方的说法，码点范围就这样了，以后也不扩充了，一百多万足够用了，目前也只定义了 11 万多个字符左右。</p>
@@ -66,7 +66,7 @@
 <li><p>对于只有一个字节的符号，字节的第一位设为<code>0</code>，后面 7 位为这个符号的 Unicode 码。此时，对于英语字母UTF-8 编码和 ASCII 码是相同的。</p>
 </li>
 <li><p>对于 <code>n</code> 字节的符号（<code>n &gt; 1</code>），第一个字节的前 <code>n</code> 位都设为 <code>1</code>，第 <code>n + 1</code> 位设为<code>0</code>，后面字节的前两位一律设为 <code>10</code>。剩下的没有提及的二进制位，全部为这个符号的 Unicode 码，如下表所示：</p>
-<p>| Unicode码点范围（十六进制） | UTF-8编码方式（二进制）             | 字节数   |<br>| ————————— | ———————————– | ——– |<br>| 0000 0000 ～ 0000 007F      | 0xxxxxxx                            | 一个字节 |<br>| 0000 0080 ～ 0000 07FF      | 110xxxxx 10xxxxxx                   | 二个子节 |<br>| 0000 0800 ～ 0000 FFFF      | 1110xxxx 10xxxxxx 10xxxxxx          | 三个字节 |<br>| 0001 0000 ～ 0010 FFFF      | 11110xxx 10xxxxxx 10xxxxxx 10xxxxxx | 四个字节 |</p>
+<p>| Unicode码点范围（十六进制） | UTF-8编码方式（二进制）             | 字节数   |<br>| —————————————- | —————————————————- | ———— |<br>| 0000 0000 ～ 0000 007F      | 0xxxxxxx                            | 一个字节 |<br>| 0000 0080 ～ 0000 07FF      | 110xxxxx 10xxxxxx                   | 二个子节 |<br>| 0000 0800 ～ 0000 FFFF      | 1110xxxx 10xxxxxx 10xxxxxx          | 三个字节 |<br>| 0001 0000 ～ 0010 FFFF      | 11110xxx 10xxxxxx 10xxxxxx 10xxxxxx | 四个字节 |</p>
 <p>跟据上表，编码字符时就非常简单了，以汉字 “丑” 为例，它的码点为 0x4E11（0100 1110 0001 0001）在上表的第三行范围（0000 0800 ～ 0000 FFFF）内，因此 “丑” 需要以三个字节的形式编码：</p>
 <p><img src="/images/UTF8-3-byte-encoding-20200512210902622.png" alt="UTF-8 占 3 个字节填入格式"></p>
 <p>这里最高位的第一个字节中的三个 1 表示该字符占 3 个字节，空出的 16 位 x 就会从 “丑” 的最后一个二进制位开始，依次从后向前填入格式中，多出的位补 0，这样就得到了 “丑” 的 UTF-8 编码是 11100100 10111000 10010001，转换成十六进制就是 E4B891。</p>
@@ -100,11 +100,12 @@
 <p>拿到一个码点，先减去 10000，再除以 400（=1024）就是所在行了，余数就是所在列了，再加上行与列所在的起始值，就得到了代理对了。</p>
 </li>
 </ol>
-<p>$$<br>C_H =（码点 – 10000_{16}）\div 400_{16} + D800_{16}<br>$$</p>
-<p>$$<br>C_L =（码点 – 10000_{16}）\% 400_{16} + DC00_{16}<br>$$</p>
-<p>下面以前面的 U+1D11E 具体示例了代理对的计算：<br>$$<br>高代理 = (1D11E – 10000_{16}) ÷ 400_{16} + DB00 = D11E ÷ 400_{16} + D800 = 34 + D800 = D834<br>$$</p>
-<p>$$<br>低代理 = (1D11E – 10000_{16}) \% 400_{16} + DC00 = D11E \% 400_{16} + DC00 = 11E + DC00 = DD1E<br>$$</p>
-<p>所以，码点 U+1D11E 对应的代理对即是 D834 DD1E。</p>
+<script type="math/tex; mode=display">
+C_H =（码点 – 10000_{16}）\div 400_{16} + D800_{16}</script><script type="math/tex; mode=display">
+C_L =（码点 – 10000_{16}）\% 400_{16} + DC00_{16}</script><p>下面以前面的 U+1D11E 具体示例了代理对的计算：</p>
+<script type="math/tex; mode=display">
+高代理 = (1D11E – 10000_{16}) ÷ 400_{16} + DB00 = D11E ÷ 400_{16} + D800 = 34 + D800 = D834</script><script type="math/tex; mode=display">
+低代理 = (1D11E – 10000_{16}) \% 400_{16} + DC00 = D11E \% 400_{16} + DC00 = 11E + DC00 = DD1E</script><p>所以，码点 U+1D11E 对应的代理对即是 D834 DD1E。</p>
 <p>本篇到此结束，大家有任何问题可直接联系我，也可在评论区讨论。</p>
 <h2 id="参考文章以及衍生阅读"><a href="#参考文章以及衍生阅读" class="headerlink" title="参考文章以及衍生阅读"></a>参考文章以及衍生阅读</h2><p><a href="https://unicodebook.readthedocs.io/about.html" target="_blank" rel="noopener">Programming with Unicode</a></p>
 <p><a href="https://scripts.sil.org/cms/scripts/page.php?site_id=nrsi&amp;id=IWS-AppendixA" target="_blank" rel="noopener">Mapping codepoints to Unicode encoding forms</a></p>
@@ -124,7 +125,29 @@
   id: md5(decodeURI(location.pathname)),
   language: 'zh-CN'
 })
-gitalk.render('gitalk-container')</script></div></div><footer><div class="layout" id="footer"><div class="copyright">&copy;2018 - 2020 By Joker</div><div class="framework-info"><span>Driven - </span><a href="#"><span>Hexo</span></a><span class="footer-separator">|</span><span>Theme - </span><a href="https://github.com/Molunerfinn/hexo-theme-melody" target="_blank" rel="noopener"><span>Melody</span></a></div></div></footer><i class="fa fa-arrow-up" id="go-up" aria-hidden="true"></i><script src="https://cdn.jsdelivr.net/npm/animejs@latest/anime.min.js"></script><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@latest/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-ui-pack@latest/velocity.ui.min.js"></script><script src="/js/utils.js?version=1.7.0"></script><script src="/js/fancybox.js?version=1.7.0"></script><script src="/js/sidebar.js?version=1.7.0"></script><script src="/js/copy.js?version=1.7.0"></script><script src="/js/fireworks.js?version=1.7.0"></script><script src="/js/transition.js?version=1.7.0"></script><script src="/js/scroll.js?version=1.7.0"></script><script src="/js/head.js?version=1.7.0"></script><script>if(/Android|webOS|iPhone|iPod|iPad|BlackBerry/i.test(navigator.userAgent)) {
+gitalk.render('gitalk-container')</script></div></div><footer><div class="layout" id="footer"><div class="copyright">&copy;2018 - 2020 By Joker</div><div class="framework-info"><span>Driven - </span><a href="#"><span>Hexo</span></a><span class="footer-separator">|</span><span>Theme - </span><a href="https://github.com/Molunerfinn/hexo-theme-melody" target="_blank" rel="noopener"><span>Melody</span></a></div></div></footer><i class="fa fa-arrow-up" id="go-up" aria-hidden="true"></i><script src="https://cdn.jsdelivr.net/npm/animejs@latest/anime.min.js"></script><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@latest/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-ui-pack@latest/velocity.ui.min.js"></script><script src="/js/utils.js?version=1.7.0"></script><script src="/js/fancybox.js?version=1.7.0"></script><script src="/js/sidebar.js?version=1.7.0"></script><script src="/js/copy.js?version=1.7.0"></script><script src="/js/fireworks.js?version=1.7.0"></script><script src="/js/transition.js?version=1.7.0"></script><script src="/js/scroll.js?version=1.7.0"></script><script src="/js/head.js?version=1.7.0"></script><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+    processEscapes: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  },
+  CommonHTML: {
+    linebreaks: { automatic: true, width: "90% container" }
+  },
+  "HTML-CSS": { 
+    linebreaks: { automatic: true, width: "90% container" }
+  },
+  "SVG": { 
+    linebreaks: { automatic: true, width: "90% container" }
+  }
+});
+</script><script type="text/x-mathjax-config">MathJax.Hub.Queue(function() {
+  var all = MathJax.Hub.getAllJax(), i;
+  for (i=0; i < all.length; i += 1) {
+    all[i].SourceElement().parentNode.className += ' has-jax';
+  }
+});
+</script><script src="https://cdn.jsdelivr.net/npm/mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><script>if(/Android|webOS|iPhone|iPod|iPad|BlackBerry/i.test(navigator.userAgent)) {
   $('#nav').addClass('is-mobile')
   $('footer').addClass('is-mobile')
   $('#top-container').addClass('is-mobile')
