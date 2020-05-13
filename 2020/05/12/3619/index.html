@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta name="description" content="字符编码详解（ASCII、Unicode、UTF-32、UTF-8）"><meta name="keywords" content="字符编码,ASCII,Unicode,UTF-8"><meta name="author" content="Joker"><meta name="copyright" content="Joker"><title>字符编码详解（ASCII、Unicode、UTF-32、UTF-8） | Joker's Blog</title><link rel="shortcut icon" href="/img/favicon.ico"><link rel="stylesheet" href="/css/index.css?version=1.7.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@latest/css/font-awesome.min.css?version=1.7.0"><meta name="format-detection" content="telephone=no"><meta http-equiv="x-dns-prefetch-control" content="on"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.css"><script src="https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.js"></script><script src="https://cdn.jsdelivr.net/npm/blueimp-md5@2.10.0/js/md5.min.js"></script><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><script>var GLOBAL_CONFIG = { 
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta name="description" content="深入理解字符编码（ASCII、Unicode、UTF-32、UTF-8）"><meta name="keywords" content="字符编码,ASCII,Unicode,UTF-8"><meta name="author" content="Joker"><meta name="copyright" content="Joker"><title>深入理解字符编码（ASCII、Unicode、UTF-32、UTF-8） | Joker's Blog</title><link rel="shortcut icon" href="/img/favicon.ico"><link rel="stylesheet" href="/css/index.css?version=1.7.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@latest/css/font-awesome.min.css?version=1.7.0"><meta name="format-detection" content="telephone=no"><meta http-equiv="x-dns-prefetch-control" content="on"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.css"><script src="https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.js"></script><script src="https://cdn.jsdelivr.net/npm/blueimp-md5@2.10.0/js/md5.min.js"></script><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><script>var GLOBAL_CONFIG = { 
   root: '/',
   algolia: undefined,
   localSearch: undefined,
@@ -7,7 +7,7 @@
     error: 'Copy error',
     noSupport: 'The browser does not support'
   }
-} </script><meta name="generator" content="Hexo 4.2.0"></head><body><i class="fa fa-arrow-right" id="toggle-sidebar" aria-hidden="true"></i><div id="sidebar" data-display="true"><div class="toggle-sidebar-info text-center"><span data-toggle="Toggle article">Toggle site</span><hr></div><div class="sidebar-toc"><div class="sidebar-toc__title">Catalog</div><div class="sidebar-toc__progress"><span class="progress-notice">You've read</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar"></div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#ASCII-编码"><span class="toc-number">1.</span> <span class="toc-text">ASCII 编码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#非-ASCII-编码"><span class="toc-number">2.</span> <span class="toc-text">非 ASCII 编码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Unicode"><span class="toc-number">3.</span> <span class="toc-text">Unicode</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#码点"><span class="toc-number">3.1.</span> <span class="toc-text">码点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Unicode-编码"><span class="toc-number">3.2.</span> <span class="toc-text">Unicode 编码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#定长于变长"><span class="toc-number">3.3.</span> <span class="toc-text">定长于变长</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#UTF-32"><span class="toc-number">3.4.</span> <span class="toc-text">UTF-32</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#UTF-8"><span class="toc-number">3.5.</span> <span class="toc-text">UTF-8</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#UTF-16"><span class="toc-number">3.6.</span> <span class="toc-text">UTF-16</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考文章以及衍生阅读"><span class="toc-number">4.</span> <span class="toc-text">参考文章以及衍生阅读</span></a></li></ol></div></div><div class="author-info hide"><div class="author-info__avatar text-center"><img src="/img/avatar.jpg"></div><div class="author-info__name text-center">Joker</div><div class="author-info__description text-center">分享生活、技术、学习心得</div><hr><div class="author-info-articles"><a class="author-info-articles__archives article-meta" href="/archives"><span class="pull-left">Articles</span><span class="pull-right">38</span></a><a class="author-info-articles__tags article-meta" href="/tags"><span class="pull-left">Tags</span><span class="pull-right">30</span></a><a class="author-info-articles__categories article-meta" href="/categories"><span class="pull-left">Categories</span><span class="pull-right">9</span></a></div></div></div><div id="content-outer"><div class="no-bg" id="top-container"><div id="page-header"><span class="pull-left"> <a id="site-name" href="/">Joker's Blog</a></span><i class="fa fa-bars toggle-menu pull-right" aria-hidden="true"></i><span class="pull-right menus">   <a class="site-page" href="/">首页</a><a class="site-page" href="/archives">目录</a><a class="site-page" href="/tags">标签</a><a class="site-page" href="/categories">分类</a><a class="site-page" href="/about">关于我</a></span><span class="pull-right"></span></div><div id="post-info"><div id="post-title">字符编码详解（ASCII、Unicode、UTF-32、UTF-8）</div><div id="post-meta"><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2020-05-12</time><span class="post-meta__separator">|</span><i class="fa fa-inbox post-meta__icon" aria-hidden="true"></i><a class="post-meta__categories" href="/categories/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E8%AE%A1%E7%AE%97%E6%9C%BA/">深入理解计算机</a></div></div></div><div class="layout" id="content-inner"><article id="post"><div class="article-container" id="post-content"><blockquote>
+} </script><meta name="generator" content="Hexo 4.2.0"></head><body><i class="fa fa-arrow-right" id="toggle-sidebar" aria-hidden="true"></i><div id="sidebar" data-display="true"><div class="toggle-sidebar-info text-center"><span data-toggle="Toggle article">Toggle site</span><hr></div><div class="sidebar-toc"><div class="sidebar-toc__title">Catalog</div><div class="sidebar-toc__progress"><span class="progress-notice">You've read</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar"></div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#ASCII-编码"><span class="toc-number">1.</span> <span class="toc-text">ASCII 编码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#非-ASCII-编码"><span class="toc-number">2.</span> <span class="toc-text">非 ASCII 编码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Unicode"><span class="toc-number">3.</span> <span class="toc-text">Unicode</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#码点"><span class="toc-number">3.1.</span> <span class="toc-text">码点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Unicode-编码"><span class="toc-number">3.2.</span> <span class="toc-text">Unicode 编码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#定长于变长"><span class="toc-number">3.3.</span> <span class="toc-text">定长于变长</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#UTF-32"><span class="toc-number">3.4.</span> <span class="toc-text">UTF-32</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#UTF-8"><span class="toc-number">3.5.</span> <span class="toc-text">UTF-8</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#UTF-16"><span class="toc-number">3.6.</span> <span class="toc-text">UTF-16</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考文章以及衍生阅读"><span class="toc-number">4.</span> <span class="toc-text">参考文章以及衍生阅读</span></a></li></ol></div></div><div class="author-info hide"><div class="author-info__avatar text-center"><img src="/img/avatar.jpg"></div><div class="author-info__name text-center">Joker</div><div class="author-info__description text-center">分享生活、技术、学习心得</div><hr><div class="author-info-articles"><a class="author-info-articles__archives article-meta" href="/archives"><span class="pull-left">Articles</span><span class="pull-right">38</span></a><a class="author-info-articles__tags article-meta" href="/tags"><span class="pull-left">Tags</span><span class="pull-right">30</span></a><a class="author-info-articles__categories article-meta" href="/categories"><span class="pull-left">Categories</span><span class="pull-right">9</span></a></div></div></div><div id="content-outer"><div class="no-bg" id="top-container"><div id="page-header"><span class="pull-left"> <a id="site-name" href="/">Joker's Blog</a></span><i class="fa fa-bars toggle-menu pull-right" aria-hidden="true"></i><span class="pull-right menus">   <a class="site-page" href="/">首页</a><a class="site-page" href="/archives">目录</a><a class="site-page" href="/tags">标签</a><a class="site-page" href="/categories">分类</a><a class="site-page" href="/about">关于我</a></span><span class="pull-right"></span></div><div id="post-info"><div id="post-title">深入理解字符编码（ASCII、Unicode、UTF-32、UTF-8）</div><div id="post-meta"><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2020-05-12</time><span class="post-meta__separator">|</span><i class="fa fa-inbox post-meta__icon" aria-hidden="true"></i><a class="post-meta__categories" href="/categories/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E8%AE%A1%E7%AE%97%E6%9C%BA/">深入理解计算机</a></div></div></div><div class="layout" id="content-inner"><article id="post"><div class="article-container" id="post-content"><blockquote>
 <p>接近一年没有更新博客了，这是 2020 的第一篇，源于对基础知识的巩固，主要会从多个维度解释字符编码的由来以及内部原理。</p>
 </blockquote>
 <p>大家都知道，程序中的所有信息都是以二进制的形式存储在计算机的底层，也就是说我们在代码中定义的一个 char 字符或者一个 int 整数都会被转换成二进制码储存起来，这个过程可以被称为<strong>编码</strong>，而将计算机底层的二进制码转换成屏幕上有意义的字符（如“hello world”），这个过程就称为<strong>解码</strong>。</p>
@@ -39,7 +39,7 @@
 <p>举个例子，字符 a 的码点为 U+0061（十进制为 97），那么这个 U+0061 该如何存储，单纯的表示 U+0061 可以直接使用 7 位的二进制数 110 0001 表示，但在 GB 类的编码模式中就需要以两个字节存储即 0000 0000 0110 0001（空位用 0 填充）。</p>
 <h3 id="Unicode-编码"><a href="#Unicode-编码" class="headerlink" title="Unicode 编码"></a>Unicode 编码</h3><p>Unicode 字符集衍生出来的编码方案有三种，分别是 UTF-32、UTF-16 和 UTF-8，这使他与之前的编码模式不同，因为 ASCII、GBK 等类编码模式的字符集和编码方式都是一一对应的，而 Unicode 的编码实现却有三种，这就是我们需要区分字符集与编码的原因之一，因为此时 Unicode 并不特指  UTF-8 或者 UTF-32。</p>
 <p>下面，我们来看下面这张示意图，探究各种编码模式下，码点是如何具体转换成各种<strong>编码</strong>的：</p>
-<p><img src="/images/unicode%20from%20char%20to%20code%20point%20then%20utf.svg" alt=""></p>
+<p><img src="/images/unicode%20from%20char%20to%20code%20point%20then%20utf.svg" alt="不"></p>
 <p>上面表中包含了四个字符的码点，其中也展示了四个不同的码点在 UTF-32、UTF-16 和 UTF-8 三种编码模式下的编码结果。其中：码点到 UTF-32 的转换最简单，就是在前面填充 0 满 4 字节即可；码点到 UTF-8 的转换，除了最小那个在数值上一样外，其它三个完全看不出两者的关系；码点到 UTF-16 的转换则是最不规则的，可以看出前三个字符 UTF-16 与码点是完全一致的，但那个大码点（准确地说是超过了 U+FFFF 的码点）则有了很大的变化，长度变成了四字节，值也变得很不一样了。</p>
 <p>这其中又涉及到编码过程中<strong>定长</strong>与<strong>变长</strong>两种实现方式，这里的 UTF-32 就属于定长编码，即永远用 4 字节存储码点，而 UTF-8、UTF-16 就属于变长存储，UTF-8 根据不同的情况使用 1-4 字节，而 UTF-16 使用 2 或 4 字节来存储码点。</p>
 <h3 id="定长于变长"><a href="#定长于变长" class="headerlink" title="定长于变长"></a>定长于变长</h3><p>为什么要有定长于变长这两种编码形式？在中文的表达中都会有所谓的断句问题，如果我们处理不好断句很有可能会将意思传递错误。如下面这句来自算命先生纸条中的内容：</p>
@@ -66,16 +66,48 @@
 <li><p>对于只有一个字节的符号，字节的第一位设为<code>0</code>，后面 7 位为这个符号的 Unicode 码。此时，对于英语字母UTF-8 编码和 ASCII 码是相同的。</p>
 </li>
 <li><p>对于 <code>n</code> 字节的符号（<code>n &gt; 1</code>），第一个字节的前 <code>n</code> 位都设为 <code>1</code>，第 <code>n + 1</code> 位设为<code>0</code>，后面字节的前两位一律设为 <code>10</code>。剩下的没有提及的二进制位，全部为这个符号的 Unicode 码，如下表所示：</p>
-<p>| Unicode码点范围（十六进制） | UTF-8编码方式（二进制）             | 字节数   |<br>| —————————————- | —————————————————- | ———— |<br>| 0000 0000 ～ 0000 007F      | 0xxxxxxx                            | 一个字节 |<br>| 0000 0080 ～ 0000 07FF      | 110xxxxx 10xxxxxx                   | 二个子节 |<br>| 0000 0800 ～ 0000 FFFF      | 1110xxxx 10xxxxxx 10xxxxxx          | 三个字节 |<br>| 0001 0000 ～ 0010 FFFF      | 11110xxx 10xxxxxx 10xxxxxx 10xxxxxx | 四个字节 |</p>
-<p>跟据上表，编码字符时就非常简单了，以汉字 “丑” 为例，它的码点为 0x4E11（0100 1110 0001 0001）在上表的第三行范围（0000 0800 ～ 0000 FFFF）内，因此 “丑” 需要以三个字节的形式编码：</p>
-<p><img src="/images/UTF8-3-byte-encoding-20200512210902622.png" alt="UTF-8 占 3 个字节填入格式"></p>
-<p>这里最高位的第一个字节中的三个 1 表示该字符占 3 个字节，空出的 16 位 x 就会从 “丑” 的最后一个二进制位开始，依次从后向前填入格式中，多出的位补 0，这样就得到了 “丑” 的 UTF-8 编码是 11100100 10111000 10010001，转换成十六进制就是 E4B891。</p>
-<p>解码 UTF-8 编码也很简单了，如果一个字节的第一位是 0，则这个字节单独就是一个字符；如果第一位是<code>1</code>，则连续有多少个 1，就表示当前字符占用多少个字节，”丑” 有三个 1 表示占三个字符，然后取出有效位即可。 </p>
 </li>
 </ol>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>Unicode码点范围（十六进制）</th>
+<th>UTF-8编码方式（二进制）</th>
+<th>字节数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0000 0000 ～ 0000 007F</td>
+<td>0xxxxxxx</td>
+<td>一个字节</td>
+</tr>
+<tr>
+<td>0000 0080 ～ 0000 07FF</td>
+<td>110xxxxx 10xxxxxx</td>
+<td>二个子节</td>
+</tr>
+<tr>
+<td>0000 0800 ～ 0000 FFFF</td>
+<td>1110xxxx 10xxxxxx 10xxxxxx</td>
+<td>三个字节</td>
+</tr>
+<tr>
+<td>0001 0000 ～ 0010 FFFF</td>
+<td>11110xxx 10xxxxxx 10xxxxxx 10xxxxxx</td>
+<td>四个字节</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>跟据上表，编码字符时就非常简单了，以汉字 “丑” 为例，它的码点为 0x4E11（0100 1110 0001 0001）在上表的第三行范围（0000 0800 ～ 0000 FFFF）内，因此 “丑” 需要以三个字节的形式编码：</p>
+<p>   <img src="/images/UTF8-3-byte-encoding-20200512210902622.png" alt="UTF-8 占 3 个字节填入格式"></p>
+<p>   这里最高位的第一个字节中的三个 1 表示该字符占 3 个字节，空出的 16 位 x 就会从 “丑” 的最后一个二进制位开始，依次从后向前填入格式中，多出的位补 0，这样就得到了 “丑” 的 UTF-8 编码是 11100100 10111000 10010001，转换成十六进制就是 E4B891。</p>
+<p>   解码 UTF-8 编码也很简单了，如果一个字节的第一位是 0，则这个字节单独就是一个字符；如果第一位是<code>1</code>，则连续有多少个 1，就表示当前字符占用多少个字节，”丑” 有三个 1 表示占三个字符，然后取出有效位即可。 </p>
 <h3 id="UTF-16"><a href="#UTF-16" class="headerlink" title="UTF-16"></a>UTF-16</h3><p>UTF-16 使用的是是一种变长为 2 或 4 字节编码模式。</p>
 <p>最初，Unicode1.0 被设计为纯 16 位编码，拥有 65,536 个码点（U+0000～U+FFFF），目的就是希望能够表示所有现代字符，然而随着时间推移，16 位对于计算机而言显然是不够的，因此产生了如今的 4 字节的 UTF-16 编码，此时，Unicode 就具有了 1,114,112 个代码点（U+10000 ～ U+10FFFF），这就是我们之前介绍 Unicode。 </p>
-<p>此时，范围在 U+0000～U+FFFF 的码点被称了为 <strong>BMP（Basic Multilingual Plane，基本多语言平面）</strong>，而后来拓展的范围 U+10000 ～ U+10FFFF 称为非 BMP 字符。UTF-16 就是利用 BMP 使用<strong>代理</strong>的方式来对字符进行编码。</p>
+<p>此时，范围在 U+0000～U+FFFF 的码点被称了为 <strong>BMP（Basic Multilingual Plane，基本多语言平面）</strong>，而后来拓展的范围 U+10000 ～ U+10FFFF 称为 <strong>SP（Supplementary Planes，增补平面）</strong>。UTF-16 就是利用 BMP 使用<strong>代理</strong>的方式来对字符进行编码。</p>
 <blockquote>
 <p>何为代理？</p>
 </blockquote>
@@ -83,7 +115,8 @@
 <blockquote>
 <p>什么是代理区？</p>
 </blockquote>
-<p>代理区由两个特殊范围（BMP 中的空闲部分）的 Unicode 码点组成，总共有 2048 个位置，均分为<strong>高代理区</strong>（D800–DBFF）和<strong>低代理区</strong>（DC00–DFFF）两部分，各 1024，这两个区可以组成一个二维的表格，共有 65536 个单元格，所以它恰好可以表示代理（增补）的 16 位中的所有字符。</p>
+<p>代理区由两个特殊范围（BMP 中的空闲部分）的 Unicode 码点组成，总共有 2048 个位置，均分为<strong>高代理区</strong>（D800–DBFF）和<strong>低代理区</strong>（DC00–DFFF）两部分，各 1024，这两个区可以组成一个二维的表格，共有 1,024 x 1,024 = 1,048,576 = 16×65536 个单元格，所以它恰好可以表示代理（增补）的 16 位中的所有字符。</p>
+<p><img src="/images/05005221_ENrq.png" alt="BMP中的空闲区域 图片来源网络"></p>
 <p><img src="/images/05005224_ngsJ.png" alt="图片来自 wiki"></p>
 <p>这种从一维存储转换到二维存储的方式就可以实现空间增大的效果了，UTF-16 也就有了能够额外获得码点的方式了。</p>
 <p>一个高代理区（即上图中的 Lead（头），行）的加一个低代理区（即上图中的Trail（尾），列）的编码组成一对<strong>代理对（Surrogate Pair）</strong>。在图中就可以看到一些转换的例子，如</p>
@@ -102,15 +135,114 @@
 </ol>
 <script type="math/tex; mode=display">
 C_H =（码点 – 10000_{16}）\div 400_{16} + D800_{16}</script><script type="math/tex; mode=display">
-C_L =（码点 – 10000_{16}）\% 400_{16} + DC00_{16}</script><p>下面以前面的 U+1D11E 具体示例了代理对的计算：</p>
+C_L =（码点 – 10000_{16}）\% 400_{16} + DC00_{16}</script><p>需要关注的是，最常用的字符依然是在 BMP 平面中编码的，下表给出了各码点范围内 UTF-16 编码取值方法：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>Codepoint range</th>
+<th>Number of UTF-16 code units</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>U+0000..U+D7FF</td>
+<td>BMP内，一个字节，不做转换</td>
+</tr>
+<tr>
+<td>U+D800..U+DFFF</td>
+<td>BMP 空闲区</td>
+</tr>
+<tr>
+<td>U+E000..U+FFFF</td>
+<td>BMP内，一个字节，不做转换</td>
+</tr>
+<tr>
+<td>U+10000..U+10FFFF</td>
+<td>两个字节: 高位+低位</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>下面以码点 U+1D11E 具体示例计算代理对：</p>
 <script type="math/tex; mode=display">
 高代理 = (1D11E – 10000_{16}) ÷ 400_{16} + DB00 = D11E ÷ 400_{16} + D800 = 34 + D800 = D834</script><script type="math/tex; mode=display">
-低代理 = (1D11E – 10000_{16}) \% 400_{16} + DC00 = D11E \% 400_{16} + DC00 = 11E + DC00 = DD1E</script><p>所以，码点 U+1D11E 对应的代理对即是 D834 DD1E。</p>
+低代理 = (1D11E – 10000_{16}) \% 400_{16} + DC00 = D11E \% 400_{16} + DC00 = 11E + DC00 = DD1E</script><p>所以，码点 U+1D11E 对应的代理对即是 D834 DD1E。下表又列举出了其他字符的 UTF-16 的编码过程：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Character</th>
+<th style="text-align:center">Binary code point</th>
+<th style="text-align:center">Unicode 二进制编码</th>
+<th style="text-align:center">UTF-16 代码单元</th>
+<th style="text-align:center">UTF-16 十六进制字节</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">$</td>
+<td style="text-align:center">U+0024</td>
+<td style="text-align:center">0000 0000 0010 0100</td>
+<td style="text-align:center">0000 0000 0010 0100</td>
+<td style="text-align:center">0024</td>
+</tr>
+<tr>
+<td style="text-align:center">€</td>
+<td style="text-align:center">U+20AC</td>
+<td style="text-align:center">0010 0000 1010 1100</td>
+<td style="text-align:center">0010 0000 1010 1100</td>
+<td style="text-align:center">20AC</td>
+</tr>
+<tr>
+<td style="text-align:center">[𐐷</td>
+<td style="text-align:center">U+10437</td>
+<td style="text-align:center">0001 0000 0100 0011 0111</td>
+<td style="text-align:center">1101 1000 0000 0001 1101 1100 0011 0111</td>
+<td style="text-align:center">D801 DC37</td>
+</tr>
+<tr>
+<td style="text-align:center">𤭢</td>
+<td style="text-align:center">U+24B62</td>
+<td style="text-align:center">0010 0100 1011 0110 0010</td>
+<td style="text-align:center">1101 1000 0101 0010 1101 1111 0110 0010</td>
+<td style="text-align:center">D852 DF62</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>和 UTF-8 中高位保留的方式一样，UTF-16 在各码点范围内同样拥有一个二进制到实际编码单元的映射表，如下：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>Codepoint range</th>
+<th>Unicode 二进制</th>
+<th>UTF-16 编码方式（代码单元）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>U+0000 ～ U+D7FF，U+E000 ～U+EFFF</td>
+<td>00000xxxxxxxxxxxxxxxx</td>
+<td>xxxxxxxxxxxxxxxx</td>
+</tr>
+<tr>
+<td>U+10000 ～ U+10FFFF</td>
+<td>Uuuuuxxxxxxyyyyyyyyyy</td>
+<td>110110wwwwxxxxxx 110111yyyyyyyyyy</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>按照上面的两个表我们也不难发现其中的规律，在 U+10000 ～ U+10FFFF 范围内的码点在编码时分别在第一个子节和第三个字节的高位设为 110110 和 110111，然后再根据 Unicode 二进制码各位填补即可（其中，<strong>这里的uuuuu = wwww + 1</strong>）。</p>
 <p>本篇到此结束，大家有任何问题可直接联系我，也可在评论区讨论。</p>
 <h2 id="参考文章以及衍生阅读"><a href="#参考文章以及衍生阅读" class="headerlink" title="参考文章以及衍生阅读"></a>参考文章以及衍生阅读</h2><p><a href="https://unicodebook.readthedocs.io/about.html" target="_blank" rel="noopener">Programming with Unicode</a></p>
 <p><a href="https://scripts.sil.org/cms/scripts/page.php?site_id=nrsi&amp;id=IWS-AppendixA" target="_blank" rel="noopener">Mapping codepoints to Unicode encoding forms</a></p>
 <p><a href="https://xiaogd.net/%e5%ad%97%e7%ac%a6%e9%9b%86%e4%b8%8e%e7%bc%96%e7%a0%81%ef%bc%88%e4%b8%89%ef%bc%89-%e5%ae%9a%e9%95%bf%e4%b8%8e%e5%8f%98%e9%95%bf/" target="_blank" rel="noopener">字符集与编码（三）——定长与变长</a></p>
 <p><a href="https://xiaogd.net/%e5%ad%97%e7%ac%a6%e9%9b%86%e4%b8%8e%e7%bc%96%e7%a0%81%ef%bc%88%e5%9b%9b%ef%bc%89-unicode/#%E7%A0%81%E7%82%B9%E7%9A%84%E8%A1%A8%E7%A4%BA%E5%BD%A2%E5%BC%8F%E4%B8%8E%E8%8C%83%E5%9B%B4%E6%98%AF%EF%BC%9F" target="_blank" rel="noopener">字符集与编码（四）——Unicode</a></p>
+<p><a href="https://en.wikipedia.org/wiki/UTF-16" target="_blank" rel="noopener">wiki-UTF-16</a></p>
+<p><a href="https://unicode.org/faq/utf_bom.html" target="_blank" rel="noopener">General questions, relating to UTF or Encoding Form</a></p>
 <p><a href="https://blog.csdn.net/stilling2006/article/details/4129700" target="_blank" rel="noopener">字符编码详解及由来(UNICODE,UTF-8,GBK)</a></p>
 <p><a href="http://www.ruanyifeng.com/blog/2007/10/ascii_unicode_and_utf-8.html" target="_blank" rel="noopener">字符编码笔记：ASCII，Unicode 和 UTF-8</a></p>
 <p><a href="https://naveenr.net/unicode-character-set-and-utf-8-utf-16-utf-32-encoding/" target="_blank" rel="noopener">Unicode Character Set and UTF-8, UTF-16, UTF-32 Encoding</a></p>
