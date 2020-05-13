@@ -4,7 +4,7 @@
   
     
     <entry>
-      <title>深入理解字符编码（ASCII、Unicode、UTF-32、UTF-8）</title>
+      <title>深入理解字符编码（ASCII、Unicode、UTF-8、UTF-16、UTF-32）</title>
       <link href="/2020/05/12/3619/"/>
       <url>/2020/05/12/3619/</url>
       
@@ -22,11 +22,17 @@
             
             <tag> 字符编码 </tag>
             
+            <tag> 编码原理 </tag>
+            
             <tag> ASCII </tag>
             
             <tag> Unicode </tag>
             
             <tag> UTF-8 </tag>
+            
+            <tag> UTF-16 </tag>
+            
+            <tag> UTF-32 </tag>
             
         </tags>
       
@@ -816,11 +822,11 @@
       
         <tags>
             
+            <tag> javascript </tag>
+            
             <tag> 阅读 </tag>
             
             <tag> 技术 </tag>
-            
-            <tag> javascript </tag>
             
         </tags>
       
@@ -839,11 +845,11 @@
       
         <tags>
             
+            <tag> javascript </tag>
+            
             <tag> 阅读 </tag>
             
             <tag> 技术 </tag>
-            
-            <tag> javascript </tag>
             
         </tags>
       
@@ -906,11 +912,11 @@
       
         <tags>
             
+            <tag> 自学 </tag>
+            
             <tag> react </tag>
             
             <tag> 翻译 </tag>
-            
-            <tag> 自学 </tag>
             
         </tags>
       
