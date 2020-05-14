@@ -59,7 +59,7 @@
 <p>docker-hadoop 镜像中就含有生成镜像的清单文件 Makefile，此时，执行下面这条命令：</p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> docker-compose up -d</span></span><br></pre></td></tr></table></figure>
 <p>docker-Compose 可以用来同时安装多个容器。 -d 参数作用是后台运行命令程序并返回命令提示符。仅使用上面的一条命令，就可以设置一个 Hadoop 集群了。</p>
-<p>如果镜像在本地不可用，docker-Compose 也会尝试从 docker-hub 库中拉去远程镜像，构建镜像并启动容器。 完成后，就可以使用以下命令来检查当前正在运行的容器了：</p>
+<p>如果镜像在本地不可用，docker-compose 也会尝试从 docker-hub 库中拉去远程镜像，构建镜像并启动容器。 完成后，就可以使用以下命令来检查当前正在运行的容器了：</p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> docker image ls</span></span><br></pre></td></tr></table></figure>
 <p>进入 <a href="http:// localhost:9870">http:// localhost:9870</a> 就可以从名称节点查看系统的当前状态了。</p>
 <p>当然，除了使用这种方法使用别人在 <a href="https://hub.docker.com/" target="_blank" rel="noopener">docker-hub</a> 或者 Github  开源的镜像，我们也可以自定义镜像，这种方式本篇文章先不做讨论。本篇到这里先结束了，看完后关于虚拟化和容器的概念你是不是都掌握了？大家有任何问题可直接联系我，也可在博客评论区讨论。</p>
