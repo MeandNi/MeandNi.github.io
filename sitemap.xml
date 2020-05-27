@@ -2,6 +2,27 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://meandni.com/2020/05/27/help-others/</loc>
+    
+    <lastmod>2020-05-27T10:12:08.281Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://meandni.com/2018/10/05/3a4f/</loc>
+    
+    <lastmod>2020-05-27T10:05:18.173Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://meandni.com/2019/04/25/think-about/</loc>
+    
+    <lastmod>2020-05-27T10:04:32.461Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://meandni.com/2020/05/14/virtualization-containerization-docker/</loc>
     
     <lastmod>2020-05-16T10:21:52.207Z</lastmod>
@@ -177,13 +198,6 @@
   </url>
   
   <url>
-    <loc>https://meandni.com/2019/04/25/think-about/</loc>
-    
-    <lastmod>2020-04-07T10:50:59.000Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://meandni.com/about/index.html</loc>
     
     <lastmod>2020-04-07T10:08:19.000Z</lastmod>
@@ -194,13 +208,6 @@
     <loc>https://meandni.com/categories/index.html</loc>
     
     <lastmod>2020-04-07T08:43:27.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://meandni.com/2018/10/05/3a4f/</loc>
-    
-    <lastmod>2020-04-07T08:32:49.000Z</lastmod>
     
   </url>
   

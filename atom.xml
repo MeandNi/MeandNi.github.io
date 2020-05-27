@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://meandni.com/"/>
-  <updated>2020-05-16T10:21:52.207Z</updated>
+  <updated>2020-05-27T10:12:08.281Z</updated>
   <id>https://meandni.com/</id>
   
   <author>
@@ -15,6 +15,38 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>帮人，看人</title>
+    <link href="https://meandni.com/2020/05/27/help-others/"/>
+    <id>https://meandni.com/2020/05/27/help-others/</id>
+    <published>2020-05-27T10:00:37.000Z</published>
+    <updated>2020-05-27T10:12:08.281Z</updated>
+    
+    <content type="html"><![CDATA[<p>大学里有好许多种人呐，有一些人热衷于帮助别人，而有一些人热衷于被别人帮助。习惯帮助别人的人，他们的心里活动可能是这样子的：</p><ol><li>尽同学之谊，举手之劳。</li><li>单纯展示一下自己的能力。</li></ol><p>而喜欢被别人帮助的人心里活动可能是这样子的：</p><ol><li>迫于无奈寻求帮助，自己的任务实在完成不了。</li><li>我跟他是好朋友，不会这点小忙都不帮吧。</li></ol><p>我想就那些喜欢被别人帮助的人展开讨论一下。第一种情况很正常，每个人都会有自己的短板。而第二种“朋友”有时候就不值得我们帮助了。</p><p>我遇到过一种情况，我答应帮他完成这件事情之后，由于时间紧张可能完不成了，朋友说了一句 “你完成不了就不要答应我啊”，转而把责任推给我，这时，我确实应该承担这个责任，以后说话一定要经过自己的思考，不然很可能惹来不必要的麻烦。</p><p>还有一种情况是，朋友仗着你跟他关系可以，无论有什么事就毫不思考 “帮我做一下呗”，最开始无所谓，后来就变味了，演变为了他在那边玩游戏，却把又脏又臭的活给你。</p><p>这种情况还有进化版，当你开始提出抗议不想再帮他忙的时候，“你自己做吧”，他可能就开始记仇了，“这么点小忙都不帮我，原来你就是这种人啊”。这让我想到一些小婴儿，给他两颗糖就能他很开心，不给他之后瞬间就会和你反目，现在我觉得这就是心智极其不成熟的表现，用郭德纲的话说，如果你遇到这种人，尽量理他们远点，不然他们被雷劈都会连累到你。</p><p>进入社会后，帮人也是要看人的。</p><p>开源可能也是一种帮助人的行为，读者多了也就什么人都有了，他们埋怨“你文章写不好就别写啊”、“文章源码都没有还写什么”、“跟你要个东西都不给，别写了吧”，这种人屡见不鲜了吧，现在网络上充斥着“伸手党”、”要饭党“，你可以不为知识付费做贡献，但如果还要做道德绑架专家，试问一下你们的权利在哪里？</p><blockquote><p>谨以此文记录自己的刚平复下来的情绪。</p></blockquote>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;大学里有好许多种人呐，有一些人热衷于帮助别人，而有一些人热衷于被别人帮助。习惯帮助别人的人，他们的心里活动可能是这样子的：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;尽同学之谊，举手之劳。&lt;/li&gt;
+&lt;li&gt;单纯展示一下自己的能力。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;而喜欢被别人帮助的人心里活动
+      
+    
+    </summary>
+    
+      <category term="随笔" scheme="https://meandni.com/categories/%E9%9A%8F%E7%AC%94/"/>
+    
+    
+      <category term="感想" scheme="https://meandni.com/tags/%E6%84%9F%E6%83%B3/"/>
+    
+      <category term="观点" scheme="https://meandni.com/tags/%E8%A7%82%E7%82%B9/"/>
+    
+  </entry>
   
   <entry>
     <title>Linux 容器化技术详解（虚拟化、容器化、Docker）</title>
@@ -144,7 +176,7 @@
     <link href="https://meandni.com/2019/04/25/think-about/"/>
     <id>https://meandni.com/2019/04/25/think-about/</id>
     <published>2019-04-25T13:31:44.000Z</published>
-    <updated>2020-04-07T10:50:59.000Z</updated>
+    <updated>2020-05-27T10:04:32.461Z</updated>
     
     <content type="html"><![CDATA[<p>对与之前在博客分享的一些关于 Flutter 的文章获得了一些关注，有一家图书策划公司找了我说能不能合作写书，当时抱着尝试的心态写了目录跟样章，过了那边的审批后就开始要签合同了，然而，我就在考虑是否该签，一是是否有时间，最近都在忙春招，之后又要忙工作；二是这家机构是否专业，它们是否能保障我应有的权益；三是我自己能力是否足够，之后写不出来该怎么办；最后是我明明可以联系到人民邮电出版社，我是否要跟它们签约？我签了。我的理由是这是我第一次写书，可以先把它当作一次自我锻炼，入门书籍我相信我也是可以写出来的，我之前就知道写书是不挣钱的所以稿费方面我暂且也就不做考虑了，最后还是在于情谊吧，是人家鼓励的你写书并且花了很长时间帮我校对编辑，我在那边的编辑的劝说下还是选择跟他们合作了，因为拒绝后我也会感觉一阵的不适，这样做会让我觉得我太不负责任，这就是我所谓的<strong>“一纸协议，全靠情谊！”</strong>。</p><hr><a id="more"></a><p><strong>关于996的个人看法</strong></p><p>好多天前的夜里写的了，感觉写的蛮不错的！😊</p><blockquote><!--April 15, 2019 at 04:19--><p>最近好多大佬对闹的沸沸扬扬的 996 事件做了回应，马云老师是第一个也是最受关注的一个。<br>我个人一点都不反对他说的话，他说年轻人该为自己喜欢的事业而奋斗，我从字里行间都看到了我每天利用可自由支配时间去探究一些事物的情景，这些时间不止 996。我从小到大做事都骨骼一般，但好在对自己喜欢的事物和目前所学的专业有足够的专注力，兴趣使然，就像中学做网站那样，你去网吧都是为了写页面，当时包括现在都没有人逼我去做这些事情，也没有利益的引诱，全凭兴趣…..我深刻的能体会到这种感觉就是 —— 我工作就是在放松！<br>然而，我不确定以后我还能这么想….现在我也渐渐体会到高强度的工作带来的负面影响了，不提身体上的影响，你会发现这样也会远离真正的生活。<br>这本来就是一个悖论吧，马老师之前的采访也有说自己后悔当初沉迷工作，没有花更多的时间去生活，去陪孩子。<br>然而如今的文明社会给我们的定位是我们应该是在年轻时奋斗的，但这并不是指加班！现在我得出的结论很没有用….那就是全看个人选择，你是选择自己喜欢的事业并贡献大部分的时间还是去工作来改善生活质量，二选一的选择题…..不知道有没有第三个最优解？</p></blockquote>]]></content>
     
@@ -155,9 +187,7 @@
     
     </summary>
     
-      <category term="日志" scheme="https://meandni.com/categories/%E6%97%A5%E5%BF%97/"/>
-    
-      <category term="随笔" scheme="https://meandni.com/categories/%E6%97%A5%E5%BF%97/%E9%9A%8F%E7%AC%94/"/>
+      <category term="随笔" scheme="https://meandni.com/categories/%E9%9A%8F%E7%AC%94/"/>
     
     
       <category term="生活" scheme="https://meandni.com/tags/%E7%94%9F%E6%B4%BB/"/>
@@ -499,32 +529,6 @@
     
     
       <category term="flutter" scheme="https://meandni.com/tags/flutter/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>《深入理解Java虚拟机》笔记3——7种垃圾收集器</title>
-    <link href="https://meandni.com/2019/01/11/jvm_note3/"/>
-    <id>https://meandni.com/2019/01/11/jvm_note3/</id>
-    <published>2019-01-11T03:50:40.000Z</published>
-    <updated>2020-04-07T08:20:08.000Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote><p><a href="https://meandni.com/2019/01/05/winter_vacation/">2019大三的寒假计划</a>——利用在公司每天早起的时间读书，第一本是周志明老师的《深入理解Java虚拟机——JVM高级特性与最佳实践》，这一系列是通过对原文的拜读与自己理解加上网络上的资料文章整理出的读书笔记。</p></blockquote><a id="more"></a><p>如果说收集算法是内存回收的方法论，那么垃圾收集器就是内存回收的具体实现。**Java虚拟机规范中对垃圾收集器应该如何实现并没有任何规定，因此不同的厂商、版本的虚拟机所提供的垃圾收集器都可能会有很大差别，并且一般都会提供参数供用户根据自己的应用特点和要求组合出各个年代所使用的收集器。接下来讨论的收集器基于JDK1.7 Update 14 之后的HotSpot虚拟机（在此版本中正式提供了商用的G1收集器，之前G1仍处于实验状态），该虚拟机包含的所有收集器如下图所示：</p><p><div align="center"> <img src="http://pic.yupoo.com/meandni/e8793494/27df7474.jpg" width=""/> </div><br></p><p>以上是 HotSpot 虚拟机中的 7 个垃圾收集器，连线表示垃圾收集器可以配合使用。</p><ul><li>单线程与多线程：单线程指的是垃圾收集器只使用一个线程进行收集，而多线程使用多个线程；</li><li>串行与并行：串行指的是垃圾收集器与用户程序交替执行，这意味着在执行垃圾收集的时候需要停顿用户程序；并行指的是垃圾收集器和用户程序同时执行。除了 CMS 和 G1 之外，其它垃圾收集器都是以串行的方式执行。</li></ul><h1 id="相关概念"><a href="#相关概念" class="headerlink" title="相关概念"></a>相关概念</h1><h4 id="并行和并发"><a href="#并行和并发" class="headerlink" title="并行和并发"></a>并行和并发</h4><ul><li><strong>并行（Parallel）</strong>：指多条垃圾收集线程并行工作，但此时用户线程仍然处于等待状态。</li><li><strong>并发（Concurrent）</strong>：指用户线程与垃圾收集线程同时执行（但不一定是并行的，可能会交替执行），用户程序在继续运行。而垃圾收集程序运行在另一个CPU上。</li></ul><h4 id="吞吐量（Throughput）"><a href="#吞吐量（Throughput）" class="headerlink" title="吞吐量（Throughput）"></a>吞吐量（Throughput）</h4><p>吞吐量就是<strong>CPU用于运行用户代码的时间</strong>与<strong>CPU总消耗时间</strong>的比值，即</p><p><strong>吞吐量 = 运行用户代码时间 /（运行用户代码时间 + 垃圾收集时间）。</strong></p><p>假设虚拟机总共运行了100分钟，其中垃圾收集花掉1分钟，那吞吐量就是99%。</p><h4 id="Minor-GC-和-Full-GC"><a href="#Minor-GC-和-Full-GC" class="headerlink" title="Minor GC 和 Full GC"></a>Minor GC 和 Full GC</h4><ul><li><strong>新生代GC（Minor GC）</strong>：指发生在新生代的垃圾收集动作，因为Java对象大多都具备朝生夕灭的特性，所以Minor GC非常频繁，一般回收速度也比较快。具体原理见上一篇文章。</li><li><strong>老年代GC（Major GC / Full GC）</strong>：指发生在老年代的GC，出现了Major GC，经常会伴随至少一次的Minor GC（但非绝对的，在Parallel Scavenge收集器的收集策略里就有直接进行Major GC的策略选择过程）。Major GC的速度一般会比Minor GC慢10倍以上。</li></ul><h1 id="各收集器阐述"><a href="#各收集器阐述" class="headerlink" title="各收集器阐述"></a>各收集器阐述</h1><h4 id="1-Serial-收集器"><a href="#1-Serial-收集器" class="headerlink" title="1. Serial 收集器"></a>1. Serial 收集器</h4><p><div align="center"> <img src="http://pic.yupoo.com/meandni/5c861f07/b1ac068e.jpg" width=""/> </div><br></p><p>Serial 翻译为串行，也就是说它以串行的方式执行。</p><p>它是单线程的收集器，只会使用一个线程进行垃圾收集工作。</p><p>它的优点是简单高效，对于单个 CPU 环境来说，由于没有线程交互的开销，因此拥有最高的单线程收集效率。</p><p>它是 Client 模式下的默认新生代收集器，因为在该应用场景下，分配给虚拟机管理的内存一般来说不会很大。Serial 收集器收集几十兆甚至一两百兆的新生代停顿时间可以控制在一百多毫秒以内，只要不是太频繁，这点停顿是可以接受的。</p><h4 id="2-ParNew-收集器"><a href="#2-ParNew-收集器" class="headerlink" title="2. ParNew 收集器"></a>2. ParNew 收集器</h4><p><div align="center"> <img src="http://pic.yupoo.com/meandni/a5c6e277/481e1ca1.jpg" width=""/> </div><br></p><p>它是 Serial 收集器的多线程版本。</p><p>是 Server 模式下的虚拟机首选新生代收集器，除了性能原因外，主要是因为除了 Serial 收集器，只有它能与 CMS 收集器配合工作。</p><p>默认开启的线程数量与 CPU 数量相同，可以使用 -XX:ParallelGCThreads 参数来设置线程数。</p><h4 id="3-Parallel-Scavenge-收集器"><a href="#3-Parallel-Scavenge-收集器" class="headerlink" title="3. Parallel Scavenge 收集器"></a>3. Parallel Scavenge 收集器</h4><p>与 ParNew 一样是多线程收集器。</p><p>其它收集器关注点是尽可能缩短垃圾收集时用户线程的停顿时间，而它的目标是达到一个可控制的吞吐量，它被称为“吞吐量优先”收集器。这里的吞吐量指 CPU 用于运行用户代码的时间占总时间的比值。</p><p>停顿时间越短就越适合需要与用户交互的程序，良好的响应速度能提升用户体验。而高吞吐量则可以高效率地利用 CPU 时间，尽快完成程序的运算任务，适合在后台运算而不需要太多交互的任务。</p><p>缩短停顿时间是以牺牲吞吐量和新生代空间来换取的：新生代空间变小，垃圾回收变得频繁，导致吞吐量下降。</p><p>可以通过一个开关参数打开 GC 自适应的调节策略（GC Ergonomics），就不需要手工指定新生代的大小（-Xmn）、Eden 和 Survivor 区的比例、晋升老年代对象年龄等细节参数了。虚拟机会根据当前系统的运行情况收集性能监控信息，动态调整这些参数以提供最合适的停顿时间或者最大的吞吐量。</p><h4 id="4-Serial-Old-收集器"><a href="#4-Serial-Old-收集器" class="headerlink" title="4. Serial Old 收集器"></a>4. Serial Old 收集器</h4><p><div align="center"> <img src="http://pic.yupoo.com/meandni/14f72c5c/367020d3.jpg" width=""/> </div><br></p><p>是 Serial 收集器的老年代版本，也是给 Client 模式下的虚拟机使用。如果用在 Server 模式下，它有两大用途：</p><ul><li>在 JDK 1.5 以及之前版本（Parallel Old 诞生以前）中与 Parallel Scavenge 收集器搭配使用。</li><li>作为 CMS 收集器的后备预案，在并发收集发生 Concurrent Mode Failure 时使用。</li></ul><h4 id="5-Parallel-Old-收集器"><a href="#5-Parallel-Old-收集器" class="headerlink" title="5. Parallel Old 收集器"></a>5. Parallel Old 收集器</h4><p><div align="center"> <img src="http://pic.yupoo.com/meandni/2d1989e5/6e965e83.jpg" width=""/> </div><br></p><p>是 Parallel Scavenge 收集器的老年代版本。</p><p>在注重吞吐量以及 CPU 资源敏感的场合，都可以优先考虑 Parallel Scavenge 加 Parallel Old 收集器。</p><h4 id="6-CMS-收集器"><a href="#6-CMS-收集器" class="headerlink" title="6. CMS 收集器"></a>6. CMS 收集器</h4><p><div align="center"> <img src="http://pic.yupoo.com/meandni/14f72c5c/367020d3.jpg" width=""/> </div><br></p><p>CMS（Concurrent Mark Sweep），Mark Sweep 指的是标记 - 清除算法。</p><p>分为以下四个流程：</p><ul><li>初始标记：仅仅只是标记一下 GC Roots 能直接关联到的对象，速度很快，需要停顿。</li><li>并发标记：进行 GC Roots Tracing 的过程，它在整个回收过程中耗时最长，不需要停顿。</li><li>重新标记：为了修正并发标记期间因用户程序继续运作而导致标记产生变动的那一部分对象的标记记录，需要停顿。</li><li>并发清除：不需要停顿。</li></ul><p>在整个过程中耗时最长的并发标记和并发清除过程中，收集器线程都可以与用户线程一起工作，不需要进行停顿。</p><p>具有以下缺点：</p><ul><li>吞吐量低：低停顿时间是以牺牲吞吐量为代价的，导致 CPU 利用率不够高。</li><li>无法处理浮动垃圾，可能出现 Concurrent Mode Failure。浮动垃圾是指并发清除阶段由于用户线程继续运行而产生的垃圾，这部分垃圾只能到下一次 GC 时才能进行回收。由于浮动垃圾的存在，因此需要预留出一部分内存，意味着 CMS 收集不能像其它收集器那样等待老年代快满的时候再回收。如果预留的内存不够存放浮动垃圾，就会出现 Concurrent Mode Failure，这时虚拟机将临时启用 Serial Old 来替代 CMS。</li><li>标记 - 清除算法导致的空间碎片，往往出现老年代空间剩余，但无法找到足够大连续空间来分配当前对象，不得不提前触发一次 Full GC。</li></ul><h4 id="7-G1-收集器"><a href="#7-G1-收集器" class="headerlink" title="7. G1 收集器"></a>7. G1 收集器</h4><p>G1（Garbage-First），它是一款面向服务端应用的垃圾收集器，在多 CPU 和大内存的场景下有很好的性能。HotSpot 开发团队赋予它的使命是未来可以替换掉 CMS 收集器。</p><p>堆被分为新生代和老年代，其它收集器进行收集的范围都是整个新生代或者老年代，而 G1 可以直接对新生代和老年代一起回收。</p><p><div align="center"> <img src="http://pic.yupoo.com/meandni/400d294e/1d022e13.png" width="600"/> </div><br></p><p>G1 把堆划分成多个大小相等的独立区域（Region），新生代和老年代不再物理隔离。</p><p><div align="center"> <img src="http://pic.yupoo.com/meandni/5393369d/5f8cbd42.png" width="600"/> </div><br></p><p>通过引入 Region 的概念，从而将原来的一整块内存空间划分成多个的小空间，使得每个小空间可以单独进行垃圾回收。这种划分方法带来了很大的灵活性，使得可预测的停顿时间模型成为可能。通过记录每个 Region 垃圾回收时间以及回收所获得的空间（这两个值是通过过去回收的经验获得），并维护一个优先列表，每次根据允许的收集时间，优先回收价值最大的 Region。</p><p>每个 Region 都有一个 Remembered Set，用来记录该 Region 对象的引用对象所在的 Region。通过使用 Remembered Set，在做可达性分析的时候就可以避免全堆扫描。</p><p><div align="center"> <img src="http://pic.yupoo.com/meandni/ce8ef9fc/10c8999f.jpg" width=""/> </div><br></p><p>如果不计算维护 Remembered Set 的操作，G1 收集器的运作大致可划分为以下几个步骤：</p><ul><li>初始标记</li><li>并发标记</li><li>最终标记：为了修正在并发标记期间因用户程序继续运作而导致标记产生变动的那一部分标记记录，虚拟机将这段时间对象变化记录在线程的 Remembered Set Logs 里面，最终标记阶段需要把 Remembered Set Logs 的数据合并到 Remembered Set 中。这阶段需要停顿线程，但是可并行执行。</li><li>筛选回收：首先对各个 Region 中的回收价值和成本进行排序，根据用户所期望的 GC 停顿时间来制定回收计划。此阶段其实也可以做到与用户程序一起并发执行，但是因为只回收一部分 Region，时间是用户可控制的，而且停顿用户线程将大幅度提高收集效率。</li></ul><p>具备如下特点：</p><ul><li>空间整合：整体来看是基于“标记 - 整理”算法实现的收集器，从局部（两个 Region 之间）上来看是基于“复制”算法实现的，这意味着运行期间不会产生内存空间碎片。</li><li>可预测的停顿：能让使用者明确指定在一个长度为 M 毫秒的时间片段内，消耗在 GC 上的时间不得超过 N 毫秒。</li></ul><h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><div class="table-container"><table><thead><tr><th style="text-align:center"></th><th style="text-align:center">收集器</th><th style="text-align:center">串行、并行or并发</th><th style="text-align:center">新生代/老年代</th><th style="text-align:center">算法</th><th style="text-align:center">目标</th><th>适用场景</th></tr></thead><tbody><tr><td style="text-align:center"></td><td style="text-align:center"><strong>Serial</strong></td><td style="text-align:center">串行</td><td style="text-align:center">新生代</td><td style="text-align:center">复制算法</td><td style="text-align:center">响应速度优先</td><td>单CPU环境下的Client模式</td><td></td></tr><tr><td style="text-align:center"></td><td style="text-align:center"><strong>Serial Old</strong></td><td style="text-align:center">串行</td><td style="text-align:center">老年代</td><td style="text-align:center">标记-整理</td><td style="text-align:center">响应速度优先</td><td>单CPU环境下的Client模式、CMS的后备预案</td><td></td></tr><tr><td style="text-align:center"></td><td style="text-align:center"><strong>ParNew</strong></td><td style="text-align:center">并行</td><td style="text-align:center">新生代</td><td style="text-align:center">复制算法</td><td style="text-align:center">响应速度优先</td><td>多CPU环境时在Server模式下与CMS配合</td><td></td></tr><tr><td style="text-align:center"></td><td style="text-align:center"><strong>Parallel Scavenge</strong></td><td style="text-align:center">并行</td><td style="text-align:center">新生代</td><td style="text-align:center">复制算法</td><td style="text-align:center">吞吐量优先</td><td>在后台运算而不需要太多交互的任务</td><td></td></tr><tr><td style="text-align:center"></td><td style="text-align:center"><strong>Parallel Old</strong></td><td style="text-align:center">并行</td><td style="text-align:center">老年代</td><td style="text-align:center">标记-整理</td><td style="text-align:center">吞吐量优先</td><td>在后台运算而不需要太多交互的任务</td><td></td></tr><tr><td style="text-align:center"></td><td style="text-align:center"><strong>CMS</strong></td><td style="text-align:center">并发</td><td style="text-align:center">老年代</td><td style="text-align:center">标记-清除</td><td style="text-align:center">响应速度优先</td><td>集中在互联网站或B/S系统服务端上的Java应用</td><td></td></tr><tr><td style="text-align:center"></td><td style="text-align:center"><strong>G1</strong></td><td style="text-align:center">并发</td><td style="text-align:center">both</td><td style="text-align:center">标记-整理+复制算法</td><td style="text-align:center">响应速度优先</td><td>面向服务端应用，将来替换CMS</td><td></td></tr></tbody></table></div><h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><ul><li><a href="https://book.douban.com/subject/24722612/" target="_blank" rel="noopener">《深入理解Java虚拟机——JVM高级特性与最佳实践》－周志明</a></li><li><a href="https://github.com/CyC2018/CS-Notes/blob/master/docs/notes/Java%20%E8%99%9A%E6%8B%9F%E6%9C%BA.md" target="_blank" rel="noopener">CS-Note——Java：java虚拟机</a></li></ul>]]></content>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;&lt;a href=&quot;https://meandni.com/2019/01/05/winter_vacation/&quot;&gt;2019大三的寒假计划&lt;/a&gt;——利用在公司每天早起的时间读书，第一本是周志明老师的《深入理解Java虚拟机——JVM高级特性与最佳实践》，这一系列是通过对原文的拜读与自己理解加上网络上的资料文章整理出的读书笔记。&lt;/p&gt;
-&lt;/blockquote&gt;
-    
-    </summary>
-    
-      <category term="整理" scheme="https://meandni.com/categories/%E6%95%B4%E7%90%86/"/>
-    
-      <category term="笔记" scheme="https://meandni.com/categories/%E6%95%B4%E7%90%86/%E7%AC%94%E8%AE%B0/"/>
-    
-    
-      <category term="jvm" scheme="https://meandni.com/tags/jvm/"/>
     
   </entry>
   

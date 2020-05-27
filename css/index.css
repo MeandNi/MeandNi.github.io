@@ -1117,7 +1117,6 @@ footer.is-mobile {
   position: relative;
   margin-bottom: 1rem;
   background-color: #49b1f5;
-  background-attachment: fixed;
   background-position: center;
   -webkit-background-size: cover;
   -moz-background-size: cover;
