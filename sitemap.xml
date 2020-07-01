@@ -2,16 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://meandni.com/about/index.html</loc>
+    <loc>https://meandni.com/2019/05/05/flutter-principle/</loc>
     
-    <lastmod>2020-06-17T07:25:21.125Z</lastmod>
+    <lastmod>2020-06-30T09:21:08.237Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://meandni.com/2020/05/27/help-others/</loc>
+    <loc>https://meandni.com/about/index.html</loc>
     
-    <lastmod>2020-05-27T10:35:12.980Z</lastmod>
+    <lastmod>2020-06-17T07:25:21.125Z</lastmod>
     
   </url>
   
@@ -180,13 +180,6 @@
     <loc>https://meandni.com/2019/02/09/flutter-state3/</loc>
     
     <lastmod>2020-05-12T14:05:34.491Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://meandni.com/2019/05/05/flutter-principle/</loc>
-    
-    <lastmod>2020-05-12T14:05:23.361Z</lastmod>
     
   </url>
   
