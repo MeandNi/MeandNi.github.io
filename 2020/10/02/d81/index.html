@@ -51,9 +51,9 @@
 <p>同时，如果你仍然有基于 v1 Android API 的 Flutter 应用程序，它虽然能够正常运行，但是很可能会使用遇到仅支持 v2 API 的新插件，而这些插件不能被 v1 Android API 使用。更多详细信息，请参见<a href="https://flutter.dev/docs/release/breaking-changes/android-v1-embedding-create-deprecation" target="_blank" rel="noopener">重大更改文档</a>。</p>
 <h3 id="全新的-Button-组件"><a href="#全新的-Button-组件" class="headerlink" title="全新的 Button 组件"></a>全新的 Button 组件</h3><p><img src="/images/1*crNLxg7CCtlQkB4mLI_ErA-20201002011622976.png" alt=""></p>
 <p>之前的版本中，Flutter 已经有了一套完备的按钮组件，但使用起来却很麻烦，Material 规范也增加了多个新样式的按钮。所以，为了使 Flutter 保持与 Material 的同步，我们正式地宣布 Flutter 1.22 将引入全新的 “Button” 按钮。</p>
-<p>新的 Button 组件的命名规范与 <a href="https://material.io/components/buttons/" target="_blank" rel="noopener">Material Design 规范</a> 同，如下。</p>
+<p>新的 Button 组件的命名规范也与 <a href="https://material.io/components/buttons/" target="_blank" rel="noopener">Material Design 规范</a>，如下。</p>
 <p><img src="/images/1*di6uPEKEsRHoFtRryHeWPg-20201002011623006.png" alt=""></p>
-<p>新主题遵循 Flutter 最近在新 Material 组件中采用的“规范化”模式。如果你想在线演示，DartPad 上有一个非常好的<a href="https://dartpad.dev/e560e1c2e4455ad53aac245079ccdcf2" target="_blank" rel="noopener">示例</a>。 同时，之前的 <code>FlatButton</code>，<code>OutlineButton</code>，<code>RaisedButton</code>，<code>ButtonBar</code>，<code>ButtonBarTheme</code>，并不会被弃用，开发者可以按照需求混合使用旧按钮与新按钮。</p>
+<p>DartPad 上有一个非常好的<a href="https://dartpad.dev/e560e1c2e4455ad53aac245079ccdcf2" target="_blank" rel="noopener">在线演示示例</a>，同时，之前的 <code>FlatButton</code>，<code>OutlineButton</code>，<code>RaisedButton</code>，<code>ButtonBar</code>，<code>ButtonBarTheme</code> 并不会被弃用，开发者可以按照需求混合使用旧按钮与新按钮。</p>
 <h3 id="全新的国际化和本地化的支持"><a href="#全新的国际化和本地化的支持" class="headerlink" title="全新的国际化和本地化的支持"></a>全新的国际化和本地化的支持</h3><p>自 Flutter 发布以来，已经为应用提供了较好的国际化（i18n）和本地化（l10n）所需的核心功能的支持，而在此次的新版本中，我们也将该功能的最佳实践纳入了我们的开发工具中，并且，在添加新的 l10n 信息时启用了热重装支持来直接更新应用程序。</p>
 <p><img src="/images/0*UBVlGmhw5NUWbg5I.gif" alt=""></p>
 <p>如果你想了解有关 Flutter  l10n 的更多信息，包括本地化消息，带有参数，日期，数字和货币的消息，请参见 <a href="http://flutter.dev/go/i18n-user-guide" target="_blank" rel="noopener">Flutter Internationalization 用户指南</a>。</p>
