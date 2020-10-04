@@ -2,16 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://meandni.com/about/index.html</loc>
+    <loc>https://meandni.com/2020/10/04/how-to-choose-database/</loc>
     
-    <lastmod>2020-10-03T12:44:19.003Z</lastmod>
+    <lastmod>2020-10-04T14:30:51.966Z</lastmod>
     
   </url>
   
   <url>
     <loc>https://meandni.com/2020/10/02/d81/</loc>
     
-    <lastmod>2020-10-03T12:31:34.380Z</lastmod>
+    <lastmod>2020-10-04T14:03:14.475Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://meandni.com/about/index.html</loc>
+    
+    <lastmod>2020-10-03T12:44:19.003Z</lastmod>
     
   </url>
   
@@ -23,9 +30,16 @@
   </url>
   
   <url>
+    <loc>https://meandni.com/2019/07/01/c0f2/</loc>
+    
+    <lastmod>2020-09-13T14:11:30.095Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://meandni.com/2019/05/05/flutter-principle/</loc>
     
-    <lastmod>2020-06-30T09:21:08.237Z</lastmod>
+    <lastmod>2020-09-09T13:05:58.267Z</lastmod>
     
   </url>
   
@@ -33,13 +47,6 @@
     <loc>https://meandni.com/2020/05/14/virtualization-containerization-docker/</loc>
     
     <lastmod>2020-05-16T10:21:52.207Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://meandni.com/2019/07/01/c0f2/</loc>
-    
-    <lastmod>2020-05-16T10:10:07.955Z</lastmod>
     
   </url>
   
