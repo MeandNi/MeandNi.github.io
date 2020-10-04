@@ -15,7 +15,7 @@
 </ul>
 <p>目前，市面上已经有各类存储解决方案了，本文我们就来讨论一下如何在这些方案中选择最适合自己的方案。</p>
 <h3 id="缓存"><a href="#缓存" class="headerlink" title="缓存"></a>缓存</h3><p>如果项目需要频繁调用数据库 API 或者一些高延迟的远程服务，那么可能需要最先考虑在客户端和数据库之间使用缓存来降低延迟。目前，常用的缓存方案有 Memcached，Hazelcast，Redis，这些方案大同小异，但 Redis 使用最广泛且稳定，是目前国内最常用的数据库缓存解决方案。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/meandni/blogimg@main/img/2020-10-04-word-image-86.png" alt="img"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/meandni/blogimg@main/img/2020-10-04-word-image-86.png" alt="缓存图示"></p>
 <h3 id="文件存储"><a href="#文件存储" class="headerlink" title="文件存储"></a>文件存储</h3><p>如果需要开发一款抖音、B 站之类的产品，就需要存储大量图像、视频等数据时，仅仅一个数据库可能并不能满足我们的需求，因为这时需要存储的是文件而非一般的数据信息，数据库本质依然只能用来查询信息数据而已，而文件本身也并不用“查询”，只需要按需拿到这整个文件即可，这种情况下，符合项目要求的解决方案就是<strong>对象（Blob）存储方案</strong>，如 Amazon S3，通常，Blob 存储方案还可以与 CDN 结合使用来减少延迟，这样就可以实现无地理位置差异的内容服务。</p>
 <h3 id="提供文本搜索功能"><a href="#提供文本搜索功能" class="headerlink" title="提供文本搜索功能"></a>提供文本搜索功能</h3><p>淘宝、京东这些大型应用都会提供内容的搜索功能，这样就可以方便用户按照商品类型、品牌对数据进行分类搜索，这种功能通常会使用 <strong>Solr</strong> 或 <strong>Elasticsearch</strong> 之类的搜索引擎服务，这类搜索服务通常也会支持<strong>模糊搜索</strong>，例如会考虑到用户拼写错误的情况，这回很大程度上提升我们的用户体验。</p>
 <p>但是，搜索引擎不是是数据库，并不能保证我们的数据不会丢失，因此我们不能使用 Elasticsearch 这类搜索引擎作为数据源，这里就需要我们配合两者使用，将数据库中的内容加载到 Elasticsearch 中来降低搜索延迟，然后在并以此为基础提供我多功能。</p>
