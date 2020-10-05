@@ -16,13 +16,11 @@
 <h3 id="新平台适配"><a href="#新平台适配" class="headerlink" title="新平台适配"></a>新平台适配</h3><h4 id="iOS-14"><a href="#iOS-14" class="headerlink" title="iOS 14"></a>iOS 14</h4><p>每当 Android/iOS 等平台推出系统的新版本时，Flutter 都会进行全面的整改来避免出现不兼容的现象。因此，iOS 14 的发布也推动了 Flutter 的新一轮更新，主要包括如下几点：</p>
 <ul>
 <li>XCode 12 仅支持 iOS 9.0 以上的版本，因此 Flutter 项目已将默认支持的版本从 8.0 更新到了 9.0。</li>
-<li><p>Flutter 1.22 修复了在 iOS 14 系统下的的闪退和字体渲染的问题。</p>
-</li>
-<li><p>自 Flutter 1.20.4 起也已完全解决了部署到真机设备上出现的各种问题。</p>
-</li>
-<li><p>存在禁止在 iOS 14 的设备上运行 debug 应用程序的禁令，但作为调试过程的一部分除外。</p>
-</li>
-<li>针对本地调试的 Flutter 应用程序的有关网络安全的新政策使 iOS 14 显示一次性确认对话框（仅在开发过程中，不适用于已发布的Flutter 应用程序）</li>
+<li>Flutter 1.22 修复了在 iOS 14 系统下的的闪退和字体渲染的问题。</li>
+<li>自 Flutter 1.20.4 起也已完全解决了部署到真机设备上出现的各种问题。</li>
+<li>当应用程序访问其剪贴板时，会导致 Flutter 应用程序弹出错误通知，该问题也已在 1.20.4 中解决。</li>
+<li>iOS 14 上存在禁止在设备上运行 debug 应用程序的限制（实际开发调试过程除外）。</li>
+<li>考虑到网络安全性的问题，本地调试的 Flutter 应用程序会在 iOS 14 上显示一次性确认对话框（仅开发期间）。</li>
 </ul>
 <blockquote>
 <p>如果你的 Flutter 应用程序需要运行在 iOS 14 系统上，我们强烈建议你将 Flutter 版本更新到 1.22 并立即部署到 App Store 中，这样可以确保你的 iOS 14 用户获得最佳体验。</p>
@@ -32,7 +30,7 @@
 <p>本次，我们就针对  iOS 新发布的 SF Symbols 字体做了更新支持，对 <a href="https://pub.dev/packages/cupertino_icons" target="_blank" rel="noopener">cupertino_icon</a> 库做了一系列的更新，现在只需要将 cupertino_icon 更新到最新的 1.0 版本，就能自动将 CupertinoIcons 映射成新样式的图标，Flutter 1.22 后，CupertinoIcons 也额外提供了 900 个新图标。</p>
 <p><img src="/images/0*ZGKu3IhnPNp6fS_e-20201002011622288.png" alt=""></p>
 <p>读者们可以在 <code>cupertino_icons</code> 预览页面上看到完整的图标列表，详情参见<a href="https://flutter.dev/docs/release/breaking-changes/cupertino-icons-1.0.0" target="_blank" rel="noopener">迁移详细信息页面</a>。</p>
-<p>开发者可以在 iOS 14上 尝试使用 Flutter 的另一个功能就是 <a href="https://developer.apple.com/app-clips/" target="_blank" rel="noopener">App Clips</a>，这是 iOS 14 推出的一项新功能，它支持 10MB 以下轻量级应用程序的快速，免安装打开，而在 1.22 版中，我们就可以试一下 Flutter 在 iOS 上支持的 App Clip 功能了。</p>
+<p>开发者可以在 iOS 14上 尝试使用 Flutter 的另一个功能就是 <a href="https://developer.apple.com/app-clips/" target="_blank" rel="noopener">App Clips</a>（轻应用），这是 iOS 14 推出的一项新功能，它支持 10MB 以下轻量级应用程序的快速，免安装打开，而在 1.22 版中，我们就可以试一下 Flutter 在 iOS 上支持的 App Clip 功能了。</p>
 <p><img src="/images/0*8MER4IM-IEt2ye2a-20201002011623364.png" alt="Flutter App Clip"></p>
 <p>有关如何使用 Flutter 构建 App Clip 的更多详细信息，参见<a href="https://flutter.dev/docs/development/platform-integration/ios-app-clip" target="_blank" rel="noopener">官方文档</a>，也可以参考这个<a href="https://github.com/flutter/samples/tree/master/ios_app_clip" target="_blank" rel="noopener">简单的示例项目</a>。</p>
 <h4 id="Android-11"><a href="#Android-11" class="headerlink" title="Android 11"></a>Android 11</h4><p>Flutter 的此次更新也同样同步了本月发布的 Android 11。为了支持 Android 11 中引入的两个新功能，Flutter 框架层和引擎层都已做了相应的更新。首先，Flutter 现在已经<strong>支持多种全新 Android 屏幕的适配</strong>，如下图：</p>
