@@ -2,16 +2,30 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://meandni.com/2020/10/02/d81/</loc>
+    <loc>https://meandni.com/2020/10/05/flutter-navigator2-and-router/</loc>
     
-    <lastmod>2020-10-05T06:23:58.054Z</lastmod>
+    <lastmod>2020-10-05T17:47:49.381Z</lastmod>
     
   </url>
   
   <url>
     <loc>https://meandni.com/2020/10/04/how-to-choose-database/</loc>
     
-    <lastmod>2020-10-05T04:39:15.546Z</lastmod>
+    <lastmod>2020-10-05T16:42:23.956Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://meandni.com/2019/03/04/flutter-route/</loc>
+    
+    <lastmod>2020-10-05T13:35:15.571Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://meandni.com/2020/10/02/d81/</loc>
+    
+    <lastmod>2020-10-05T06:23:58.054Z</lastmod>
     
   </url>
   
@@ -75,13 +89,6 @@
     <loc>https://meandni.com/2019/01/12/flutter-practice2/</loc>
     
     <lastmod>2020-05-12T14:09:30.950Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://meandni.com/2019/03/04/flutter-route/</loc>
-    
-    <lastmod>2020-05-12T14:09:09.161Z</lastmod>
     
   </url>
   
