@@ -2,9 +2,37 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://meandni.com/2019/01/30/flutter-state1/</loc>
+    
+    <lastmod>2020-10-10T18:30:47.253Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://meandni.com/2019/02/02/flutter-state1/</loc>
+    
+    <lastmod>2020-10-10T18:30:43.433Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://meandni.com/2019/02/09/flutter-state3/</loc>
+    
+    <lastmod>2020-10-10T18:30:40.520Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://meandni.com/2019/03/12/reading-record2/</loc>
+    
+    <lastmod>2020-10-10T18:30:32.536Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://meandni.com/2019/07/01/c0f2/</loc>
     
-    <lastmod>2020-10-10T18:28:51.480Z</lastmod>
+    <lastmod>2020-10-10T18:30:18.904Z</lastmod>
     
   </url>
   
@@ -198,37 +226,9 @@
   </url>
   
   <url>
-    <loc>https://meandni.com/2019/01/30/flutter-state1/</loc>
-    
-    <lastmod>2020-05-12T14:05:53.149Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://meandni.com/2019/02/02/flutter-state1/</loc>
-    
-    <lastmod>2020-05-12T14:05:42.786Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://meandni.com/2019/02/09/flutter-state3/</loc>
-    
-    <lastmod>2020-05-12T14:05:34.491Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://meandni.com/categories/index.html</loc>
     
     <lastmod>2020-04-07T08:43:27.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://meandni.com/2019/03/12/reading-record2/</loc>
-    
-    <lastmod>2020-04-07T08:31:44.000Z</lastmod>
     
   </url>
   

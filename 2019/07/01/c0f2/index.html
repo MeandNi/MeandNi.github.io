@@ -11,7 +11,6 @@
 <p>本文通过拆解 Flutter 中动画的实现方式以及原理来介绍动画实现的整个过程。</p>
 </blockquote>
 <h2 id="1-动画四要素"><a href="#1-动画四要素" class="headerlink" title="1. 动画四要素"></a>1. 动画四要素</h2><p>动画在各个平台的实现原理都基本相同，都是由在一段时间内一系列连续变化画面的帧构成的。在 Flutter 中，动画的过程又被量化成一段值区间，我们可以利用这些值设置控件的各个属性来实现动画，其内部由四个关键的部分来实现这一过程。</p>
-<a id="more"></a>
 <h3 id="1-1-插值器（Tweens）"><a href="#1-1-插值器（Tweens）" class="headerlink" title="1.1 插值器（Tweens）"></a>1.1 插值器（Tweens）</h3><p>tweens 可为动画提供起始值和结束值。默认情况下，Flutter 中的动画将任何给定时刻的值映射到介于 0.0 和 1.0 之间的 double 值。 我们可以使用以下 Tween 将其间值的范围定义为从 -200.0变为 0.0：</p>
 <figure class="highlight dart"><table><tr><td class="code"><pre><span class="line">tween = Tween&lt;<span class="built_in">double</span>&gt;(begin: <span class="number">-200</span>, end: <span class="number">0</span>);</span><br></pre></td></tr></table></figure>
 <p>我们也可以将值设置为相应需要改变的对象值，比如将起始值设置为红色，结束值设置为蓝色，那么 tweens 产生的动画便是由红渐渐的变成蓝色。如下：</p>
