@@ -2,9 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://meandni.com/2019/07/01/c0f2/</loc>
+    
+    <lastmod>2020-10-10T18:28:51.480Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://meandni.com/2019/05/05/flutter-principle/</loc>
+    
+    <lastmod>2020-10-10T18:28:48.321Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://meandni.com/2020/10/09/null-references-and-dart210/</loc>
     
-    <lastmod>2020-10-09T12:29:57.565Z</lastmod>
+    <lastmod>2020-10-09T13:45:02.794Z</lastmod>
     
   </url>
   
@@ -47,20 +61,6 @@
     <loc>https://meandni.com/2020/09/28/d206/</loc>
     
     <lastmod>2020-10-02T14:37:43.907Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://meandni.com/2019/07/01/c0f2/</loc>
-    
-    <lastmod>2020-09-13T14:11:30.095Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://meandni.com/2019/05/05/flutter-principle/</loc>
-    
-    <lastmod>2020-09-09T13:05:58.267Z</lastmod>
     
   </url>
   
