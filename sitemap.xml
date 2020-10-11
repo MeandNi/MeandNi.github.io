@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://meandni.com/2020/10/11/performance-testing-on-the-web/</loc>
+    
+    <lastmod>2020-10-11T15:07:18.072Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://meandni.com/2019/05/05/flutter-principle/</loc>
+    
+    <lastmod>2020-10-10T19:03:16.994Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://meandni.com/2019/01/30/flutter-state1/</loc>
     
     <lastmod>2020-10-10T18:30:47.253Z</lastmod>
@@ -33,13 +47,6 @@
     <loc>https://meandni.com/2019/07/01/c0f2/</loc>
     
     <lastmod>2020-10-10T18:30:18.904Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://meandni.com/2019/05/05/flutter-principle/</loc>
-    
-    <lastmod>2020-10-10T18:28:48.321Z</lastmod>
     
   </url>
   
