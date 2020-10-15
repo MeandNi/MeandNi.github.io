@@ -2,9 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://meandni.com/2020/10/15/busting-android-performance-myths/</loc>
+    
+    <lastmod>2020-10-15T14:34:35.157Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://meandni.com/2020/10/11/performance-testing-on-the-web/</loc>
     
-    <lastmod>2020-10-11T15:07:18.072Z</lastmod>
+    <lastmod>2020-10-15T14:13:19.868Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://meandni.com/2020/05/12/3619/</loc>
+    
+    <lastmod>2020-10-11T15:46:28.530Z</lastmod>
     
   </url>
   
@@ -103,13 +117,6 @@
     <loc>https://meandni.com/2020/05/14/virtualization-containerization-docker/</loc>
     
     <lastmod>2020-05-16T10:21:52.207Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://meandni.com/2020/05/12/3619/</loc>
-    
-    <lastmod>2020-05-16T09:48:18.819Z</lastmod>
     
   </url>
   
