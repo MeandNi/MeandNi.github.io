@@ -2,9 +2,121 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://meandni.com/2019/01/18/jvm_note6/</loc>
+    
+    <lastmod>2020-10-18T07:45:45.125Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://meandni.com/2018/09/08/f1a1/</loc>
+    
+    <lastmod>2020-10-18T07:45:28.581Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://meandni.com/2018/10/10/a03f/</loc>
+    
+    <lastmod>2020-10-18T07:45:08.131Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://meandni.com/2018/08/22/3a79/</loc>
+    
+    <lastmod>2020-10-18T07:45:04.392Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://meandni.com/2019/01/04/5671/</loc>
+    
+    <lastmod>2020-10-18T07:43:45.133Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://meandni.com/2018/11/11/3b09/</loc>
+    
+    <lastmod>2020-10-18T07:43:37.696Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://meandni.com/2018/11/10/33d5/</loc>
+    
+    <lastmod>2020-10-18T07:43:33.124Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://meandni.com/2019/01/04/flutter-practice1/</loc>
+    
+    <lastmod>2020-10-18T07:41:09.758Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://meandni.com/2018/12/04/86ef/</loc>
+    
+    <lastmod>2020-10-18T07:40:52.753Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://meandni.com/2018/08/15/integration-with-existing-apps/</loc>
+    
+    <lastmod>2020-10-18T07:40:45.728Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://meandni.com/2019/01/11/jvm_note3/</loc>
+    
+    <lastmod>2020-10-18T07:39:05.963Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://meandni.com/2019/01/10/jvm_note1/</loc>
+    
+    <lastmod>2020-10-18T07:38:47.939Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://meandni.com/2019/01/11/jvm_note2/</loc>
+    
+    <lastmod>2020-10-18T07:38:40.861Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://meandni.com/2019/01/15/jvm_note5/</loc>
+    
+    <lastmod>2020-10-18T07:32:32.582Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://meandni.com/2019/01/14/jvm_note4/</loc>
+    
+    <lastmod>2020-10-18T07:27:07.009Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://meandni.com/2018/08/17/react-tutorial/</loc>
+    
+    <lastmod>2020-10-18T07:16:57.325Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://meandni.com/2020/10/15/busting-android-performance-myths/</loc>
     
-    <lastmod>2020-10-15T14:52:20.569Z</lastmod>
+    <lastmod>2020-10-16T01:48:51.648Z</lastmod>
     
   </url>
   
@@ -128,79 +240,9 @@
   </url>
   
   <url>
-    <loc>https://meandni.com/2019/01/04/5671/</loc>
-    
-    <lastmod>2020-05-12T14:10:06.749Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://meandni.com/2019/01/12/flutter-practice2/</loc>
     
     <lastmod>2020-05-12T14:09:30.950Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://meandni.com/2018/03/25/d89c/</loc>
-    
-    <lastmod>2020-05-12T14:08:08.201Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://meandni.com/2018/08/17/react-tutorial/</loc>
-    
-    <lastmod>2020-05-12T14:08:05.754Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://meandni.com/2018/08/15/integration-with-existing-apps/</loc>
-    
-    <lastmod>2020-05-12T14:07:53.704Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://meandni.com/2018/08/22/3a79/</loc>
-    
-    <lastmod>2020-05-12T14:07:47.564Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://meandni.com/2018/12/04/86ef/</loc>
-    
-    <lastmod>2020-05-12T14:07:36.605Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://meandni.com/2019/01/04/flutter-practice1/</loc>
-    
-    <lastmod>2020-05-12T14:07:29.627Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://meandni.com/2018/12/25/android-advanced/</loc>
-    
-    <lastmod>2020-05-12T14:07:24.158Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://meandni.com/2018/11/10/33d5/</loc>
-    
-    <lastmod>2020-05-12T14:07:13.809Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://meandni.com/2018/11/11/3b09/</loc>
-    
-    <lastmod>2020-05-12T14:07:09.304Z</lastmod>
     
   </url>
   
@@ -243,83 +285,6 @@
     <loc>https://meandni.com/categories/index.html</loc>
     
     <lastmod>2020-04-07T08:43:27.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://meandni.com/2018/08/14/0/</loc>
-    
-    <lastmod>2020-04-07T08:31:15.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://meandni.com/2018/09/07/f1a1/</loc>
-    
-    <lastmod>2020-04-07T08:26:53.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://meandni.com/2018/09/08/f1a1/</loc>
-    
-    <lastmod>2020-04-07T08:26:50.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://meandni.com/2018/10/10/a03f/</loc>
-    
-    <lastmod>2020-04-07T08:23:17.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://meandni.com/2019/01/05/winter_vacation/</loc>
-    
-    <lastmod>2020-04-07T08:20:41.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://meandni.com/2019/01/18/jvm_note6/</loc>
-    
-    <lastmod>2020-04-07T08:20:25.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://meandni.com/2019/01/15/jvm_note5/</loc>
-    
-    <lastmod>2020-04-07T08:20:21.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://meandni.com/2019/01/14/jvm_note4/</loc>
-    
-    <lastmod>2020-04-07T08:20:18.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://meandni.com/2019/01/11/jvm_note3/</loc>
-    
-    <lastmod>2020-04-07T08:20:08.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://meandni.com/2019/01/11/jvm_note2/</loc>
-    
-    <lastmod>2020-04-07T08:20:01.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://meandni.com/2019/01/10/jvm_note1/</loc>
-    
-    <lastmod>2020-04-07T08:19:58.000Z</lastmod>
     
   </url>
   
