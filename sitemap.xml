@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://meandni.com/2020/11/05/demystifying-responsive-layout-in-flutter/</loc>
+    
+    <lastmod>2020-11-05T14:02:06.185Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://meandni.com/2020/10/15/busting-android-performance-myths/</loc>
+    
+    <lastmod>2020-11-05T14:00:30.311Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://meandni.com/about/index.html</loc>
     
     <lastmod>2020-10-19T14:24:21.999Z</lastmod>
@@ -243,13 +257,6 @@
     <loc>https://meandni.com/2018/08/17/react-tutorial/</loc>
     
     <lastmod>2020-10-18T07:16:57.325Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://meandni.com/2020/10/15/busting-android-performance-myths/</loc>
-    
-    <lastmod>2020-10-16T01:48:51.648Z</lastmod>
     
   </url>
   
