@@ -2,16 +2,86 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://meandni.com/2020/11/05/demystifying-responsive-layout-in-flutter/</loc>
+    <loc>https://meandni.com/2020/11/03/random-numbers-generator/</loc>
     
-    <lastmod>2020-11-05T14:08:41.716Z</lastmod>
+    <lastmod>2020-11-14T06:50:05.624Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://meandni.com/2020/05/14/virtualization-containerization-docker/</loc>
+    
+    <lastmod>2020-11-14T06:50:03.041Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://meandni.com/2020/09/28/d206/</loc>
+    
+    <lastmod>2020-11-14T06:50:00.032Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://meandni.com/2020/10/02/d81/</loc>
+    
+    <lastmod>2020-11-14T06:49:56.323Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://meandni.com/2020/10/04/how-to-choose-database/</loc>
+    
+    <lastmod>2020-11-14T06:49:51.592Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://meandni.com/2020/10/05/flutter-navigator2-and-router/</loc>
+    
+    <lastmod>2020-11-14T06:49:47.542Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://meandni.com/2020/10/09/null-references-and-dart210/</loc>
+    
+    <lastmod>2020-11-14T06:49:40.921Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://meandni.com/2020/10/11/performance-testing-on-the-web/</loc>
+    
+    <lastmod>2020-11-14T06:49:36.910Z</lastmod>
     
   </url>
   
   <url>
     <loc>https://meandni.com/2020/10/15/busting-android-performance-myths/</loc>
     
-    <lastmod>2020-11-05T14:00:30.311Z</lastmod>
+    <lastmod>2020-11-14T06:49:26.776Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://meandni.com/2020/11/04/obfuscating-the-flutter-app/</loc>
+    
+    <lastmod>2020-11-14T06:49:20.645Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://meandni.com/2020/11/14/android-2020/</loc>
+    
+    <lastmod>2020-11-14T06:49:18.211Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://meandni.com/2020/11/05/demystifying-responsive-layout-in-flutter/</loc>
+    
+    <lastmod>2020-11-14T06:49:04.243Z</lastmod>
     
   </url>
   
@@ -40,48 +110,6 @@
     <loc>https://meandni.com/2018/08/22/3a79/</loc>
     
     <lastmod>2020-10-18T07:55:07.011Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://meandni.com/2020/10/09/null-references-and-dart210/</loc>
-    
-    <lastmod>2020-10-18T07:54:29.642Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://meandni.com/2020/10/05/flutter-navigator2-and-router/</loc>
-    
-    <lastmod>2020-10-18T07:54:28.582Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://meandni.com/2020/10/04/how-to-choose-database/</loc>
-    
-    <lastmod>2020-10-18T07:54:25.658Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://meandni.com/2020/10/02/d81/</loc>
-    
-    <lastmod>2020-10-18T07:54:23.969Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://meandni.com/2020/09/28/d206/</loc>
-    
-    <lastmod>2020-10-18T07:54:22.576Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://meandni.com/2020/05/14/virtualization-containerization-docker/</loc>
-    
-    <lastmod>2020-10-18T07:54:21.118Z</lastmod>
     
   </url>
   
@@ -257,13 +285,6 @@
     <loc>https://meandni.com/2018/08/17/react-tutorial/</loc>
     
     <lastmod>2020-10-18T07:16:57.325Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://meandni.com/2020/10/11/performance-testing-on-the-web/</loc>
-    
-    <lastmod>2020-10-15T14:13:19.868Z</lastmod>
     
   </url>
   
