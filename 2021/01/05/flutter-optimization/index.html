@@ -1,0 +1,147 @@
+<!DOCTYPE html><html lang="zh-Hans"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta name="description" content="Flutter渲染性能优化全攻略（解决应用卡顿）"><meta name="keywords" content="性能优化"><meta name="author" content="Joker"><meta name="copyright" content="Joker"><title>Flutter渲染性能优化全攻略（解决应用卡顿） | Joker's Blog</title><link rel="shortcut icon" href="/img/favicon.ico"><link rel="stylesheet" href="/css/index.css?version=1.9.1"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@latest/css/font-awesome.min.css?version=1.9.1"><link rel="stylesheet" href="/css/iconfont.css?version=1.9.1"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css?version=1.9.1"><meta name="format-detection" content="telephone=no"><meta http-equiv="x-dns-prefetch-control" content="on"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.css"><script src="https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.js"></script><script src="https://cdn.jsdelivr.net/npm/blueimp-md5@2.10.0/js/md5.min.js"></script><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  hexoVersion: '7.0.0'
+} </script><meta name="generator" content="Hexo 7.0.0"></head><body><i class="fa fa-arrow-right" id="toggle-sidebar" aria-hidden="true"></i><div id="sidebar" data-display="true"><div class="toggle-sidebar-info text-center"><span data-toggle="切换文章详情">切换站点概览</span><hr></div><div class="sidebar-toc"><div class="sidebar-toc__title">目录</div><div class="sidebar-toc__progress"><span class="progress-notice">你已经读了</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar"></div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9A%E4%BD%8D%E6%B8%B2%E6%9F%93%E6%96%B9%E5%90%91"><span class="toc-number">1.</span> <span class="toc-text">定位渲染方向</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B5%8B%E5%AE%9A%E6%96%B9%E6%B3%95"><span class="toc-number">2.</span> <span class="toc-text">测定方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BC%98%E5%8C%96%E6%96%B9%E6%B3%95"><span class="toc-number">3.</span> <span class="toc-text">优化方法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%90%88%E7%90%86%E4%BD%BF%E7%94%A8const%E5%85%B3%E9%94%AE%E8%AF%8D"><span class="toc-number">3.1.</span> <span class="toc-text">合理使用const关键词</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%90%88%E7%90%86%E4%BD%BF%E7%94%A8%E7%BB%84%E4%BB%B6"><span class="toc-number">3.2.</span> <span class="toc-text">合理使用组件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88-saveLayer-%E4%BB%A3%E4%BB%B7%E5%BE%88%E5%A4%A7%EF%BC%9F"><span class="toc-number">3.3.</span> <span class="toc-text">为什么 saveLayer 代价很大？</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AE%A1%E7%90%86%E7%9D%80%E8%89%B2%E5%99%A8%E7%BC%96%E8%AF%91%E5%9E%83%E5%9C%BE"><span class="toc-number">4.</span> <span class="toc-text">管理着色器编译垃圾</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95"><span class="toc-number">4.1.</span> <span class="toc-text">解决方法</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%93%E8%AE%BA"><span class="toc-number">5.</span> <span class="toc-text">结论</span></a></li></ol></div></div><div class="author-info hide"><div class="author-info__avatar text-center"><img src="/img/avatar.jpg"></div><div class="author-info__name text-center">Joker</div><div class="author-info__description text-center">分享生活感悟、技术、学习心得</div><hr><div class="author-info-articles"><a class="author-info-articles__archives article-meta" href="/archives"><span class="pull-left">文章</span><span class="pull-right">18</span></a><a class="author-info-articles__tags article-meta" href="/tags"><span class="pull-left">标签</span><span class="pull-right">26</span></a><a class="author-info-articles__categories article-meta" href="/categories"><span class="pull-left">分类</span><span class="pull-right">3</span></a></div></div></div><div id="content-outer"><div class="no-bg" id="top-container"><div id="page-header"><span class="pull-left"> <a id="site-name" href="/">Joker's Blog</a></span><i class="fa fa-bars toggle-menu pull-right" aria-hidden="true"></i><span class="pull-right menus">   <a class="site-page" href="/">首页</a><a class="site-page" href="/archives">目录</a><a class="site-page" href="/tags">标签</a><a class="site-page" href="/categories">分类</a><a class="site-page" href="/about">关于我</a></span><span class="pull-right"></span></div><div id="post-info"><div id="post-title">Flutter渲染性能优化全攻略（解决应用卡顿）</div><div id="post-meta"><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2021-01-05</time><span class="post-meta__separator">|</span><i class="fa fa-inbox post-meta__icon" aria-hidden="true"></i><a class="post-meta__categories" href="/categories/flutter/">flutter</a></div></div></div><div class="layout" id="content-inner"><article id="post"><div class="article-container" id="post-content"><p>大规模应用开发过程中，性能优化是重中之重，其中包括了包体积，UI 渲染、交互等多个方面。</p>
+<p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/cg-mjpBIcelTGZSOzMWwhw">之前的文章</a>中，我通过 Flutter 应用的混淆为入口，探讨了应用包体积优化的实践方案，本文，我把话题再次转到渲染性能上来。</p>
+<p>其中就会涉及到一个非常关健的概念 ——「FPS，Frame Per Second」即「每秒展示帧数」，它代表了应用的流畅度。</p>
+<p>我们知道，动画和物体动态的运动都是由在一段时间内一系列连续变化的静态帧构成的。</p>
+<p>在考虑应用的渲染性能时，我们就是在试图分析应用每秒渲染的帧数。</p>
+<p>从物理角度看，对于连续的一系列图像帧，人脑会根据眼睛发出的视觉信号做出反应，一个个静态帧的切换到达一定速度后，就可以欺骗我们的大脑，让我们以为它们是连续的，FPS 就是图像帧切换的速度单位。</p>
+<p>因此有人说，物体运动的概念其实就是一种思维的束缚。</p>
+<p>当 FPS 达到 10-12 时，大脑便可以感知运动，此时并不流畅，达到 24 FPS 时，人眼就能看到流畅的运动了，但是在电影和视频中，则至少需要每秒 60 帧的速度才可以使人的大脑轻松感知到流畅地运动。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/meandni/blogimg@main/img/2021-01-05-2020-12-29-fps.gif" alt="帧数不同的感觉"></p>
+<p>因此，就有了下面这个公式：</p>
+<blockquote>
+<p>1000ms &#x2F; 60 frames &#x3D; 16.666 ms&#x2F;frame</p>
+</blockquote>
+<p>我们需要在 16.66 毫秒内完成整个帧的计算，布局和渲染，否则不流畅，就需要掏出我们的 24K 合金双摄眼，找到优化点，让应用保持流畅。</p>
+<h3 id="定位渲染方向"><a href="#定位渲染方向" class="headerlink" title="定位渲染方向"></a>定位渲染方向</h3><p>那么，当我们优化 Flutter 中的渲染性能时，入口点在哪里。</p>
+<p>Flutter 应用的每一帧都由框架层和引擎层互相协作完成。</p>
+<p>最初，某些外部事件（如手势，网络等）或者异步任务会导致屏幕更新，该消息消息页会通知到引擎层。</p>
+<p>Flutter 框架层会拦截了该请求，执行 <em>Tickers</em> 相关的任务（如动画）。</p>
+<p>这些任务也可能会重新发出一个请求，以供以后的帧渲染。（如动画暂停后再继续，需要在以后的阶段接收另一个 Begin 帧）。</p>
+<p>然后，引擎层就可以开始做屏幕渲染工作了，但在开始之前，Flutter 框架依然会拦截该请求，并根据当前的组件结构和尺寸大小计算出更新布局、绘制相关的所有数据。</p>
+<p>完成这些任务后，如果最终确定真的要在屏幕上绘制一些东西，它就会将需要渲染的新数据发送到 Flutter Engine，做最终的屏幕更新。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/meandni/blogimg@main/img/2020-12-29-internals_flow.gif" alt="渲染内部流程"></p>
+<p>整个过程都在 Flutter 的 UI 线程中运行，如若阻塞，就会卡顿。</p>
+<p>通常，应用开发者不需要关心引擎层的逻辑，但并不意味着我们不需要关心渲染性能。</p>
+<p>引擎层的功能其实也是单一的，他只是拿到框架层的数据去做渲染而已。但是框架层是由我们控制的，我们所写的每一个组件都在框架层之上。</p>
+<p>如何将传递给引擎层的更新数据做到最优，就是渲染优化时我们需要考虑的问题。</p>
+<p>这些更新数据就是由 Flutter 中重要的三棵树生成的，建议不熟悉的读者去回看之前的这篇文章。</p>
+<p>我们需要做的就是让 Flutter 中重建组件的个数尽量少。</p>
+<blockquote>
+<p>所以我说，优秀的 Flutter 代码可以在每次帧渲染的过程更新数据几乎为 0，这也是最优情况。</p>
+<p>而最差的情况就是，每次帧渲染时要渲染整个应用的所有组件，这其中性能差异巨大。</p>
+</blockquote>
+<p>在实际开发过程中，如果将整个页面写在一个单独的 StatefulWidget 中，那么每次状态更新时都会导致很多不必要的 UI 重建。</p>
+<p>因此， 我们要学会拆解组件，使用良好设计模式和状态管理方案，当需要更新状态时将影响范围降到最小。</p>
+<h3 id="测定方法"><a href="#测定方法" class="headerlink" title="测定方法"></a>测定方法</h3><p>在 Android Studio 中，找到 <code>Flutter Performance (View &gt; Tool Windows &gt; Flutter Performance)</code>，就可以直接看到正在重建的 widget 数量。</p>
+<p>这里，勾选 <strong>Show widget rebuild information</strong> 复选框，此功能也能够帮助你检测帧的渲染和显示时间是否超过 16ms。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/meandni/blogimg@main/img/2021-01-05-2020-12-29-widget-rebuild-info-9882c3a6419d9d57b851d0380ad4700155f46c75e8437722fb27865a713061c5.png" alt="Flutter performance window"></p>
+<p>在其他如 VSCode 编辑器中也可以使用 <a target="_blank" rel="noopener" href="https://flutter.dev/docs/development/tools/devtools/overview">DevTool</a> 做性能分析。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/meandni/blogimg@main/img/2020-12-29-dart-devtools-f9ae1dd6c05eeb8a9f6c6fb84baea93df79dc8e0996c102ed3393854f73c3c34.gif" alt="Dart DevTools Screens"></p>
+<ul>
+<li><p>DevTool</p>
+<p><a target="_blank" rel="noopener" href="https://flutter.cn/docs/development/tools/devtools/overview">https://flutter.cn/docs/development/tools/devtools/overview</a></p>
+</li>
+</ul>
+<h3 id="优化方法"><a href="#优化方法" class="headerlink" title="优化方法"></a>优化方法</h3><h4 id="合理使用const关键词"><a href="#合理使用const关键词" class="headerlink" title="合理使用const关键词"></a>合理使用<code>const</code>关键词</h4><p><code>const</code> 您可以通过将其附加到Widget的构造函数来抑制Widget的重建（它与Widget缓存时的状态相同）。</p>
+<p>构建组件时使用 <code>const</code> 关键词，可以抑制 widget 的重建。</p>
+<p>如下这个 Flutter 的默认计数器应用示例：</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="string">&#x27;package:flutter/material.dart&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span> main() =&gt; runApp(MyApp());</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyApp</span> <span class="keyword">extends</span> <span class="title">StatelessWidget</span> </span>&#123;</span><br><span class="line">  <span class="meta">@override</span></span><br><span class="line">  Widget build(BuildContext context) &#123;</span><br><span class="line">    <span class="keyword">return</span> MaterialApp(</span><br><span class="line">      title: <span class="string">&#x27;Flutter Demo&#x27;</span>,</span><br><span class="line">      theme: ThemeData(</span><br><span class="line">        primarySwatch: Colors.blue,</span><br><span class="line">      ),</span><br><span class="line">      home: MyHomePage(title: <span class="string">&#x27;Flutter Demo Home Page&#x27;</span>),</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyHomePage</span> <span class="keyword">extends</span> <span class="title">StatefulWidget</span> </span>&#123;</span><br><span class="line">  MyHomePage(&#123;Key key, <span class="keyword">this</span>.title&#125;) : <span class="keyword">super</span>(key: key);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">final</span> <span class="built_in">String</span> title;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@override</span></span><br><span class="line">  _MyHomePageState createState() =&gt; _MyHomePageState();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">_MyHomePageState</span> <span class="keyword">extends</span> <span class="title">State</span>&lt;<span class="title">MyHomePage</span>&gt; </span>&#123;</span><br><span class="line">  <span class="built_in">int</span> _counter = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">void</span> _incrementCounter() &#123;</span><br><span class="line">    setState(() &#123;</span><br><span class="line">      _counter++;</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@override</span></span><br><span class="line">  Widget build(BuildContext context) &#123;</span><br><span class="line">    <span class="keyword">return</span> Scaffold(</span><br><span class="line">      appBar: AppBar(</span><br><span class="line">        title: Text(widget.title),</span><br><span class="line">      ),</span><br><span class="line">      body: Center(</span><br><span class="line">        child: Column(</span><br><span class="line">          mainAxisAlignment: MainAxisAlignment.center,</span><br><span class="line">          children: &lt;Widget&gt;[</span><br><span class="line">            Text(</span><br><span class="line">              <span class="string">&#x27;You have pushed the button this many times:&#x27;</span>,</span><br><span class="line">            ),</span><br><span class="line">            Text(</span><br><span class="line">              <span class="string">&#x27;<span class="subst">$_counter</span>&#x27;</span>,</span><br><span class="line">              style: Theme.of(context).textTheme.display1,</span><br><span class="line">            ),</span><br><span class="line">          ],</span><br><span class="line">        ),</span><br><span class="line">      ),</span><br><span class="line">      floatingActionButton: FloatingActionButton(</span><br><span class="line">        onPressed: _incrementCounter,</span><br><span class="line">        tooltip: <span class="string">&#x27;Increment&#x27;</span>,</span><br><span class="line">        child: Icon(Icons.add),</span><br><span class="line">      ), <span class="comment">// This trailing comma makes auto-formatting nicer for build methods.</span></span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在不修改代码的默认情况下，widget 重建情况如下：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/meandni/blogimg@main/img/2021-01-05-2020-12-30-performance_without_const.gif" alt="未使用 const 的 widget"></p>
+<p>修改如下部分代码：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">-            Text(</span><br><span class="line">-              &#x27;You have pushed the button this many times:&#x27;,</span><br><span class="line">-            ),</span><br><span class="line"></span><br><span class="line">+            const Text(</span><br><span class="line">+              &#x27;You have pushed the button this many times:&#x27;,</span><br><span class="line">+            ),</span><br></pre></td></tr></table></figure>
+
+<p>结果：</p>
+<p><img src="https://itome.team/blog/2019/12/flutter-advent-calendar-day8/performance_with_const.gif" alt="使用 const 的 widget"></p>
+<p><code>const</code> 在 Dart 中用于声明常量，应用到 widget 中就相当于告诉 Flutter，“我这个组件不会碎状态更新而改变了。”，因此达到了减少重建的效果。</p>
+<p>使用 const 也需要注意如下几点：</p>
+<ul>
+<li>当<code>const</code> 修饰类的构造函数时，它要求该类的所有成员都必须是<code>final</code>的。</li>
+<li><code>const</code> 变量只能在定义的时候初始化。</li>
+</ul>
+<p>合理利用 const 关键词，可以在很大程度上优化应用的性能，国外开发者 Crizant Lai 给出一了一份详细的数据。</p>
+<p>如下示例：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/meandni/blogimg@main/img/2021-01-05-2020-12-30-1*kNi8OgiCyLYXYudjXFyB9Q.gif"></p>
+<p>这里，他使用 AnimatedPositioned 做动画组件，内部放一个展示 Flutter Logo 的 Image widget，分别使用 const 和 不使用 const 修饰 Image：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">const Image(</span><br><span class="line">  width: 100,</span><br><span class="line">  height: 100,</span><br><span class="line">  image: AssetImage(&#x27;assets/logo.png&#x27;),</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+<p>最终测试性能如下：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/meandni/blogimg@main/img/2020-12-30-image-20201230173001160.png" alt="FPS"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/meandni/blogimg@main/img/2020-12-30-image-20201230173934757.png" alt="内存"></p>
+<ul>
+<li><p>Crizant Lai 的原文</p>
+<p><a target="_blank" rel="noopener" href="https://crizantlai.medium.com/flutter-performance-analysis-of-const-constructor-d2a72fd8a043">https://crizantlai.medium.com/flutter-performance-analysis-of-const-constructor-d2a72fd8a043</a></p>
+</li>
+</ul>
+<h4 id="合理使用组件"><a href="#合理使用组件" class="headerlink" title="合理使用组件"></a>合理使用组件</h4><p>Flutter 实现的一些效果背后可能会使用  <code>saveLayer()</code>  这个代价很大的方法。</p>
+<blockquote>
+<h4 id="为什么-saveLayer-代价很大？"><a href="#为什么-saveLayer-代价很大？" class="headerlink" title="为什么 saveLayer 代价很大？"></a>为什么 saveLayer 代价很大？</h4><p>调用 <code>saveLayer()</code> 会开辟一片离屏缓冲区。将内容绘制到离屏缓冲区可能会触发渲染目标切换，这些切换在较早期的 GPU 中特别慢。</p>
+<p>——来自 flutter.cn，<a target="_blank" rel="noopener" href="https://flutter.cn/docs/testing/best-practices">https://flutter.cn/docs/testing/best-practices</a></p>
+</blockquote>
+<p>如下这几个组件，底层都会触发 <code>saveLayer()</code> 的调用，同样也都会导致性能的损耗：</p>
+<ul>
+<li><code>ShaderMask</code></li>
+<li><code>ColorFilter</code></li>
+<li><code>Chip</code>，当 <code>disabledColorAlpha != 0xff</code> 的时候，会调用 <code>saveLayer()</code>。</li>
+<li><code>Text</code>，如果有 <code>overflowShader</code>，可能调用  <code>saveLayer()</code> ，</li>
+</ul>
+<p>官方也给了我们一些非常需要注意的优化点：</p>
+<ul>
+<li><p>由于 <code>Opacity</code> 会使用屏幕外缓冲区直接使目标组件中不透明，因此能不用 <code>Opacity</code> Widget，就尽量不要用。有关将透明度直接应用于图像的示例，请参见 Transparent image，比使用 Opacity widget 更快，性能更好。</p>
+</li>
+<li><p>要在图像中实现淡入淡出，请考虑使用 FadeInImage 小部件，该小部件使用 GPU 的片段着色器应用渐变不透明度。</p>
+</li>
+<li><p>很多场景下，我们确实没必要直接使用  <code>Opacity</code> 改变透明度，如要作用于一个图片的时候可以直接使用透明的图片，或者直接使用 Container：<code>Container(color: Color.fromRGBO(255, 0, 0, 0.5))</code></p>
+</li>
+<li><p>Clipping 不会调用 <code>saveLayer()</code>（除非明确使用 <code>Clip.antiAliasWithSaveLayer</code>），因此这些操作没有 Opacity 那么耗时，但仍然很耗时，所以请谨慎使用。</p>
+</li>
+<li><p>要创建带圆角的矩形，而不是应用剪切矩形，请考虑使用很多 widget 都提供的 <code>borderRadius</code>属性。</p>
+</li>
+</ul>
+<h3 id="管理着色器编译垃圾"><a href="#管理着色器编译垃圾" class="headerlink" title="管理着色器编译垃圾"></a>管理着色器编译垃圾</h3><p>有时候，应用中的动画首次运行时会看起来非常卡顿，但是运行多次之后便可以正常运行，这可能就是由于着色器编译混乱导致的。</p>
+<p>在图形渲染，着色器相当于是在 GPU 运行的一组代码。想要达到 60fps，需要在 16 毫秒内绘制一个平滑的帧，但是在编译着色器时，它花费的时间可能比应该花费的时间更多，可能会接近几百毫秒，并且会导致丢失数十个帧，将 fps 从 60 降至 6。</p>
+<h4 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h4><p>Flutter 1.20 之后，Flutter 为开发者提供了非常方便的一组命令行工具，由此开发人员可以使用 Skia Shader Language 格式收集最终用户可能需要的着色器， 一旦将 SkSL 着色器打包到应用程序中，当用户打开应用程序时，就会自动进行预编译。</p>
+<p>运行应用，添加 <code>--cache-sksl</code> 参数捕获 SkSL 中的着色器：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flutter run --profile --cache-sksl</span><br></pre></td></tr></table></figure>
+
+<p>如果该应用已经运行，且没有带有 <code>--cache-sksl</code> 参数，则还需要 <code>--purge-persistent-cache</code>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flutter run --profile --cache-sksl --purge-persistent-cache</span><br></pre></td></tr></table></figure>
+
+<p>该参数可能会删除 SkSL 着色器捕获的较旧的非 SkSL着色器缓存，因此只能在第一次运行时使用 <code>--cache-sksl</code>。</p>
+<p><strong>在不同平台上，可以执行以下命令，使用 SkSL 预热功能构建应用程序：</strong></p>
+<p><strong>安卓</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flutter build apk — bundle-sksl-path flutter_01.sksl.json</span><br></pre></td></tr></table></figure>
+
+<p><strong>ios</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flutter build ios --bundle-sksl-path flutter_01.sksl.json</span><br></pre></td></tr></table></figure>
+
+<h3 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h3><p>本文从原理到应用，分析了 Flutter 应用性能优化的入口及方法，但关于性能优化的话题还远不止于此，诸如状态管理方案的选择、动画的使用都是我们在实际开发过程中应当注意的优化方向。</p>
+<p><strong>感谢阅读。如果你发现文章中有任何可以改进的地方，请直接联系我，我很乐意继续完善下去。💙</strong></p>
+<p><strong>如果本文对你所有帮助，欢迎 “点赞” 和 “在看”！👏</strong></p>
+<p><em><strong>关于框架层更多内容，欢迎大家阅读我的新书《Flutter开发之旅从南到北》。</strong></em></p>
+<p><strong>本文同步发表于我的微信公众号「<a href="https://meandni.com/images/qrcode_for_small.jpg">MeandNi</a>」，更多优质文章欢迎点击扫码或在微信搜索关注。</strong></p>
+<img alt="扫一扫，关注「Meandni」" src="/images/qrcode_for_small.jpg" style="zoom:50%;" /></div></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">Joker</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://meandni.com/2021/01/05/flutter-optimization/">https://meandni.com/2021/01/05/flutter-optimization/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://meandni.com">Joker's Blog</a>！</span></div></div><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/">性能优化</a></div><div class="post-qr-code"><div class="post-qr-code-item"><img class="post-qr-code__img" src="/img/alipay.jpg"><div class="post-qr-code__desc">支付宝打赏</div></div><div class="post-qr-code-item"><img class="post-qr-code__img" src="/img/wechat.png"><div class="post-qr-code__desc">微信打赏</div></div></div><div class="addthis_inline_share_toolbox pull-right"></div><script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5ebb714f13e60e34" async></script><nav id="pagination"><div class="next-post pull-right"><a href="/2020/12/07/navigation-done-right-a-case-for-hierarchical-routing-with-flutter/"><span>Bolt 的 Flutter 路由管理实践（页面解耦，流程控制、功能拓展等）</span><i class="fa fa-chevron-right"></i></a></div></nav><div id="gitalk-container"></div><script>var gitalk = new Gitalk({
+  clientID: '12faa9d04b92d2d70968',
+  clientSecret: 'ad1023eebffeb2972301ce0e730e0c277f64cf23',
+  repo: 'MeandNi.github.io',
+  owner: 'MeandNi',
+  admin: 'MeandNi',
+  id: md5(decodeURI(location.pathname)),
+  language: 'zh-CN'
+})
+gitalk.render('gitalk-container')</script></div></div><footer><div class="layout" id="footer"><div class="copyright">&copy;2013 - 2024 By Joker</div><div class="framework-info"><span>驱动 - </span><a target="_blank" rel="noopener" href="http://hexo.io"><span>Hexo</span></a><span class="footer-separator">|</span><span>主题 - </span><a target="_blank" rel="noopener" href="https://github.com/Molunerfinn/hexo-theme-melody"><span>Melody</span></a></div><div class="busuanzi"><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><span id="busuanzi_container_page_pv"><i class="fa fa-file"></i><span id="busuanzi_value_page_pv"></span><span></span></span></div></div></footer><i class="fa fa-arrow-up" id="go-up" aria-hidden="true"></i><script src="https://cdn.jsdelivr.net/npm/animejs@latest/lib/anime.min.js"></script><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@latest/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-ui-pack@latest/velocity.ui.min.js"></script><script src="/js/utils.js?version=1.9.1"></script><script src="/js/fancybox.js?version=1.9.1"></script><script src="/js/sidebar.js?version=1.9.1"></script><script src="/js/copy.js?version=1.9.1"></script><script src="/js/fireworks.js?version=1.9.1"></script><script src="/js/transition.js?version=1.9.1"></script><script src="/js/scroll.js?version=1.9.1"></script><script src="/js/head.js?version=1.9.1"></script><script>if(/Android|webOS|iPhone|iPod|iPad|BlackBerry/i.test(navigator.userAgent)) {
+  $('#nav').addClass('is-mobile')
+  $('footer').addClass('is-mobile')
+  $('#top-container').addClass('is-mobile')
+}</script></body></html>
