@@ -2,6 +2,24 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://meandni.com/about/index.html</loc>
+    
+    <lastmod>2024-06-16</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://meandni.com/2020/11/24/understanding-navigator-v2/</loc>
+    
+    <lastmod>2024-01-15</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://meandni.com/2020/11/16/my-book/</loc>
     
     <lastmod>2024-01-14</lastmod>
@@ -65,15 +83,6 @@
   </url>
   
   <url>
-    <loc>https://meandni.com/about/index.html</loc>
-    
-    <lastmod>2024-01-14</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://meandni.com/categories/index.html</loc>
     
     <lastmod>2024-01-14</lastmod>
@@ -86,15 +95,6 @@
     <loc>https://meandni.com/2021/01/05/flutter-optimization/</loc>
     
     <lastmod>2021-01-05</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://meandni.com/2020/11/24/understanding-navigator-v2/</loc>
-    
-    <lastmod>2020-12-07</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -193,7 +193,7 @@
 
   <url>
     <loc>https://meandni.com/</loc>
-    <lastmod>2024-01-14</lastmod>
+    <lastmod>2024-06-16</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -201,182 +201,182 @@
   
   <url>
     <loc>https://meandni.com/tags/flutter/</loc>
-    <lastmod>2024-01-14</lastmod>
+    <lastmod>2024-06-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://meandni.com/tags/%E5%8A%A8%E7%94%BB/</loc>
-    <lastmod>2024-01-14</lastmod>
+    <lastmod>2024-06-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://meandni.com/tags/%E8%B7%AF%E7%94%B1/</loc>
-    <lastmod>2024-01-14</lastmod>
+    <lastmod>2024-06-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://meandni.com/tags/Dart/</loc>
-    <lastmod>2024-01-14</lastmod>
+    <lastmod>2024-06-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://meandni.com/tags/web/</loc>
-    <lastmod>2024-01-14</lastmod>
+    <lastmod>2024-06-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://meandni.com/tags/%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/</loc>
-    <lastmod>2024-01-14</lastmod>
+    <lastmod>2024-06-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://meandni.com/tags/%E4%B9%A6%E5%90%8E%E6%8B%93%E5%B1%95/</loc>
-    <lastmod>2024-01-14</lastmod>
+    <lastmod>2024-06-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://meandni.com/tags/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/</loc>
-    <lastmod>2024-01-14</lastmod>
+    <lastmod>2024-06-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://meandni.com/tags/%E6%9C%80%E6%96%B0%E5%92%A8%E8%AF%A2/</loc>
-    <lastmod>2024-01-14</lastmod>
+    <lastmod>2024-06-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://meandni.com/tags/%E5%AD%97%E7%AC%A6%E7%BC%96%E7%A0%81/</loc>
-    <lastmod>2024-01-14</lastmod>
+    <lastmod>2024-06-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://meandni.com/tags/%E7%BC%96%E7%A0%81%E5%8E%9F%E7%90%86/</loc>
-    <lastmod>2024-01-14</lastmod>
+    <lastmod>2024-06-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://meandni.com/tags/ASCII/</loc>
-    <lastmod>2024-01-14</lastmod>
+    <lastmod>2024-06-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://meandni.com/tags/Unicode/</loc>
-    <lastmod>2024-01-14</lastmod>
+    <lastmod>2024-06-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://meandni.com/tags/UTF-8/</loc>
-    <lastmod>2024-01-14</lastmod>
+    <lastmod>2024-06-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://meandni.com/tags/UTF-16/</loc>
-    <lastmod>2024-01-14</lastmod>
+    <lastmod>2024-06-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://meandni.com/tags/UTF-32/</loc>
-    <lastmod>2024-01-14</lastmod>
+    <lastmod>2024-06-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://meandni.com/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA/</loc>
-    <lastmod>2024-01-14</lastmod>
+    <lastmod>2024-06-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://meandni.com/tags/Linux/</loc>
-    <lastmod>2024-01-14</lastmod>
+    <lastmod>2024-06-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://meandni.com/tags/%E5%AE%B9%E5%99%A8%E5%8C%96/</loc>
-    <lastmod>2024-01-14</lastmod>
+    <lastmod>2024-06-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://meandni.com/tags/%E8%99%9A%E6%8B%9F%E5%8C%96/</loc>
-    <lastmod>2024-01-14</lastmod>
+    <lastmod>2024-06-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://meandni.com/tags/Docker/</loc>
-    <lastmod>2024-01-14</lastmod>
+    <lastmod>2024-06-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://meandni.com/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/</loc>
-    <lastmod>2024-01-14</lastmod>
+    <lastmod>2024-06-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://meandni.com/tags/%E6%8A%80%E6%9C%AF%E9%80%89%E5%9E%8B/</loc>
-    <lastmod>2024-01-14</lastmod>
+    <lastmod>2024-06-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://meandni.com/tags/%E9%9A%8F%E6%9C%BA%E6%95%B0/</loc>
-    <lastmod>2024-01-14</lastmod>
+    <lastmod>2024-06-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://meandni.com/tags/%E5%BA%94%E7%94%A8%E9%80%82%E9%85%8D/</loc>
-    <lastmod>2024-01-14</lastmod>
+    <lastmod>2024-06-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://meandni.com/tags/Android/</loc>
-    <lastmod>2024-01-14</lastmod>
+    <lastmod>2024-06-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
@@ -385,21 +385,21 @@
   
   <url>
     <loc>https://meandni.com/categories/flutter/</loc>
-    <lastmod>2024-01-14</lastmod>
+    <lastmod>2024-06-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://meandni.com/categories/Android/</loc>
-    <lastmod>2024-01-14</lastmod>
+    <lastmod>2024-06-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://meandni.com/categories/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E8%AE%A1%E7%AE%97%E6%9C%BA/</loc>
-    <lastmod>2024-01-14</lastmod>
+    <lastmod>2024-06-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
