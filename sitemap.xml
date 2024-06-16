@@ -11,6 +11,24 @@
   </url>
   
   <url>
+    <loc>https://meandni.com/tags/index.html</loc>
+    
+    <lastmod>2024-06-16</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://meandni.com/categories/index.html</loc>
+    
+    <lastmod>2024-06-16</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://meandni.com/2020/11/24/understanding-navigator-v2/</loc>
     
     <lastmod>2024-01-15</lastmod>
@@ -75,15 +93,6 @@
   
   <url>
     <loc>https://meandni.com/2020/05/12/3619/</loc>
-    
-    <lastmod>2024-01-14</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://meandni.com/categories/index.html</loc>
     
     <lastmod>2024-01-14</lastmod>
     
@@ -176,15 +185,6 @@
     <loc>https://meandni.com/2020/11/05/demystifying-responsive-layout-in-flutter/</loc>
     
     <lastmod>2020-11-14</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://meandni.com/tags/index.html</loc>
-    
-    <lastmod>2020-04-07</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -381,6 +381,13 @@
     <priority>0.2</priority>
   </url>
   
+  <url>
+    <loc>https://meandni.com/tags/%E4%BB%A3%E7%A0%81%E8%AE%BE%E8%AE%A1/</loc>
+    <lastmod>2024-06-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
 
   
   <url>
@@ -399,6 +406,13 @@
   
   <url>
     <loc>https://meandni.com/categories/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E8%AE%A1%E7%AE%97%E6%9C%BA/</loc>
+    <lastmod>2024-06-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://meandni.com/categories/flutter/Android/</loc>
     <lastmod>2024-06-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
